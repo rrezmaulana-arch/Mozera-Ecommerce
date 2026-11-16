@@ -28,6 +28,9 @@ return Application::configure(basePath: dirname(__DIR__))
         }
     )
     ->withMiddleware(function (Middleware $middleware): void {
+        // Trust all proxies (required for HTTPS behind Google Cloud Run / Load Balancer)
+        $middleware->trustProxies(at: '*');
+
         // Exclude webhooks from CSRF verification
         $middleware->validateCsrfTokens(except: [
             'webhooks/*',
