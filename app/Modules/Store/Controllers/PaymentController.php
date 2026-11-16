@@ -6,7 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Modules\Core\Models\Order;
 use App\Modules\Core\Models\Payment;
 use App\Modules\Shared\Outbox\DomainEventDispatcher;
+use App\Modules\Store\Services\MidtransService;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Log;
 
 class PaymentController extends Controller
 {
@@ -15,7 +17,26 @@ class PaymentController extends Controller
         $order = Order::where('ulid', $ulid)->with(['items.sku.product', 'payments'])->firstOrFail();
         $payment = $order->payments()->latest()->first();
 
-        return view('shop.payment', compact('order', 'payment'));
+        $snapToken = null;
+        $snapError = null;
+
+        // Only generate Snap token if order is still pending payment
+        if ($order->status === 'pending_payment') {
+            try {
+                $snapToken = (new MidtransService())->createSnapToken($order);
+            } catch (\Throwable $e) {
+                Log::error('Midtrans Snap token error', [
+                    'order'     => $order->order_number,
+                    'message'   => $e->getMessage(),
+                ]);
+                $snapError = 'Gagal memuat gateway pembayaran. Silakan refresh halaman atau hubungi CS.';
+            }
+        }
+
+        $clientKey  = config('services.midtrans.client_key');
+        $snapUrl    = config('services.midtrans.snap_url');
+
+        return view('shop.payment', compact('order', 'payment', 'snapToken', 'snapError', 'clientKey', 'snapUrl'));
     }
 
     public function simulateSuccess(Request $request, string $ulid)
@@ -34,24 +55,24 @@ class PaymentController extends Controller
         $payment = $order->payments()->latest()->first();
         if ($payment) {
             $payment->update([
-                'status' => 'paid',
-                'payment_method' => $request->input('payment_method', 'qris'),
-                'transaction_id' => 'MID-SIM-' . strtoupper(uniqid()),
-                'paid_at' => now(),
+                'status'           => 'paid',
+                'payment_method'   => $request->input('payment_method', 'qris'),
+                'transaction_id'   => 'MID-SIM-' . strtoupper(uniqid()),
+                'paid_at'          => now(),
             ]);
         }
 
         $order->update([
-            'status' => 'paid',
+            'status'  => 'paid',
             'paid_at' => now(),
         ]);
 
         // Publish order.paid domain event (WMS pick queue + CRM loyalty + CRM post-purchase flow)
         DomainEventDispatcher::publish('order.paid', [
-            'order_id' => $order->id,
-            'order_number' => $order->order_number,
-            'customer_id' => $order->customer_id,
-            'amount_idr' => $order->grand_total_idr,
+            'order_id'      => $order->id,
+            'order_number'  => $order->order_number,
+            'customer_id'   => $order->customer_id,
+            'amount_idr'    => $order->grand_total_idr,
         ]);
 
         $request->session()->put('tracking_verified_' . $order->order_number, true);
@@ -71,12 +92,12 @@ class PaymentController extends Controller
 
         if ($order->status === 'pending_payment') {
             $order->update([
-                'status' => 'cancelled',
+                'status'       => 'cancelled',
                 'cancelled_at' => now(),
             ]);
 
             DomainEventDispatcher::publish('order.cancelled', [
-                'order_id' => $order->id,
+                'order_id'     => $order->id,
                 'order_number' => $order->order_number,
             ]);
 
@@ -86,4 +107,3 @@ class PaymentController extends Controller
         return redirect()->route('shop.home');
     }
 }
-
