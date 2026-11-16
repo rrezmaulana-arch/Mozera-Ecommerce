@@ -103,14 +103,14 @@
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7">
             @foreach($products as $product)
                 <div class="group bg-white rounded-3xl overflow-hidden border border-neutral-200/70 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
-                    <a href="{{ route('shop.product', $product->slug) }}" class="relative aspect-[3/4] bg-neutral-100 overflow-hidden block">
-                        <img src="{{ $product->primary_image }}" alt="{{ $product->name }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
+                    <a href="{{ route('shop.product', $product->slug) }}" class="relative aspect-[3/4] bg-[#FAF9F6] overflow-hidden flex items-center justify-center p-3 sm:p-4 group/img">
+                        <img src="{{ $product->primary_image }}" alt="{{ $product->name }}" class="w-full h-full object-contain filter drop-shadow-sm group-hover/img:scale-105 transition-transform duration-500">
                         @if($product->is_preorder)
                             <span class="absolute top-3 left-3 bg-neutral-900/90 text-white text-[9px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full backdrop-blur-sm">
                                 Pre-Order
                             </span>
                         @endif
-                        <span class="absolute top-3 right-3 bg-white/95 text-neutral-800 text-[9px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow-sm">
+                        <span class="absolute top-3 right-3 bg-white/95 text-neutral-800 text-[9px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow-xs border border-neutral-200/60">
                             {{ ucfirst($product->category) }}
                         </span>
                     </a>
@@ -119,7 +119,7 @@
                             @if($product->series)
                                 <p class="text-[10px] uppercase tracking-widest text-[#BA805E] font-bold">{{ $product->series->name }}</p>
                             @endif
-                            <h3 class="font-serif text-base font-bold text-neutral-900 group-hover:text-[#BA805E] transition-colors leading-snug line-clamp-1">
+                            <h3 class="font-serif text-base font-bold text-neutral-900 group-hover:text-[#BA805E] transition-colors leading-snug line-clamp-2 min-h-[2.5rem]">
                                 <a href="{{ route('shop.product', $product->slug) }}">{{ $product->name }}</a>
                             </h3>
                             <p class="text-xs text-neutral-500 line-clamp-1 font-light">{{ $product->material }}</p>

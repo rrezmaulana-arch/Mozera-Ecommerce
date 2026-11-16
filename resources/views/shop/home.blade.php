@@ -842,7 +842,7 @@
                                     src="{{ $product->primary_image }}" 
                                     alt="{{ $product->name }} — Modest Fashion" 
                                     loading="lazy" 
-                                    class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500 block"
+                                    class="w-full h-full object-contain p-2 sm:p-3 filter drop-shadow-sm group-hover:scale-[1.03] transition-transform duration-500 block"
                                 >
                             </a>
 
