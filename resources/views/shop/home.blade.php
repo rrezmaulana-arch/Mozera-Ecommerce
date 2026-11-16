@@ -148,7 +148,7 @@
         </div>
     </section>
 
-    <!-- SECTION E: KARTU SERI (Aspect 4/5, Max height 420px, Mobile scroll-snap carousel 78vw) -->
+    <!-- SECTION E: KARTU SERI (Haute Couture Editorial Lookbook Cards) -->
     <section class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-end justify-between mb-6 pb-3 border-b border-neutral-200">
             <div>
@@ -165,32 +165,50 @@
         <!-- Series Grid / Mobile Scroll-snap Carousel -->
         <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 -mx-4 px-4 pb-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-3 sm:gap-6 custom-scrollbar">
             @foreach($series as $s)
+                @php
+                    $koleksiNum = '0' . ($loop->index + 1);
+                @endphp
                 <a 
                     href="{{ route('shop.catalog', ['series' => $s->code]) }}" 
-                    class="group relative w-[78vw] max-w-[320px] shrink-0 snap-center sm:w-full sm:max-w-none aspect-[4/5] max-h-[400px] rounded-2xl sm:rounded-3xl overflow-hidden block shadow-xs hover:shadow-lg transition-all duration-300 bg-[#F5EFEB] border border-neutral-200/60"
+                    class="group relative w-[78vw] max-w-[320px] shrink-0 snap-center sm:w-full sm:max-w-none aspect-[4/5] max-h-[420px] rounded-3xl overflow-hidden block shadow-sm hover:shadow-xl transition-all duration-500 bg-gradient-to-b from-[#FAF8F5] via-[#F4EDE4] to-[#EBE0D3] border border-[#E4D7C5] hover:-translate-y-1"
                 >
+                    <!-- Background Architectural Arch Glow -->
+                    <div class="absolute inset-x-8 top-6 bottom-16 rounded-t-full bg-white/40 border border-white/60 pointer-events-none transition-transform duration-500 group-hover:scale-105"></div>
+
+                    <!-- Top Couture Badge Bar -->
+                    <div class="absolute top-4 left-4 right-4 flex items-center justify-between z-10">
+                        <span class="text-[10px] uppercase font-mono tracking-[0.2em] font-bold text-[#A66747] bg-white/85 backdrop-blur-sm px-3 py-1 rounded-full border border-[#E4D7C5]/60 shadow-2xs">
+                            Koleksi {{ $koleksiNum }}
+                        </span>
+                        <span class="text-[10px] uppercase tracking-wider font-bold px-2.5 py-1 rounded-full bg-neutral-950/80 backdrop-blur-md text-[#EADCCE] border border-neutral-800 shadow-2xs">
+                            {{ $s->products_count }} Busana
+                        </span>
+                    </div>
+
+                    <!-- Authentic Modest Model Image -->
                     <img 
                         src="{{ $s->banner_image }}" 
                         alt="{{ $s->name }} — Modest Collection" 
                         loading="lazy" 
-                        class="w-full h-full object-contain p-4 group-hover:scale-[1.03] transition-transform duration-500 block filter drop-shadow-md"
+                        class="w-full h-full object-contain p-4 sm:p-5 group-hover:scale-105 transition-transform duration-700 block filter drop-shadow-md relative z-0"
                     >
-                    <!-- Bottom Gradient Overlay (Contrast > 4.5:1) -->
-                    <div class="absolute inset-0 bg-gradient-to-t from-neutral-950/85 via-neutral-950/30 to-transparent"></div>
 
-                    <div class="absolute bottom-5 left-5 right-5 text-white space-y-1.5">
+                    <!-- Bottom Editorial Overlay (Soft Warm Gradient, Haute Couture Lookbook) -->
+                    <div class="absolute inset-0 bg-gradient-to-t from-neutral-950/90 via-neutral-950/40 via-45% to-transparent pointer-events-none"></div>
+
+                    <div class="absolute bottom-5 left-5 right-5 text-white space-y-1.5 z-10">
                         <div class="flex items-center justify-between">
-                            <span class="text-[10px] uppercase tracking-wider font-bold px-2.5 py-0.5 rounded-full bg-white/20 backdrop-blur-md text-[#DCC3AD]">
-                                {{ $s->products_count }} Busana
-                            </span>
-                            <span class="text-xs font-semibold text-white group-hover:translate-x-1 transition-transform">&rarr;</span>
+                            <h3 class="font-serif text-xl sm:text-2xl font-bold tracking-tight text-white line-clamp-1 group-hover:text-[#EADCCE] transition-colors">
+                                {{ $s->name }}
+                            </h3>
+                            <span class="text-xs font-semibold text-[#BA805E] group-hover:text-white group-hover:translate-x-1 transition-all shrink-0 ml-2">&rarr;</span>
                         </div>
-                        <h3 class="font-serif text-xl sm:text-2xl font-bold tracking-tight text-white line-clamp-1">
-                            {{ $s->name }}
-                        </h3>
-                        <p class="text-xs text-neutral-200 line-clamp-2 font-light leading-relaxed">
+                        <p class="text-xs text-[#FAF9F6]/85 line-clamp-2 font-light leading-relaxed">
                             {{ $s->description }}
                         </p>
+                        <span class="inline-block text-[10px] font-bold tracking-wider uppercase text-[#BA805E] pt-0.5 group-hover:underline">
+                            Jelajahi Seri &rarr;
+                        </span>
                     </div>
                 </a>
             @endforeach
@@ -269,15 +287,21 @@
             <!-- Models Runway Stage (Desktop Left Column: Models glide strictly inside this area) -->
             <div class="relative flex-1 w-full h-[350px] sm:h-[390px] lg:h-[430px] flex items-center justify-center overflow-hidden pb-8" id="open-runway-stage">
                 
+                <!-- Couture Runway Architectural Arch Backdrop (Gives Stage Depth & Atmospheric Elegance) -->
+                <div class="absolute inset-x-8 sm:inset-x-16 lg:inset-x-24 top-2 bottom-8 rounded-t-[160px] sm:rounded-t-[200px] bg-gradient-to-b from-[#F2ECE3]/85 via-[#FAF7F2]/45 to-transparent border-t border-x border-[#E6DAC9]/70 shadow-[inset_0_4px_20px_rgba(230,218,201,0.35)] pointer-events-none -z-0"></div>
+
+                <!-- Runway Spotlight Floor Glow -->
+                <div class="absolute bottom-6 w-[280px] sm:w-[380px] lg:w-[460px] h-12 bg-gradient-to-r from-transparent via-[#E8DEC9]/70 to-transparent rounded-[100%] filter blur-lg pointer-events-none -z-0"></div>
+
                 @foreach($curatedLooks as $idx => $look)
                     <div 
                         id="runway-model-{{ $idx }}" 
                         onclick="switchLook({{ $idx }})"
-                        class="runway-model-item absolute bottom-7 flex flex-col items-center justify-end transition-all duration-500 ease-out cursor-pointer"
+                        class="runway-model-item absolute bottom-7 flex flex-col items-center justify-end transition-all duration-500 ease-out cursor-pointer z-10"
                         style="will-change: transform, opacity;"
                     >
                         <!-- Realistic Floor Contact Shadow (No Card Borders) -->
-                        <div class="model-floor-shadow absolute bottom-1 w-24 sm:w-32 h-3 bg-neutral-950/15 rounded-full filter blur-[2.5px] transition-all duration-500"></div>
+                        <div class="model-floor-shadow absolute bottom-1 w-24 sm:w-32 h-3 bg-neutral-950/20 rounded-full filter blur-[2.5px] transition-all duration-500"></div>
 
                         <!-- Cutout Model Image: Authentic Transparent PNG from user -->
                         <div class="relative h-[260px] sm:h-[300px] lg:h-[330px] flex items-end justify-center">
@@ -289,9 +313,9 @@
                             >
                         </div>
 
-                        <!-- Minimal Floor Tag (Only on active model) -->
-                        <div class="active-model-tag opacity-0 transition-opacity duration-300 absolute -bottom-6 px-3.5 py-1 rounded-full bg-neutral-900/95 text-white text-[10px] font-semibold uppercase tracking-wider backdrop-blur-md shadow-md pointer-events-none whitespace-nowrap z-20">
-                            {{ $look['title'] }}
+                        <!-- Minimal Couture Floor Tag (Only on active model) -->
+                        <div class="active-model-tag opacity-0 transition-all duration-300 absolute -bottom-5 px-3.5 py-1 rounded-full bg-neutral-950/90 text-[#F5EFEB] border border-[#BA805E]/40 text-[9px] font-bold uppercase tracking-[0.2em] backdrop-blur-md shadow-lg pointer-events-none whitespace-nowrap z-20">
+                            <span class="inline-block w-1.5 h-1.5 rounded-full bg-[#BA805E] mr-1.5 align-middle"></span>{{ $look['title'] }}
                         </div>
                     </div>
                 @endforeach
@@ -301,48 +325,48 @@
                     type="button" 
                     onclick="prevLook()" 
                     aria-label="Look Sebelumnya" 
-                    class="hidden lg:flex absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-neutral-950 hover:text-white text-neutral-800 shadow-sm border border-neutral-200/80 backdrop-blur-md items-center justify-center transition-all cursor-pointer z-30"
+                    class="hidden lg:flex absolute left-2 xl:left-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/90 hover:bg-[#0a0a0a] hover:text-white text-neutral-800 shadow-md border border-[#E8DEC9] backdrop-blur-md items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer z-30"
                 >
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 19l-7-7 7-7"/></svg>
                 </button>
                 <button 
                     type="button" 
                     onclick="nextLook()" 
                     aria-label="Look Berikutnya" 
-                    class="hidden lg:flex absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-neutral-950 hover:text-white text-neutral-800 shadow-sm border border-neutral-200/80 backdrop-blur-md items-center justify-center transition-all cursor-pointer z-30"
+                    class="hidden lg:flex absolute right-2 xl:right-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/90 hover:bg-[#0a0a0a] hover:text-white text-neutral-800 shadow-md border border-[#E8DEC9] backdrop-blur-md items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer z-30"
                 >
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 5l7 7-7 7"/></svg>
                 </button>
 
             </div>
 
-            <!-- DEDICATED EDITORIAL PANEL (Desktop Right Column: Clean, Separate, No Overlap) -->
-            <div class="hidden lg:block w-[310px] xl:w-[325px] shrink-0 bg-white/95 backdrop-blur-md p-4 sm:p-5 rounded-2xl border border-neutral-200/80 shadow-md space-y-3">
-                <div class="flex items-center justify-between pb-2 border-b border-neutral-100">
+            <!-- DEDICATED EDITORIAL PANEL (Desktop Right Column: Haute Couture Atelier Styling) -->
+            <div class="hidden lg:block w-[320px] xl:w-[340px] shrink-0 bg-white/95 backdrop-blur-xl p-5 xl:p-6 rounded-3xl border border-[#E6DAC9] shadow-[0_12px_36px_rgba(0,0,0,0.06)] space-y-3.5">
+                <div class="flex items-center justify-between pb-2.5 border-b border-[#F0E6DC]">
                     <div>
-                        <span class="text-[9px] uppercase tracking-[0.2em] font-bold text-[#BA805E]">In This Look</span>
-                        <h3 class="font-serif text-base font-bold text-neutral-950 mt-0.5" id="desk-panel-title">
+                        <span class="text-[9px] uppercase tracking-[0.25em] font-bold text-[#BA805E] block">Atelier Styling</span>
+                        <h3 class="font-serif text-base xl:text-lg font-bold text-neutral-950 mt-0.5 tracking-tight" id="desk-panel-title">
                             {{ $curatedLooks[0]['title'] }}
                         </h3>
                     </div>
-                    <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-[#BA805E]/15 text-[#BA805E] font-mono">
-                        Diskon 10%
+                    <span class="px-2.5 py-1 rounded-full text-[10px] font-bold bg-[#BA805E]/10 border border-[#BA805E]/20 text-[#A66747] font-mono tracking-wider">
+                        Hemat 10%
                     </span>
                 </div>
 
                 <!-- Dynamic Items per look -->
                 @foreach($curatedLooks as $idx => $look)
                     <div id="desk-items-{{ $idx }}" class="desk-items-container space-y-2.5 {{ $idx === 0 ? 'block' : 'hidden' }}">
-                        <!-- Hero Top Item (Actual Cutout Thumbnail) -->
-                        <div class="flex items-center gap-2.5">
-                            <div class="w-12 h-14 rounded-lg overflow-hidden bg-[#FAF9F6] shrink-0 border border-neutral-200/60 p-0.5 flex items-center justify-center">
+                        <!-- Hero Top Item (Outerwear) -->
+                        <div class="p-2.5 rounded-2xl bg-[#FAF8F5] border border-[#F0E6DC] flex items-center gap-3 hover:border-[#BA805E]/60 transition-colors">
+                            <div class="w-13 h-15 rounded-xl overflow-hidden bg-white shrink-0 border border-[#EAE0D4] p-1 flex items-center justify-center shadow-2xs">
                                 <img src="{{ $look['model_image'] }}" alt="{{ $look['hero_product']->name }}" class="h-full w-auto object-contain">
                             </div>
-                            <div class="flex-1 min-w-0 text-xs">
-                                <span class="text-[8px] uppercase font-bold text-[#BA805E] tracking-wider block">{{ $look['hero_role'] }}</span>
-                                <h4 class="font-bold text-neutral-900 truncate text-[11px]">{{ $look['hero_product']->name }}</h4>
-                                <div class="flex items-center justify-between mt-0.5">
-                                    <span class="font-bold font-mono text-neutral-950 text-[11px]">{{ \App\Modules\Shared\Money\Money::format($look['hero_sku']?->price_idr ?? 389000) }}</span>
+                            <div class="flex-1 min-w-0">
+                                <span class="text-[8px] uppercase font-bold text-[#BA805E] tracking-widest block">{{ $look['hero_role'] }}</span>
+                                <h4 class="font-serif font-bold text-neutral-900 truncate text-xs">{{ $look['hero_product']->name }}</h4>
+                                <div class="flex items-center justify-between mt-1">
+                                    <span class="font-bold font-mono text-neutral-950 text-xs">{{ \App\Modules\Shared\Money\Money::format($look['hero_sku']?->price_idr ?? 389000) }}</span>
                                     <button type="button" onclick="openHangerModal({{ $idx }})" class="inline-flex items-center gap-1 text-[9px] font-bold text-[#BA805E] hover:underline cursor-pointer">
                                         <svg class="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                                         <span>Detail Atasan</span>
@@ -351,15 +375,15 @@
                             </div>
                         </div>
 
-                        <!-- Secondary Item (Scarf / Inner) -->
-                        <div class="flex items-center gap-2.5 pt-1.5 border-t border-neutral-100">
-                            <div class="w-12 h-14 rounded-lg overflow-hidden bg-[#FAF9F6] shrink-0 border border-neutral-200/60 p-0.5 flex items-center justify-center">
-                                <img src="{{ $look['secondary_product']->model_image ?? $look['secondary_product']->primary_image }}" alt="{{ $look['secondary_product']->name }}" class="w-full h-full object-contain rounded">
+                        <!-- Secondary Item (Scarf / Hijab) -->
+                        <div class="p-2.5 rounded-2xl bg-[#FAF8F5] border border-[#F0E6DC] flex items-center gap-3 hover:border-[#BA805E]/60 transition-colors">
+                            <div class="w-13 h-15 rounded-xl overflow-hidden bg-white shrink-0 border border-[#EAE0D4] p-1 flex items-center justify-center shadow-2xs">
+                                <img src="{{ $look['secondary_product']->model_image ?? $look['secondary_product']->primary_image }}" alt="{{ $look['secondary_product']->name }}" class="w-full h-full object-contain rounded-lg">
                             </div>
-                            <div class="flex-1 min-w-0 text-xs">
-                                <span class="text-[8px] uppercase font-bold text-neutral-500 tracking-wider block">{{ $look['secondary_role'] }}</span>
-                                <h4 class="font-bold text-neutral-900 truncate text-[11px]">{{ $look['secondary_product']->name }}</h4>
-                                <span class="font-bold font-mono text-neutral-950 block mt-0.5 text-[11px]">{{ \App\Modules\Shared\Money\Money::format($look['secondary_sku']?->price_idr ?? 149000) }}</span>
+                            <div class="flex-1 min-w-0">
+                                <span class="text-[8px] uppercase font-bold text-neutral-500 tracking-widest block">{{ $look['secondary_role'] }}</span>
+                                <h4 class="font-serif font-bold text-neutral-900 truncate text-xs">{{ $look['secondary_product']->name }}</h4>
+                                <span class="font-bold font-mono text-neutral-950 block mt-1 text-xs">{{ \App\Modules\Shared\Money\Money::format($look['secondary_sku']?->price_idr ?? 149000) }}</span>
                             </div>
                         </div>
 
@@ -372,14 +396,17 @@
                         @endphp
 
                         <!-- Bundle Price & CTA -->
-                        <div class="pt-2 border-t border-neutral-100 space-y-2">
-                            <div class="flex items-center justify-between text-[11px]">
-                                <span class="text-neutral-500">Total Normal:</span>
+                        <div class="pt-2.5 border-t border-[#F0E6DC] space-y-2.5">
+                            <div class="flex items-center justify-between text-xs">
+                                <span class="text-neutral-500">Total Normal (2 Item):</span>
                                 <span class="font-mono text-neutral-400 line-through">{{ \App\Modules\Shared\Money\Money::format($subNorm) }}</span>
                             </div>
                             <div class="flex items-center justify-between">
-                                <span class="text-[11px] font-bold text-neutral-900">Harga 1 Set Hemat:</span>
-                                <span class="font-serif font-bold text-sm text-[#BA805E] font-mono">{{ \App\Modules\Shared\Money\Money::format($bTot) }}</span>
+                                <div>
+                                    <span class="text-xs font-bold text-neutral-900 block">Harga 1 Set Bundle:</span>
+                                    <span class="text-[10px] text-[#BA805E] font-medium">Hemat {{ \App\Modules\Shared\Money\Money::format($discAmt) }}</span>
+                                </div>
+                                <span class="font-serif font-bold text-base text-[#BA805E] font-mono">{{ \App\Modules\Shared\Money\Money::format($bTot) }}</span>
                             </div>
 
                             <form action="{{ route('shop.cart.add-bundle') }}" method="POST">
@@ -390,12 +417,15 @@
                                 
                                 <button 
                                     type="submit" 
-                                    class="w-full py-2 px-3 bg-neutral-950 hover:bg-[#BA805E] text-white font-bold text-[11px] uppercase tracking-wider rounded-xl transition-colors shadow-sm flex items-center justify-center gap-1.5 cursor-pointer mt-1"
+                                    class="w-full py-2.5 px-3 bg-[#0a0a0a] hover:bg-[#BA805E] text-white font-bold text-xs uppercase tracking-[0.12em] rounded-xl transition-all duration-300 shadow-md hover:shadow-lg flex items-center justify-center gap-2 cursor-pointer mt-1"
                                 >
                                     <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
                                     <span>Beli 1 Look Lengkap</span>
                                 </button>
                             </form>
+                            <p class="text-[10px] text-center text-neutral-500 font-light">
+                                ✨ 2 Busana Siap Pakai • Garansi Pas &amp; Tukar 7 Hari
+                            </p>
                         </div>
                     </div>
                 @endforeach
@@ -405,28 +435,28 @@
 
         <!-- MOBILE PANEL (Below Runway for Smartphones) -->
         <div class="lg:hidden max-w-md mx-auto px-4 mt-2">
-            <div class="bg-white rounded-2xl border border-neutral-200 p-3.5 shadow-sm space-y-2.5">
-                <div class="flex items-center justify-between pb-1.5 border-b border-neutral-100">
+            <div class="bg-white rounded-3xl border border-[#E6DAC9] p-4 shadow-sm space-y-3">
+                <div class="flex items-center justify-between pb-2 border-b border-[#F0E6DC]">
                     <div>
-                        <span class="text-[9px] uppercase tracking-wider font-bold text-[#BA805E]">Kelengkapan Set</span>
+                        <span class="text-[9px] uppercase tracking-wider font-bold text-[#BA805E]">Kelengkapan Look</span>
                         <h4 class="font-serif font-bold text-neutral-950 text-xs mt-0.5" id="mob-panel-title">
                             {{ $curatedLooks[0]['title'] }}
                         </h4>
                     </div>
-                    <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-[#BA805E]/15 text-[#BA805E] font-mono">
-                        Diskon 10%
+                    <span class="px-2.5 py-0.5 rounded-full text-[10px] font-bold bg-[#BA805E]/15 text-[#A66747] font-mono">
+                        Hemat 10%
                     </span>
                 </div>
 
                 @foreach($curatedLooks as $idx => $look)
-                    <div id="mob-items-{{ $idx }}" class="mob-items-container space-y-2 {{ $idx === 0 ? 'block' : 'hidden' }}">
-                        <div class="flex items-center justify-between text-[11px]">
-                            <span class="font-bold text-neutral-900 truncate">{{ $look['hero_product']->name }}</span>
-                            <span class="font-mono text-neutral-900 font-bold shrink-0 ml-2">{{ \App\Modules\Shared\Money\Money::format($look['hero_sku']?->price_idr ?? 389000) }}</span>
+                    <div id="mob-items-{{ $idx }}" class="mob-items-container space-y-2.5 {{ $idx === 0 ? 'block' : 'hidden' }}">
+                        <div class="flex items-center justify-between text-xs">
+                            <span class="font-serif font-bold text-neutral-900 truncate">{{ $look['hero_product']->name }}</span>
+                            <span class="font-mono text-neutral-900 font-bold shrink-0 ml-2 text-xs">{{ \App\Modules\Shared\Money\Money::format($look['hero_sku']?->price_idr ?? 389000) }}</span>
                         </div>
-                        <div class="flex items-center justify-between text-[11px] text-neutral-500">
+                        <div class="flex items-center justify-between text-xs text-neutral-500">
                             <span class="truncate">+ {{ $look['secondary_product']->name }}</span>
-                            <span class="font-mono shrink-0 ml-2">{{ \App\Modules\Shared\Money\Money::format($look['secondary_sku']?->price_idr ?? 149000) }}</span>
+                            <span class="font-mono shrink-0 ml-2 text-xs">{{ \App\Modules\Shared\Money\Money::format($look['secondary_sku']?->price_idr ?? 149000) }}</span>
                         </div>
 
                         @php
@@ -437,12 +467,12 @@
                             $bT = $sN - $dA;
                         @endphp
 
-                        <div class="pt-1.5 border-t border-neutral-100 flex items-center justify-between">
+                        <div class="pt-2 border-t border-[#F0E6DC] flex items-center justify-between">
                             <div>
-                                <span class="text-[9px] text-neutral-400 line-through font-mono block">{{ \App\Modules\Shared\Money\Money::format($sN) }}</span>
+                                <span class="text-[10px] text-neutral-400 line-through font-mono block">{{ \App\Modules\Shared\Money\Money::format($sN) }}</span>
                                 <span class="font-serif font-bold text-sm text-[#BA805E] font-mono">{{ \App\Modules\Shared\Money\Money::format($bT) }}</span>
                             </div>
-                            <button type="button" onclick="openHangerModal({{ $idx }})" class="inline-flex items-center gap-1 text-[10px] font-bold text-neutral-700 bg-neutral-100 px-2.5 py-1 rounded-lg hover:bg-neutral-200 cursor-pointer">
+                            <button type="button" onclick="openHangerModal({{ $idx }})" class="inline-flex items-center gap-1 text-[10px] font-bold text-neutral-700 bg-[#FAF8F5] border border-[#EADCCE] px-3 py-1.5 rounded-xl hover:bg-neutral-100 cursor-pointer">
                                 <svg class="w-3 h-3 text-[#BA805E]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
                                 <span>Detail Atasan</span>
                             </button>
@@ -456,7 +486,7 @@
                             
                             <button 
                                 type="submit" 
-                                class="w-full min-h-[42px] py-2 px-3 bg-neutral-950 hover:bg-[#BA805E] text-white font-bold text-[11px] uppercase tracking-wider rounded-xl transition-colors shadow-sm flex items-center justify-center gap-1.5 cursor-pointer"
+                                class="w-full min-h-[44px] py-2.5 px-3 bg-[#0a0a0a] hover:bg-[#BA805E] text-white font-bold text-xs uppercase tracking-wider rounded-xl transition-colors shadow-sm flex items-center justify-center gap-2 cursor-pointer"
                             >
                                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
                                 <span>Beli 1 Look Lengkap (Hemat 10%)</span>
@@ -467,19 +497,18 @@
             </div>
         </div>
 
-        <!-- MINIMAL BOTTOM TIMELINE SCRUBBER (Compact, Viewport Pinned) -->
-        <div class="max-w-xl mx-auto px-4 shrink-0 mt-3 pb-1">
-            <div class="flex items-center justify-between text-xs font-bold border-b border-neutral-300/80 pb-1.5">
+        <!-- COUTURE LOOK SELECTOR TABS (Bottom Minimal Switcher) -->
+        <div class="max-w-2xl mx-auto px-4 shrink-0 mt-3 pb-1">
+            <div class="flex items-center justify-center gap-2 sm:gap-3 text-xs font-bold" id="scrubber-bar">
                 @foreach($curatedLooks as $idx => $look)
                     <button 
                         type="button" 
                         onclick="switchLook({{ $idx }})" 
                         id="scrubber-btn-{{ $idx }}" 
-                        class="scrubber-item relative pb-1.5 transition-all cursor-pointer flex flex-col items-center group {{ $idx === 0 ? 'text-neutral-950 font-bold' : 'text-neutral-400 hover:text-neutral-700' }}"
+                        class="scrubber-item px-3.5 py-1.5 rounded-full transition-all duration-300 cursor-pointer flex items-center gap-1.5 text-xs {{ $idx === 0 ? 'bg-[#0a0a0a] text-white shadow-sm font-bold' : 'bg-white/80 hover:bg-white text-neutral-600 border border-neutral-200/80 font-medium' }}"
                     >
-                        <span class="text-[9px] uppercase font-mono tracking-wider">0{{ $idx + 1 }}</span>
-                        <span class="text-[11px] tracking-tight hidden sm:inline">{{ $look['title'] }}</span>
-                        <span class="scrubber-indicator absolute -bottom-[7px] w-2 h-2 rounded-full transition-all {{ $idx === 0 ? 'bg-[#BA805E] scale-125' : 'bg-transparent' }}"></span>
+                        <span class="text-[10px] font-mono {{ $idx === 0 ? 'text-[#BA805E]' : 'text-neutral-400' }}">0{{ $idx + 1 }}</span>
+                        <span class="tracking-tight">{{ $look['title'] }}</span>
                     </button>
                 @endforeach
             </div>
@@ -648,22 +677,18 @@
                 if (deskTitle) deskTitle.textContent = looks[currentLookIdx].title;
                 if (mobTitle) mobTitle.textContent = looks[currentLookIdx].title;
 
-                // 3. Synchronize Bottom Timeline Scrubber
+                // 3. Synchronize Bottom Timeline Scrubber Pills
                 looks.forEach((_, i) => {
                     const btn = document.getElementById(`scrubber-btn-${i}`);
                     if (!btn) return;
-                    const ind = btn.querySelector('.scrubber-indicator');
+                    const numSpan = btn.querySelector('span:first-child');
 
                     if (i === currentLookIdx) {
-                        btn.className = 'scrubber-item relative pb-2 transition-all cursor-pointer flex flex-col items-center text-neutral-950 font-bold';
-                        if (ind) {
-                            ind.className = 'scrubber-indicator absolute -bottom-[9px] w-2.5 h-2.5 rounded-full bg-[#BA805E] scale-125 transition-all';
-                        }
+                        btn.className = 'scrubber-item px-3.5 py-1.5 rounded-full transition-all duration-300 cursor-pointer flex items-center gap-1.5 text-xs bg-[#0a0a0a] text-white shadow-sm font-bold';
+                        if (numSpan) numSpan.className = 'text-[10px] font-mono text-[#BA805E]';
                     } else {
-                        btn.className = 'scrubber-item relative pb-2 transition-all cursor-pointer flex flex-col items-center text-neutral-400 hover:text-neutral-700';
-                        if (ind) {
-                            ind.className = 'scrubber-indicator absolute -bottom-[9px] w-2 h-2 rounded-full bg-transparent transition-all';
-                        }
+                        btn.className = 'scrubber-item px-3.5 py-1.5 rounded-full transition-all duration-300 cursor-pointer flex items-center gap-1.5 text-xs bg-white/80 hover:bg-white text-neutral-600 border border-neutral-200/80 font-medium';
+                        if (numSpan) numSpan.className = 'text-[10px] font-mono text-neutral-400';
                     }
                 });
             };
