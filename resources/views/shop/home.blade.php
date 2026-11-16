@@ -622,7 +622,7 @@
                 const skuInput = document.getElementById('hanger-modal-sku-id');
                 const prodLink = document.getElementById('hanger-modal-product-link');
 
-                if (img) img.src = look.hanger_image;
+                if (img) img.src = look.hanger_image || look.model_image;
                 if (title) title.textContent = look.hero_product.name;
                 if (price) {
                     const heroPrice = look.hero_sku ? look.hero_sku.price_idr : 389000;
@@ -659,7 +659,7 @@
                 if (!activeModalLook || !img) return;
 
                 if (angle === 'front') {
-                    img.src = activeModalLook.hanger_image;
+                    img.src = activeModalLook.hanger_image || activeModalLook.model_image;
                     btnFront.className = 'px-3 py-1 rounded-full bg-neutral-900 text-white cursor-pointer';
                     btnBack.className = 'px-3 py-1 rounded-full bg-neutral-100 text-neutral-700 hover:bg-neutral-200 cursor-pointer';
                 } else {
