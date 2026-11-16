@@ -58,6 +58,7 @@ class DomainEventDispatcher
                 'updated_at' => now(),
             ]);
             report($e);
+            throw $e;
         }
     }
 }

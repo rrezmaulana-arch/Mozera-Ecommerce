@@ -31,9 +31,12 @@ class CartController extends Controller
         $discountIdr = 0;
 
         if ($appliedVoucherCode) {
-            $voucher = Voucher::where('code', $appliedVoucherCode)->where('is_active', true)->first();
-            if ($voucher) {
+            $voucher = Voucher::where('code', $appliedVoucherCode)->first();
+            if ($voucher && $voucher->isUsableBy($cart->total, auth()->id())) {
                 $discountIdr = $voucher->calculateDiscount($cart->total);
+            } else {
+                $voucher = null;
+                $request->session()->forget('applied_voucher');
             }
         }
 
@@ -44,17 +47,17 @@ class CartController extends Controller
     {
         $request->validate([
             'sku_id' => 'required|exists:skus,id',
-            'quantity' => 'nullable|integer|min:1',
+            'quantity' => 'nullable|integer|min:1|max:10',
         ]);
 
-        $sku = Sku::findOrFail($request->sku_id);
-        $qty = $request->input('quantity', 1);
+        $sku = Sku::with('product')->findOrFail($request->sku_id);
 
-        // Check available stock
-        $available = StockBalance::where('sku_id', $sku->id)->sum('available_qty');
-        if ($available < $qty) {
-            return back()->with('error', "Maaf, stok untuk varian ini tersisa {$available} pcs.");
+        // SKU dan produk harus aktif
+        if (! $sku->is_active || ! $sku->product || ! $sku->product->is_active) {
+            return back()->with('error', 'Maaf, varian atau produk ini saat ini tidak tersedia.');
         }
+
+        $qty = (int) $request->input('quantity', 1);
 
         $cart = $this->getOrCreateCart($request);
         $item = CartItem::firstOrNew([
@@ -62,7 +65,18 @@ class CartController extends Controller
             'sku_id' => $sku->id,
         ]);
 
-        $item->quantity = ($item->exists ? $item->quantity : 0) + $qty;
+        $totalQty = ($item->exists ? (int) $item->quantity : 0) + $qty;
+        if ($totalQty > 10) {
+            return back()->with('error', 'Maksimal pembelian untuk satu varian produk adalah 10 pcs.');
+        }
+
+        // Check available stock against total quantity
+        $available = (int) StockBalance::where('sku_id', $sku->id)->sum('available_qty');
+        if ($available < $totalQty) {
+            return back()->with('error', "Maaf, stok untuk varian ini tersisa {$available} pcs.");
+        }
+
+        $item->quantity = $totalQty;
         $item->save();
 
         return redirect()->route('shop.cart')->with('success', "{$sku->name} berhasil ditambahkan ke keranjang belanja!");
@@ -72,18 +86,27 @@ class CartController extends Controller
     {
         $request->validate([
             'quantities' => 'required|array',
-            'quantities.*' => 'integer|min:0',
+            'quantities.*' => 'integer|min:0|max:10',
         ]);
 
         $cart = $this->getOrCreateCart($request);
 
         foreach ($request->quantities as $itemId => $qty) {
-            $item = CartItem::where('cart_id', $cart->id)->where('id', $itemId)->first();
+            $item = CartItem::where('cart_id', $cart->id)->where('id', $itemId)->with('sku.product')->first();
             if ($item) {
                 if ($qty <= 0) {
                     $item->delete();
                 } else {
-                    $item->quantity = $qty;
+                    if (! $item->sku || ! $item->sku->is_active || ! $item->sku->product || ! $item->sku->product->is_active) {
+                        return back()->with('error', 'Produk dalam keranjang tidak lagi aktif.');
+                    }
+
+                    $available = (int) StockBalance::where('sku_id', $item->sku_id)->sum('available_qty');
+                    if ($available < $qty) {
+                        return back()->with('error', "Maaf, stok untuk {$item->sku->product->name} tersisa {$available} pcs.");
+                    }
+
+                    $item->quantity = min(10, $qty);
                     $item->save();
                 }
             }
@@ -106,16 +129,17 @@ class CartController extends Controller
             'code' => 'required|string',
         ]);
 
-        $code = strtoupper($request->code);
-        $voucher = Voucher::where('code', $code)->where('is_active', true)->first();
+        $code = strtoupper(trim($request->code));
+        $voucher = Voucher::where('code', $code)->first();
 
-        if (!$voucher) {
+        if (! $voucher) {
             return back()->with('error', 'Kode voucher tidak valid atau telah kedaluwarsa.');
         }
 
         $cart = $this->getOrCreateCart($request);
-        if ($cart->total < $voucher->min_purchase_idr) {
-            return back()->with('error', 'Minimum belanja untuk voucher ini adalah Rp ' . number_format($voucher->min_purchase_idr, 0, ',', '.'));
+        $errorMessage = $voucher->getValidationErrorMessage($cart->total, auth()->id());
+        if ($errorMessage !== null) {
+            return back()->with('error', $errorMessage);
         }
 
         $request->session()->put('applied_voucher', $voucher->code);

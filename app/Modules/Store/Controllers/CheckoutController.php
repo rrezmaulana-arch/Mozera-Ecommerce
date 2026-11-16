@@ -33,9 +33,12 @@ class CheckoutController extends Controller
         $discountIdr = 0;
 
         if ($appliedVoucherCode) {
-            $voucher = Voucher::where('code', $appliedVoucherCode)->where('is_active', true)->first();
-            if ($voucher) {
+            $voucher = Voucher::where('code', $appliedVoucherCode)->first();
+            if ($voucher && $voucher->isUsableBy($cart->total, auth()->id())) {
                 $discountIdr = $voucher->calculateDiscount($cart->total);
+            } else {
+                $voucher = null;
+                $request->session()->forget('applied_voucher');
             }
         }
 
@@ -88,15 +91,18 @@ class CheckoutController extends Controller
                     ['is_granted' => (bool)$request->marketing_consent, 'version' => 'v1.0', 'ip_address' => $request->ip(), 'updated_at' => now()]
                 );
 
-                // 2. Compute amounts
+                // 2. Compute amounts & validate voucher
                 $subtotalIdr = $cart->total;
                 $appliedVoucherCode = $request->session()->get('applied_voucher');
                 $voucher = null;
                 $discountIdr = 0;
 
                 if ($appliedVoucherCode) {
-                    $voucher = Voucher::where('code', $appliedVoucherCode)->where('is_active', true)->first();
+                    $voucher = Voucher::where('code', $appliedVoucherCode)->first();
                     if ($voucher) {
+                        if (! $voucher->isUsableBy($subtotalIdr, $customer->id)) {
+                            throw new \RuntimeException('Voucher tidak valid, telah kedaluwarsa, atau kuota telah habis.');
+                        }
                         $discountIdr = $voucher->calculateDiscount($subtotalIdr);
                     }
                 }
@@ -145,15 +151,27 @@ class CheckoutController extends Controller
                     ]);
                 }
 
-                // 5. Voucher redemption
+                // 5. Voucher redemption (Atomic increment with quota check)
                 if ($voucher && $discountIdr > 0) {
+                    if ($voucher->quota !== null) {
+                        $updated = DB::table('vouchers')
+                            ->where('id', $voucher->id)
+                            ->where('used_count', '<', $voucher->quota)
+                            ->increment('used_count');
+
+                        if (! $updated) {
+                            throw new \RuntimeException('Kuota voucher telah habis saat proses checkout.');
+                        }
+                    } else {
+                        $voucher->increment('used_count');
+                    }
+
                     VoucherRedemption::create([
                         'voucher_id' => $voucher->id,
                         'order_id' => $order->id,
                         'customer_id' => $customer->id,
                         'discount_idr' => $discountIdr,
                     ]);
-                    $voucher->increment('used_count');
                 }
 
                 // 6. Payment placeholder
@@ -166,22 +184,31 @@ class CheckoutController extends Controller
                     'idempotency_key' => 'IDEMP-' . $order->order_number,
                 ]);
 
+                // 7. Publish order.created domain event SINKRON (atomic stock reservation in WMS)
+                DomainEventDispatcher::publish('order.created', [
+                    'order_id' => $order->id,
+                    'order_number' => $order->order_number,
+                ]);
+
                 return $order;
             });
 
-            // 7. Publish order.created domain event (atomic stock reservation in WMS)
-            DomainEventDispatcher::publish('order.created', [
-                'order_id' => $order->id,
-                'order_number' => $order->order_number,
-            ]);
-
-            // Clear cart & voucher
+            // Clear cart & voucher only upon success
             $cart->items()->delete();
             $request->session()->forget('applied_voucher');
 
             return redirect()->route('shop.order.payment', ['ulid' => $order->ulid]);
         } catch (\Throwable $e) {
-            return back()->with('error', 'Gagal memproses pesanan: ' . $e->getMessage())->withInput();
+            \Illuminate\Support\Facades\Log::error('Checkout processing error: ' . $e->getMessage(), [
+                'exception' => $e,
+            ]);
+
+            $errLower = strtolower($e->getMessage());
+            $friendlyMessage = (str_contains($errLower, 'stok tidak mencukupi') || str_contains($errLower, 'voucher') || str_contains($errLower, 'kuota'))
+                ? $e->getMessage()
+                : 'Maaf, terjadi kendala saat memproses pesanan Anda. Silakan coba beberapa saat lagi.';
+
+            return back()->with('error', $friendlyMessage)->withInput();
         }
     }
 }

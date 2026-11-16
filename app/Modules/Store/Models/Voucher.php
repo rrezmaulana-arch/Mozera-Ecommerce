@@ -49,5 +49,44 @@ class Voucher extends Model
 
         return min($this->discount_amount, $subtotal);
     }
+
+    public function getValidationErrorMessage(int $subtotal, ?int $customerId = null): ?string
+    {
+        if (! $this->is_active) {
+            return 'Kode voucher tidak valid atau tidak aktif.';
+        }
+
+        if ($this->starts_at && now()->lt($this->starts_at)) {
+            return 'Periode penggunaan voucher belum dimulai.';
+        }
+
+        if ($this->expires_at && now()->gt($this->expires_at)) {
+            return 'Kode voucher telah kedaluwarsa.';
+        }
+
+        if ($this->quota !== null && $this->used_count >= $this->quota) {
+            return 'Kuota penukaran voucher telah habis.';
+        }
+
+        if ($subtotal < $this->min_purchase_idr) {
+            return 'Minimum belanja untuk voucher ini adalah Rp ' . number_format($this->min_purchase_idr, 0, ',', '.');
+        }
+
+        if ($customerId) {
+            $userRedemptions = VoucherRedemption::where('voucher_id', $this->id)
+                ->where('customer_id', $customerId)
+                ->count();
+            if ($userRedemptions >= 1) {
+                return 'Anda sudah pernah menggunakan voucher ini.';
+            }
+        }
+
+        return null;
+    }
+
+    public function isUsableBy(int $subtotal, ?int $customerId = null): bool
+    {
+        return $this->getValidationErrorMessage($subtotal, $customerId) === null;
+    }
 }
 

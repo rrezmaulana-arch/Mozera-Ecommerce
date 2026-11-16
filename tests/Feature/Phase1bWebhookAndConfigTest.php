@@ -238,3 +238,4 @@ class Phase1bWebhookAndConfigTest extends TestCase
         $provider->boot();
     }
 }
+

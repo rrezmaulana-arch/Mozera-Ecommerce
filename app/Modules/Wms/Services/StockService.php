@@ -43,11 +43,21 @@ class StockService
                 'created_at' => now(),
             ]);
 
-            // 2. Update cached balance
-            $balance = StockBalance::firstOrCreate(
-                ['location_id' => $locationId, 'sku_id' => $skuId],
-                ['physical_qty' => 0, 'reserved_qty' => 0, 'available_qty' => 0]
-            );
+            // 2. Update cached balance with row lock
+            $balance = StockBalance::where('location_id', $locationId)
+                ->where('sku_id', $skuId)
+                ->lockForUpdate()
+                ->first();
+
+            if (! $balance) {
+                $balance = StockBalance::create([
+                    'location_id' => $locationId,
+                    'sku_id' => $skuId,
+                    'physical_qty' => 0,
+                    'reserved_qty' => 0,
+                    'available_qty' => 0,
+                ]);
+            }
 
             if ($movementType === 'INBOUND' || $movementType === 'RETURN_IN') {
                 $balance->physical_qty += $quantity;
@@ -60,6 +70,10 @@ class StockService
                 $balance->reserved_qty = max(0, $balance->reserved_qty - abs($quantity));
             } elseif ($movementType === 'ADJUST' || $movementType === 'OPNAME_ADJUST') {
                 $balance->physical_qty += $quantity;
+            }
+
+            if ($balance->physical_qty < 0) {
+                throw new \RuntimeException("Stok fisik tidak boleh bernilai negatif untuk SKU ID {$skuId}.");
             }
 
             $balance->available_qty = max(0, $balance->physical_qty - $balance->reserved_qty);
