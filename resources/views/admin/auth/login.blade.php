@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>Login Staf & Portal Akses — ITSFRIDAY</title>
+    <title>Login Staf & Portal Akses — MOETIA</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
@@ -14,8 +14,8 @@
         <!-- Logo & Header -->
         <div class="text-center space-y-3">
             <a href="{{ route('shop.home') }}" class="inline-block group">
-                <span class="text-3xl sm:text-4xl font-extrabold tracking-[0.25em] text-white block group-hover:text-[#DCC3AD] transition-colors">ITSFRIDAY</span>
-                <span class="text-[10px] sm:text-[11px] tracking-[0.3em] uppercase text-[#BA805E] font-medium block mt-1">#everydayitsfriday &bull; Platform Terpadu</span>
+                <span class="text-3xl sm:text-4xl font-extrabold tracking-[0.25em] text-white block group-hover:text-[#DCC3AD] transition-colors">MOETIA</span>
+                <span class="text-[10px] sm:text-[11px] tracking-[0.3em] uppercase text-[#BA805E] font-medium block mt-1">Platform Terpadu • Timeless Modest Wear</span>
             </a>
             <p class="text-xs text-neutral-400 max-w-sm mx-auto">Satu pintu gerbang operasional terintegrasi: E-Commerce Storefront, Warehouse WMS & CRM Retention.</p>
         </div>
@@ -125,7 +125,7 @@
         <div class="text-center text-xs text-neutral-500">
             <a href="{{ route('shop.home') }}" class="hover:text-white transition-colors inline-flex items-center gap-1.5">
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"/></svg>
-                <span>Kembali ke Halaman Toko ITSFRIDAY</span>
+                <span>Kembali ke Halaman Toko MOETIA</span>
             </a>
         </div>
     </div>

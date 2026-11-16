@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
-    <title>@yield('title', 'Admin Platform Terpadu ITSFRIDAY')</title>
+    <title>@yield('title', 'Admin Platform Terpadu MOETIA')</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;1,600&display=swap" rel="stylesheet">
@@ -21,7 +21,7 @@
             <!-- Sidebar Header / Brand -->
             <div class="h-16 flex items-center justify-between px-5 border-b border-neutral-800/80 bg-[#111113]">
                 <a href="{{ route('admin.dashboard') }}" class="flex items-center gap-2.5">
-                    <span class="font-bold text-base tracking-[0.2em] text-white">ITSFRIDAY</span>
+                    <span class="font-bold text-base tracking-[0.2em] text-white">MOETIA</span>
                     <span class="text-[9px] font-bold uppercase px-2 py-0.5 rounded-full bg-[#BA805E]/20 text-[#DCC3AD] border border-[#BA805E]/30 tracking-wider">Console</span>
                 </a>
                 <div class="flex items-center gap-1">
@@ -189,7 +189,7 @@
                         <h1 class="text-sm sm:text-base font-bold text-white flex items-center gap-2">
                             @yield('page_title', 'Dashboard')
                         </h1>
-                        <p class="text-[11px] text-neutral-400 hidden sm:block">@yield('page_subtitle', 'Platform Terpadu ITSFRIDAY')</p>
+                        <p class="text-[11px] text-neutral-400 hidden sm:block">@yield('page_subtitle', 'Platform Terpadu MOETIA')</p>
                     </div>
                 </div>
 

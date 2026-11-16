@@ -98,8 +98,8 @@ class ShopController extends Controller
 
     public function llmsTxt(): Response
     {
-        $content = "# ITSFRIDAY Knowledge Base\n\n" .
-            "Platform Terpadu ITSFRIDAY: E-commerce, Gudang & CRM untuk brand fashion modest premium Nusantara (#everydayitsfriday).\n\n" .
+        $content = "# MOETIA Knowledge Base\n\n" .
+            "Platform Terpadu MOETIA: E-commerce, Gudang & CRM untuk brand fashion modest premium Nusantara (#everydaymoetia).\n\n" .
             "## Produk Utama\n" .
             "- Outerwear Kimono & Trench Linen (Seri PUSPA, Sept Drops)\n" .
             "- Voal Ultrafine Scarf 120x120\n" .

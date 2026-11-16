@@ -39,11 +39,13 @@ if (app()->environment(['local', 'testing'])) {
 }
 
 
-// Self-service Order Tracking
-Route::get('/tracking', [TrackingController::class, 'index'])->name('shop.tracking');
-Route::get('/tracking/{order_number}', [TrackingController::class, 'detail'])->name('shop.tracking.detail');
+// Self-service Order Tracking (Rate limited: 10 requests per minute)
+Route::middleware('throttle:10,1')->group(function () {
+    Route::get('/tracking', [TrackingController::class, 'index'])->name('shop.tracking');
+    Route::get('/tracking/{order_number}', [TrackingController::class, 'detail'])->name('shop.tracking.detail');
 
-// Self-service Returns
-Route::get('/returns', [ReturnController::class, 'index'])->name('shop.returns');
-Route::post('/returns', [ReturnController::class, 'store'])->name('shop.returns.store');
+    // Self-service Returns
+    Route::get('/returns', [ReturnController::class, 'index'])->name('shop.returns');
+    Route::post('/returns', [ReturnController::class, 'store'])->name('shop.returns.store');
+});
 

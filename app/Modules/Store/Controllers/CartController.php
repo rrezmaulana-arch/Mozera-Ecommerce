@@ -14,7 +14,10 @@ class CartController extends Controller
 {
     protected function getOrCreateCart(Request $request): Cart
     {
-        $sessionId = $request->header('X-Session-ID') ?: $request->session()->getId();
+        $sessionId = (app()->environment('testing') && $request->header('X-Session-ID'))
+            ? $request->header('X-Session-ID')
+            : $request->session()->getId();
+
         return Cart::firstOrCreate(
             ['session_id' => $sessionId],
             ['expires_at' => now()->addDays(7)]

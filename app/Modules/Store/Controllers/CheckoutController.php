@@ -21,7 +21,10 @@ class CheckoutController extends Controller
 {
     public function index(Request $request)
     {
-        $sessionId = $request->header('X-Session-ID') ?: $request->session()->getId();
+        $sessionId = (app()->environment('testing') && $request->header('X-Session-ID'))
+            ? $request->header('X-Session-ID')
+            : $request->session()->getId();
+
         $cart = Cart::where('session_id', $sessionId)->with('items.sku.product')->first();
 
         if (!$cart || $cart->items->isEmpty()) {
@@ -53,15 +56,24 @@ class CheckoutController extends Controller
         $request->validate([
             'customer_name' => 'required|string|max:150',
             'customer_email' => 'required|email|max:150',
-            'customer_phone' => 'required|string|max:30',
-            'shipping_address' => 'required|string',
+            'customer_phone' => ['required', 'string', 'regex:/^(\+62|62|0)8[1-9][0-9]{6,11}$/'],
+            'shipping_address' => 'required|string|max:500',
             'shipping_city' => 'required|string|max:100',
             'shipping_province' => 'required|string|max:100',
-            'shipping_courier' => 'required|string',
+            'shipping_courier' => 'required|string|in:JNE,SiCepat,J&T',
+            'notes' => 'nullable|string|max:500',
             'marketing_consent' => 'nullable|boolean',
+        ], [
+            'customer_phone.regex' => 'Format nomor WhatsApp / telepon tidak valid (contoh: 081234567890).',
+            'shipping_courier.in' => 'Pilihan kurir pengiriman harus salah satu dari: JNE, SiCepat, atau J&T.',
+            'shipping_address.max' => 'Alamat pengiriman maksimal 500 karakter.',
+            'notes.max' => 'Catatan pesanan maksimal 500 karakter.',
         ]);
 
-        $sessionId = $request->header('X-Session-ID') ?: $request->session()->getId();
+        $sessionId = (app()->environment('testing') && $request->header('X-Session-ID'))
+            ? $request->header('X-Session-ID')
+            : $request->session()->getId();
+
         $cart = Cart::where('session_id', $sessionId)->with('items.sku.product')->firstOrFail();
 
         if ($cart->items->isEmpty()) {

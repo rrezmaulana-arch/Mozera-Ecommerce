@@ -54,6 +54,8 @@ class PaymentController extends Controller
             'amount_idr' => $order->grand_total_idr,
         ]);
 
+        $request->session()->put('tracking_verified_' . $order->order_number, true);
+
         return redirect()->route('shop.tracking.detail', ['order_number' => $order->order_number])
             ->with('success', 'Pembayaran berhasil dikonfirmasi! Pesanan Anda telah masuk antrean packing gudang.');
     }

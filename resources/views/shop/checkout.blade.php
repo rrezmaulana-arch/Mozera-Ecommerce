@@ -1,6 +1,6 @@
 @extends('layouts.shop')
 
-@section('title', 'Checkout Pengiriman — ITSFRIDAY')
+@section('title', 'Checkout Pengiriman — MOETIA')
 
 @section('content')
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
@@ -42,7 +42,7 @@
                     <div class="pt-2">
                         <label class="flex items-start gap-2.5 cursor-pointer text-xs text-neutral-600">
                             <input type="checkbox" name="marketing_consent" value="1" checked class="mt-0.5 rounded border-neutral-300 text-neutral-900 focus:ring-neutral-900">
-                            <span>Saya bersedia menerima kabar rilis drop terbaru, panduan styling, dan penawaran eksklusif dari ITSFRIDAY via email.</span>
+                            <span>Saya bersedia menerima kabar rilis drop terbaru, panduan styling, dan penawaran eksklusif dari MOETIA via email.</span>
                         </label>
                     </div>
                 </div>

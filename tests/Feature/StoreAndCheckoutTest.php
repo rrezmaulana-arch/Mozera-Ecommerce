@@ -28,7 +28,7 @@ class StoreAndCheckoutTest extends TestCase
     {
         $response = $this->get('/');
         $response->assertStatus(200);
-        $response->assertSee('ITSFRIDAY');
+        $response->assertSee('MOETIA');
         $response->assertSee('PUSPA');
     }
 

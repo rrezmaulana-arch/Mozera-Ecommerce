@@ -1,7 +1,7 @@
 @extends('layouts.shop')
 
-@section('title', 'Lacak Status Pesanan — ITSFRIDAY')
-@section('meta_description', 'Pantau status pesanan dan nomor resi pengiriman busana ITSFRIDAY secara mandiri dan real-time.')
+@section('title', 'Lacak Status Pesanan — MOETIA')
+@section('meta_description', 'Pantau status pesanan dan nomor resi pengiriman busana MOETIA secara mandiri dan real-time.')
 
 @section('content')
 <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 select-none">
@@ -29,32 +29,44 @@
             Nomor Pesanan
         </label>
         
-        <form action="{{ route('shop.tracking') }}" method="GET" class="flex flex-col sm:flex-row gap-2.5">
-            <div class="relative flex-1">
-                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-neutral-400">
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
-                    </svg>
+        <form action="{{ route('shop.tracking') }}" method="GET" class="space-y-3">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                <div class="relative">
+                    <label for="order_number" class="block text-xs font-bold text-neutral-800 mb-1.5">Nomor Pesanan *</label>
+                    <input 
+                        type="text" 
+                        id="order_number"
+                        name="order_number" 
+                        value="{{ request('order_number') ?? ($order ? $order->order_number : '') }}" 
+                        placeholder="Contoh: ORD-20261110-001" 
+                        class="w-full text-xs sm:text-sm px-4 py-3 bg-[#FAF9F6] border border-neutral-200 rounded-xl focus:bg-white focus:outline-none focus:border-neutral-900 focus:ring-1 focus:ring-neutral-900 transition-all font-mono placeholder:text-neutral-400 text-neutral-900" 
+                        required
+                    >
                 </div>
-                <input 
-                    type="text" 
-                    id="order_number"
-                    name="order_number" 
-                    value="{{ request('order_number') ?? ($order ? $order->order_number : '') }}" 
-                    placeholder="Contoh: ORD-20261110-001" 
-                    class="w-full text-xs sm:text-sm pl-10 pr-4 py-3 bg-[#FAF9F6] border border-neutral-200 rounded-xl focus:bg-white focus:outline-none focus:border-neutral-900 focus:ring-1 focus:ring-neutral-900 transition-all font-mono placeholder:text-neutral-400 text-neutral-900" 
-                    required
-                >
+                <div class="relative">
+                    <label for="verification" class="block text-xs font-bold text-neutral-800 mb-1.5">Email Pemesan / 4 Digit Akhir No. HP *</label>
+                    <input 
+                        type="text" 
+                        id="verification"
+                        name="verification" 
+                        value="{{ request('verification') }}" 
+                        placeholder="Contoh: nama@email.com atau 4 digit HP" 
+                        class="w-full text-xs sm:text-sm px-4 py-3 bg-[#FAF9F6] border border-neutral-200 rounded-xl focus:bg-white focus:outline-none focus:border-neutral-900 focus:ring-1 focus:ring-neutral-900 transition-all placeholder:text-neutral-400 text-neutral-900" 
+                        required
+                    >
+                </div>
             </div>
-            <button 
-                type="submit" 
-                class="inline-flex items-center justify-center gap-2 px-7 py-3 bg-neutral-900 hover:bg-neutral-800 active:scale-[0.99] text-white rounded-xl font-semibold text-xs tracking-wider uppercase transition-all shadow-sm cursor-pointer select-none focus:outline-none focus:ring-2 focus:ring-neutral-900 focus:ring-offset-2"
-            >
-                <span>Lacak Pesanan</span>
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
-                </svg>
-            </button>
+            <div>
+                <button 
+                    type="submit" 
+                    class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-7 py-3 bg-neutral-900 hover:bg-neutral-800 active:scale-[0.99] text-white rounded-xl font-semibold text-xs tracking-wider uppercase transition-all shadow-sm cursor-pointer select-none focus:outline-none focus:ring-2 focus:ring-neutral-900 focus:ring-offset-2"
+                >
+                    <span>Lacak Pesanan Mandiri</span>
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                    </svg>
+                </button>
+            </div>
         </form>
 
         <div class="mt-3.5 pt-3 border-t border-neutral-100 flex flex-wrap items-center gap-2 text-xs text-neutral-500">
@@ -80,7 +92,7 @@
                     <span class="text-[11px] font-mono text-neutral-400 uppercase tracking-wider">PESANAN TERDAFTAR</span>
                     <h2 class="font-serif text-2xl font-bold text-neutral-900 mt-0.5">#{{ $order->order_number }}</h2>
                     <p class="text-xs text-neutral-500 mt-1">
-                        Penerima: <strong class="text-neutral-800">{{ $order->customer_name }}</strong> &bull; Kota: {{ $order->shipping_city }}
+                        Penerima: <strong class="text-neutral-800">{{ $order->customer_name }}</strong> ({{ $order->customer_phone }}) &bull; Alamat: {{ $order->shipping_address }}, {{ $order->shipping_city }}
                     </p>
                 </div>
                 <div class="sm:text-right">

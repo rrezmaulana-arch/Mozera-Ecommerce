@@ -1,7 +1,7 @@
 @extends('layouts.shop')
 
-@section('title', 'Portal Pengajuan Retur Mandiri — ITSFRIDAY')
-@section('meta_description', 'Layanan mandiri penukaran ukuran (size swap) dan retur produk bergaransi 7 hari ITSFRIDAY.')
+@section('title', 'Portal Pengajuan Retur Mandiri — MOETIA')
+@section('meta_description', 'Layanan mandiri penukaran ukuran (size swap) dan retur produk bergaransi 7 hari MOETIA.')
 
 @section('content')
 <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 select-none">
@@ -159,6 +159,19 @@
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+                    <!-- Customer Email for ownership verification -->
+                    <div>
+                        <label class="block text-xs font-bold text-neutral-800 mb-1.5">Email Pemesan (Verifikasi Kepemilikan) *</label>
+                        <input 
+                            type="email" 
+                            name="customer_email" 
+                            value="{{ old('customer_email') }}" 
+                            placeholder="nama@email.com"
+                            required 
+                            class="w-full px-4 py-2.5 bg-[#FAF9F6] border border-neutral-200 rounded-xl focus:bg-white focus:outline-none focus:border-neutral-900 focus:ring-1 focus:ring-neutral-900 text-neutral-900"
+                        >
+                    </div>
+
                     <!-- Quantity -->
                     <div>
                         <label class="block text-xs font-bold text-neutral-800 mb-1.5">Jumlah Barang yang Diretur *</label>
@@ -172,15 +185,16 @@
                             class="w-full px-4 py-2.5 bg-[#FAF9F6] border border-neutral-200 rounded-xl focus:bg-white focus:outline-none focus:border-neutral-900 focus:ring-1 focus:ring-neutral-900 font-semibold text-neutral-900"
                         >
                     </div>
+                </div>
 
+                <div class="text-xs">
                     <!-- Reason -->
-                    <div>
-                        <label class="block text-xs font-bold text-neutral-800 mb-1.5">Alasan Penukaran / Retur *</label>
-                        <select 
-                            name="reason" 
-                            required 
-                            class="w-full px-4 py-2.5 bg-[#FAF9F6] border border-neutral-200 rounded-xl focus:bg-white focus:outline-none focus:border-neutral-900 focus:ring-1 focus:ring-neutral-900 text-xs font-medium text-neutral-900 cursor-pointer"
-                        >
+                    <label class="block text-xs font-bold text-neutral-800 mb-1.5">Alasan Penukaran / Retur *</label>
+                    <select 
+                        name="reason" 
+                        required 
+                        class="w-full px-4 py-2.5 bg-[#FAF9F6] border border-neutral-200 rounded-xl focus:bg-white focus:outline-none focus:border-neutral-900 focus:ring-1 focus:ring-neutral-900 text-xs font-medium text-neutral-900 cursor-pointer"
+                    >
                             <option value="Tukar Ukuran (Size Mismatch)">Tukar Ukuran (Kebesaran / Kekecilan)</option>
                             <option value="Tukar Varian Warna">Ingin Tukar Varian Warna Lain</option>
                             <option value="Cacat Produksi / Jahitan">Cacat Produksi / Jahitan Kurang Rapi</option>
