@@ -1,7 +1,7 @@
 @extends('layouts.shop')
 
-@section('title', 'Portal Pengajuan Retur Mandiri — MOETIA')
-@section('meta_description', 'Layanan mandiri penukaran ukuran (size swap) dan retur produk bergaransi 7 hari MOETIA.')
+@section('title', 'Portal Pengajuan Retur Mandiri — MOZÉRA')
+@section('meta_description', 'Layanan mandiri penukaran ukuran (size swap) dan retur produk bergaransi 7 hari MOZÉRA.')
 
 @section('content')
 <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 select-none">

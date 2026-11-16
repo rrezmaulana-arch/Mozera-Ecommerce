@@ -23,11 +23,11 @@ class CrmLoyaltyController extends Controller
     {
         $request->validate([
             'customer_id' => 'required|exists:customers,id',
-            'points' => 'required|integer|not_in:0',
-            'notes' => 'required|string',
+            'points' => 'required|integer|not_in:0|between:-100000,100000',
+            'notes' => 'required|string|max:500',
         ]);
 
-        LoyaltyLedger::create([
+        $ledger = LoyaltyLedger::create([
             'customer_id' => $request->customer_id,
             'points' => $request->points,
             'transaction_type' => 'MANUAL_ADJUST',
@@ -36,6 +36,19 @@ class CrmLoyaltyController extends Controller
             'created_by' => auth()->id(),
             'created_at' => now(),
         ]);
+
+        \App\Modules\Shared\Audit\AuditLogger::log(
+            action: 'loyalty.manual_adjust',
+            entityType: 'Customer',
+            entityId: $request->customer_id,
+            oldValues: null,
+            newValues: [
+                'customer_id' => $request->customer_id,
+                'points' => $request->points,
+                'notes' => $request->notes,
+            ],
+            userId: auth()->id()
+        );
 
         return back()->with('success', 'Penyesuaian poin loyalitas berhasil disimpan.');
     }

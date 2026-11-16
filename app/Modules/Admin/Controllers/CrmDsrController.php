@@ -23,7 +23,7 @@ class CrmDsrController extends Controller
         $request->validate([
             'customer_id' => 'required|exists:customers,id',
             'request_type' => 'required|in:export_data,rectify_data,erase_data',
-            'reason' => 'nullable|string',
+            'reason' => 'nullable|string|max:500',
         ]);
 
         $dsr = DsrRequest::create([
@@ -60,6 +60,20 @@ class CrmDsrController extends Controller
             'completed_at' => now(),
             'processed_by' => auth()->id(),
         ]);
+
+        // Audit Logger
+        \App\Modules\Shared\Audit\AuditLogger::log(
+            action: 'dsr.process_' . $dsr->request_type,
+            entityType: 'DsrRequest',
+            entityId: $dsr->id,
+            oldValues: ['status' => 'submitted'],
+            newValues: [
+                'status' => 'completed',
+                'customer_id' => $customer->id,
+                'request_type' => $dsr->request_type,
+            ],
+            userId: auth()->id()
+        );
 
         return back()->with('success', "Permintaan DSR ({$dsr->request_type}) untuk pelanggan telah diproses tuntas sesuai kepatuhan privasi UU PDP.");
     }

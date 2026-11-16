@@ -47,8 +47,8 @@ class WmsInventoryController extends Controller
         $request->validate([
             'location_id' => 'required|exists:locations,id',
             'sku_id' => 'required|exists:skus,id',
-            'quantity' => 'required|integer|not_in:0',
-            'notes' => 'required|string',
+            'quantity' => 'required|integer|not_in:0|between:-10000,10000',
+            'notes' => 'required|string|max:500',
         ]);
 
         $stockService = app(StockService::class);
@@ -61,6 +61,20 @@ class WmsInventoryController extends Controller
             'ADJ-' . uniqid(),
             $request->notes,
             auth()->id()
+        );
+
+        \App\Modules\Shared\Audit\AuditLogger::log(
+            action: 'stock.manual_adjust',
+            entityType: 'StockBalance',
+            entityId: $request->sku_id,
+            oldValues: null,
+            newValues: [
+                'location_id' => $request->location_id,
+                'sku_id' => $request->sku_id,
+                'quantity' => $request->quantity,
+                'notes' => $request->notes,
+            ],
+            userId: auth()->id()
         );
 
         return back()->with('success', 'Penyesuaian stok (ADJUST) berhasil dicatat ke buku besar ledger.');

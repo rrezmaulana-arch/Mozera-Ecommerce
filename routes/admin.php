@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Route;
 
 // Authentication with rate limiting to prevent brute force
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
-Route::post('/login', [AuthController::class, 'login'])->middleware('throttle:5,1')->name('login.submit');
+Route::post('/login', [AuthController::class, 'login'])->middleware('throttle:10,1')->name('login.submit');
 
 // Quick login is strictly limited to local environment when app.demo_login is enabled, and MUST be POST + CSRF
 if (app()->environment('local') && config('app.demo_login', false)) {

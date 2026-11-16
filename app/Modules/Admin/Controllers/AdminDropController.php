@@ -26,9 +26,10 @@ class AdminDropController extends Controller
         $request->validate([
             'code' => 'required|string|unique:drops,code|max:50',
             'title' => 'required|string|max:150',
+            'description' => 'nullable|string|max:1000',
             'drop_time' => 'required|date',
             'sku_id' => 'required|exists:skus,id',
-            'drop_quota' => 'required|integer|min:1',
+            'drop_quota' => 'required|integer|between:1,100000',
         ]);
 
         $drop = Drop::create([

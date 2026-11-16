@@ -86,6 +86,16 @@ class CrmCustomerController extends Controller
 
             // Recalculate RFM for target
             app(RfmService::class)->recalculate($target->id);
+
+            // Audit Logger
+            \App\Modules\Shared\Audit\AuditLogger::log(
+                action: 'customer.merge',
+                entityType: 'Customer',
+                entityId: $target->id,
+                oldValues: ['source_customer_id' => $source->id, 'source_email' => $source->email],
+                newValues: ['target_customer_id' => $target->id, 'target_email' => $target->email],
+                userId: auth()->id()
+            );
         });
 
         return redirect()->route('admin.crm.customers.show', $target->id)

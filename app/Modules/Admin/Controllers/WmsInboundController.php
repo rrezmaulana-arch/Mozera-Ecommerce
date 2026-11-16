@@ -4,6 +4,7 @@ namespace App\Modules\Admin\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Modules\Core\Models\Sku;
+use App\Modules\Shared\Audit\AuditLogger;
 use App\Modules\Wms\Models\Batch;
 use App\Modules\Wms\Models\Inbound;
 use App\Modules\Wms\Models\InboundItem;
@@ -32,9 +33,9 @@ class WmsInboundController extends Controller
             'location_id' => 'required|exists:locations,id',
             'items' => 'required|array|min:1',
             'items.*.sku_id' => 'required|exists:skus,id',
-            'items.*.quantity' => 'required|integer|min:1',
-            'items.*.cost_idr' => 'nullable|integer|min:0',
-            'notes' => 'nullable|string',
+            'items.*.quantity' => 'required|integer|between:1,100000',
+            'items.*.cost_idr' => 'nullable|integer|between:0,100000000',
+            'notes' => 'nullable|string|max:1000',
         ]);
 
         DB::transaction(function () use ($request) {
@@ -87,6 +88,13 @@ class WmsInboundController extends Controller
                     auth()->id()
                 );
             }
+
+            AuditLogger::log('create', 'Inbound', $inbound->id, null, [
+                'inbound_number' => $inbound->inbound_number,
+                'supplier_name' => $batch->supplier_name,
+                'location_id' => $request->location_id,
+                'items_count' => count($request->items),
+            ]);
         });
 
         return redirect()->route('admin.wms.inbound.index')->with('success', 'Barang masuk berhasil dicatat dan stok gudang telah diperbarui.');

@@ -9,13 +9,15 @@ use App\Modules\Core\Models\Order;
 use App\Modules\Core\Models\OrderItem;
 use App\Modules\Core\Models\Shipment;
 use App\Modules\Core\Models\Sku;
-use App\Modules\Shared\Outbox\DomainEventDispatcher;
 use App\Modules\Wms\Models\MarketplaceImport;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 
 class WmsMarketplaceImportController extends Controller
 {
+    const MAX_ROWS = 2000;
+
     public function index()
     {
         $imports = MarketplaceImport::with(['channel', 'creator'])->latest()->paginate(15);
@@ -35,20 +37,21 @@ class WmsMarketplaceImportController extends Controller
         $file = $request->file('csv_file');
         $filename = $file->getClientOriginalName();
 
-        $rows = array_map('str_getcsv', file($file->getRealPath()));
-        if (count($rows) < 2) {
-            return back()->with('error', 'File CSV kosong atau tidak memiliki baris data.');
+        $handle = fopen($file->getRealPath(), 'r');
+        if (! $handle) {
+            return back()->with('error', 'Gagal membuka file CSV.');
+        }
+
+        // Read header row
+        $headerRaw = fgetcsv($handle);
+        if (! $headerRaw || empty(array_filter($headerRaw))) {
+            fclose($handle);
+            return back()->with('error', 'File CSV kosong atau tidak memiliki baris header.');
         }
 
         $header = array_map(function ($h) {
             return strtolower(trim(preg_replace('/[\x00-\x1F\x80-\xFF]/', '', $h)));
-        }, $rows[0]);
-
-        $totalRows = count($rows) - 1;
-        $successRows = 0;
-        $duplicateRows = 0;
-        $errorRows = 0;
-        $logs = [];
+        }, $headerRaw);
 
         // Identify column indices
         $orderCol = $this->findColumnIndex($header, ['no. pesanan', 'order id', 'order_id', 'nomor pesanan']);
@@ -60,14 +63,28 @@ class WmsMarketplaceImportController extends Controller
         $phoneCol = $this->findColumnIndex($header, ['no. telepon', 'phone', 'phone number']);
         $resiCol = $this->findColumnIndex($header, ['no. resi', 'tracking number', 'tracking_no']);
 
-        for ($i = 1; $i <= $totalRows; $i++) {
-            $row = $rows[$i];
-            if (empty(array_filter($row))) continue;
+        $totalRows = 0;
+        $successRows = 0;
+        $duplicateRows = 0;
+        $errorRows = 0;
+        $logs = [];
+
+        // Streaming read line-by-line using fgetcsv
+        while (($row = fgetcsv($handle)) !== false) {
+            if (empty(array_filter($row))) {
+                continue;
+            }
+
+            $totalRows++;
+            if ($totalRows > self::MAX_ROWS) {
+                $logs[] = "Peringatan: File melebihi batas maksimal " . self::MAX_ROWS . " baris. Baris selanjutnya dilewati.";
+                break;
+            }
 
             $extOrderNumber = $orderCol !== null ? trim($row[$orderCol] ?? '') : null;
             if (!$extOrderNumber) {
                 $errorRows++;
-                $logs[] = "Baris #{$i}: Nomor pesanan tidak ditemukan.";
+                $logs[] = "Baris #{$totalRows}: Nomor pesanan tidak ditemukan.";
                 continue;
             }
 
@@ -75,7 +92,7 @@ class WmsMarketplaceImportController extends Controller
             $existing = Order::where('channel_id', $channel->id)->where('order_number', $extOrderNumber)->first();
             if ($existing) {
                 $duplicateRows++;
-                $logs[] = "Baris #{$i}: Pesanan {$extOrderNumber} sudah pernah diimpor sebelumnya (duplikat dilewati).";
+                $logs[] = "Baris #{$totalRows}: Pesanan {$extOrderNumber} sudah pernah diimpor (duplikat dilewati).";
                 continue;
             }
 
@@ -88,60 +105,69 @@ class WmsMarketplaceImportController extends Controller
             $buyerPhone = $phoneCol !== null ? trim($row[$phoneCol] ?? '') : null;
             $resi = $resiCol !== null ? trim($row[$resiCol] ?? '') : null;
 
-            // Resolve or create customer placeholder
-            $customer = Customer::firstOrCreate(
-                ['email' => strtolower($extOrderNumber) . "@marketplace.internal"],
-                [
-                    'name' => $buyerName,
-                    'phone' => $buyerPhone,
-                    'tags' => [$channel->code, 'Marketplace Buyer'],
-                    'notes' => "Impor pesanan {$channel->name} #{$extOrderNumber}",
-                ]
-            );
+            // Transaction per row
+            try {
+                DB::transaction(function () use (
+                    $extOrderNumber, $channel, $buyerName, $buyerPhone, $totalAmount, $sku, $rawSku, $productCol, $row, $qty, $resi
+                ) {
+                    $customer = Customer::firstOrCreate(
+                        ['email' => strtolower($extOrderNumber) . "@marketplace.internal"],
+                        [
+                            'name' => $buyerName,
+                            'phone' => $buyerPhone,
+                            'tags' => [$channel->code, 'Marketplace Buyer'],
+                            'notes' => "Impor pesanan {$channel->name} #{$extOrderNumber}",
+                        ]
+                    );
 
-            // Create Order
-            $order = Order::create([
-                'ulid' => (string) Str::ulid(),
-                'order_number' => $extOrderNumber,
-                'channel_id' => $channel->id,
-                'customer_id' => $customer->id,
-                'customer_name' => $buyerName,
-                'customer_email' => $customer->email,
-                'customer_phone' => $buyerPhone,
-                'subtotal_idr' => $totalAmount,
-                'grand_total_idr' => $totalAmount,
-                'status' => $resi ? 'shipped' : 'paid',
-                'paid_at' => now(),
-            ]);
+                    $order = Order::create([
+                        'ulid' => (string) Str::ulid(),
+                        'order_number' => $extOrderNumber,
+                        'channel_id' => $channel->id,
+                        'customer_id' => $customer->id,
+                        'customer_name' => $buyerName,
+                        'customer_email' => $customer->email,
+                        'customer_phone' => $buyerPhone,
+                        'subtotal_idr' => $totalAmount,
+                        'grand_total_idr' => $totalAmount,
+                        'status' => $resi ? 'shipped' : 'paid',
+                        'paid_at' => now(),
+                    ]);
 
-            // Create Order Item
-            OrderItem::create([
-                'order_id' => $order->id,
-                'sku_id' => $sku ? $sku->id : null,
-                'sku_code' => $sku ? $sku->sku_code : ($rawSku ?: 'UNMAPPED'),
-                'product_name' => $sku ? $sku->product->name : ($productCol !== null ? ($row[$productCol] ?? 'Produk Marketplace') : 'Produk Marketplace'),
-                'variant_name' => $sku ? ($sku->color . ' ' . $sku->size) : 'Default',
-                'unit_price_idr' => $sku ? $sku->price_idr : $totalAmount,
-                'cost_idr' => $sku ? $sku->cost_idr : 0,
-                'quantity' => $qty,
-                'subtotal_idr' => $totalAmount,
-            ]);
+                    OrderItem::create([
+                        'order_id' => $order->id,
+                        'sku_id' => $sku ? $sku->id : null,
+                        'sku_code' => $sku ? $sku->sku_code : ($rawSku ?: 'UNMAPPED'),
+                        'product_name' => $sku ? $sku->product->name : ($productCol !== null ? ($row[$productCol] ?? 'Produk Marketplace') : 'Produk Marketplace'),
+                        'variant_name' => $sku ? ($sku->color . ' ' . $sku->size) : 'Default',
+                        'unit_price_idr' => $sku ? $sku->price_idr : $totalAmount,
+                        'cost_idr' => $sku ? $sku->cost_idr : 0,
+                        'quantity' => $qty,
+                        'subtotal_idr' => $totalAmount,
+                    ]);
 
-            if ($resi) {
-                Shipment::create([
-                    'ulid' => (string) Str::ulid(),
-                    'order_id' => $order->id,
-                    'courier_name' => 'Marketplace Courier',
-                    'tracking_number' => $resi,
-                    'status' => 'in_transit',
-                    'shipped_at' => now(),
-                ]);
+                    if ($resi) {
+                        Shipment::create([
+                            'ulid' => (string) Str::ulid(),
+                            'order_id' => $order->id,
+                            'courier_name' => 'Marketplace Courier',
+                            'tracking_number' => $resi,
+                            'status' => 'in_transit',
+                            'shipped_at' => now(),
+                        ]);
+                    }
+                });
+
+                $successRows++;
+            } catch (\Throwable $e) {
+                $errorRows++;
+                $logs[] = "Baris #{$totalRows}: Gagal memproses pesanan {$extOrderNumber} - " . $e->getMessage();
             }
-
-            $successRows++;
         }
 
-        $importLog = MarketplaceImport::create([
+        fclose($handle);
+
+        MarketplaceImport::create([
             'ulid' => (string) Str::ulid(),
             'channel_id' => $channel->id,
             'filename' => $filename,
@@ -155,7 +181,7 @@ class WmsMarketplaceImportController extends Controller
         ]);
 
         return redirect()->route('admin.wms.import.index')
-            ->with('success', "Impor berhasil! {$successRows} pesanan baru ditambahkan, {$duplicateRows} duplikat dicegah, {$errorRows} gagal.");
+            ->with('success', "Impor selesai! {$successRows} pesanan berhasil diimpor, {$duplicateRows} duplikat dicegah, {$errorRows} gagal.");
     }
 
     private function findColumnIndex(array $header, array $candidates): ?int
@@ -170,4 +196,3 @@ class WmsMarketplaceImportController extends Controller
         return null;
     }
 }
-

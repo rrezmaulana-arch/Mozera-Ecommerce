@@ -1,6 +1,6 @@
 @extends('layouts.shop')
 
-@section('title', $product->name . ' — MOETIA')
+@section('title', $product->name . ' — MOZÉRA')
 @section('meta_description', Str::limit(strip_tags($product->description), 150))
 
 @push('head')
@@ -14,7 +14,7 @@
   "description": "{{ strip_tags($product->description) }}",
   "brand": {
     "@@type": "Brand",
-    "name": "MOETIA"
+    "name": "MOZÉRA"
   },
   "offers": {
     "@@type": "AggregateOffer",

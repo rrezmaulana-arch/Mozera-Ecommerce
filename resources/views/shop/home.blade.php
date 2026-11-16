@@ -1,7 +1,7 @@
 @extends('layouts.shop')
 
-@section('title', 'MOETIA — Timeless Modest Wear & Premium Outerwear')
-@section('meta_description', 'Koleksi modest fashion wanita Indonesia: outerwear santun, voal scarf ultrafine, dan tiered dress casual-elegan. #everydaymoetia')
+@section('title', 'MOZÉRA — Timeless Modest Wear & Premium Outerwear')
+@section('meta_description', 'Koleksi modest fashion wanita Indonesia: outerwear santun, voal scarf ultrafine, dan tiered dress casual-elegan. #everydaymozera')
 
 @section('content')
 <div class="space-y-12 sm:space-y-20 lg:space-y-24">
@@ -43,7 +43,7 @@
                     <div class="relative aspect-[4/5] max-h-[380px] sm:max-h-[460px] lg:max-h-[500px] w-full rounded-2xl sm:rounded-3xl overflow-hidden shadow-md">
                         <img 
                             src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=1000&q=80" 
-                            alt="Model Modest Outer Layering MOETIA" 
+                            alt="Model Modest Outer Layering MOZÉRA" 
                             class="w-full h-full object-cover block"
                         >
                         <!-- Gentle overlay gradient for fashion clarity (opacity max 35%) -->
@@ -226,7 +226,7 @@
                 <div class="lg:col-span-5 relative aspect-[4/5] max-h-[320px] sm:max-h-[380px] lg:max-h-[440px] rounded-2xl overflow-hidden shadow-sm">
                     <img 
                         src="https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=800&q=80" 
-                        alt="Shop The Look Modest Styling MOETIA" 
+                        alt="Shop The Look Modest Styling MOZÉRA" 
                         loading="lazy" 
                         class="w-full h-full object-cover block"
                     >
@@ -461,34 +461,34 @@
         </div>
     </section>
 
-    <!-- SECTION H: KOMUNITAS #everydaymoetia (6 photos 1/1 desktop, 3x2 mobile, Max 180px per side) -->
+    <!-- SECTION H: KOMUNITAS #everydaymozera (6 photos 1/1 desktop, 3x2 mobile, Max 180px per side) -->
     <section class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
         <div class="bg-[#F5EFEB]/50 rounded-3xl border border-neutral-200/80 p-6 sm:p-10 text-center space-y-4">
             <span class="inline-block text-[11px] font-bold uppercase tracking-[0.25em] text-[#BA805E]">Komunitas Cerita</span>
-            <h2 class="font-serif text-[clamp(1.5rem,3.5vw,2.25rem)] font-bold text-neutral-950">#everydaymoetia</h2>
+            <h2 class="font-serif text-[clamp(1.5rem,3.5vw,2.25rem)] font-bold text-neutral-950">#everydaymozera</h2>
             <p class="text-neutral-600 text-xs sm:text-sm max-w-xl mx-auto leading-relaxed">
-                Cerita hangat wanita Indonesia merayakan keanggunan dan kenyamanan pakaian modest setiap hari. Tag <strong>@moetia.id</strong> untuk tampil di sini.
+                Cerita hangat wanita Indonesia merayakan keanggunan dan kenyamanan pakaian modest setiap hari. Tag <strong>@mozera.id</strong> untuk tampil di sini.
             </p>
 
             <!-- UGC Photo Grid: 6 photos (6 cols desktop, 3x2 mobile, max 180px each) -->
             <div class="grid grid-cols-3 sm:grid-cols-6 gap-2.5 sm:gap-3.5 pt-3">
                 <div class="aspect-square max-h-[180px] rounded-xl sm:rounded-2xl overflow-hidden shadow-xs">
-                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&q=80" alt="Pelanggan MOETIA UGC 1" loading="lazy" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&q=80" alt="Pelanggan MOZÉRA UGC 1" loading="lazy" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
                 </div>
                 <div class="aspect-square max-h-[180px] rounded-xl sm:rounded-2xl overflow-hidden shadow-xs">
-                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&q=80" alt="Pelanggan MOETIA UGC 2" loading="lazy" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&q=80" alt="Pelanggan MOZÉRA UGC 2" loading="lazy" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
                 </div>
                 <div class="aspect-square max-h-[180px] rounded-xl sm:rounded-2xl overflow-hidden shadow-xs">
-                    <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=400&q=80" alt="Pelanggan MOETIA UGC 3" loading="lazy" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                    <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=400&q=80" alt="Pelanggan MOZÉRA UGC 3" loading="lazy" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
                 </div>
                 <div class="aspect-square max-h-[180px] rounded-xl sm:rounded-2xl overflow-hidden shadow-xs">
-                    <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=400&q=80" alt="Pelanggan MOETIA UGC 4" loading="lazy" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                    <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=400&q=80" alt="Pelanggan MOZÉRA UGC 4" loading="lazy" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
                 </div>
                 <div class="aspect-square max-h-[180px] rounded-xl sm:rounded-2xl overflow-hidden shadow-xs">
-                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&q=80" alt="Pelanggan MOETIA UGC 5" loading="lazy" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&q=80" alt="Pelanggan MOZÉRA UGC 5" loading="lazy" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
                 </div>
                 <div class="aspect-square max-h-[180px] rounded-xl sm:rounded-2xl overflow-hidden shadow-xs">
-                    <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=400&q=80" alt="Pelanggan MOETIA UGC 6" loading="lazy" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                    <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=400&q=80" alt="Pelanggan MOZÉRA UGC 6" loading="lazy" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
                 </div>
             </div>
 

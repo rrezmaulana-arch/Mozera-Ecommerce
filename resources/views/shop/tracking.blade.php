@@ -1,7 +1,7 @@
 @extends('layouts.shop')
 
-@section('title', 'Lacak Status Pesanan — MOETIA')
-@section('meta_description', 'Pantau status pesanan dan nomor resi pengiriman busana MOETIA secara mandiri dan real-time.')
+@section('title', 'Lacak Status Pesanan — MOZÉRA')
+@section('meta_description', 'Pantau status pesanan dan nomor resi pengiriman busana MOZÉRA secara mandiri dan real-time.')
 
 @section('content')
 <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 select-none">
