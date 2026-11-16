@@ -1,61 +1,106 @@
 @extends('layouts.shop')
 
-@section('title', 'Lacak Status Pesanan Mandiri — ITSFRIDAY')
+@section('title', 'Lacak Status Pesanan — ITSFRIDAY')
+@section('meta_description', 'Pantau status pesanan dan nomor resi pengiriman busana ITSFRIDAY secara mandiri dan real-time.')
 
 @section('content')
-<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-    <!-- Header -->
-    <div class="text-center mb-10">
-        <span class="text-xs uppercase tracking-widest text-brand-700 font-bold">Layanan Mandiri Pelanggan</span>
-        <h1 class="font-serif text-3xl sm:text-4xl font-bold text-neutral-900 mt-1">Lacak Status Pesanan</h1>
-        <p class="text-xs text-neutral-500 mt-2 max-w-md mx-auto">
-            Pantau perjalanan paket busana Anda dari gudang pusat hingga ke alamat tujuan tanpa perlu chat admin WhatsApp.
+<div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-14 select-none">
+    
+    <!-- Hero Header -->
+    <div class="text-center max-w-2xl mx-auto mb-10">
+        <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-neutral-100 text-neutral-800 text-[11px] font-semibold tracking-wide mb-3 border border-neutral-200">
+            <svg class="w-3.5 h-3.5 text-neutral-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+            </svg>
+            <span>Layanan Pelacakan Mandiri 24/7</span>
+        </div>
+        <h1 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-neutral-900 tracking-tight">
+            Lacak Perjalanan Pesanan
+        </h1>
+        <p class="text-xs sm:text-sm text-neutral-600 mt-3 leading-relaxed">
+            Pantau status pesanan dan nomor resi pengiriman busana Anda langsung dari gudang pusat hingga sampai ke depan pintu Anda.
         </p>
     </div>
 
-    <!-- Search Form -->
-    <div class="bg-white p-6 rounded-3xl border border-neutral-200/90 shadow-sm mb-10">
-        <form action="{{ route('shop.tracking') }}" method="GET" class="flex flex-col sm:flex-row gap-3">
-            <div class="flex-1">
-                <input type="text" name="order_number" value="{{ request('order_number') ?? ($order ? $order->order_number : '') }}" placeholder="Masukkan Nomor Pesanan (Contoh: ORD-20261110-001)" class="w-full text-xs px-4 py-3 bg-neutral-50 border border-neutral-300 rounded-2xl focus:outline-none focus:ring-1 focus:ring-neutral-900 font-medium" required>
+    <!-- Search Form Card -->
+    <div class="bg-white rounded-2xl border border-neutral-200/80 shadow-[0_4px_20px_-4px_rgba(0,0,0,0.05)] p-5 sm:p-7 mb-8">
+        <label for="order_number" class="block text-xs font-bold text-neutral-900 tracking-wide mb-2.5">
+            Nomor Pesanan
+        </label>
+        
+        <form action="{{ route('shop.tracking') }}" method="GET" class="flex flex-col sm:flex-row gap-2.5">
+            <div class="relative flex-1">
+                <div class="absolute inset-y-0 left-0 pl-3.5 flex items-center pointer-events-none text-neutral-400">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                    </svg>
+                </div>
+                <input 
+                    type="text" 
+                    id="order_number"
+                    name="order_number" 
+                    value="{{ request('order_number') ?? ($order ? $order->order_number : '') }}" 
+                    placeholder="Contoh: ORD-20261110-001" 
+                    class="w-full text-xs sm:text-sm pl-10 pr-4 py-3 bg-[#FAF9F6] border border-neutral-200 rounded-xl focus:bg-white focus:outline-none focus:border-neutral-900 focus:ring-1 focus:ring-neutral-900 transition-all font-mono placeholder:text-neutral-400 text-neutral-900" 
+                    required
+                >
             </div>
-            <button type="submit" class="px-8 py-3 bg-neutral-900 hover:bg-neutral-800 text-white rounded-2xl font-bold text-xs uppercase tracking-widest transition-all">
-                Lacak Sekarang
+            <button 
+                type="submit" 
+                class="inline-flex items-center justify-center gap-2 px-7 py-3 bg-neutral-900 hover:bg-neutral-800 active:scale-[0.99] text-white rounded-xl font-semibold text-xs tracking-wider uppercase transition-all shadow-sm cursor-pointer select-none focus:outline-none focus:ring-2 focus:ring-neutral-900 focus:ring-offset-2"
+            >
+                <span>Lacak Pesanan</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/>
+                </svg>
             </button>
         </form>
-        <div class="mt-3 text-[11px] text-neutral-400 flex items-center justify-between">
-            <span>Contoh order untuk dicoba: <a href="{{ route('shop.tracking', ['order_number' => 'ORD-20261110-001']) }}" class="text-neutral-700 underline font-medium">ORD-20261110-001</a> (Selesai), <a href="{{ route('shop.tracking', ['order_number' => 'ORD-20261115-002']) }}" class="text-neutral-700 underline font-medium">ORD-20261115-002</a> (Picking)</span>
+
+        <div class="mt-3.5 pt-3 border-t border-neutral-100 flex flex-wrap items-center gap-2 text-xs text-neutral-500">
+            <span class="text-[11px] text-neutral-400">Contoh order aktif:</span>
+            <a href="{{ route('shop.tracking', ['order_number' => 'ORD-20261110-001']) }}" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-neutral-100 hover:bg-neutral-200 text-neutral-800 text-[11px] font-mono transition-colors cursor-pointer select-none">
+                <span>ORD-20261110-001</span>
+                <span class="text-[10px] text-emerald-700 font-sans font-medium">(Selesai)</span>
+            </a>
+            <a href="{{ route('shop.tracking', ['order_number' => 'ORD-20261115-002']) }}" class="inline-flex items-center gap-1 px-2.5 py-1 rounded-md bg-neutral-100 hover:bg-neutral-200 text-neutral-800 text-[11px] font-mono transition-colors cursor-pointer select-none">
+                <span>ORD-20261115-002</span>
+                <span class="text-[10px] text-purple-700 font-sans font-medium">(Proses Gudang)</span>
+            </a>
         </div>
     </div>
 
     @if($order)
         <!-- Order Result Card -->
-        <div class="bg-white rounded-3xl border border-neutral-200/90 shadow-lg overflow-hidden space-y-8 p-6 sm:p-8">
+        <div class="bg-white rounded-2xl border border-neutral-200/90 shadow-[0_8px_30px_-6px_rgba(0,0,0,0.06)] p-6 sm:p-8 space-y-8">
+            
             <!-- Header Status -->
             <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-6 border-b border-neutral-100 gap-4">
                 <div>
-                    <span class="text-[10px] uppercase tracking-wider text-neutral-400">Nomor Pesanan</span>
-                    <h2 class="font-serif text-2xl font-bold text-neutral-900">{{ $order->order_number }}</h2>
-                    <p class="text-xs text-neutral-500">Penerima: {{ $order->customer_name }} • {{ $order->shipping_city }}</p>
+                    <span class="text-[11px] font-mono text-neutral-400 uppercase tracking-wider">PESANAN TERDAFTAR</span>
+                    <h2 class="font-serif text-2xl font-bold text-neutral-900 mt-0.5">#{{ $order->order_number }}</h2>
+                    <p class="text-xs text-neutral-500 mt-1">
+                        Penerima: <strong class="text-neutral-800">{{ $order->customer_name }}</strong> &bull; Kota: {{ $order->shipping_city }}
+                    </p>
                 </div>
-                <div class="text-right">
+                <div class="sm:text-right">
                     @php
                         $statusBadge = match($order->status) {
-                            'pending_payment' => ['bg-amber-100 text-amber-900', 'Menunggu Bayar'],
-                            'paid' => ['bg-blue-100 text-blue-900', 'Lunas (Antrean Gudang)'],
-                            'picking' => ['bg-purple-100 text-purple-900', 'Sedang Dipick di Gudang'],
-                            'packed' => ['bg-indigo-100 text-indigo-900', 'Selesai Dipack & Siap Dikirim'],
-                            'shipped' => ['bg-teal-100 text-teal-900', 'Dalam Perjalanan Kurir'],
-                            'delivered', 'completed' => ['bg-emerald-100 text-emerald-900', 'Telah Diterima'],
-                            default => ['bg-neutral-100 text-neutral-800', ucfirst($order->status)],
+                            'pending_payment' => ['bg-amber-50 text-amber-800 border-amber-200', 'Menunggu Pembayaran'],
+                            'paid' => ['bg-blue-50 text-blue-800 border-blue-200', 'Lunas &bull; Antrean Gudang'],
+                            'picking' => ['bg-purple-50 text-purple-800 border-purple-200', 'Sedang Dipick di Gudang'],
+                            'packed' => ['bg-indigo-50 text-indigo-800 border-indigo-200', 'Selesai Dipack & Siap Kirim'],
+                            'shipped' => ['bg-teal-50 text-teal-800 border-teal-200', 'Dalam Perjalanan Kurir'],
+                            'delivered', 'completed' => ['bg-emerald-50 text-emerald-800 border-emerald-200', 'Pesanan Diterima'],
+                            default => ['bg-neutral-100 text-neutral-800 border-neutral-200', ucfirst($order->status)],
                         };
                     @endphp
-                    <span class="px-3 py-1.5 rounded-full text-xs font-bold {{ $statusBadge[0] }}">
-                        {{ $statusBadge[1] }}
+                    <span class="inline-flex items-center px-3.5 py-1.5 rounded-full text-xs font-semibold border {{ $statusBadge[0] }}">
+                        {!! $statusBadge[1] !!}
                     </span>
                     @if($order->shipments->isNotEmpty() && $order->shipments->first()->tracking_number)
                         <p class="text-xs font-mono font-bold text-neutral-800 mt-2">
-                            Resi {{ $order->shipments->first()->courier_name }}: {{ $order->shipments->first()->tracking_number }}
+                            Resi {{ $order->shipments->first()->courier_name }}: <span class="bg-neutral-100 px-2 py-0.5 rounded text-neutral-900">{{ $order->shipments->first()->tracking_number }}</span>
                         </p>
                     @endif
                 </div>
@@ -63,15 +108,15 @@
 
             <!-- Stepper Progress Timeline -->
             <div>
-                <h3 class="text-xs font-bold uppercase tracking-wider text-neutral-700 mb-6">Tahapan Pemrosesan Pesanan</h3>
+                <h3 class="text-xs font-bold uppercase tracking-wider text-neutral-800 mb-5">Perjalanan Paket Busana</h3>
                 
                 @php
                     $steps = [
-                        ['id' => 'paid', 'title' => 'Pembayaran Lunas', 'desc' => 'Diverifikasi otomatis gateway'],
-                        ['id' => 'picking', 'title' => 'Picking Gudang', 'desc' => 'Item diambil staf gudang'],
-                        ['id' => 'packed', 'title' => 'Packing & Scan Barcode', 'desc' => 'Verifikasi akurasi SKU'],
-                        ['id' => 'shipped', 'title' => 'Dalam Pengiriman', 'desc' => 'Diserahkan ke kurir'],
-                        ['id' => 'delivered', 'title' => 'Pesanan Diterima', 'desc' => 'Garansi retur 7 hari aktif'],
+                        ['id' => 'paid', 'title' => 'Pembayaran Lunas', 'desc' => 'Diverifikasi otomatis'],
+                        ['id' => 'picking', 'title' => 'Picking Gudang', 'desc' => 'Item diambil dari rak'],
+                        ['id' => 'packed', 'title' => 'Packing & Barcode', 'desc' => 'QC fisik 100% akurat'],
+                        ['id' => 'shipped', 'title' => 'Pengiriman Kurir', 'desc' => 'Menuju kota tujuan'],
+                        ['id' => 'delivered', 'title' => 'Pesanan Diterima', 'desc' => 'Garansi 7 hari aktif'],
                     ];
 
                     $statusRank = [
@@ -86,23 +131,26 @@
                     $currentRank = $statusRank[$order->status] ?? 0;
                 @endphp
 
-                <div class="grid grid-cols-1 sm:grid-cols-5 gap-4 relative">
+                <div class="grid grid-cols-1 sm:grid-cols-5 gap-3">
                     @foreach($steps as $index => $step)
                         @php
                             $stepRank = $index + 1;
                             $isComplete = $currentRank >= $stepRank;
                             $isCurrent = $currentRank === $stepRank;
                         @endphp
-                        <div class="flex flex-col items-center text-center p-3 rounded-2xl {{ $isCurrent ? 'bg-brand-50 border border-brand-200' : '' }}">
-                            <div class="w-8 h-8 rounded-full flex items-center justify-center font-bold text-xs mb-2 {{ $isComplete ? 'bg-neutral-900 text-white' : 'bg-neutral-200 text-neutral-500' }}">
-                                @if($isComplete)
-                                    ✓
-                                @else
-                                    {{ $index + 1 }}
-                                @endif
+                        <div class="p-3.5 rounded-xl border {{ $isCurrent ? 'bg-neutral-900 text-white border-neutral-900 shadow-sm' : ($isComplete ? 'bg-white border-neutral-200 text-neutral-900' : 'bg-neutral-50/50 border-neutral-200/60 text-neutral-400') }} transition-all">
+                            <div class="flex items-center gap-2 mb-2">
+                                <div class="w-6 h-6 rounded-full flex items-center justify-center font-bold text-[11px] {{ $isCurrent ? 'bg-white text-neutral-900' : ($isComplete ? 'bg-neutral-900 text-white' : 'bg-neutral-200 text-neutral-500') }}">
+                                    @if($isComplete)
+                                        ✓
+                                    @else
+                                        {{ $index + 1 }}
+                                    @endif
+                                </div>
+                                <span class="text-[10px] font-mono uppercase tracking-wider opacity-60">Langkah {{ $index + 1 }}</span>
                             </div>
-                            <p class="text-xs font-bold {{ $isComplete ? 'text-neutral-900' : 'text-neutral-400' }}">{{ $step['title'] }}</p>
-                            <p class="text-[10px] text-neutral-400 mt-0.5 leading-tight">{{ $step['desc'] }}</p>
+                            <p class="text-xs font-bold leading-tight">{{ $step['title'] }}</p>
+                            <p class="text-[11px] mt-1 leading-snug {{ $isCurrent ? 'text-neutral-300' : 'text-neutral-500' }}">{{ $step['desc'] }}</p>
                         </div>
                     @endforeach
                 </div>
@@ -110,18 +158,18 @@
 
             <!-- Ordered Items List -->
             <div class="pt-6 border-t border-neutral-100">
-                <h3 class="text-xs font-bold uppercase tracking-wider text-neutral-700 mb-4">Item dalam Pesanan Ini</h3>
+                <h3 class="text-xs font-bold uppercase tracking-wider text-neutral-800 mb-4">Item Busana Terverifikasi</h3>
                 <div class="divide-y divide-neutral-100">
                     @foreach($order->items as $item)
                         <div class="py-3 flex items-center justify-between text-xs">
                             <div class="flex items-center gap-3">
-                                <span class="w-6 h-6 rounded bg-neutral-100 font-bold flex items-center justify-center text-[10px]">{{ $item->quantity }}x</span>
+                                <span class="w-6 h-6 rounded bg-neutral-100 font-bold flex items-center justify-center text-[10px] text-neutral-700">{{ $item->quantity }}x</span>
                                 <div>
                                     <p class="font-bold text-neutral-900">{{ $item->product_name }}</p>
-                                    <p class="text-[10px] text-neutral-500">{{ $item->variant_name }} ({{ $item->sku_code }})</p>
+                                    <p class="text-[11px] text-neutral-500">{{ $item->variant_name }} &bull; SKU: {{ $item->sku_code }}</p>
                                 </div>
                             </div>
-                            <span class="font-semibold text-neutral-900">{{ \App\Modules\Shared\Money\Money::format($item->subtotal_idr) }}</span>
+                            <span class="font-bold text-neutral-900">{{ \App\Modules\Shared\Money\Money::format($item->subtotal_idr) }}</span>
                         </div>
                     @endforeach
                 </div>
@@ -129,23 +177,29 @@
 
             <!-- Return Option if delivered -->
             @if(in_array($order->status, ['delivered', 'completed']))
-                <div class="p-4 rounded-2xl bg-neutral-50 border border-neutral-200 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
+                <div class="p-4 rounded-xl bg-brand-50/70 border border-brand-200/80 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
                     <div>
-                        <p class="font-bold text-neutral-900">Ukuran kurang pas atau ingin tukar varian?</p>
-                        <p class="text-neutral-500 text-[11px]">Anda memiliki garansi retur/tukar 7 hari mandiri.</p>
+                        <p class="font-bold text-brand-950">Ukuran kurang pas atau ingin tukar warna?</p>
+                        <p class="text-neutral-600 text-[11px] mt-0.5">Garansi retur & tukar ukuran mandiri 7 hari Anda masih berlaku aktif.</p>
                     </div>
-                    <a href="{{ route('shop.returns', ['order_number' => $order->order_number]) }}" class="px-5 py-2.5 bg-neutral-900 hover:bg-neutral-800 text-white rounded-xl font-bold uppercase tracking-wider text-[11px] whitespace-nowrap">
-                        Ajukan Retur Mandiri
+                    <a href="{{ route('shop.returns', ['order_number' => $order->order_number]) }}" class="px-5 py-2.5 bg-neutral-900 hover:bg-neutral-800 text-white rounded-xl font-bold tracking-wider uppercase text-[11px] whitespace-nowrap cursor-pointer select-none transition-all">
+                        Ajukan Retur Mandiri &rarr;
                     </a>
                 </div>
             @endif
         </div>
     @elseif(request('order_number'))
-        <div class="p-8 text-center bg-white rounded-3xl border border-neutral-200">
-            <p class="text-sm font-semibold text-neutral-800">Nomor pesanan "{{ request('order_number') }}" tidak ditemukan.</p>
-            <p class="text-xs text-neutral-500 mt-1">Pastikan penulisan nomor pesanan sesuai dengan email konfirmasi Anda.</p>
+        <div class="p-8 text-center bg-white rounded-2xl border border-neutral-200 shadow-sm max-w-lg mx-auto space-y-3">
+            <div class="w-12 h-12 rounded-full bg-rose-50 text-rose-700 flex items-center justify-center mx-auto">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </div>
+            <h3 class="font-serif text-lg font-bold text-neutral-900">Pesanan Tidak Ditemukan</h3>
+            <p class="text-xs text-neutral-600 leading-relaxed">
+                Nomor pesanan "{{ request('order_number') }}" tidak terdaftar di sistem. Mohon pastikan penulisan sesuai dengan nomor pada email konfirmasi Anda.
+            </p>
         </div>
     @endif
 </div>
 @endsection
-

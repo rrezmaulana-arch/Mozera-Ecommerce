@@ -68,3 +68,4 @@ class WmsLedgerAndStockReservationTest extends TestCase
         $response->assertSessionHas('error');
     }
 }
+

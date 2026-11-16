@@ -56,3 +56,4 @@ class CrmRfmAndActionItemsTest extends TestCase
         $this->assertEquals('resolved', $firstItem->status);
     }
 }
+

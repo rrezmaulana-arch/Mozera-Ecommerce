@@ -6,6 +6,102 @@
 @source '../**/*.js';
 
 @theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-        'Segoe UI Symbol', 'Noto Color Emoji';
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-serif: 'Playfair Display', Georgia, serif;
+
+    --color-brand-50: #FAF8F5;
+    --color-brand-100: #F5EFEB;
+    --color-brand-200: #EADCCE;
+    --color-brand-300: #DCC3AD;
+    --color-brand-400: #CA9F81;
+    --color-brand-500: #BA805E;
+    --color-brand-600: #A66747;
+    --color-brand-700: #8A4F35;
+    --color-brand-800: #6F402D;
+    --color-brand-900: #4A2A1E;
+}
+
+/* 
+ * Professional Typography & UX Controls 
+ * Eliminates accidental text selection / caret placement on buttons & interactive elements
+ * Stops overscroll rubber-banding and accidental horizontal scroll
+ */
+html {
+    overscroll-behavior-y: none;
+    overscroll-behavior-x: none;
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family: var(--font-sans);
+    overscroll-behavior-y: none;
+    overscroll-behavior-x: none;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+}
+
+/* Strictly prevent text selection and caret insertion in interactive UI */
+button,
+a,
+label,
+[role="button"],
+input[type="submit"],
+input[type="button"],
+select,
+.select-none,
+nav,
+header,
+footer h4 {
+    cursor: pointer;
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+}
+
+/* Text elements that shouldn't show cursor carets */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.brand-title,
+.badge {
+    user-select: none;
+    -webkit-user-select: none;
+}
+
+/* Form inputs retain clear text cursor only inside the input area */
+input[type="text"],
+input[type="email"],
+input[type="number"],
+input[type="tel"],
+input[type="search"],
+textarea {
+    cursor: text;
+    user-select: text;
+    -webkit-user-select: text;
+}
+
+/* Subtle, refined scrollbar */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #FAF9F6;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #D4D4D8;
+    border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #A1A1AA;
 }
