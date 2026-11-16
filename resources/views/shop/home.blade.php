@@ -141,16 +141,16 @@
             @foreach($series as $s)
                 <a 
                     href="{{ route('shop.catalog', ['series' => $s->code]) }}" 
-                    class="group relative w-[78vw] max-w-[320px] shrink-0 snap-center sm:w-full sm:max-w-none aspect-[4/5] max-h-[420px] rounded-2xl sm:rounded-3xl overflow-hidden block shadow-sm hover:shadow-xl transition-all duration-300"
+                    class="group relative w-[78vw] max-w-[320px] shrink-0 snap-center sm:w-full sm:max-w-none aspect-[4/5] max-h-[400px] rounded-2xl sm:rounded-3xl overflow-hidden block shadow-xs hover:shadow-lg transition-all duration-300 bg-[#F5EFEB] border border-neutral-200/60"
                 >
                     <img 
                         src="{{ $s->banner_image }}" 
                         alt="{{ $s->name }} — Modest Collection" 
                         loading="lazy" 
-                        class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500 block"
+                        class="w-full h-full object-contain p-4 group-hover:scale-[1.03] transition-transform duration-500 block filter drop-shadow-md"
                     >
                     <!-- Bottom Gradient Overlay (Contrast > 4.5:1) -->
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-transparent"></div>
+                    <div class="absolute inset-0 bg-gradient-to-t from-neutral-950/85 via-neutral-950/30 to-transparent"></div>
 
                     <div class="absolute bottom-5 left-5 right-5 text-white space-y-1.5">
                         <div class="flex items-center justify-between">
@@ -241,20 +241,20 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex-1 flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-8 my-auto overflow-hidden">
             
             <!-- Models Runway Stage (Desktop Left Column: Models glide strictly inside this area) -->
-            <div class="relative flex-1 w-full h-[320px] sm:h-[360px] lg:h-[390px] flex items-center justify-center overflow-hidden" id="open-runway-stage">
+            <div class="relative flex-1 w-full h-[350px] sm:h-[390px] lg:h-[430px] flex items-center justify-center overflow-hidden pb-8" id="open-runway-stage">
                 
                 @foreach($curatedLooks as $idx => $look)
                     <div 
                         id="runway-model-{{ $idx }}" 
                         onclick="switchLook({{ $idx }})"
-                        class="runway-model-item absolute bottom-2 flex flex-col items-center justify-end transition-all duration-500 ease-out cursor-pointer"
+                    <div id="runway-model-{{ $idx }}" onclick="switchLook({{ $idx }})" class="runway-model-item absolute bottom-7 flex flex-col items-center justify-end transition-all duration-500 ease-out cursor-pointer" style="will-change: transform, opacity;">
                         style="will-change: transform, opacity;"
                     >
                         <!-- Realistic Floor Contact Shadow (No Card Borders) -->
                         <div class="model-floor-shadow absolute bottom-1 w-24 sm:w-32 h-3 bg-neutral-950/15 rounded-full filter blur-[2.5px] transition-all duration-500"></div>
 
                         <!-- Cutout Model Image: Authentic Transparent PNG from user -->
-                        <div class="relative h-[280px] sm:h-[320px] lg:h-[350px] flex items-end justify-center">
+                        <div class="relative h-[260px] sm:h-[300px] lg:h-[330px] flex items-end justify-center">
                             <img 
                                 src="{{ $look['model_image'] }}" 
                                 alt="{{ $look['title'] }} — Model Modest MOZÉRA" 
@@ -264,7 +264,7 @@
                         </div>
 
                         <!-- Minimal Floor Tag (Only on active model) -->
-                        <div class="active-model-tag opacity-0 transition-opacity duration-300 absolute -bottom-2 px-3 py-0.5 rounded-full bg-neutral-900/90 text-white text-[9px] font-bold uppercase tracking-wider backdrop-blur-md shadow-xs pointer-events-none whitespace-nowrap">
+                        <div class="active-model-tag opacity-0 transition-opacity duration-300 absolute -bottom-6 px-3.5 py-1 rounded-full bg-neutral-900/95 text-white text-[10px] font-semibold uppercase tracking-wider backdrop-blur-md shadow-md pointer-events-none whitespace-nowrap z-20">
                             {{ $look['title'] }}
                         </div>
                     </div>
@@ -913,22 +913,22 @@
             <!-- UGC Photo Grid: 6 photos (6 cols desktop, 3x2 mobile, max 180px each) -->
             <div class="grid grid-cols-3 sm:grid-cols-6 gap-2.5 sm:gap-3.5 pt-3">
                 <div class="aspect-square max-h-[180px] rounded-xl sm:rounded-2xl overflow-hidden shadow-xs">
-                    <img src="https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=400&q=80" alt="Pelanggan MOZÉRA UGC 1" loading="lazy" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                    <img src="/images/models/look-1-terracotta.png" alt="Pelanggan MOZÉRA UGC 1" loading="lazy" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
                 </div>
                 <div class="aspect-square max-h-[180px] rounded-xl sm:rounded-2xl overflow-hidden shadow-xs">
-                    <img src="https://images.unsplash.com/photo-1517841905240-472988babdf9?w=400&q=80" alt="Pelanggan MOZÉRA UGC 2" loading="lazy" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                    <img src="/images/models/look-2-sage.png" alt="Pelanggan MOZÉRA UGC 2" loading="lazy" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
                 </div>
                 <div class="aspect-square max-h-[180px] rounded-xl sm:rounded-2xl overflow-hidden shadow-xs">
-                    <img src="https://images.unsplash.com/photo-1524504388940-b1c1722653e1?w=400&q=80" alt="Pelanggan MOZÉRA UGC 3" loading="lazy" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                    <img src="/images/models/look-3-navy.png" alt="Pelanggan MOZÉRA UGC 3" loading="lazy" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
                 </div>
                 <div class="aspect-square max-h-[180px] rounded-xl sm:rounded-2xl overflow-hidden shadow-xs">
-                    <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e?w=400&q=80" alt="Pelanggan MOZÉRA UGC 4" loading="lazy" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                    <img src="/images/models/look-4-parang.png" alt="Pelanggan MOZÉRA UGC 4" loading="lazy" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
                 </div>
                 <div class="aspect-square max-h-[180px] rounded-xl sm:rounded-2xl overflow-hidden shadow-xs">
-                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=400&q=80" alt="Pelanggan MOZÉRA UGC 5" loading="lazy" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                    <img src="/images/models/look-1-terracotta.png" alt="Pelanggan MOZÉRA UGC 5" loading="lazy" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
                 </div>
                 <div class="aspect-square max-h-[180px] rounded-xl sm:rounded-2xl overflow-hidden shadow-xs">
-                    <img src="https://images.unsplash.com/photo-1508214751196-bcfd4ca60f91?w=400&q=80" alt="Pelanggan MOZÉRA UGC 6" loading="lazy" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+                    <img src="/images/models/look-2-sage.png" alt="Pelanggan MOZÉRA UGC 6" loading="lazy" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
                 </div>
             </div>
 

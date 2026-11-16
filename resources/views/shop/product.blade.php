@@ -43,25 +43,25 @@
     </div>
 
     <!-- Product Layout Grid -->
-    <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14">
-        <!-- Gallery Images (Col 7) -->
-        <div class="lg:col-span-7 space-y-4">
-            <div class="aspect-[3/4] bg-neutral-100 rounded-3xl overflow-hidden border border-neutral-200/80 shadow-md">
-                <img id="main-image" src="{{ $product->primary_image }}" alt="{{ $product->name }}" class="w-full h-full object-cover transition-opacity duration-300">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+        <!-- Gallery Images (Col 5 - Elegant Boutique Frame, Fits Desktop Viewport) -->
+        <div class="lg:col-span-5 space-y-4">
+            <div class="w-full max-w-[440px] mx-auto aspect-[4/5] max-h-[500px] bg-[#FAF9F6] rounded-3xl overflow-hidden border border-neutral-200/80 shadow-xs flex items-center justify-center p-3 sm:p-5">
+                <img id="main-image" src="{{ $product->primary_image }}" alt="{{ $product->name }}" class="w-full h-full object-contain filter drop-shadow-sm transition-opacity duration-300">
             </div>
             @if($product->gallery_images && count($product->gallery_images) > 1)
-                <div class="flex gap-3 overflow-x-auto pb-2 custom-scrollbar">
+                <div class="flex gap-2.5 overflow-x-auto pb-2 justify-center custom-scrollbar">
                     @foreach($product->gallery_images as $img)
-                        <button type="button" onclick="document.getElementById('main-image').src = '{{ $img }}'" class="w-20 h-24 rounded-2xl overflow-hidden border-2 border-neutral-200 hover:border-neutral-900 flex-shrink-0 transition-all focus:border-[#BA805E] focus:outline-none">
-                            <img src="{{ $img }}" class="w-full h-full object-cover">
+                        <button type="button" onclick="document.getElementById('main-image').src = '{{ $img }}'" class="w-16 h-20 rounded-xl overflow-hidden border-2 border-neutral-200 hover:border-neutral-900 flex-shrink-0 transition-all focus:border-[#BA805E] focus:outline-none bg-[#FAF9F6] p-1 flex items-center justify-center">
+                            <img src="{{ $img }}" class="w-full h-full object-contain">
                         </button>
                     @endforeach
                 </div>
             @endif
         </div>
 
-        <!-- Product Purchase Information (Col 5) -->
-        <div class="lg:col-span-5 space-y-6">
+        <!-- Product Purchase Information (Col 7) -->
+        <div class="lg:col-span-7 space-y-6">
             <div class="space-y-2">
                 @if($product->series)
                     <span class="inline-block text-[11px] uppercase tracking-[0.25em] text-[#BA805E] font-bold">{{ $product->series->name }}</span>
@@ -183,11 +183,11 @@
             <!-- Product Details Accordion -->
             <div class="border-t border-neutral-200 pt-6 space-y-4 text-xs">
                 <div>
-                    <h4 class="font-bold uppercase tracking-wider text-neutral-900 mb-1">Deskripsi & Karakteristik</h4>
+                    <h4 class="font-bold uppercase tracking-wider text-neutral-900 mb-1">Deskripsi dan Karakteristik</h4>
                     <p class="text-neutral-600 leading-relaxed font-light">{{ $product->description }}</p>
                 </div>
                 <div>
-                    <h4 class="font-bold uppercase tracking-wider text-neutral-900 mb-1">Material & Komposisi</h4>
+                    <h4 class="font-bold uppercase tracking-wider text-neutral-900 mb-1">Material dan Komposisi</h4>
                     <p class="text-neutral-600 font-light">{{ $product->material }}</p>
                 </div>
                 @if($product->care_instructions)

@@ -102,21 +102,21 @@ class DatabaseSeeder extends Seeder
             'code' => 'PUSPA',
             'name' => 'PUSPA Series',
             'description' => 'Koleksi elegan terinspirasi motif flora Nusantara dengan material premium yang sejuk dan jatuh anggun.',
-            'banner_image' => 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?w=1200&q=80',
+            'banner_image' => '/images/models/look-1-terracotta.png',
         ]);
 
         $seriesIsla = Series::create([
             'code' => 'ISLA',
             'name' => 'ISLA Collection',
             'description' => 'Siluet santai dan minimalis untuk tampilan effortless chic sehari-hari (#everydayitsfriday).',
-            'banner_image' => 'https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=1200&q=80',
+            'banner_image' => '/images/models/look-2-sage.png',
         ]);
 
         $seriesSept = Series::create([
             'code' => 'SEPT_DROPS',
             'name' => 'Sept Drops',
             'description' => 'Koleksi edisi terbatas rilisan September dengan kuota eksklusif dan material linen pilihan.',
-            'banner_image' => 'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=1200&q=80',
+            'banner_image' => '/images/models/look-4-parang.png',
         ]);
 
         // 5. Products & SKUs (Fokus 100% Atasan Kimono Outer & Scarf Modest)
@@ -183,14 +183,15 @@ class DatabaseSeeder extends Seeder
             'name' => 'PUSPA Voal Printed Scarf 120x120',
             'slug' => 'puspa-voal-printed-scarf',
             'category' => 'scarf',
-            'description' => 'Scarf hijab segiempat bermotif anggun dengan finishing lasercut rapi. Mudah dibentuk, tegak di dahi dan tidak kedap suara.',
+            'description' => 'Scarf hijab segiempat bermotif anggun flora Nusantara dengan finishing lasercut rapi. Mudah dibentuk, tegak di dahi dan tidak kedap suara.',
             'material' => 'Voal Ultrafine Glow Premium',
             'care_instructions' => 'Cuci dengan sampo lembut, hindari memeras terlalu kencang.',
             'length_cm' => 120,
             'is_preorder' => false,
-            'primary_image' => '/images/models/look-1-terracotta.png',
+            'primary_image' => '/images/models/puspa-scarf-voal.png',
             'gallery_images' => [
-                'https://images.unsplash.com/photo-1601924994987-69e26d50dc26?w=800&q=80',
+                '/images/models/puspa-scarf-voal.png',
+                '/images/models/look-1-terracotta.png',
             ],
             'is_active' => true,
         ]);
@@ -205,7 +206,7 @@ class DatabaseSeeder extends Seeder
             'price_idr' => 149000,
             'cost_idr' => 60000,
             'weight_grams' => 120,
-            'image_url' => 'https://images.unsplash.com/photo-1601924994987-69e26d50dc26?w=800&q=80',
+            'image_url' => '/images/models/puspa-scarf-voal.png',
         ]);
 
         $sku2_olive = Sku::create([
@@ -218,7 +219,7 @@ class DatabaseSeeder extends Seeder
             'price_idr' => 149000,
             'cost_idr' => 60000,
             'weight_grams' => 120,
-            'image_url' => 'https://images.unsplash.com/photo-1601924994987-69e26d50dc26?w=800&q=80',
+            'image_url' => '/images/models/puspa-scarf-voal.png',
         ]);
 
         $prod3 = Product::create([
@@ -570,7 +571,7 @@ class DatabaseSeeder extends Seeder
             'code' => 'SEPT-DROP-EXCLUSIVE',
             'title' => 'Sept Drops: Limited Outerwear Release',
             'description' => 'Rilisan terbatas mantel linen premium edisi September. Tersedia hanya 20 pcs nasional.',
-            'banner_url' => 'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=1200&q=80',
+            'banner_url' => '/images/models/look-4-parang.png',
             'drop_time' => now()->subDays(2),
             'end_time' => now()->addDays(5),
             'is_active' => true,
@@ -590,7 +591,7 @@ class DatabaseSeeder extends Seeder
             'status' => 'submitted',
             'reason' => 'Tukar Ukuran / Ingin Varian Warna Berbeda',
             'notes' => 'Bahan kimono sangat bagus, namun saya ingin tukar warna ke Terracotta jika masih ada stok.',
-            'photo_url' => 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=400&q=80',
+            'photo_url' => '/images/models/look-3-navy.png',
         ]);
 
         ReturnItem::create([
