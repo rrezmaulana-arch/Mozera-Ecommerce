@@ -37,7 +37,16 @@
 
             <!-- Navigation Links -->
             <div class="flex-1 overflow-y-auto py-4 px-3 space-y-6 text-xs custom-scrollbar">
-                <!-- Ringkasan & Keputusan -->
+                @php
+                    $role = auth()->user()->role ?? 'owner';
+                    $isOwner = $role === 'owner';
+                    $canStore = in_array($role, ['owner', 'store_admin']);
+                    $canWms = in_array($role, ['owner', 'warehouse_staff']);
+                    $canCrm = in_array($role, ['owner', 'crm_marketer']);
+                @endphp
+
+                <!-- Ringkasan & Keputusan (Owner Khusus) -->
+                @if($isOwner)
                 <div>
                     <p class="px-3 text-[10px] font-bold uppercase tracking-wider text-neutral-500 mb-2">Pusat Keputusan</p>
                     <div class="space-y-1">
@@ -47,8 +56,10 @@
                         </a>
                     </div>
                 </div>
+                @endif
 
                 <!-- E-Commerce / Toko Online -->
+                @if($canStore)
                 <div>
                     <p class="px-3 text-[10px] font-bold uppercase tracking-wider text-neutral-500 mb-2">Toko (E-Commerce)</p>
                     <div class="space-y-1">
@@ -74,8 +85,10 @@
                         </a>
                     </div>
                 </div>
+                @endif
 
                 <!-- Gudang / WMS -->
+                @if($canWms)
                 <div>
                     <p class="px-3 text-[10px] font-bold uppercase tracking-wider text-neutral-500 mb-2">Gudang & WMS</p>
                     <div class="space-y-1">
@@ -105,8 +118,10 @@
                         </a>
                     </div>
                 </div>
+                @endif
 
                 <!-- CRM & Retensi -->
+                @if($canCrm)
                 <div>
                     <p class="px-3 text-[10px] font-bold uppercase tracking-wider text-neutral-500 mb-2">CRM & Retensi</p>
                     <div class="space-y-1">
@@ -136,6 +151,7 @@
                         </a>
                     </div>
                 </div>
+                @endif
             </div>
 
             <!-- User Info & Logout -->
@@ -147,7 +163,7 @@
                         </div>
                         <div class="truncate">
                             <p class="text-xs font-semibold text-white truncate">{{ auth()->user()->name ?? 'Staf' }}</p>
-                            <span class="inline-block text-[9px] text-[#DCC3AD] uppercase font-bold tracking-wider px-1.5 py-0.2 rounded bg-neutral-800">{{ str_replace('_', ' ', auth()->user()->role ?? 'Role') }}</span>
+                            <span class="inline-block text-[9px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full {{ $role === 'owner' ? 'bg-[#BA805E]/20 text-[#DCC3AD] border border-[#BA805E]/30' : ($role === 'warehouse_staff' ? 'bg-amber-950/60 text-amber-300 border border-amber-800/40' : ($role === 'crm_marketer' ? 'bg-cyan-950/60 text-cyan-300 border border-cyan-800/40' : 'bg-emerald-950/60 text-emerald-300 border border-emerald-800/40')) }}">{{ str_replace('_', ' ', auth()->user()->role ?? 'Role') }}</span>
                         </div>
                     </div>
                     <form action="{{ route('admin.logout') }}" method="POST">

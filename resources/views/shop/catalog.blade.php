@@ -1,117 +1,143 @@
 @extends('layouts.shop')
 
-@section('title', 'Katalog Koleksi — ITSFRIDAY')
+@section('title', 'Katalog Koleksi Busana — ITSFRIDAY')
 
 @section('content')
-<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
     <!-- Breadcrumb & Header -->
     <div class="mb-8">
-        <div class="flex items-center gap-2 text-xs text-neutral-500 mb-2">
-            <a href="{{ route('shop.home') }}" class="hover:text-neutral-900">Beranda</a>
+        <div class="flex items-center gap-2 text-xs text-neutral-400 mb-2.5">
+            <a href="{{ route('shop.home') }}" class="hover:text-neutral-900 transition-colors">Beranda</a>
             <span>/</span>
-            <span class="text-neutral-900 font-medium">Koleksi</span>
+            <span class="text-neutral-900 font-medium">Katalog</span>
             @if(request('series'))
                 <span>/</span>
-                <span class="text-brand-700 font-semibold">{{ request('series') }}</span>
+                <span class="text-[#BA805E] font-bold">{{ request('series') }}</span>
+            @elseif(request('category'))
+                <span>/</span>
+                <span class="text-[#BA805E] font-bold">{{ ucfirst(request('category')) }}</span>
             @endif
         </div>
-        <h1 class="font-serif text-3xl sm:text-4xl font-bold text-neutral-900">
-            @if(request('series'))
-                Koleksi Seri {{ request('series') }}
-            @elseif(request('category'))
-                Koleksi {{ ucfirst(request('category')) }}
-            @else
-                Seluruh Koleksi
-            @endif
-        </h1>
-        <p class="text-xs text-neutral-500 mt-1">Daftar busana outerwear, scarf voal, dan dress modest premium.</p>
+
+        <div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-6 border-b border-neutral-200">
+            <div>
+                <span class="text-[11px] uppercase tracking-[0.25em] text-[#BA805E] font-bold">Koleksi Modest Eksklusif</span>
+                <h1 class="font-serif text-3xl sm:text-5xl font-bold text-neutral-900 mt-1">
+                    @if(request('series'))
+                        Seri {{ request('series') }}
+                    @elseif(request('category'))
+                        Koleksi {{ ucfirst(request('category')) }}
+                    @else
+                        Seluruh Koleksi
+                    @endif
+                </h1>
+            </div>
+            <p class="text-xs text-neutral-500 font-medium">
+                Menampilkan <span class="font-bold text-neutral-900">{{ $products->total() }}</span> busana pilihan
+            </p>
+        </div>
     </div>
 
-    <!-- Filters & Sorting Bar -->
-    <div class="bg-white p-4 rounded-2xl border border-neutral-200/80 mb-8 shadow-sm">
-        <form method="GET" action="{{ route('shop.catalog') }}" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-            <!-- Search -->
-            <div>
-                <label class="block text-[10px] font-bold uppercase tracking-wider text-neutral-500 mb-1">Cari Produk</label>
-                <input type="text" name="search" value="{{ request('search') }}" placeholder="Contoh: Kimono, Voal..." class="w-full text-xs px-3 py-2 bg-neutral-50 border border-neutral-200 rounded-lg focus:outline-none focus:ring-1 focus:ring-neutral-900">
+    <!-- Quick Pill Category Navigation (Chic & Responsive) -->
+    <div class="flex items-center gap-2 overflow-x-auto pb-4 mb-6 custom-scrollbar text-xs">
+        <a href="{{ route('shop.catalog') }}" class="px-4 py-2 rounded-full font-bold whitespace-nowrap transition-all {{ !request('series') && !request('category') ? 'bg-neutral-900 text-white shadow-md' : 'bg-white border border-neutral-200 text-neutral-700 hover:border-neutral-900' }}">
+            Semua Busana
+        </a>
+        <a href="{{ route('shop.catalog', ['category' => 'outerwear']) }}" class="px-4 py-2 rounded-full font-bold whitespace-nowrap transition-all {{ request('category') === 'outerwear' ? 'bg-[#BA805E] text-white shadow-md' : 'bg-white border border-neutral-200 text-neutral-700 hover:border-[#BA805E]' }}">
+            Outerwear
+        </a>
+        <a href="{{ route('shop.catalog', ['category' => 'scarf']) }}" class="px-4 py-2 rounded-full font-bold whitespace-nowrap transition-all {{ request('category') === 'scarf' ? 'bg-[#BA805E] text-white shadow-md' : 'bg-white border border-neutral-200 text-neutral-700 hover:border-[#BA805E]' }}">
+            Scarf & Hijab
+        </a>
+        <a href="{{ route('shop.catalog', ['category' => 'dress']) }}" class="px-4 py-2 rounded-full font-bold whitespace-nowrap transition-all {{ request('category') === 'dress' ? 'bg-[#BA805E] text-white shadow-md' : 'bg-white border border-neutral-200 text-neutral-700 hover:border-[#BA805E]' }}">
+            Tiered Dress
+        </a>
+        <span class="text-neutral-300">|</span>
+        @foreach($allSeries as $s)
+            <a href="{{ route('shop.catalog', ['series' => $s->code]) }}" class="px-4 py-2 rounded-full font-bold whitespace-nowrap transition-all {{ request('series') === $s->code ? 'bg-neutral-900 text-white shadow-md' : 'bg-white border border-neutral-200 text-neutral-700 hover:border-neutral-900' }}">
+                {{ $s->name }}
+            </a>
+        @endforeach
+    </div>
+
+    <!-- Filter & Sort Bar (Clean Minimalist Bar) -->
+    <div class="bg-white p-3.5 sm:p-4 rounded-2xl border border-neutral-200/80 mb-8 shadow-sm">
+        <form method="GET" action="{{ route('shop.catalog') }}" class="flex flex-col sm:flex-row items-center justify-between gap-3">
+            @if(request('series')) <input type="hidden" name="series" value="{{ request('series') }}"> @endif
+            @if(request('category')) <input type="hidden" name="category" value="{{ request('category') }}"> @endif
+
+            <!-- Search Field -->
+            <div class="relative w-full sm:w-80">
+                <input type="text" name="search" value="{{ request('search') }}" placeholder="Cari nama busana, bahan..." class="w-full text-xs pl-9 pr-4 py-2.5 bg-neutral-50 border border-neutral-200 rounded-xl focus:outline-none focus:border-[#BA805E] focus:bg-white transition-all">
+                <svg class="w-4 h-4 text-neutral-400 absolute left-3 top-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
             </div>
 
-            <!-- Series Filter -->
-            <div>
-                <label class="block text-[10px] font-bold uppercase tracking-wider text-neutral-500 mb-1">Seri / Koleksi</label>
-                <select name="series" onchange="this.form.submit()" class="w-full text-xs px-3 py-2 bg-neutral-50 border border-neutral-200 rounded-lg focus:outline-none focus:ring-1 focus:ring-neutral-900">
-                    <option value="">Semua Seri</option>
-                    @foreach($allSeries as $s)
-                        <option value="{{ $s->code }}" {{ request('series') == $s->code ? 'selected' : '' }}>{{ $s->name }}</option>
-                    @endforeach
-                </select>
-            </div>
+            <!-- Sort & Reset -->
+            <div class="flex items-center gap-3 w-full sm:w-auto justify-end">
+                <div class="flex items-center gap-2">
+                    <label class="text-[11px] font-bold uppercase tracking-wider text-neutral-400 hidden sm:inline">Urutan:</label>
+                    <select name="sort" onchange="this.form.submit()" class="text-xs px-3 py-2 bg-neutral-50 border border-neutral-200 rounded-xl focus:outline-none focus:border-[#BA805E]">
+                        <option value="latest" {{ request('sort') == 'latest' ? 'selected' : '' }}>Terbaru</option>
+                        <option value="price_asc" {{ request('sort') == 'price_asc' ? 'selected' : '' }}>Harga: Terendah &rarr; Tertinggi</option>
+                        <option value="price_desc" {{ request('sort') == 'price_desc' ? 'selected' : '' }}>Harga: Tertinggi &rarr; Terendah</option>
+                    </select>
+                </div>
 
-            <!-- Category Filter -->
-            <div>
-                <label class="block text-[10px] font-bold uppercase tracking-wider text-neutral-500 mb-1">Kategori</label>
-                <select name="category" onchange="this.form.submit()" class="w-full text-xs px-3 py-2 bg-neutral-50 border border-neutral-200 rounded-lg focus:outline-none focus:ring-1 focus:ring-neutral-900">
-                    <option value="">Semua Kategori</option>
-                    <option value="outerwear" {{ request('category') == 'outerwear' ? 'selected' : '' }}>Outerwear</option>
-                    <option value="scarf" {{ request('category') == 'scarf' ? 'selected' : '' }}>Scarf & Hijab</option>
-                    <option value="dress" {{ request('category') == 'dress' ? 'selected' : '' }}>Dress</option>
-                </select>
-            </div>
-
-            <!-- Sort By -->
-            <div>
-                <label class="block text-[10px] font-bold uppercase tracking-wider text-neutral-500 mb-1">Urutkan</label>
-                <select name="sort" onchange="this.form.submit()" class="w-full text-xs px-3 py-2 bg-neutral-50 border border-neutral-200 rounded-lg focus:outline-none focus:ring-1 focus:ring-neutral-900">
-                    <option value="latest" {{ request('sort') == 'latest' ? 'selected' : '' }}>Terbaru</option>
-                    <option value="price_asc" {{ request('sort') == 'price_asc' ? 'selected' : '' }}>Harga: Terendah &rarr; Tertinggi</option>
-                    <option value="price_desc" {{ request('sort') == 'price_desc' ? 'selected' : '' }}>Harga: Tertinggi &rarr; Terendah</option>
-                </select>
+                @if(request('series') || request('category') || request('search') || request('sort'))
+                    <a href="{{ route('shop.catalog') }}" class="text-xs text-rose-600 hover:underline font-semibold whitespace-nowrap px-2">
+                        Reset Filter
+                    </a>
+                @endif
             </div>
         </form>
     </div>
 
-    <!-- Products Grid -->
+    <!-- Products Grid (Symmetrical 4-Column Luxury Cards) -->
     @if($products->isEmpty())
-        <div class="text-center py-20 bg-white rounded-2xl border border-neutral-200/80">
-            <svg class="w-12 h-12 text-neutral-400 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"/></svg>
-            <h3 class="text-base font-bold text-neutral-800">Tidak ada produk ditemukan</h3>
-            <p class="text-xs text-neutral-500 mt-1">Coba sesuaikan kata kunci pencarian atau reset filter.</p>
-            <a href="{{ route('shop.catalog') }}" class="mt-4 inline-block px-5 py-2 bg-neutral-900 text-white text-xs font-semibold rounded-lg">Reset Filter</a>
+        <div class="text-center py-20 bg-white rounded-3xl border border-neutral-200/80 p-8 shadow-sm">
+            <svg class="w-12 h-12 text-neutral-300 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"/></svg>
+            <h3 class="text-base font-bold text-neutral-800">Tidak Ada Produk yang Sesuai</h3>
+            <p class="text-xs text-neutral-500 mt-1">Coba sesuaikan kata kunci pencarian atau bersihkan filter Anda.</p>
+            <a href="{{ route('shop.catalog') }}" class="mt-4 inline-block px-6 py-2.5 bg-neutral-900 text-white text-xs font-bold uppercase tracking-wider rounded-full hover:bg-neutral-800 transition-colors">
+                Tampilkan Semua Koleksi
+            </a>
         </div>
     @else
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7">
             @foreach($products as $product)
-                <div class="group bg-white rounded-2xl overflow-hidden border border-neutral-200/80 shadow-sm hover:shadow-md transition-all flex flex-col">
+                <div class="group bg-white rounded-3xl overflow-hidden border border-neutral-200/70 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
                     <a href="{{ route('shop.product', $product->slug) }}" class="relative aspect-[3/4] bg-neutral-100 overflow-hidden block">
-                        <img src="{{ $product->primary_image }}" alt="{{ $product->name }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500">
+                        <img src="{{ $product->primary_image }}" alt="{{ $product->name }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700">
                         @if($product->is_preorder)
-                            <span class="absolute top-2.5 left-2.5 bg-neutral-900/90 text-white text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full backdrop-blur-sm">
+                            <span class="absolute top-3 left-3 bg-neutral-900/90 text-white text-[9px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full backdrop-blur-sm">
                                 Pre-Order
                             </span>
                         @endif
-                        <span class="absolute top-2.5 right-2.5 bg-white/90 text-neutral-800 text-[9px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded shadow-sm">
+                        <span class="absolute top-3 right-3 bg-white/95 text-neutral-800 text-[9px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow-sm">
                             {{ ucfirst($product->category) }}
                         </span>
                     </a>
-                    <div class="p-4 flex-1 flex flex-col justify-between space-y-2">
-                        <div>
+                    <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
+                        <div class="space-y-1">
                             @if($product->series)
-                                <p class="text-[9px] uppercase tracking-widest text-brand-700 font-bold mb-0.5">{{ $product->series->name }}</p>
+                                <p class="text-[10px] uppercase tracking-widest text-[#BA805E] font-bold">{{ $product->series->name }}</p>
                             @endif
-                            <h3 class="font-serif text-base font-bold text-neutral-900 group-hover:text-brand-700 transition-colors line-clamp-1">
+                            <h3 class="font-serif text-base font-bold text-neutral-900 group-hover:text-[#BA805E] transition-colors leading-snug line-clamp-1">
                                 <a href="{{ route('shop.product', $product->slug) }}">{{ $product->name }}</a>
                             </h3>
-                            <p class="text-[11px] text-neutral-500 line-clamp-1 mt-0.5">{{ $product->material }}</p>
+                            <p class="text-xs text-neutral-500 line-clamp-1 font-light">{{ $product->material }}</p>
                         </div>
 
-                        <div class="pt-2 border-t border-neutral-100 flex items-center justify-between">
+                        <div class="pt-3 border-t border-neutral-100 flex items-center justify-between">
                             <div>
-                                <span class="font-semibold text-neutral-900 text-xs">
+                                <span class="text-[10px] text-neutral-400 block uppercase tracking-wider">Harga</span>
+                                <span class="font-bold text-neutral-900 text-sm">
                                     {{ \App\Modules\Shared\Money\Money::format($product->min_price) }}
                                 </span>
                             </div>
-                            <a href="{{ route('shop.product', $product->slug) }}" class="px-3 py-1.5 bg-neutral-900 hover:bg-neutral-800 text-white text-[11px] font-semibold rounded-lg tracking-wider uppercase transition-colors">
-                                Detail
+                            <a href="{{ route('shop.product', $product->slug) }}" class="inline-flex items-center gap-1 text-xs font-bold text-neutral-900 group-hover:text-[#BA805E] transition-colors">
+                                <span>Detail</span>
+                                <svg class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                             </a>
                         </div>
                     </div>
@@ -119,10 +145,9 @@
             @endforeach
         </div>
 
-        <div class="mt-10">
+        <div class="mt-12">
             {{ $products->links() }}
         </div>
     @endif
 </div>
 @endsection
-

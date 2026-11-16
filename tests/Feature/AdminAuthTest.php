@@ -45,6 +45,17 @@ class AdminAuthTest extends TestCase
         $dashResponse->assertSee('Command Center');
     }
 
+    public function test_role_based_smart_redirects(): void
+    {
+        $warehouse = User::where('role', 'warehouse_staff')->first();
+        $store = User::where('role', 'store_admin')->first();
+        $crm = User::where('role', 'crm_marketer')->first();
+
+        $this->actingAs($warehouse)->get('/admin')->assertRedirect(route('admin.wms.inventory'));
+        $this->actingAs($store)->get('/admin')->assertRedirect(route('admin.store.products.index'));
+        $this->actingAs($crm)->get('/admin')->assertRedirect(route('admin.crm.customers.index'));
+    }
+
     public function test_admin_key_pages_load_successfully(): void
     {
         $owner = User::where('role', 'owner')->first();
@@ -76,3 +87,4 @@ class AdminAuthTest extends TestCase
         }
     }
 }
+

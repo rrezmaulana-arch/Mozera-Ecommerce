@@ -109,7 +109,7 @@ class DatabaseSeeder extends Seeder
             'code' => 'ISLA',
             'name' => 'ISLA Collection',
             'description' => 'Siluet santai dan minimalis untuk tampilan effortless chic sehari-hari (#everydayitsfriday).',
-            'banner_image' => 'https://images.unsplash.com/photo-1490481651871-ab68de25d43d?w=1200&q=80',
+            'banner_image' => 'https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=1200&q=80',
         ]);
 
         $seriesSept = Series::create([

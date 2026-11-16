@@ -16,6 +16,16 @@ class DashboardController extends Controller
 {
     public function index()
     {
+        // Role-based smart routing for operational staff
+        $role = auth()->user()->role ?? 'owner';
+        if ($role === 'store_admin') {
+            return redirect()->route('admin.store.products.index');
+        } elseif ($role === 'warehouse_staff') {
+            return redirect()->route('admin.wms.inventory');
+        } elseif ($role === 'crm_marketer') {
+            return redirect()->route('admin.crm.customers.index');
+        }
+
         // Refresh daily decisions
         app(ActionItemService::class)->generateDailyDecisions();
 
