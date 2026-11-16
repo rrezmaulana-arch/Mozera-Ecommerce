@@ -1,4 +1,4 @@
-# 🧠 MEMORI & ATURAN PROYEK ITSFRIDAY (PROJECT MEMORY)
+# 🧠 MEMORI & ATURAN PROYEK MOETIA (PROJECT MEMORY)
 
 > **Catatan untuk Agen AI (Gemini, Claude, atau akun lainnya):**  
 > Berkas ini adalah **Memori Permanen Proyek**. Setiap kali Anda membuka percakapan baru di proyek ini, baca berkas ini terlebih dahulu agar Anda langsung memahami seluruh konteks, aturan, kredensial, dan progres terakhir tanpa perlu bertanya ulang kepada pemilik proyek (User).
@@ -6,7 +6,7 @@
 ---
 
 ## 1. Identitas & Karakter Brand
-* **Nama Brand**: **ITSFRIDAY** (*"Everyday is Friday"* — `#everydayitsfriday`).
+* **Nama Brand**: **MOETIA** (*"Timeless Modest Wear & Premium Outerwear"* — `#everydaymoetia`).
 * **Kategori**: Modest Fashion Wanita Indonesia (Outerwear & Kimono, Scarf Voal Ultrafine 120x120, Tiered Midi Dress).
 * **Gaya Visual**: Feminin, santun, elegan, *casual-chic*, palet warna *earth-tone* (Krem `#FAF9F6` & `#F5EFEB`, Hitam Netral `#0a0a0a`, Aksen Terakota `#BA805E` / `#A66747`).
 * **Dokumen Panduan Utama (PRD)**: `C:\Users\Reza_Moetia\Downloads\PRD-ITSFRIDAY-Panduan-Lengkap.txt`
