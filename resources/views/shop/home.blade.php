@@ -148,7 +148,7 @@
         </div>
     </section>
 
-    <!-- SECTION E: KARTU SERI (Clean Ivory Studio Cards - Bebas Gelap, Anggun & Bersih) -->
+    <!-- SECTION E: KARTU SERI (Atelier Editorial Showcase - Bersih, Mewah, & Teratur) -->
     <section class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-end justify-between mb-6 pb-3 border-b border-neutral-200">
             <div>
@@ -167,49 +167,56 @@
             @foreach($series as $s)
                 @php
                     $koleksiNum = '0' . ($loop->index + 1);
-                    $tipeLabel = $loop->index === 0 ? 'Tipe A: Siluet Lurus' : ($loop->index === 1 ? 'Tipe B: Siluet Fringe' : 'Heritage Limited');
+                    $tipeBadge = $loop->index === 0 ? 'Tipe A: Siluet Lurus' : ($loop->index === 1 ? 'Tipe B: Siluet Fringe' : 'Heritage Limited');
                 @endphp
                 <a 
                     href="{{ route('shop.catalog', ['series' => $s->code]) }}" 
-                    class="group relative w-[80vw] max-w-[340px] shrink-0 snap-center sm:w-full sm:max-w-none aspect-[3/4] sm:aspect-[4/5] max-h-[460px] rounded-3xl overflow-hidden block shadow-sm hover:shadow-xl transition-all duration-500 bg-gradient-to-b from-[#FAF8F5] via-[#F4EDE4] to-[#ECE1D4] border border-[#E5DAC8] hover:-translate-y-1"
+                    class="group relative w-[80vw] max-w-[340px] shrink-0 snap-center sm:w-full sm:max-w-none rounded-3xl overflow-hidden block shadow-sm hover:shadow-xl transition-all duration-500 bg-white border border-[#E8DEC9] hover:-translate-y-1.5 flex flex-col justify-between"
                 >
-                    <!-- Background Architectural Arch Frame (Clean Studio Light) -->
-                    <div class="absolute inset-x-8 top-5 bottom-28 rounded-t-full bg-white/60 border border-white/80 pointer-events-none transition-transform duration-500 group-hover:scale-105"></div>
+                    <!-- Visual Model Frame (Atas: Foto Model Jernih & Utuh, Tanpa Tertimpa Tulisan) -->
+                    <div class="relative aspect-[3/4] bg-gradient-to-b from-[#FAF8F5] to-[#F2EAE0] flex items-center justify-center p-4 sm:p-5 overflow-hidden">
+                        <!-- Subtle Background Arch Motif -->
+                        <div class="absolute inset-x-8 top-4 bottom-0 rounded-t-full bg-white/50 border-t border-x border-white/80 pointer-events-none group-hover:scale-105 transition-transform duration-500"></div>
 
-                    <!-- Top Couture Badge Bar -->
-                    <div class="absolute top-4 left-4 right-4 flex items-center justify-between z-10">
-                        <span class="text-[9px] uppercase font-mono tracking-[0.2em] font-bold text-[#A66747] bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full border border-[#E4D7C5] shadow-2xs">
-                            {{ $tipeLabel }}
-                        </span>
-                        <span class="text-[10px] uppercase tracking-wider font-bold px-2.5 py-1 rounded-full bg-white/90 backdrop-blur-sm text-neutral-800 border border-[#E4D7C5] shadow-2xs">
-                            {{ $s->products_count }} Busana
-                        </span>
-                    </div>
+                        <!-- Top Badges -->
+                        <div class="absolute top-3.5 left-3.5 right-3.5 flex items-center justify-between z-10">
+                            <span class="text-[9px] uppercase font-mono tracking-wider font-bold text-[#A66747] bg-white/95 px-3 py-1 rounded-full border border-[#E8DEC9] shadow-2xs">
+                                {{ $tipeBadge }}
+                            </span>
+                            <span class="text-[10px] uppercase tracking-wider font-bold px-2.5 py-1 rounded-full bg-white/95 text-neutral-800 border border-[#E8DEC9] shadow-2xs">
+                                {{ $s->products_count }} Busana
+                            </span>
+                        </div>
 
-                    <!-- Authentic Modest Model Image (100% Jernih, Tanpa Lapisan Hitam) -->
-                    <div class="w-full h-full flex items-center justify-center pb-24 pt-10">
+                        <!-- Modest Model Image -->
                         <img 
                             src="{{ $s->banner_image }}" 
                             alt="{{ $s->name }} — Modest Collection" 
                             loading="lazy" 
-                            class="max-h-full max-w-full object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-700 block"
+                            class="w-full h-full object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-700 block relative z-0"
                         >
                     </div>
 
-                    <!-- Clean Glassmorphic Caption Card (Putih Bersih, Bukan Hitam) -->
-                    <div class="absolute bottom-3 left-3 right-3 p-3.5 sm:p-4 rounded-2xl bg-white/95 backdrop-blur-md border border-[#EAE0D4] shadow-sm space-y-1 z-10 group-hover:border-[#BA805E]/60 transition-colors">
-                        <div class="flex items-center justify-between">
-                            <h3 class="font-serif text-base sm:text-lg font-bold tracking-tight text-neutral-950 group-hover:text-[#BA805E] transition-colors line-clamp-1">
+                    <!-- Editorial Content Section (Bawah: Ruang Teks Rapi, Bersih & Terang) -->
+                    <div class="p-5 sm:p-6 bg-white space-y-2 flex-1 flex flex-col justify-between border-t border-[#F2ECE3]">
+                        <div class="space-y-1.5">
+                            <div class="flex items-center justify-between text-[10px] font-mono font-bold text-[#BA805E] uppercase tracking-wider">
+                                <span>Koleksi {{ $koleksiNum }}</span>
+                                <span class="text-neutral-400">Edisi Khusus</span>
+                            </div>
+                            <h3 class="font-serif text-lg sm:text-xl font-bold tracking-tight text-neutral-950 group-hover:text-[#BA805E] transition-colors leading-snug">
                                 {{ $s->name }}
                             </h3>
-                            <span class="text-xs font-semibold text-[#BA805E] group-hover:translate-x-1 transition-transform shrink-0 ml-1">&rarr;</span>
+                            <p class="text-xs text-neutral-500 line-clamp-2 font-light leading-relaxed">
+                                {{ $s->description }}
+                            </p>
                         </div>
-                        <p class="text-[11px] text-neutral-600 line-clamp-1 font-light leading-snug">
-                            {{ $s->description }}
-                        </p>
-                        <div class="pt-1 flex items-center justify-between">
-                            <span class="text-[10px] uppercase font-bold tracking-wider text-[#BA805E]">Jelajahi Koleksi</span>
-                            <span class="text-[10px] font-mono text-neutral-400">Koleksi {{ $koleksiNum }}</span>
+
+                        <div class="pt-3 border-t border-neutral-100 flex items-center justify-between text-xs font-bold text-neutral-900 group-hover:text-[#BA805E] transition-colors">
+                            <span class="text-[11px] uppercase tracking-wider">Jelajahi Koleksi</span>
+                            <span class="w-7 h-7 rounded-full bg-[#FAF8F5] group-hover:bg-[#BA805E] group-hover:text-white flex items-center justify-center transition-all duration-300">
+                                &rarr;
+                            </span>
                         </div>
                     </div>
                 </a>
@@ -500,12 +507,15 @@
                 const isDesktop = window.innerWidth >= 1024;
                 const spacing = isDesktop ? 220 : 140;
 
-                // 1. Position Models on Open Floor (0-Latency 2D Hardware-Accelerated Translations)
+                // Circular Shortest Distance Wrap (True Seamless Infinite Loop - No Mental/Teleport)
                 looks.forEach((_, i) => {
                     const item = document.getElementById(`runway-model-${i}`);
                     if (!item) return;
 
-                    const diff = i - currentLookIdx;
+                    let diff = i - currentLookIdx;
+                    while (diff > looks.length / 2) diff -= looks.length;
+                    while (diff < -looks.length / 2) diff += looks.length;
+
                     const tag = item.querySelector('.active-model-tag');
                     const shadow = item.querySelector('.model-floor-shadow');
 
@@ -524,7 +534,7 @@
                             shadow.style.transform = 'scale(1.1)';
                         }
                     } else if (Math.abs(diff) > 2) {
-                        // Far models: hidden to avoid stage overflow
+                        // Far models: hidden without jumping
                         item.style.transform = `translate3d(${diff * spacing}px, 0px, 0px) scale(0.6)`;
                         item.style.opacity = '0';
                         item.style.zIndex = '5';
@@ -733,34 +743,34 @@
         <!-- Responsive Grid: 4 cols (≥1024px), 3 cols (768-1023px), 2 cols (<768px) -->
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-5 lg:gap-6">
             @foreach($featuredProducts as $index => $product)
-                <div class="group bg-white rounded-2xl sm:rounded-3xl overflow-hidden border border-neutral-200/80 shadow-sm hover:shadow-lg transition-all duration-300 flex flex-col justify-between">
+                <div class="group bg-white rounded-2xl sm:rounded-3xl overflow-hidden border border-[#EAE0D4] shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between hover:-translate-y-1">
                     
                     <div>
                         <!-- Product Image (Aspect 3/4, max height 360px desktop, 280px mobile) -->
-                        <div class="relative aspect-[3/4] max-h-[280px] sm:max-h-[360px] bg-[#F5EFEB] overflow-hidden block">
+                        <div class="relative aspect-[3/4] max-h-[280px] sm:max-h-[360px] bg-[#FAF9F6] overflow-hidden block">
                             <a href="{{ route('shop.product', $product->slug) }}" class="block w-full h-full">
                                 <img 
                                     src="{{ $product->primary_image }}" 
                                     alt="{{ $product->name }} — Modest Fashion" 
                                     loading="lazy" 
-                                    class="w-full h-full object-contain p-2 sm:p-3 filter drop-shadow-sm group-hover:scale-[1.03] transition-transform duration-500 block"
+                                    class="w-full h-full object-contain p-2.5 sm:p-3.5 filter drop-shadow-sm group-hover:scale-[1.04] transition-transform duration-500 block"
                                 >
                             </a>
 
                             <!-- Badges (Never overlap: Preorder on top-left, Category on top-right) -->
                             <div class="absolute top-2.5 left-2.5 flex flex-col gap-1 items-start pointer-events-none">
                                 @if($product->is_preorder)
-                                    <span class="bg-[#BA805E] text-white text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full shadow-sm">
+                                    <span class="bg-[#BA805E] text-white text-[9px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full shadow-xs">
                                         Pre-Order
                                     </span>
                                 @elseif($index === 0)
-                                    <span class="bg-neutral-900 text-white text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full shadow-sm">
+                                    <span class="bg-neutral-900 text-white text-[9px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full shadow-xs">
                                         Terlaris
                                     </span>
                                 @endif
                             </div>
 
-                            <span class="absolute top-2.5 right-2.5 bg-white/95 text-neutral-800 text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full shadow-sm pointer-events-none">
+                            <span class="absolute top-2.5 right-2.5 bg-white/95 text-neutral-800 text-[9px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full shadow-2xs border border-neutral-200/60 pointer-events-none">
                                 {{ ucfirst($product->category) }}
                             </span>
 
