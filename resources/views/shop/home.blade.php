@@ -247,7 +247,7 @@
                     <div 
                         id="runway-model-{{ $idx }}" 
                         onclick="switchLook({{ $idx }})"
-                    <div id="runway-model-{{ $idx }}" onclick="switchLook({{ $idx }})" class="runway-model-item absolute bottom-7 flex flex-col items-center justify-end transition-all duration-500 ease-out cursor-pointer" style="will-change: transform, opacity;">
+                        class="runway-model-item absolute bottom-7 flex flex-col items-center justify-end transition-all duration-500 ease-out cursor-pointer"
                         style="will-change: transform, opacity;"
                     >
                         <!-- Realistic Floor Contact Shadow (No Card Borders) -->
