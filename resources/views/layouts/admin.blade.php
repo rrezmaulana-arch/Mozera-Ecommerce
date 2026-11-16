@@ -193,17 +193,22 @@
                     </div>
                 </div>
 
-                <!-- Right: Role Switcher for Fast Testing -->
+                <!-- Right: Role Switcher for Fast Testing (Strictly local + config demo_login) -->
                 <div class="flex items-center gap-2 sm:gap-3">
+                    @if(app()->environment('local') && config('app.demo_login', false))
                     <div class="hidden md:flex items-center gap-1.5 bg-neutral-900/90 border border-neutral-800 px-2 py-1 rounded-xl">
                         <span class="text-[10px] text-neutral-400 uppercase font-semibold tracking-wider px-1">Peran:</span>
                         @php $allUsers = \App\Models\User::all(); @endphp
                         @foreach($allUsers as $u)
-                            <a href="{{ route('admin.quick-login', $u->id) }}" class="text-[10px] px-2 py-0.5 rounded-lg border transition-all {{ auth()->id() === $u->id ? 'bg-[#BA805E] text-white border-[#BA805E] font-bold shadow-sm' : 'bg-neutral-800 text-neutral-400 border-transparent hover:text-white hover:bg-neutral-700' }}" title="{{ $u->name }}">
-                                {{ ucfirst(explode('_', $u->role)[0]) }}
-                            </a>
+                            <form action="{{ route('admin.quick-login', $u->id) }}" method="POST" class="inline">
+                                @csrf
+                                <button type="submit" class="text-[10px] px-2 py-0.5 rounded-lg border transition-all cursor-pointer {{ auth()->id() === $u->id ? 'bg-[#BA805E] text-white border-[#BA805E] font-bold shadow-sm' : 'bg-neutral-800 text-neutral-400 border-transparent hover:text-white hover:bg-neutral-700' }}" title="{{ $u->name }}">
+                                    {{ ucfirst(explode('_', $u->role)[0]) }}
+                                </button>
+                            </form>
                         @endforeach
                     </div>
+                    @endif
 
                     <a href="{{ route('shop.home') }}" target="_blank" class="px-3 py-1.5 rounded-xl border border-neutral-700 bg-neutral-800/80 hover:bg-neutral-700 text-white text-xs font-semibold flex items-center gap-1.5 transition-colors">
                         <span>Toko</span>

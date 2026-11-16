@@ -15,7 +15,10 @@ class AuthController extends Controller
             return redirect()->route('admin.dashboard');
         }
 
-        $demoUsers = User::where('is_active', true)->get();
+        $demoUsers = (app()->environment('local') && config('app.demo_login', false))
+            ? User::where('is_active', true)->get()
+            : collect();
+
         return view('admin.auth.login', compact('demoUsers'));
     }
 
@@ -26,6 +29,8 @@ class AuthController extends Controller
             'password' => 'required|string',
         ]);
 
+        $credentials['is_active'] = true;
+
         if (Auth::attempt($credentials, $request->boolean('remember'))) {
             $request->session()->regenerate();
             return redirect()->intended(route('admin.dashboard'));
@@ -34,9 +39,13 @@ class AuthController extends Controller
         return back()->withErrors(['email' => 'Email atau kata sandi tidak cocok.'])->withInput();
     }
 
-    public function quickLogin(int $userId)
+    public function quickLogin(Request $request, int $userId)
     {
-        $user = User::findOrFail($userId);
+        if (! (app()->environment('local') && config('app.demo_login', false))) {
+            abort(404);
+        }
+
+        $user = User::where('is_active', true)->findOrFail($userId);
         Auth::login($user);
         return redirect()->route('admin.dashboard')->with('success', "Login sebagai {$user->name} ({$user->role})");
     }

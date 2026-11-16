@@ -33,25 +33,29 @@
 
         <!-- Card Container -->
         <div class="bg-[#141417] border border-neutral-800 rounded-3xl p-6 sm:p-8 shadow-2xl space-y-6">
-            <!-- 1-Click Role Testing / Switcher -->
+            <!-- 1-Click Role Testing / Switcher (Strictly Local + Config Only, POST + CSRF) -->
+            @if(app()->environment('local') && config('app.demo_login', false) && $demoUsers->isNotEmpty())
             <div class="space-y-3">
                 <div class="flex items-center justify-between">
                     <span class="text-[11px] font-bold uppercase tracking-wider text-neutral-400">Pilih Akses Peran (1-Klik Demo):</span>
-                    <span class="text-[10px] text-[#BA805E] font-medium">Bypass Cepat</span>
+                    <span class="text-[10px] text-[#BA805E] font-medium">Bypass Cepat (Local Only)</span>
                 </div>
 
                 <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5 text-xs">
                     @foreach($demoUsers as $user)
-                        <a href="{{ route('admin.quick-login', $user->id) }}" class="p-3.5 rounded-2xl bg-[#1a1a1f] hover:bg-[#22222a] border border-neutral-800 hover:border-[#BA805E]/50 transition-all text-left flex flex-col justify-between group">
-                            <div class="flex items-center justify-between mb-1.5">
-                                <span class="font-bold text-white text-xs group-hover:text-[#DCC3AD] transition-colors truncate">{{ $user->name }}</span>
-                                <span class="w-2 h-2 rounded-full {{ $user->role === 'owner' ? 'bg-[#BA805E]' : ($user->role === 'warehouse_staff' ? 'bg-amber-400' : ($user->role === 'crm_marketer' ? 'bg-cyan-400' : 'bg-emerald-400')) }}"></span>
-                            </div>
-                            <div class="flex items-center justify-between text-[10px]">
-                                <span class="text-neutral-400 uppercase tracking-wider font-semibold">{{ str_replace('_', ' ', $user->role) }}</span>
-                                <span class="text-neutral-500 font-mono text-[9px]">{{ $user->email }}</span>
-                            </div>
-                        </a>
+                        <form action="{{ route('admin.quick-login', $user->id) }}" method="POST" class="w-full">
+                            @csrf
+                            <button type="submit" class="w-full p-3.5 rounded-2xl bg-[#1a1a1f] hover:bg-[#22222a] border border-neutral-800 hover:border-[#BA805E]/50 transition-all text-left flex flex-col justify-between group cursor-pointer">
+                                <div class="flex items-center justify-between mb-1.5 w-full">
+                                    <span class="font-bold text-white text-xs group-hover:text-[#DCC3AD] transition-colors truncate">{{ $user->name }}</span>
+                                    <span class="w-2 h-2 rounded-full {{ $user->role === 'owner' ? 'bg-[#BA805E]' : ($user->role === 'warehouse_staff' ? 'bg-amber-400' : ($user->role === 'crm_marketer' ? 'bg-cyan-400' : 'bg-emerald-400')) }}"></span>
+                                </div>
+                                <div class="flex items-center justify-between text-[10px] w-full">
+                                    <span class="text-neutral-400 uppercase tracking-wider font-semibold">{{ str_replace('_', ' ', $user->role) }}</span>
+                                    <span class="text-neutral-500 font-mono text-[9px]">{{ $user->email }}</span>
+                                </div>
+                            </button>
+                        </form>
                     @endforeach
                 </div>
             </div>
@@ -61,6 +65,7 @@
                 <div class="absolute inset-0 flex items-center"><div class="w-full border-t border-neutral-800/80"></div></div>
                 <div class="relative flex justify-center text-[10px] uppercase tracking-wider"><span class="bg-[#141417] px-3 text-neutral-500">atau login manual kredensial</span></div>
             </div>
+            @endif
 
             <!-- Manual Form -->
             <form action="{{ route('admin.login.submit') }}" method="POST" class="space-y-4 text-xs">
@@ -83,11 +88,12 @@
             </form>
         </div>
 
-        <!-- Credential Info Matrix for User -->
+        <!-- Credential Info Matrix for User (Local Demo Only) -->
+        @if(app()->environment('local') && config('app.demo_login', false))
         <div class="p-5 rounded-3xl bg-[#141417]/60 border border-neutral-800/80 text-xs space-y-3">
             <h3 class="font-bold text-[11px] text-white uppercase tracking-wider flex items-center gap-2">
                 <svg class="w-4 h-4 text-[#BA805E]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                <span>Daftar Akun & Hak Akses Tersedia:</span>
+                <span>Daftar Akun & Hak Akses Tersedia (Local Demo):</span>
             </h3>
             <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-[11px] text-neutral-300">
                 <div class="bg-[#0d0d0f] p-2.5 rounded-xl border border-neutral-800/60">
@@ -113,6 +119,7 @@
             </div>
             <p class="text-[10px] text-neutral-500 text-center">Password untuk semua akun: <span class="font-mono text-[#DCC3AD] font-bold">password123</span></p>
         </div>
+        @endif
 
         <!-- Store Link -->
         <div class="text-center text-xs text-neutral-500">

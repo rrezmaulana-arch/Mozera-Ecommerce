@@ -80,7 +80,8 @@
                 </div>
             </div>
 
-            <!-- Simulation Action Buttons (Testing Sandbox) -->
+            <!-- Simulation Action Buttons (Testing Sandbox - Local / Testing Only) -->
+            @if(app()->environment(['local', 'testing']))
             <div class="pt-6 border-t border-neutral-200 space-y-3">
                 <p class="text-xs font-bold uppercase tracking-wider text-neutral-700 text-center">Simulator Pembayaran Gateway (Sandbox)</p>
                 
@@ -100,6 +101,8 @@
                     </button>
                 </form>
             </div>
+            @endif
+
         </div>
     </div>
 </div>

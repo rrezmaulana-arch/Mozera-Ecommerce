@@ -22,28 +22,35 @@ class AdminAuthTest extends TestCase
         $response->assertRedirect('/admin/login');
     }
 
-    public function test_admin_login_page_loads_with_quick_login(): void
+    public function test_admin_login_page_loads(): void
     {
         $response = $this->get('/admin/login');
         $response->assertStatus(200);
         $response->assertSee('Platform Terpadu');
-        $response->assertSee('Miftah Afreza Maulana');
+        $response->assertSee('email');
     }
 
-    public function test_quick_login_works_and_accesses_dashboard(): void
+    public function test_quick_login_route_is_404_in_non_local_environment(): void
     {
-        $owner = User::where('role', 'owner')->first();
-        $this->assertNotNull($owner);
+        $owner = User::where('role', 'owner')->firstOrFail();
 
-        $loginResponse = $this->get(route('admin.quick-login', $owner->id));
+        // In non-local environment, quick-login route must be 404
+        $this->get('/admin/quick-login/' . $owner->id)->assertStatus(404);
+        $this->post('/admin/quick-login/' . $owner->id)->assertStatus(404);
+
+        // Standard credential login works
+        $loginResponse = $this->post('/admin/login', [
+            'email' => $owner->email,
+            'password' => 'password123',
+        ]);
         $loginResponse->assertRedirect(route('admin.dashboard'));
-
         $this->assertAuthenticatedAs($owner);
 
         $dashResponse = $this->actingAs($owner)->get('/admin');
         $dashResponse->assertStatus(200);
         $dashResponse->assertSee('Command Center');
     }
+
 
     public function test_role_based_smart_redirects(): void
     {

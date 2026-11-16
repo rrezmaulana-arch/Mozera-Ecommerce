@@ -20,7 +20,12 @@ class PaymentController extends Controller
 
     public function simulateSuccess(Request $request, string $ulid)
     {
+        if (! app()->environment(['local', 'testing'])) {
+            abort(404);
+        }
+
         $order = Order::where('ulid', $ulid)->with('payments')->firstOrFail();
+
 
         if ($order->status !== 'pending_payment') {
             return redirect()->route('shop.order.payment', $ulid)->with('info', 'Status pembayaran pesanan ini sudah: ' . $order->status);
@@ -55,7 +60,12 @@ class PaymentController extends Controller
 
     public function simulateExpire(Request $request, string $ulid)
     {
+        if (! app()->environment(['local', 'testing'])) {
+            abort(404);
+        }
+
         $order = Order::where('ulid', $ulid)->firstOrFail();
+
 
         if ($order->status === 'pending_payment') {
             $order->update([

@@ -30,10 +30,14 @@ Route::post('/cart/voucher/remove', [CartController::class, 'removeVoucher'])->n
 Route::get('/checkout', [CheckoutController::class, 'index'])->name('shop.checkout');
 Route::post('/checkout', [CheckoutController::class, 'process'])->name('shop.checkout.process');
 
-// Hosted Payment Simulator
+// Hosted Payment Simulator (Active only in local & testing environments)
 Route::get('/order/{ulid}/payment', [PaymentController::class, 'show'])->name('shop.order.payment');
-Route::post('/order/{ulid}/payment/simulate', [PaymentController::class, 'simulateSuccess'])->name('shop.order.payment.simulate');
-Route::post('/order/{ulid}/payment/expire', [PaymentController::class, 'simulateExpire'])->name('shop.order.payment.expire');
+
+if (app()->environment(['local', 'testing'])) {
+    Route::post('/order/{ulid}/payment/simulate', [PaymentController::class, 'simulateSuccess'])->name('shop.order.payment.simulate');
+    Route::post('/order/{ulid}/payment/expire', [PaymentController::class, 'simulateExpire'])->name('shop.order.payment.expire');
+}
+
 
 // Self-service Order Tracking
 Route::get('/tracking', [TrackingController::class, 'index'])->name('shop.tracking');
