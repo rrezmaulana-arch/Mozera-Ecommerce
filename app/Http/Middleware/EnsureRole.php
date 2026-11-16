@@ -36,3 +36,4 @@ class EnsureRole
         abort(403, 'Akses Ditolak: Peran akun Anda (' . ($user->role ?? 'tamu') . ') tidak memiliki wewenang untuk membuka modul ini.');
     }
 }
+
