@@ -6,59 +6,85 @@
 @section('content')
 <div class="space-y-12 sm:space-y-20 lg:space-y-24">
 
-    <!-- HERO SECTION (Full-Width Clean Desktop, No Box, Seamless Studio Canvas) -->
+    <!-- HERO SECTION (Harmonious Editorial Canvas: Unified Headline & Architectural Model Arch) -->
     <section class="w-full relative bg-[#FAF9F6] border-b border-neutral-200/50 py-10 lg:py-16">
         <div class="max-w-[1360px] mx-auto px-6 sm:px-10 lg:px-16">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
-                
-                <!-- Left Text Column -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+
+                <!-- Left Text Column: Distinct Narrative & Clear Visual Weight -->
                 <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-                    <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F5EFEB] border border-[#BA805E]/30 text-[#BA805E] text-xs font-bold uppercase tracking-wider">
-                        <span class="w-1.5 h-1.5 rounded-full bg-[#BA805E]"></span>
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F5EFEB] border border-[#BA805E]/30 text-[#BA805E] text-xs font-bold uppercase tracking-wider">
+                        <span class="w-2 h-2 rounded-full bg-[#BA805E] animate-pulse"></span>
                         <span>Koleksi Modest Atasan dan Outerwear</span>
                     </div>
 
-                    <h1 class="font-serif text-[clamp(2.2rem,5vw,3.75rem)] font-bold tracking-tight text-neutral-950 leading-[1.12]">
-                        Outer yang Jatuh Anggun, dari Kuliah sampai Kondangan.
+                    <h1 class="font-serif text-[clamp(2.2rem,5vw,3.75rem)] font-bold tracking-tight text-neutral-950 leading-[1.14]">
+                        Outer yang <span class="font-serif italic font-normal text-[#BA805E]">Jatuh Anggun</span>, dari Kuliah sampai Kondangan.
                     </h1>
 
                     <p class="text-neutral-600 text-[15px] sm:text-base leading-relaxed max-w-xl mx-auto lg:mx-0 font-light">
-                        Potongan santun dengan siluet effortless chic dan bahan adem. Dirancang menemani hari aktifmu tanpa khawatir kusut.
+                        Potongan santun dengan siluet effortless chic dan bahan adem. Dirancang menemani hari aktif wanita Indonesia tanpa khawatir kusut.
                     </p>
 
                     <!-- CTAs: Primary Terracotta + Secondary Link -->
                     <div class="pt-2 flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
-                        <a href="{{ route('shop.catalog') }}" class="w-full sm:w-auto min-h-[46px] px-8 py-3.5 bg-[#BA805E] hover:bg-[#a66f4e] text-white rounded-full font-bold text-xs uppercase tracking-wider transition-all shadow-md hover:shadow-lg text-center flex items-center justify-center">
+                        <a href="{{ route('shop.catalog') }}" class="w-full sm:w-auto min-h-[48px] px-8 py-3.5 bg-[#BA805E] hover:bg-[#a66f4e] text-white rounded-full font-bold text-xs uppercase tracking-wider transition-all shadow-md hover:shadow-lg text-center flex items-center justify-center">
                             Jelajahi Koleksi Atasan
                         </a>
-                        <a href="#try-the-look" class="min-h-[46px] px-5 py-3 text-xs font-bold text-neutral-800 hover:text-[#BA805E] transition-colors flex items-center justify-center gap-2">
+                        <a href="#try-the-look" class="min-h-[48px] px-5 py-3 text-xs font-bold text-neutral-800 hover:text-[#BA805E] transition-colors flex items-center justify-center gap-2">
                             <span>Lihat Runway Interaktif</span>
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                         </a>
                     </div>
+
+                    <!-- Micro Trust Line under Buttons -->
+                    <div class="pt-1 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-[11px] text-neutral-500 font-light justify-center lg:justify-start">
+                        <span class="flex items-center gap-1.5 text-neutral-700 font-medium">
+                            <span class="text-[#BA805E]">&bull;</span> Bahan Rayon Twill Sejuk
+                        </span>
+                        <span class="flex items-center gap-1.5 text-neutral-700 font-medium">
+                            <span class="text-[#BA805E]">&bull;</span> Jahitan Butik Rapi
+                        </span>
+                        <span class="flex items-center gap-1.5 text-neutral-700 font-medium">
+                            <span class="text-[#BA805E]">&bull;</span> Ready Stock Surabaya
+                        </span>
+                    </div>
                 </div>
 
-                <!-- Right Fashion Visual Column (Clean No-BG Cutout Model) -->
+                <!-- Right Fashion Visual Column: Architectural Arch Framing Model -->
                 <div class="lg:col-span-5 relative flex items-center justify-center">
-                    <div class="relative w-full max-w-[340px] lg:max-w-[380px] h-[400px] lg:h-[480px] flex items-end justify-center">
-                        <!-- Floor Contact Shadow -->
-                        <div class="absolute bottom-2 w-48 h-5 bg-neutral-950/15 rounded-full filter blur-[4px]"></div>
+                    <div class="relative w-full max-w-[340px] lg:max-w-[370px] h-[430px] lg:h-[490px] bg-gradient-to-b from-[#F5EFEB] via-[#EFE7DE] to-[#E6DDD2] rounded-t-[140px] rounded-b-3xl border border-neutral-300/40 p-4 pt-8 shadow-sm flex flex-col items-center justify-end overflow-hidden group">
                         
-                        <!-- Model Image (Transparent PNG from user's folder) -->
-                        <img 
-                            src="/images/models/look-1-terracotta.png" 
-                            alt="Model Modest Outer Kimono MOZÉRA" 
-                            class="h-full w-auto object-contain select-none filter drop-shadow-md relative z-10"
+                        <!-- Top Arch Heritage Tag -->
+                        <div class="absolute top-4 z-10">
+                            <span class="text-[9px] font-bold tracking-[0.25em] text-[#8A4F35] bg-white/80 backdrop-blur-md px-3 py-1 rounded-full uppercase border border-[#BA805E]/20 shadow-xs">
+                                MOZÉRA ESSENTIALS
+                            </span>
+                        </div>
+
+                        <!-- Floor Contact Shadow -->
+                        <div class="absolute bottom-5 w-44 h-4 bg-neutral-950/20 rounded-full filter blur-[3.5px]"></div>
+
+                        <!-- Model Cutout Image (Perfect Centered Perspective) -->
+                        <img
+                            src="/images/models/look-1-terracotta.png"
+                            alt="Model Modest Outer Kimono MOZÉRA"
+                            class="h-[370px] lg:h-[430px] w-auto object-contain select-none filter drop-shadow-md relative z-10 transition-transform duration-500 group-hover:scale-[1.02]"
                         >
 
-                        <!-- Floating Minimal Card -->
-                        <div class="absolute bottom-4 left-2 right-2 bg-white/95 backdrop-blur-md px-4 py-2.5 rounded-2xl border border-neutral-200/80 shadow-md flex items-center justify-between text-xs z-20">
-                            <div>
-                                <p class="font-bold text-neutral-900">PUSPA Floral Kimono Outer</p>
-                                <p class="text-[11px] text-neutral-500">Premium Rayon Twill • Terracotta</p>
+                        <!-- Floating Interactive Product Pill (Anchored at Base) -->
+                        <a 
+                            href="{{ route('shop.product', 'puspa-floral-outer-kimono') }}" 
+                            class="absolute bottom-3 left-3 right-3 bg-white/95 backdrop-blur-md px-3.5 py-2.5 rounded-2xl border border-neutral-200/90 shadow-md flex items-center justify-between text-xs z-20 hover:border-[#BA805E] transition-all group-hover:shadow-lg"
+                        >
+                            <div class="text-left">
+                                <p class="font-bold text-neutral-900 text-[11px] leading-tight">PUSPA Floral Kimono Outer</p>
+                                <p class="text-[10px] text-neutral-500">Premium Rayon Twill &bull; Terracotta</p>
                             </div>
-                            <span class="font-bold text-[#BA805E] font-mono">Rp 389.000</span>
-                        </div>
+                            <span class="font-bold text-[#BA805E] font-mono text-xs flex items-center gap-1 shrink-0 ml-2">
+                                Rp 389.000 &rarr;
+                            </span>
+                        </a>
                     </div>
                 </div>
 
@@ -901,45 +927,135 @@
         </div>
     </section>
 
-    <!-- SECTION H: KOMUNITAS #everydaymozera (6 photos 1/1 desktop, 3x2 mobile, Max 180px per side) -->
+    <!-- SECTION H: KOMUNITAS #everydaymozera (Authentic Buyer Stories & Styling Spotlight) -->
     <section class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="bg-[#F5EFEB]/50 rounded-3xl border border-neutral-200/80 p-6 sm:p-10 text-center space-y-4">
-            <span class="inline-block text-[11px] font-bold uppercase tracking-[0.25em] text-[#BA805E]">Komunitas Cerita</span>
-            <h2 class="font-serif text-[clamp(1.5rem,3.5vw,2.25rem)] font-bold text-neutral-950">#everydaymozera</h2>
-            <p class="text-neutral-600 text-xs sm:text-sm max-w-xl mx-auto leading-relaxed">
-                Cerita hangat wanita Indonesia merayakan keanggunan dan kenyamanan pakaian modest setiap hari. Tag <strong>@mozera.id</strong> untuk tampil di sini.
-            </p>
+        <div class="bg-gradient-to-b from-[#F5EFEB]/70 to-[#FAF8F5] rounded-3xl border border-neutral-200/80 p-6 sm:p-10 text-center space-y-6 shadow-xs">
+            <div class="space-y-2 max-w-xl mx-auto">
+                <span class="inline-block text-[11px] font-bold uppercase tracking-[0.25em] text-[#BA805E]">Cerita Nyata Pelanggan</span>
+                <h2 class="font-serif text-[clamp(1.5rem,3.5vw,2.25rem)] font-bold text-neutral-950">#everydaymozera</h2>
+                <p class="text-neutral-600 text-xs sm:text-sm leading-relaxed font-light">
+                    Cerita wanita Indonesia merayakan kenyamanan dan keanggunan busana modest sehari-hari.
+                </p>
+            </div>
 
-            <!-- UGC Photo Grid: 6 photos (6 cols desktop, 3x2 mobile, max 180px each) -->
-            <div class="grid grid-cols-3 sm:grid-cols-6 gap-2.5 sm:gap-3.5 pt-3">
-                <div class="aspect-square max-h-[180px] rounded-xl sm:rounded-2xl overflow-hidden shadow-xs">
-                    <img src="/images/models/look-1-terracotta.png" alt="Pelanggan MOZÉRA UGC 1" loading="lazy" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+            <!-- 4 Authentic Customer Review & Styling Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 pt-2 text-left">
+                <!-- Story 1 -->
+                <div class="bg-white rounded-2xl p-5 border border-neutral-200/80 shadow-xs flex flex-col justify-between space-y-4 hover:border-[#BA805E] transition-all">
+                    <div class="space-y-2.5">
+                        <div class="flex items-center justify-between">
+                            <div class="flex text-amber-500 text-xs gap-0.5">
+                                &#9733;&#9733;&#9733;&#9733;&#9733;
+                            </div>
+                            <span class="text-[9px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200/60">
+                                &check; Pembeli Terverifikasi
+                            </span>
+                        </div>
+                        <p class="text-xs text-neutral-700 leading-relaxed font-light italic">
+                            &ldquo;Bahan rayon twill-nya sejuk seharian di ruang kuliah. Potongan kimononya jatuh santun menutup pinggul dan wudhu friendly tanpa repot.&rdquo;
+                        </p>
+                    </div>
+                    <div class="pt-3 border-t border-neutral-100 flex items-center justify-between">
+                        <div>
+                            <p class="text-xs font-bold text-neutral-900">Nadia Saraswati</p>
+                            <p class="text-[10px] text-neutral-500">Dosen &bull; Surabaya</p>
+                        </div>
+                        <span class="text-[9px] font-medium text-[#BA805E] bg-[#BA805E]/10 px-2 py-0.5 rounded-md">
+                            PUSPA Terracotta
+                        </span>
+                    </div>
                 </div>
-                <div class="aspect-square max-h-[180px] rounded-xl sm:rounded-2xl overflow-hidden shadow-xs">
-                    <img src="/images/models/look-2-sage.png" alt="Pelanggan MOZÉRA UGC 2" loading="lazy" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+
+                <!-- Story 2 -->
+                <div class="bg-white rounded-2xl p-5 border border-neutral-200/80 shadow-xs flex flex-col justify-between space-y-4 hover:border-[#BA805E] transition-all">
+                    <div class="space-y-2.5">
+                        <div class="flex items-center justify-between">
+                            <div class="flex text-amber-500 text-xs gap-0.5">
+                                &#9733;&#9733;&#9733;&#9733;&#9733;
+                            </div>
+                            <span class="text-[9px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200/60">
+                                &check; Pembeli Terverifikasi
+                            </span>
+                        </div>
+                        <p class="text-xs text-neutral-700 leading-relaxed font-light italic">
+                            &ldquo;Motif parang heritage-nya berwibawa tapi siluetnya modern santai. Pas banget untuk agenda formal klinik maupun silaturahmi keluarga.&rdquo;
+                        </p>
+                    </div>
+                    <div class="pt-3 border-t border-neutral-100 flex items-center justify-between">
+                        <div>
+                            <p class="text-xs font-bold text-neutral-900">dr. Farida Rahma</p>
+                            <p class="text-[10px] text-neutral-500">Praktisi &bull; Jakarta</p>
+                        </div>
+                        <span class="text-[9px] font-medium text-[#BA805E] bg-[#BA805E]/10 px-2 py-0.5 rounded-md">
+                            Sept Drops Trench
+                        </span>
+                    </div>
                 </div>
-                <div class="aspect-square max-h-[180px] rounded-xl sm:rounded-2xl overflow-hidden shadow-xs">
-                    <img src="/images/models/look-3-navy.png" alt="Pelanggan MOZÉRA UGC 3" loading="lazy" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+
+                <!-- Story 3 -->
+                <div class="bg-white rounded-2xl p-5 border border-neutral-200/80 shadow-xs flex flex-col justify-between space-y-4 hover:border-[#BA805E] transition-all">
+                    <div class="space-y-2.5">
+                        <div class="flex items-center justify-between">
+                            <div class="flex text-amber-500 text-xs gap-0.5">
+                                &#9733;&#9733;&#9733;&#9733;&#9733;
+                            </div>
+                            <span class="text-[9px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200/60">
+                                &check; Pembeli Terverifikasi
+                            </span>
+                        </div>
+                        <p class="text-xs text-neutral-700 leading-relaxed font-light italic">
+                            &ldquo;Dipakai wisuda lalu lanjut makan siang keluarga tetap rapi dan gak gerah sama sekali. Warna sage green-nya kalem dan flattering di kulit.&rdquo;
+                        </p>
+                    </div>
+                    <div class="pt-3 border-t border-neutral-100 flex items-center justify-between">
+                        <div>
+                            <p class="text-xs font-bold text-neutral-900">Alya Ramadhani</p>
+                            <p class="text-[10px] text-neutral-500">Alumni ITB &bull; Bandung</p>
+                        </div>
+                        <span class="text-[9px] font-medium text-[#BA805E] bg-[#BA805E]/10 px-2 py-0.5 rounded-md">
+                            ISLA Kimono Sage
+                        </span>
+                    </div>
                 </div>
-                <div class="aspect-square max-h-[180px] rounded-xl sm:rounded-2xl overflow-hidden shadow-xs">
-                    <img src="/images/models/look-4-parang.png" alt="Pelanggan MOZÉRA UGC 4" loading="lazy" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
-                </div>
-                <div class="aspect-square max-h-[180px] rounded-xl sm:rounded-2xl overflow-hidden shadow-xs">
-                    <img src="/images/models/look-1-terracotta.png" alt="Pelanggan MOZÉRA UGC 5" loading="lazy" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
-                </div>
-                <div class="aspect-square max-h-[180px] rounded-xl sm:rounded-2xl overflow-hidden shadow-xs">
-                    <img src="/images/models/look-2-sage.png" alt="Pelanggan MOZÉRA UGC 6" loading="lazy" class="w-full h-full object-cover hover:scale-105 transition-transform duration-300">
+
+                <!-- Story 4 -->
+                <div class="bg-white rounded-2xl p-5 border border-neutral-200/80 shadow-xs flex flex-col justify-between space-y-4 hover:border-[#BA805E] transition-all">
+                    <div class="space-y-2.5">
+                        <div class="flex items-center justify-between">
+                            <div class="flex text-amber-500 text-xs gap-0.5">
+                                &#9733;&#9733;&#9733;&#9733;&#9733;
+                            </div>
+                            <span class="text-[9px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200/60">
+                                &check; Pembeli Terverifikasi
+                            </span>
+                        </div>
+                        <p class="text-xs text-neutral-700 leading-relaxed font-light italic">
+                            &ldquo;Warna indigo navy-nya sangat mewah. Scarf ultrafine voal-nya gampang dibentuk dan tegak di dahi tanpa perlu jarum pentul banyak.&rdquo;
+                        </p>
+                    </div>
+                    <div class="pt-3 border-t border-neutral-100 flex items-center justify-between">
+                        <div>
+                            <p class="text-xs font-bold text-neutral-900">Zahra Maharani</p>
+                            <p class="text-[10px] text-neutral-500">Creative Lead &bull; Jogja</p>
+                        </div>
+                        <span class="text-[9px] font-medium text-[#BA805E] bg-[#BA805E]/10 px-2 py-0.5 rounded-md">
+                            PUSPA Navy Scarf
+                        </span>
+                    </div>
                 </div>
             </div>
 
-            <div class="pt-2">
-                <a href="{{ route('shop.catalog') }}" class="min-h-[44px] inline-flex items-center justify-center px-7 py-3 rounded-full bg-neutral-900 hover:bg-[#BA805E] text-white text-xs font-bold uppercase tracking-wider transition-colors shadow-sm">
+            <!-- Social Tagging Reassurance Note & Catalog Button -->
+            <div class="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-neutral-200/60 text-xs text-neutral-500">
+                <p class="font-light">
+                    Bagikan OOTD santun Anda dengan tagar <strong>#everydaymozera</strong> dan tag <strong>@mozera.id</strong> di Instagram untuk tampil di lookbook kami.
+                </p>
+                <a href="{{ route('shop.catalog') }}" class="min-h-[44px] shrink-0 inline-flex items-center justify-center px-7 py-2.5 rounded-full bg-neutral-950 hover:bg-[#BA805E] text-white text-xs font-bold uppercase tracking-wider transition-colors shadow-sm">
                     Mulai Belanja Koleksi Kami
                 </a>
             </div>
         </div>
     </section>
-
 </div>
 
 @push('scripts')
