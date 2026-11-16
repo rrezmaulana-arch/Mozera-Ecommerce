@@ -29,73 +29,109 @@ class ShopController extends Controller
         $septTrench = Product::with('skus')->where('slug', 'sept-drops-heritage-linen-trench')->first() ?? $featuredProducts->skip(2)->first() ?? $puspaOuter;
         $islaDress = Product::with('skus')->where('slug', 'isla-tiered-midi-dress')->first() ?? $featuredProducts->skip(3)->first() ?? $puspaOuter;
 
-        $curatedLooks = collect();
-
-        if ($puspaOuter && $puspaOuter->skus->isNotEmpty()) {
-            $curatedLooks->push([
+        // 8 Curated Looks from Folder 'gambar' (Tipe A: Siluet Klasik Lurus vs Tipe B: Siluet Fringe Rumbai)
+        $islaOuter = Product::with('skus')->where('slug', 'isla-geometrik-kimono-outer')->first() ?? $puspaOuter;
+        $defaultHeroSku = $puspaOuter?->skus->first();
+        $defaultSecSku = $puspaScarf?->skus->first();
+        
+        $curatedLooks = collect([
+            [
                 'id' => 1,
-                'tag' => '01 • KAJIAN & CASUAL',
+                'type' => 'Tipe A',
+                'type_label' => 'Tipe A: Siluet Lurus Klasik',
                 'title' => 'PUSPA Terracotta Kimono',
-                'vibe' => 'Outer berpotongan kimono dengan detail motif terakota hangat, dipadukan voal printed ultrafine.',
-                'model_image' => '/images/models/look-1-terracotta.png',
-                'hanger_image' => '/images/models/look-1-terracotta.png',
+                'vibe' => 'Potongan kimono lurus klasik dengan detail motif flora terakota hangat.',
+                'model_image' => '/images/models/outer-a-4.png',
                 'hero_product' => $puspaOuter,
-                'hero_sku' => $puspaOuter->skus->where('color', 'Terracotta')->first() ?? $puspaOuter->skus->first(),
-                'hero_role' => 'Kimono Outer Terakota',
-                'secondary_product' => $puspaScarf,
-                'secondary_sku' => $puspaScarf?->skus->where('sku_code', 'PUSPA-SCF-DPK-120')->first() ?? $puspaScarf?->skus->first() ?? $puspaOuter->skus->first(),
-                'secondary_role' => 'Scarf Voal Ultrafine Dusty Pink',
-                'bundle_discount_pct' => 10,
-            ]);
-
-            $curatedLooks->push([
+                'hero_sku' => $puspaOuter?->skus->where('color', 'Terracotta')->first() ?? $defaultHeroSku,
+                'secondary_sku' => $defaultSecSku,
+                'product_url' => route('shop.product', $puspaOuter->slug),
+            ],
+            [
                 'id' => 2,
-                'tag' => '02 • KANTOR & SILATURAHMI',
-                'title' => 'PUSPA Sage Geometrik Outer',
-                'vibe' => 'Nuansa sage green adem dengan motif tenun geometrik eksklusif untuk silaturahmi & hari kerja.',
-                'model_image' => '/images/models/look-2-sage.png',
-                'hanger_image' => '/images/models/look-2-sage.png',
-                'hero_product' => $puspaOuter,
-                'hero_sku' => $puspaOuter->skus->where('color', 'Sage Green')->first() ?? $puspaOuter->skus->first(),
-                'hero_role' => 'Kimono Outer Sage Green',
-                'secondary_product' => $puspaScarf,
-                'secondary_sku' => $puspaScarf?->skus->where('sku_code', 'PUSPA-SCF-OLV-120')->first() ?? $puspaScarf?->skus->first() ?? $puspaOuter->skus->first(),
-                'secondary_role' => 'Scarf Voal Segiempat Olive Ash',
-                'bundle_discount_pct' => 10,
-            ]);
-
-            $curatedLooks->push([
+                'type' => 'Tipe B',
+                'type_label' => 'Tipe B: Siluet Fringe Rumbai',
+                'title' => 'ISLA Sage Fringe Kimono',
+                'vibe' => 'Kimono beraksen rumbai (fringe) halus bernuansa sage green adem.',
+                'model_image' => '/images/models/outer-b-1.png',
+                'hero_product' => $islaOuter,
+                'hero_sku' => $islaOuter?->skus->first() ?? $defaultHeroSku,
+                'secondary_sku' => $defaultSecSku,
+                'product_url' => route('shop.product', $islaOuter->slug),
+            ],
+            [
                 'id' => 3,
-                'tag' => '03 • JAMUAN FORMAL',
-                'title' => 'PUSPA Indigo Midnight Kimono',
-                'vibe' => 'Palet indigo navy anggun dengan ornamen flora klasik untuk tampilan santun berwibawa.',
-                'model_image' => '/images/models/look-3-navy.png',
-                'hanger_image' => '/images/models/look-3-navy.png',
-                'hero_product' => $puspaOuter,
-                'hero_sku' => $puspaOuter->skus->where('color', 'Indigo Navy')->first() ?? $puspaOuter->skus->first(),
-                'hero_role' => 'Kimono Outer Indigo Navy',
-                'secondary_product' => $puspaScarf,
-                'secondary_sku' => $puspaScarf?->skus->first() ?? $puspaOuter->skus->first(),
-                'secondary_role' => 'Scarf Voal Ultrafine Glow',
-                'bundle_discount_pct' => 10,
-            ]);
-
-            $curatedLooks->push([
-                'id' => 4,
-                'tag' => '04 • KONDANGAN & ELEGAN',
-                'title' => 'PUSPA Parang Heritage Outer',
-                'vibe' => 'Motif parang klasik cokelat hangat yang timeless dan mewah untuk beragam momen istimewa.',
-                'model_image' => '/images/models/look-4-parang.png',
-                'hanger_image' => '/images/models/look-4-parang.png',
+                'type' => 'Tipe A',
+                'type_label' => 'Tipe A: Siluet Lurus Klasik',
+                'title' => 'Heritage Parang Kimono',
+                'vibe' => 'Motif parang klasik cokelat hangat yang berwibawa dan anggun.',
+                'model_image' => '/images/models/outer-a-1.png',
                 'hero_product' => $septTrench ?? $puspaOuter,
-                'hero_sku' => ($septTrench ?? $puspaOuter)->skus->first(),
-                'hero_role' => 'Kimono Outer Parang Heritage',
-                'secondary_product' => $puspaScarf,
-                'secondary_sku' => $puspaScarf?->skus->first() ?? $puspaOuter->skus->first(),
-                'secondary_role' => 'Scarf Voal Ultrafine 120x120',
-                'bundle_discount_pct' => 10,
-            ]);
-        }
+                'hero_sku' => ($septTrench ?? $puspaOuter)?->skus->first() ?? $defaultHeroSku,
+                'secondary_sku' => $defaultSecSku,
+                'product_url' => route('shop.product', ($septTrench ?? $puspaOuter)->slug),
+            ],
+            [
+                'id' => 4,
+                'type' => 'Tipe B',
+                'type_label' => 'Tipe B: Siluet Fringe Rumbai',
+                'title' => 'Midnight Indigo Fringe Outer',
+                'vibe' => 'Aksen rumbai mewah berpadu tenun indigo malam yang memikat.',
+                'model_image' => '/images/models/outer-b-4.png',
+                'hero_product' => $islaOuter,
+                'hero_sku' => $islaOuter?->skus->first() ?? $defaultHeroSku,
+                'secondary_sku' => $defaultSecSku,
+                'product_url' => route('shop.product', $islaOuter->slug),
+            ],
+            [
+                'id' => 5,
+                'type' => 'Tipe A',
+                'type_label' => 'Tipe A: Siluet Lurus Klasik',
+                'title' => 'Charcoal Slate Floral Kimono',
+                'vibe' => 'Nuansa monokromatik abu anggun dengan motif flora terstruktur.',
+                'model_image' => '/images/models/outer-a-2.png',
+                'hero_product' => $puspaOuter,
+                'hero_sku' => $defaultHeroSku,
+                'secondary_sku' => $defaultSecSku,
+                'product_url' => route('shop.product', $puspaOuter->slug),
+            ],
+            [
+                'id' => 6,
+                'type' => 'Tipe B',
+                'type_label' => 'Tipe B: Siluet Fringe Rumbai',
+                'title' => 'Ivory Sand Lace Fringe Outer',
+                'vibe' => 'Bahan lembut berongga dengan aksen rumbai bohemia berkelas.',
+                'model_image' => '/images/models/outer-b-2.png',
+                'hero_product' => $islaOuter,
+                'hero_sku' => $islaOuter?->skus->first() ?? $defaultHeroSku,
+                'secondary_sku' => $defaultSecSku,
+                'product_url' => route('shop.product', $islaOuter->slug),
+            ],
+            [
+                'id' => 7,
+                'type' => 'Tipe A',
+                'type_label' => 'Tipe A: Siluet Lurus Klasik',
+                'title' => 'Warm Ochre Etnik Kimono',
+                'vibe' => 'Warna bumi ochre hangat yang mudah dipadupadankan untuk hangout santun.',
+                'model_image' => '/images/models/outer-a-3.png',
+                'hero_product' => $puspaOuter,
+                'hero_sku' => $defaultHeroSku,
+                'secondary_sku' => $defaultSecSku,
+                'product_url' => route('shop.product', $puspaOuter->slug),
+            ],
+            [
+                'id' => 8,
+                'type' => 'Tipe B',
+                'type_label' => 'Tipe B: Siluet Fringe Rumbai',
+                'title' => 'Burgundy Wine Fringe Kimono',
+                'vibe' => 'Warna marun anggun dengan rumbai dinamis yang flowy saat melangkah.',
+                'model_image' => '/images/models/outer-b-3.png',
+                'hero_product' => $islaOuter,
+                'hero_sku' => $islaOuter?->skus->first() ?? $defaultHeroSku,
+                'secondary_sku' => $defaultSecSku,
+                'product_url' => route('shop.product', $islaOuter->slug),
+            ],
+        ]);
 
         return view('shop.home', compact('series', 'featuredProducts', 'liveDrop', 'curatedLooks'));
     }
