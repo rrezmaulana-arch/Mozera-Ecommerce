@@ -53,35 +53,35 @@
 
                 <!-- Right Fashion Visual Column: Architectural Arch Framing Model -->
                 <div class="lg:col-span-5 relative flex items-center justify-center">
-                    <div class="relative w-full max-w-[340px] lg:max-w-[370px] h-[430px] lg:h-[490px] bg-gradient-to-b from-[#F5EFEB] via-[#EFE7DE] to-[#E6DDD2] rounded-t-[140px] rounded-b-3xl border border-neutral-300/40 p-4 pt-8 shadow-sm flex flex-col items-center justify-end overflow-hidden group">
+                    <div class="relative w-full max-w-[270px] sm:max-w-[330px] lg:max-w-[370px] h-[330px] sm:h-[410px] lg:h-[480px] bg-gradient-to-b from-[#F5EFEB] via-[#EFE7DE] to-[#E6DDD2] rounded-t-[110px] sm:rounded-t-[140px] rounded-b-2xl sm:rounded-b-3xl border border-neutral-300/40 p-3 sm:p-4 pt-6 sm:pt-8 shadow-sm flex flex-col items-center justify-end overflow-hidden group">
                         
                         <!-- Top Arch Heritage Tag -->
-                        <div class="absolute top-4 z-10">
-                            <span class="text-[9px] font-bold tracking-[0.25em] text-[#8A4F35] bg-white/80 backdrop-blur-md px-3 py-1 rounded-full uppercase border border-[#BA805E]/20 shadow-xs">
+                        <div class="absolute top-3 sm:top-4 z-10">
+                            <span class="text-[8px] sm:text-[9px] font-bold tracking-[0.25em] text-[#8A4F35] bg-white/80 backdrop-blur-md px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full uppercase border border-[#BA805E]/20 shadow-xs">
                                 MOZÉRA ESSENTIALS
                             </span>
                         </div>
 
                         <!-- Floor Contact Shadow -->
-                        <div class="absolute bottom-5 w-44 h-4 bg-neutral-950/20 rounded-full filter blur-[3.5px]"></div>
+                        <div class="absolute bottom-4 sm:bottom-5 w-36 sm:w-44 h-3.5 sm:h-4 bg-neutral-950/20 rounded-full filter blur-[3.5px]"></div>
 
                         <!-- Model Cutout Image (Perfect Centered Perspective) -->
                         <img
                             src="/images/models/look-1-terracotta.png"
                             alt="Model Modest Outer Kimono MOZÉRA"
-                            class="h-[370px] lg:h-[430px] w-auto object-contain select-none filter drop-shadow-md relative z-10 transition-transform duration-500 group-hover:scale-[1.02]"
+                            class="h-[280px] sm:h-[350px] lg:h-[420px] w-auto object-contain select-none filter drop-shadow-md relative z-10 transition-transform duration-500 group-hover:scale-[1.02]"
                         >
 
                         <!-- Floating Interactive Product Pill (Anchored at Base) -->
                         <a 
                             href="{{ route('shop.product', 'puspa-floral-outer-kimono') }}" 
-                            class="absolute bottom-3 left-3 right-3 bg-white/95 backdrop-blur-md px-3.5 py-2.5 rounded-2xl border border-neutral-200/90 shadow-md flex items-center justify-between text-xs z-20 hover:border-[#BA805E] transition-all group-hover:shadow-lg"
+                            class="absolute bottom-2.5 sm:bottom-3 left-2.5 sm:left-3 right-2.5 sm:right-3 bg-white/95 backdrop-blur-md px-3 py-2 sm:px-3.5 sm:py-2.5 rounded-xl sm:rounded-2xl border border-neutral-200/90 shadow-md flex items-center justify-between text-xs z-20 hover:border-[#BA805E] transition-all group-hover:shadow-lg"
                         >
                             <div class="text-left">
-                                <p class="font-bold text-neutral-900 text-[11px] leading-tight">PUSPA Floral Kimono Outer</p>
-                                <p class="text-[10px] text-neutral-500">Premium Rayon Twill &bull; Terracotta</p>
+                                <p class="font-bold text-neutral-900 text-[10px] sm:text-[11px] leading-tight truncate">PUSPA Floral Kimono Outer</p>
+                                <p class="text-[9px] sm:text-[10px] text-neutral-500 truncate">Premium Rayon Twill &bull; Terracotta</p>
                             </div>
-                            <span class="font-bold text-[#BA805E] font-mono text-xs flex items-center gap-1 shrink-0 ml-2">
+                            <span class="font-bold text-[#BA805E] font-mono text-[11px] sm:text-xs flex items-center gap-1 shrink-0 ml-1.5">
                                 Rp 389.000 &rarr;
                             </span>
                         </a>
@@ -290,30 +290,30 @@
             </p>
         </div>
 
-        <!-- FULL RUNWAY STAGE (Center Stage Runway, Zero Price Clutter, Model Lebih Besar) -->
+        <!-- FULL RUNWAY STAGE (Center Stage Runway, Zero Price Clutter, Fluid Scaling) -->
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col items-center justify-center my-auto">
             
-            <!-- Models Runway Stage (Wide Center Runway, No Overflow Leak to Page) -->
-            <div class="relative w-full h-[420px] sm:h-[480px] lg:h-[530px] flex items-center justify-center pb-5 overflow-hidden" id="open-runway-stage">
+            <!-- Models Runway Stage (Wide Center Runway, Fluid Responsive Height) -->
+            <div class="relative w-full h-[320px] sm:h-[400px] md:h-[460px] lg:h-[520px] flex items-center justify-center pb-4 sm:pb-5 overflow-hidden" id="open-runway-stage">
                 
                 <!-- Couture Runway Architectural Arch Backdrop (Stage Depth) -->
-                <div class="absolute inset-x-4 sm:inset-x-12 lg:inset-x-20 top-2 bottom-5 rounded-t-[170px] sm:rounded-t-[230px] bg-gradient-to-b from-[#F2ECE3]/85 via-[#FAF7F2]/45 to-transparent border-t border-x border-[#E6DAC9]/70 shadow-[inset_0_4px_24px_rgba(230,218,201,0.35)] pointer-events-none -z-0"></div>
+                <div class="absolute inset-x-3 sm:inset-x-10 lg:inset-x-20 top-1.5 sm:top-2 bottom-3 sm:bottom-5 rounded-t-[120px] sm:rounded-t-[180px] lg:rounded-t-[230px] bg-gradient-to-b from-[#F2ECE3]/85 via-[#FAF7F2]/45 to-transparent border-t border-x border-[#E6DAC9]/70 shadow-[inset_0_4px_24px_rgba(230,218,201,0.35)] pointer-events-none -z-0"></div>
 
                 <!-- Runway Spotlight Floor Glow -->
-                <div class="absolute bottom-4 w-[340px] sm:w-[480px] lg:w-[620px] h-14 bg-gradient-to-r from-transparent via-[#E8DEC9]/75 to-transparent rounded-[100%] filter blur-lg pointer-events-none -z-0"></div>
+                <div class="absolute bottom-3 sm:bottom-4 w-[240px] sm:w-[420px] lg:w-[620px] h-10 sm:h-14 bg-gradient-to-r from-transparent via-[#E8DEC9]/75 to-transparent rounded-[100%] filter blur-md sm:blur-lg pointer-events-none -z-0"></div>
 
                 @foreach($curatedLooks as $idx => $look)
                     <div 
                         id="runway-model-{{ $idx }}" 
                         onclick="switchLook({{ $idx }})" 
-                        class="runway-model-item absolute bottom-3 flex flex-col items-center justify-end transition-all duration-500 ease-out cursor-pointer z-10"
+                        class="runway-model-item absolute bottom-2 sm:bottom-3 flex flex-col items-center justify-end transition-all duration-500 ease-out cursor-pointer z-10"
                         style="will-change: transform, opacity;"
                     >
                         <!-- Floor Contact Shadow -->
-                        <div class="model-floor-shadow absolute bottom-1 w-32 sm:w-40 lg:w-48 h-3.5 bg-neutral-950/20 rounded-full filter blur-[3.5px] transition-all duration-500"></div>
+                        <div class="model-floor-shadow absolute bottom-1 w-24 sm:w-36 lg:w-48 h-2.5 sm:h-3.5 bg-neutral-950/20 rounded-full filter blur-[3px] sm:blur-[3.5px] transition-all duration-500"></div>
 
-                        <!-- Cutout Model Image: Model Lebih Besar, Jernih & Utuh (Head-to-Toe HD) -->
-                        <div class="relative h-[340px] sm:h-[410px] lg:h-[470px] flex items-end justify-center">
+                        <!-- Cutout Model Image: Model Responsif Mengecil di HP, Megah di Desktop -->
+                        <div class="relative h-[250px] sm:h-[330px] md:h-[390px] lg:h-[460px] flex items-end justify-center">
                             <img 
                                 src="{{ $look['model_image'] }}" 
                                 alt="{{ $look['title'] }} — Model Modest MOZÉRA" 
@@ -334,12 +334,12 @@
                     </div>
                 @endforeach
 
-                <!-- Sleek Minimal Arrow Controls (Tampil di Mobile & Desktop) -->
+                <!-- Sleek Minimal Arrow Controls (Tampil Responsif di Mobile & Desktop) -->
                 <button 
                     type="button" 
                     onclick="prevLook()" 
                     aria-label="Look Sebelumnya" 
-                    class="flex absolute left-1 sm:left-3 xl:left-6 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white/95 hover:bg-[#0a0a0a] hover:text-white text-neutral-800 shadow-md border border-[#E8DEC9] backdrop-blur-md items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer z-30"
+                    class="flex absolute left-1 sm:left-3 xl:left-6 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 lg:w-11 lg:h-11 rounded-full bg-white/95 hover:bg-[#0a0a0a] hover:text-white text-neutral-800 shadow-md border border-[#E8DEC9] backdrop-blur-md items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer z-30"
                 >
                     <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
                 </button>
@@ -347,7 +347,7 @@
                     type="button" 
                     onclick="nextLook()" 
                     aria-label="Look Berikutnya" 
-                    class="flex absolute right-1 sm:right-3 xl:right-6 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white/95 hover:bg-[#0a0a0a] hover:text-white text-neutral-800 shadow-md border border-[#E8DEC9] backdrop-blur-md items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer z-30"
+                    class="flex absolute right-1 sm:right-3 xl:right-6 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 lg:w-11 lg:h-11 rounded-full bg-white/95 hover:bg-[#0a0a0a] hover:text-white text-neutral-800 shadow-md border border-[#E8DEC9] backdrop-blur-md items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer z-30"
                 >
                     <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                 </button>
@@ -503,7 +503,7 @@
                 currentLookIdx = idx;
 
                 const screenW = window.innerWidth;
-                const spacing = screenW >= 1024 ? 220 : (screenW >= 640 ? 160 : 120);
+                const spacing = screenW >= 1024 ? 220 : (screenW >= 640 ? 150 : 105);
 
                 // Circular Shortest Distance Wrap (True Seamless Infinite Loop - No Mental/Teleport)
                 looks.forEach((_, i) => {
@@ -696,41 +696,41 @@
 
     <!-- G2: INNOVATIVE ATELIER PROPORTION & FIT CONCIERGE -->
     <section id="fit-helper" class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-24">
-        <div class="bg-gradient-to-b from-white to-[#FAF8F5] rounded-3xl border border-[#E8DEC9] p-6 sm:p-8 lg:p-10 shadow-sm relative overflow-hidden">
+        <div class="bg-gradient-to-b from-white to-[#FAF8F5] rounded-2xl sm:rounded-3xl border border-[#E8DEC9] p-4 sm:p-7 lg:p-9 shadow-sm relative overflow-hidden">
             
             <!-- Atelier Top Badge & Title -->
-            <div class="max-w-2xl mx-auto text-center space-y-2 mb-8">
-                <span class="inline-flex items-center gap-1.5 px-3.5 py-1 rounded-full text-[10px] uppercase font-bold tracking-[0.25em] bg-[#F5EFEB] text-[#BA805E] border border-[#EADCCE]">
-                    <svg class="w-3.5 h-3.5 text-[#BA805E]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+            <div class="max-w-2xl mx-auto text-center space-y-1.5 mb-4 sm:mb-6">
+                <span class="inline-flex items-center gap-1.5 px-3 py-0.5 sm:px-3.5 sm:py-1 rounded-full text-[9px] sm:text-[10px] uppercase font-bold tracking-[0.25em] bg-[#F5EFEB] text-[#BA805E] border border-[#EADCCE]">
+                    <svg class="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#BA805E]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
                     Atelier Proportion & Fit Simulator
                 </span>
-                <h3 class="font-serif text-2xl sm:text-3xl lg:text-4xl font-bold text-neutral-950">
+                <h3 class="font-serif text-xl sm:text-2xl lg:text-3xl font-bold text-neutral-950">
                     Simulasi Panjang Outer Sesuai Siluet Tinggimu
                 </h3>
-                <p class="text-xs sm:text-sm text-neutral-600 max-w-xl mx-auto leading-relaxed">
+                <p class="text-[11px] sm:text-xs lg:text-sm text-neutral-600 max-w-xl mx-auto leading-relaxed">
                     Geser penggaris tinggi badan Anda di bawah ini untuk melihat simulasi visual di mana ujung busana outer MOZÉRA akan jatuh di tubuh Anda.
                 </p>
             </div>
 
             <!-- Two-Column Interactive Fit Studio -->
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center max-w-5xl mx-auto">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 lg:gap-8 items-center max-w-5xl mx-auto">
                 
                 <!-- Left Column (Visual Silhouette & Interactive Hemline Drop Avatar) -->
-                <div class="lg:col-span-5 bg-white rounded-3xl border border-[#EADCCE] p-6 shadow-xs flex flex-col items-center justify-between relative overflow-hidden min-h-[380px]">
+                <div class="lg:col-span-5 bg-white rounded-2xl sm:rounded-3xl border border-[#EADCCE] p-3.5 sm:p-5 shadow-xs flex flex-col items-center justify-between relative overflow-hidden">
                     
                     <!-- Top Status Tag -->
-                    <div class="w-full flex items-center justify-between text-[11px] font-mono pb-3 border-b border-neutral-100">
+                    <div class="w-full flex items-center justify-between text-[10px] sm:text-[11px] font-mono pb-2 sm:pb-3 border-b border-neutral-100">
                         <span class="text-neutral-500 font-bold uppercase tracking-wider">Visual Avatar</span>
-                        <span id="fit-avatar-silhouette-badge" class="px-2.5 py-0.5 rounded-full bg-[#FAF8F5] text-[#A66747] font-bold border border-[#EADCCE] text-[10px]">
+                        <span id="fit-avatar-silhouette-badge" class="px-2 py-0.5 rounded-full bg-[#FAF8F5] text-[#A66747] font-bold border border-[#EADCCE] text-[9px] sm:text-[10px]">
                             Proportional Chic
                         </span>
                     </div>
 
                     <!-- Silhouette Graphic with Dynamic Sliding Hemline -->
-                    <div class="relative w-full h-[270px] flex items-center justify-center my-2">
+                    <div class="relative w-full h-[180px] sm:h-[220px] lg:h-[260px] flex items-center justify-center my-1 sm:my-2">
                         
                         <!-- Anatomy Height Markers (Background Scale Lines) -->
-                        <div class="absolute inset-y-0 right-2 w-24 flex flex-col justify-between text-[9px] font-mono text-neutral-400 border-l border-dashed border-neutral-200 pl-2 pointer-events-none select-none">
+                        <div class="absolute inset-y-0 right-1 sm:right-2 w-20 sm:w-24 flex flex-col justify-between text-[8px] sm:text-[9px] font-mono text-neutral-400 border-l border-dashed border-neutral-200 pl-1.5 sm:pl-2 pointer-events-none select-none">
                             <span>Bahu (0 cm)</span>
                             <span>Pinggang (40 cm)</span>
                             <span>Lutut (90 cm)</span>
@@ -753,48 +753,48 @@
                             <path d="M53 215 L65 215 L63 224 L55 224 Z" fill="#BA805E"/>
                         </svg>
 
-                        <!-- Dynamic Animated Hemline Indicator (Moves up and down based on slider) -->
+                        <!-- Dynamic Animated Hemline Indicator (Moves up and down based on slider using %) -->
                         <div 
                             id="fit-hemline-bar" 
-                            class="absolute left-4 right-20 border-t-2 border-dashed border-[#A66747] transition-all duration-300 flex items-center justify-between"
-                            style="top: 175px;"
+                            class="absolute left-2 sm:left-4 right-16 sm:right-20 border-t-2 border-dashed border-[#A66747] transition-all duration-300 flex items-center justify-between"
+                            style="top: 67%;"
                         >
-                            <span class="w-2.5 h-2.5 rounded-full bg-[#A66747] -ml-1.5 shadow-xs ring-4 ring-[#A66747]/20"></span>
-                            <span class="text-[9px] font-bold font-mono uppercase tracking-wider bg-[#0a0a0a] text-white px-2 py-0.5 rounded shadow-sm">
+                            <span class="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-[#A66747] -ml-1 sm:-ml-1.5 shadow-xs ring-4 ring-[#A66747]/20"></span>
+                            <span class="text-[8px] sm:text-[9px] font-bold font-mono uppercase tracking-wider bg-[#0a0a0a] text-white px-1.5 py-0.5 rounded shadow-sm">
                                 Ujung Outer
                             </span>
                         </div>
                     </div>
 
                     <!-- Live Hemline Status Banner -->
-                    <div class="w-full bg-[#FAF8F5] rounded-xl p-2.5 border border-[#EADCCE] text-center">
-                        <p class="text-[11px] font-bold text-neutral-800" id="fit-hemline-label">
+                    <div class="w-full bg-[#FAF8F5] rounded-xl p-2 sm:p-2.5 border border-[#EADCCE] text-center">
+                        <p class="text-[10px] sm:text-[11px] font-bold text-neutral-800" id="fit-hemline-label">
                             Jatuh di Pertengahan Betis (Midi Santun & Leluasa)
                         </p>
                     </div>
                 </div>
 
                 <!-- Right Column (Interactive Slider, Height Preset Chips, & Intelligent Modest Insights) -->
-                <div class="lg:col-span-7 space-y-6">
+                <div class="lg:col-span-7 space-y-3.5 sm:space-y-5">
                     
                     <!-- Height Meter Display & Slider Controls -->
-                    <div class="bg-white rounded-3xl border border-[#EADCCE] p-6 shadow-xs space-y-4">
+                    <div class="bg-white rounded-2xl sm:rounded-3xl border border-[#EADCCE] p-3.5 sm:p-5 shadow-xs space-y-3">
                         <div class="flex items-end justify-between">
                             <div>
-                                <span class="text-[10px] uppercase font-bold tracking-wider text-neutral-400 block">Pilih Tinggi Badan Anda</span>
+                                <span class="text-[9px] sm:text-[10px] uppercase font-bold tracking-wider text-neutral-400 block">Pilih Tinggi Badan Anda</span>
                                 <div class="flex items-baseline gap-1 mt-0.5">
-                                    <span class="font-serif text-4xl sm:text-5xl font-bold text-neutral-950 font-mono" id="fit-height-number">158</span>
-                                    <span class="text-base font-bold text-[#BA805E] font-serif">cm</span>
+                                    <span class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-neutral-950 font-mono" id="fit-height-number">158</span>
+                                    <span class="text-sm sm:text-base font-bold text-[#BA805E] font-serif">cm</span>
                                 </div>
                             </div>
                             <div class="text-right">
-                                <span class="text-[10px] text-neutral-400 block uppercase tracking-wider">Rekomendasi Panjang:</span>
-                                <span class="font-serif text-2xl font-bold text-[#BA805E]" id="fit-result-length">110 cm</span>
+                                <span class="text-[9px] sm:text-[10px] text-neutral-400 block uppercase tracking-wider">Rekomendasi Panjang:</span>
+                                <span class="font-serif text-lg sm:text-2xl font-bold text-[#BA805E]" id="fit-result-length">110 cm</span>
                             </div>
                         </div>
 
                         <!-- Draggable Smooth Range Slider -->
-                        <div class="space-y-2 pt-1">
+                        <div class="space-y-1.5 pt-0.5">
                             <input 
                                 type="range" 
                                 id="fit-range-slider" 
@@ -802,9 +802,9 @@
                                 max="175" 
                                 value="158" 
                                 oninput="onFitSliderChange(this.value)" 
-                                class="w-full h-2.5 bg-[#E8DEC9] rounded-lg appearance-none cursor-pointer accent-[#BA805E]"
+                                class="w-full h-2 sm:h-2.5 bg-[#E8DEC9] rounded-lg appearance-none cursor-pointer accent-[#BA805E]"
                             >
-                            <div class="flex justify-between text-[10px] font-mono text-neutral-400 px-1">
+                            <div class="flex justify-between text-[9px] sm:text-[10px] font-mono text-neutral-400 px-1">
                                 <span>148 cm</span>
                                 <span>155 cm</span>
                                 <span>162 cm</span>
@@ -814,67 +814,67 @@
                         </div>
 
                         <!-- Quick Height Presets (Quick Chips for Convenience) -->
-                        <div class="flex items-center gap-2 overflow-x-auto pt-2 pb-1 text-xs" id="fit-buttons">
-                            <button type="button" onclick="setFitSlider(152)" class="fit-btn px-3 py-1.5 rounded-xl border border-neutral-200 hover:border-neutral-900 font-bold transition-all text-neutral-700 whitespace-nowrap cursor-pointer">
+                        <div class="flex items-center gap-1.5 sm:gap-2 overflow-x-auto pt-1 pb-0.5 text-[11px] sm:text-xs custom-scrollbar" id="fit-buttons">
+                            <button type="button" onclick="setFitSlider(152)" class="fit-btn px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg sm:rounded-xl border border-neutral-200 hover:border-neutral-900 font-bold transition-all text-neutral-700 whitespace-nowrap cursor-pointer">
                                 150–155 cm
                             </button>
-                            <button type="button" onclick="setFitSlider(158)" class="fit-btn px-3 py-1.5 rounded-xl border border-neutral-900 bg-neutral-900 text-white font-bold transition-all whitespace-nowrap cursor-pointer">
+                            <button type="button" onclick="setFitSlider(158)" class="fit-btn px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg sm:rounded-xl border border-neutral-900 bg-neutral-900 text-white font-bold transition-all whitespace-nowrap cursor-pointer">
                                 156–160 cm
                             </button>
-                            <button type="button" onclick="setFitSlider(163)" class="fit-btn px-3 py-1.5 rounded-xl border border-neutral-200 hover:border-neutral-900 font-bold transition-all text-neutral-700 whitespace-nowrap cursor-pointer">
+                            <button type="button" onclick="setFitSlider(163)" class="fit-btn px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg sm:rounded-xl border border-neutral-200 hover:border-neutral-900 font-bold transition-all text-neutral-700 whitespace-nowrap cursor-pointer">
                                 161–165 cm
                             </button>
-                            <button type="button" onclick="setFitSlider(168)" class="fit-btn px-3 py-1.5 rounded-xl border border-neutral-200 hover:border-neutral-900 font-bold transition-all text-neutral-700 whitespace-nowrap cursor-pointer">
+                            <button type="button" onclick="setFitSlider(168)" class="fit-btn px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg sm:rounded-xl border border-neutral-200 hover:border-neutral-900 font-bold transition-all text-neutral-700 whitespace-nowrap cursor-pointer">
                                 166+ cm
                             </button>
                         </div>
                     </div>
 
-                    <!-- 3 Modest Proportion Intelligence Insights (Clean Line Icons - No Emoticons) -->
-                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                    <!-- 3 Modest Proportion Intelligence Insights: 3 Kolom Kompak di Mobile & Desktop -->
+                    <div class="grid grid-cols-3 gap-2 sm:gap-3">
                         <!-- Insight 1: Hemline Safety -->
-                        <div class="bg-white p-3.5 rounded-2xl border border-neutral-200/80 shadow-2xs space-y-1">
-                            <div class="flex items-center gap-1.5 text-[#BA805E]">
-                                <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zM9 3v18m-4-14h4m-4 5h4m-4 5h4"/></svg>
-                                <span class="text-[10px] font-bold uppercase tracking-wider">Jatuh Baju</span>
+                        <div class="bg-white p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl border border-neutral-200/80 shadow-2xs space-y-0.5 sm:space-y-1">
+                            <div class="flex items-center gap-1 text-[#BA805E]">
+                                <svg class="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zM9 3v18m-4-14h4m-4 5h4m-4 5h4"/></svg>
+                                <span class="text-[8px] sm:text-[10px] font-bold uppercase tracking-wider truncate">Jatuh Baju</span>
                             </div>
-                            <p class="text-xs font-bold text-neutral-900" id="fit-insight-hemline">Midi Santun</p>
-                            <p class="text-[10px] text-neutral-500 leading-snug" id="fit-result-desc">
-                                Panjang midi ideal di pertengahan betis, sangat leluasa saat berjalan aktif.
+                            <p class="text-[11px] sm:text-xs font-bold text-neutral-900 truncate" id="fit-insight-hemline">Midi Santun</p>
+                            <p class="text-[9px] sm:text-[10px] text-neutral-500 leading-snug line-clamp-2" id="fit-result-desc">
+                                Panjang midi di pertengahan betis.
                             </p>
                         </div>
 
                         <!-- Insight 2: Scarf Proportion -->
-                        <div class="bg-white p-3.5 rounded-2xl border border-neutral-200/80 shadow-2xs space-y-1">
-                            <div class="flex items-center gap-1.5 text-[#BA805E]">
-                                <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/></svg>
-                                <span class="text-[10px] font-bold uppercase tracking-wider">Padanan Hijab</span>
+                        <div class="bg-white p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl border border-neutral-200/80 shadow-2xs space-y-0.5 sm:space-y-1">
+                            <div class="flex items-center gap-1 text-[#BA805E]">
+                                <svg class="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/></svg>
+                                <span class="text-[8px] sm:text-[10px] font-bold uppercase tracking-wider truncate">Padanan Hijab</span>
                             </div>
-                            <p class="text-xs font-bold text-neutral-900" id="fit-insight-hijab">Voal 120x120</p>
-                            <p class="text-[10px] text-neutral-500 leading-snug">Menutup dada proporsional, siluet tetap ramping & jenjang.</p>
+                            <p class="text-[11px] sm:text-xs font-bold text-neutral-900 truncate" id="fit-insight-hijab">Voal 120x120</p>
+                            <p class="text-[9px] sm:text-[10px] text-neutral-500 leading-snug line-clamp-2">Menutup dada proporsional & ramping.</p>
                         </div>
 
                         <!-- Insight 3: Footwear Guidance -->
-                        <div class="bg-white p-3.5 rounded-2xl border border-neutral-200/80 shadow-2xs space-y-1">
-                            <div class="flex items-center gap-1.5 text-[#BA805E]">
-                                <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
-                                <span class="text-[10px] font-bold uppercase tracking-wider">Rekomendasi Alas</span>
+                        <div class="bg-white p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl border border-neutral-200/80 shadow-2xs space-y-0.5 sm:space-y-1">
+                            <div class="flex items-center gap-1 text-[#BA805E]">
+                                <svg class="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+                                <span class="text-[8px] sm:text-[10px] font-bold uppercase tracking-wider truncate">Alas Kaki</span>
                             </div>
-                            <p class="text-xs font-bold text-neutral-900" id="fit-insight-shoes">Mules / 3cm Heels</p>
-                            <p class="text-[10px] text-neutral-500 leading-snug" id="fit-shoes-desc">Proporsi jatuh baju semakin rapi dan semampai.</p>
+                            <p class="text-[11px] sm:text-xs font-bold text-neutral-900 truncate" id="fit-insight-shoes">Mules / Heels</p>
+                            <p class="text-[9px] sm:text-[10px] text-neutral-500 leading-snug line-clamp-2" id="fit-shoes-desc">Proporsi jatuh semakin semampai.</p>
                         </div>
                     </div>
 
                     <!-- Action Direct to Catalog -->
-                    <div class="flex flex-col sm:flex-row items-center justify-between gap-3 pt-1">
-                        <div class="flex items-center gap-2 text-xs text-neutral-600">
-                            <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
-                            <span>Semua outer MOZÉRA dirancang <strong>wudhu-friendly</strong> & tidak menyapu lantai.</span>
+                    <div class="flex flex-col sm:flex-row items-center justify-between gap-2.5 pt-0.5">
+                        <div class="flex items-center gap-1.5 text-[11px] sm:text-xs text-neutral-600">
+                            <span class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-emerald-500 shrink-0"></span>
+                            <span>Outer MOZÉRA <strong>wudhu-friendly</strong> & tidak menyapu lantai.</span>
                         </div>
                         <a 
                             id="fit-cta-btn" 
                             href="{{ route('shop.catalog', ['category' => 'outerwear']) }}" 
-                            class="w-full sm:w-auto min-h-[44px] px-6 py-2.5 rounded-full bg-neutral-950 hover:bg-[#BA805E] text-white text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-sm flex items-center justify-center gap-2 shrink-0 cursor-pointer"
+                            class="w-full sm:w-auto min-h-[40px] sm:min-h-[44px] px-5 sm:px-6 py-2 rounded-full bg-neutral-950 hover:bg-[#BA805E] text-white text-[11px] sm:text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-sm flex items-center justify-center gap-2 shrink-0 cursor-pointer"
                         >
                             <span id="fit-cta-text">Lihat Outer Pas Untuk Tinggimu (158 cm)</span>
                             <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
@@ -1140,7 +1140,7 @@
         if (height <= 154) {
             return {
                 length: 105,
-                hemlineTop: 195, // Position on 270px avatar (lower calf/maxi)
+                hemlinePercent: 76, // Lower calf/maxi proportion on avatar
                 silhouette: 'Petite Modest',
                 hemlineLabel: 'Jatuh 15 cm di Atas Mata Kaki (Maxi Santun, Anggun & Bebas Tersangkut)',
                 insightHemline: 'Maxi Semampai',
@@ -1153,7 +1153,7 @@
         } else if (height <= 160) {
             return {
                 length: 110,
-                hemlineTop: 175, // Mid-calf
+                hemlinePercent: 67, // Mid-calf
                 silhouette: 'Proportional Chic',
                 hemlineLabel: 'Jatuh di Pertengahan Betis (Midi Ideal, Langkah Leluasa & Wudhu-Friendly)',
                 insightHemline: 'Midi Santun',
@@ -1166,7 +1166,7 @@
         } else if (height <= 165) {
             return {
                 length: 115,
-                hemlineTop: 155, // Below knee
+                hemlinePercent: 58, // Below knee
                 silhouette: 'Semampai Couture',
                 hemlineLabel: 'Jatuh 10 cm di Bawah Lutut (Siluet Jenjang & Layering Modern)',
                 insightHemline: 'Midi Semampai',
@@ -1179,7 +1179,7 @@
         } else {
             return {
                 length: 120,
-                hemlineTop: 140, // Knee/Just below
+                hemlinePercent: 50, // Knee / Just below
                 silhouette: 'Tall Effortless',
                 hemlineLabel: 'Jatuh Tepat di Bawah Lutut (Casual Layering Chic, Sangat Ringan)',
                 insightHemline: 'Knee Midi Chic',
@@ -1224,10 +1224,10 @@
         const shoesDesc = document.getElementById('fit-shoes-desc');
         if (shoesDesc) shoesDesc.textContent = profile.shoesDesc;
 
-        // Animate the visual Hemline Bar on the avatar
+        // Animate the visual Hemline Bar on the avatar (Fluid Percent)
         const hemlineBar = document.getElementById('fit-hemline-bar');
         if (hemlineBar) {
-            hemlineBar.style.top = profile.hemlineTop + 'px';
+            hemlineBar.style.top = profile.hemlinePercent + '%';
         }
 
         // Update CTA text
@@ -1238,9 +1238,9 @@
         const buttons = document.querySelectorAll('#fit-buttons .fit-btn');
         buttons.forEach((b, idx) => {
             if (idx === profile.presetIdx) {
-                b.className = 'fit-btn px-3 py-1.5 rounded-xl border border-neutral-900 bg-neutral-900 text-white font-bold transition-all whitespace-nowrap cursor-pointer';
+                b.className = 'fit-btn px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg sm:rounded-xl border border-neutral-900 bg-neutral-900 text-white font-bold transition-all whitespace-nowrap cursor-pointer';
             } else {
-                b.className = 'fit-btn px-3 py-1.5 rounded-xl border border-neutral-200 hover:border-neutral-900 font-bold transition-all text-neutral-700 whitespace-nowrap cursor-pointer';
+                b.className = 'fit-btn px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg sm:rounded-xl border border-neutral-200 hover:border-neutral-900 font-bold transition-all text-neutral-700 whitespace-nowrap cursor-pointer';
             }
         });
     };

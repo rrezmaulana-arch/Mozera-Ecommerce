@@ -285,7 +285,7 @@
             <!-- Left: Fit Concierge MOZÉRA (Col 6) -->
             <div class="lg:col-span-6 space-y-4">
                 @if($product->length_cm)
-                    <div class="border border-[#BA805E]/40 rounded-3xl p-6 bg-gradient-to-br from-[#FAF8F5] to-white space-y-4 shadow-xs">
+                    <div class="border border-[#BA805E]/40 rounded-2xl sm:rounded-3xl p-4 sm:p-6 bg-gradient-to-br from-[#FAF8F5] to-white space-y-3.5 sm:space-y-4 shadow-xs">
                         <div class="flex items-center justify-between">
                             <div class="flex items-center gap-2.5">
                                 <div class="w-8 h-8 rounded-full bg-[#BA805E]/15 text-[#BA805E] flex items-center justify-center flex-shrink-0">
@@ -299,25 +299,25 @@
                             <span class="text-[10px] font-bold text-[#BA805E] uppercase tracking-wider bg-[#BA805E]/10 px-2.5 py-1 rounded-full">Simulasi Postur</span>
                         </div>
 
-                        <p class="text-xs text-neutral-600 leading-relaxed font-light">
+                        <p class="text-[11px] sm:text-xs text-neutral-600 leading-relaxed font-light">
                             Pilih rentang tinggi badan Anda untuk melihat estimasi jatuhnya baju pada postur tubuh:
                         </p>
 
                         <!-- Height Selector Buttons -->
-                        <div class="grid grid-cols-4 gap-2 text-center text-xs">
-                            <button type="button" onclick="calculateFit(this, 152)" class="fit-btn py-2.5 px-1 rounded-xl border border-neutral-300 bg-white hover:border-neutral-900 text-[11px] font-semibold transition-all cursor-pointer">150–155 cm</button>
-                            <button type="button" onclick="calculateFit(this, 158)" class="fit-btn py-2.5 px-1 rounded-xl border border-neutral-300 bg-white hover:border-neutral-900 text-[11px] font-semibold transition-all cursor-pointer">156–160 cm</button>
-                            <button type="button" onclick="calculateFit(this, 163)" class="fit-btn py-2.5 px-1 rounded-xl border border-neutral-300 bg-white hover:border-neutral-900 text-[11px] font-semibold transition-all cursor-pointer">161–165 cm</button>
-                            <button type="button" onclick="calculateFit(this, 168)" class="fit-btn py-2.5 px-1 rounded-xl border border-neutral-300 bg-white hover:border-neutral-900 text-[11px] font-semibold transition-all cursor-pointer">166–170+ cm</button>
+                        <div class="grid grid-cols-4 gap-1.5 sm:gap-2 text-center text-xs">
+                            <button type="button" onclick="calculateFit(this, 152)" class="fit-btn py-2 sm:py-2.5 px-0.5 sm:px-1 rounded-xl border border-neutral-300 bg-white hover:border-neutral-900 text-[10px] sm:text-[11px] font-semibold transition-all cursor-pointer">150–155 cm</button>
+                            <button type="button" onclick="calculateFit(this, 158)" class="fit-btn py-2 sm:py-2.5 px-0.5 sm:px-1 rounded-xl border border-neutral-300 bg-white hover:border-neutral-900 text-[10px] sm:text-[11px] font-semibold transition-all cursor-pointer">156–160 cm</button>
+                            <button type="button" onclick="calculateFit(this, 163)" class="fit-btn py-2 sm:py-2.5 px-0.5 sm:px-1 rounded-xl border border-neutral-300 bg-white hover:border-neutral-900 text-[10px] sm:text-[11px] font-semibold transition-all cursor-pointer">161–165 cm</button>
+                            <button type="button" onclick="calculateFit(this, 168)" class="fit-btn py-2 sm:py-2.5 px-0.5 sm:px-1 rounded-xl border border-neutral-300 bg-white hover:border-neutral-900 text-[10px] sm:text-[11px] font-semibold transition-all cursor-pointer">166–170+ cm</button>
                         </div>
 
                         <!-- Dynamic Fit Output Card -->
-                        <div id="fit-result-card" class="p-4 rounded-2xl bg-white border border-neutral-200/80 text-xs space-y-1.5 shadow-2xs">
+                        <div id="fit-result-card" class="p-3 sm:p-4 rounded-xl sm:rounded-2xl bg-white border border-neutral-200/80 text-xs space-y-1 sm:space-y-1.5 shadow-2xs">
                             <p class="font-bold text-[#8A4F35] text-[10px] uppercase tracking-wider flex items-center gap-1.5">
                                 <span class="w-1.5 h-1.5 rounded-full bg-[#BA805E]"></span>
                                 <span>Hasil Rekomendasi Postur:</span>
                             </p>
-                            <p id="fit-description" class="text-neutral-700 leading-relaxed font-light text-xs">
+                            <p id="fit-description" class="text-neutral-700 leading-relaxed font-light text-[11px] sm:text-xs">
                                 Silakan pilih salah satu rentang tinggi badan Anda di atas.
                             </p>
                         </div>
