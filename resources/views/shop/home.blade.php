@@ -275,7 +275,7 @@
     </section>
 
     <!-- G1: VIEWPORT-FITTED OPEN RUNWAY ("Try The Look" — Full Look Experience, Center Stage Tanpa Clutter Harga) -->
-    <section id="try-the-look" class="w-full relative py-6 lg:py-8 bg-[#FAF9F6] border-y border-neutral-200/50 select-none scroll-mt-16">
+    <section id="try-the-look" class="w-full relative py-6 lg:py-8 bg-[#FAF9F6] border-y border-neutral-200/50 select-none scroll-mt-16 overflow-hidden">
         
         <!-- Header: Minimal Luxury Editorial Title (Compact, Centered) -->
         <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 text-center shrink-0 mb-2">
@@ -293,8 +293,8 @@
         <!-- FULL RUNWAY STAGE (Center Stage Runway, Zero Price Clutter, Model Lebih Besar) -->
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col items-center justify-center my-auto">
             
-            <!-- Models Runway Stage (Wide Center Runway, No Bottom Overflow Clipping) -->
-            <div class="relative w-full h-[420px] sm:h-[480px] lg:h-[530px] flex items-center justify-center pb-5" id="open-runway-stage">
+            <!-- Models Runway Stage (Wide Center Runway, No Overflow Leak to Page) -->
+            <div class="relative w-full h-[420px] sm:h-[480px] lg:h-[530px] flex items-center justify-center pb-5 overflow-hidden" id="open-runway-stage">
                 
                 <!-- Couture Runway Architectural Arch Backdrop (Stage Depth) -->
                 <div class="absolute inset-x-4 sm:inset-x-12 lg:inset-x-20 top-2 bottom-5 rounded-t-[170px] sm:rounded-t-[230px] bg-gradient-to-b from-[#F2ECE3]/85 via-[#FAF7F2]/45 to-transparent border-t border-x border-[#E6DAC9]/70 shadow-[inset_0_4px_24px_rgba(230,218,201,0.35)] pointer-events-none -z-0"></div>
@@ -305,7 +305,7 @@
                 @foreach($curatedLooks as $idx => $look)
                     <div 
                         id="runway-model-{{ $idx }}" 
-                        onclick="switchLook({{ $idx }})"
+                        onclick="switchLook({{ $idx }})" 
                         class="runway-model-item absolute bottom-3 flex flex-col items-center justify-end transition-all duration-500 ease-out cursor-pointer z-10"
                         style="will-change: transform, opacity;"
                     >
@@ -334,22 +334,22 @@
                     </div>
                 @endforeach
 
-                <!-- Sleek Minimal Arrow Controls (Desktop Inside Stage Left/Right) -->
+                <!-- Sleek Minimal Arrow Controls (Tampil di Mobile & Desktop) -->
                 <button 
                     type="button" 
                     onclick="prevLook()" 
                     aria-label="Look Sebelumnya" 
-                    class="hidden sm:flex absolute left-2 xl:left-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/90 hover:bg-[#0a0a0a] hover:text-white text-neutral-800 shadow-md border border-[#E8DEC9] backdrop-blur-md items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer z-30"
+                    class="flex absolute left-1 sm:left-3 xl:left-6 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white/95 hover:bg-[#0a0a0a] hover:text-white text-neutral-800 shadow-md border border-[#E8DEC9] backdrop-blur-md items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer z-30"
                 >
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M15 19l-7-7 7-7"/></svg>
+                    <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
                 </button>
                 <button 
                     type="button" 
                     onclick="nextLook()" 
                     aria-label="Look Berikutnya" 
-                    class="hidden sm:flex absolute right-2 xl:right-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/90 hover:bg-[#0a0a0a] hover:text-white text-neutral-800 shadow-md border border-[#E8DEC9] backdrop-blur-md items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer z-30"
+                    class="flex absolute right-1 sm:right-3 xl:right-6 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white/95 hover:bg-[#0a0a0a] hover:text-white text-neutral-800 shadow-md border border-[#E8DEC9] backdrop-blur-md items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer z-30"
                 >
-                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M9 5l7 7-7 7"/></svg>
+                    <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                 </button>
 
             </div>
@@ -373,9 +373,9 @@
         <!-- 8-LOOK COUTURE SELECTOR TABS (Bottom Minimal Switcher) -->
         <div class="max-w-4xl mx-auto px-4 shrink-0 mt-4 pb-2">
             <!-- Type Grouping Indicator -->
-            <div class="flex items-center justify-center gap-3 mb-2.5 text-[10px] uppercase font-bold tracking-[0.2em] text-[#BA805E]">
+            <div class="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 mb-2.5 text-[9px] sm:text-[10px] uppercase font-bold tracking-[0.2em] text-[#BA805E] text-center">
                 <span class="inline-flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-[#BA805E]"></span> Tipe A: Siluet Lurus (01–04)</span>
-                <span class="text-neutral-300">•</span>
+                <span class="text-neutral-300 hidden sm:inline">•</span>
                 <span class="inline-flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-neutral-400"></span> Tipe B: Siluet Fringe Rumbai (05–08)</span>
             </div>
 
@@ -502,8 +502,8 @@
                 if (idx < 0 || idx >= looks.length) return;
                 currentLookIdx = idx;
 
-                const isDesktop = window.innerWidth >= 1024;
-                const spacing = isDesktop ? 220 : 140;
+                const screenW = window.innerWidth;
+                const spacing = screenW >= 1024 ? 220 : (screenW >= 640 ? 160 : 120);
 
                 // Circular Shortest Distance Wrap (True Seamless Infinite Loop - No Mental/Teleport)
                 looks.forEach((_, i) => {
@@ -569,7 +569,13 @@
                     if (i === currentLookIdx) {
                         btn.className = 'scrubber-item px-3.5 py-1.5 rounded-full transition-all duration-300 cursor-pointer flex items-center gap-1.5 text-xs bg-[#0a0a0a] text-white shadow-sm font-bold whitespace-nowrap shrink-0';
                         if (numSpan) numSpan.className = 'text-[10px] font-mono text-[#BA805E]';
-                        btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+                        
+                        // Scroll strictly within local scrubberBar without causing window/body viewport horizontal shifting
+                        const scrubberBar = document.getElementById('scrubber-bar');
+                        if (scrubberBar) {
+                            const scrollTarget = btn.offsetLeft - (scrubberBar.clientWidth / 2) + (btn.clientWidth / 2);
+                            scrubberBar.scrollTo({ left: Math.max(0, scrollTarget), behavior: 'smooth' });
+                        }
                     } else {
                         btn.className = 'scrubber-item px-3.5 py-1.5 rounded-full transition-all duration-300 cursor-pointer flex items-center gap-1.5 text-xs bg-white/85 hover:bg-white text-neutral-600 border border-neutral-200/80 font-medium whitespace-nowrap shrink-0';
                         if (numSpan) numSpan.className = 'text-[10px] font-mono text-neutral-400';
