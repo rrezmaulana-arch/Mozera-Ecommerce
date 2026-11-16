@@ -164,10 +164,10 @@
 
                     <!-- Height Selector Buttons -->
                     <div class="grid grid-cols-4 gap-2 text-center text-xs">
-                        <button type="button" onclick="calculateFit(152)" class="fit-btn py-2 px-1 rounded-xl border border-neutral-300 bg-white hover:border-neutral-900 text-[11px] font-semibold transition-all">150–155 cm</button>
-                        <button type="button" onclick="calculateFit(158)" class="fit-btn py-2 px-1 rounded-xl border border-neutral-300 bg-white hover:border-neutral-900 text-[11px] font-semibold transition-all">156–160 cm</button>
-                        <button type="button" onclick="calculateFit(163)" class="fit-btn py-2 px-1 rounded-xl border border-neutral-300 bg-white hover:border-neutral-900 text-[11px] font-semibold transition-all">161–165 cm</button>
-                        <button type="button" onclick="calculateFit(168)" class="fit-btn py-2 px-1 rounded-xl border border-neutral-300 bg-white hover:border-neutral-900 text-[11px] font-semibold transition-all">166–170+ cm</button>
+                        <button type="button" onclick="calculateFit(this, 152)" class="fit-btn py-2 px-1 rounded-xl border border-neutral-300 bg-white hover:border-neutral-900 text-[11px] font-semibold transition-all cursor-pointer">150–155 cm</button>
+                        <button type="button" onclick="calculateFit(this, 158)" class="fit-btn py-2 px-1 rounded-xl border border-neutral-300 bg-white hover:border-neutral-900 text-[11px] font-semibold transition-all cursor-pointer">156–160 cm</button>
+                        <button type="button" onclick="calculateFit(this, 163)" class="fit-btn py-2 px-1 rounded-xl border border-neutral-300 bg-white hover:border-neutral-900 text-[11px] font-semibold transition-all cursor-pointer">161–165 cm</button>
+                        <button type="button" onclick="calculateFit(this, 168)" class="fit-btn py-2 px-1 rounded-xl border border-neutral-300 bg-white hover:border-neutral-900 text-[11px] font-semibold transition-all cursor-pointer">166–170+ cm</button>
                     </div>
 
                     <!-- Dynamic Fit Output Card -->
@@ -242,9 +242,15 @@
 
     const garmentLength = {{ $product->length_cm ?? 110 }};
 
-    function calculateFit(userHeight) {
-        document.querySelectorAll('.fit-btn').forEach(btn => btn.classList.remove('bg-neutral-900', 'text-white', 'border-neutral-900'));
-        event.currentTarget.classList.add('bg-neutral-900', 'text-white', 'border-neutral-900');
+    function calculateFit(btn, userHeight) {
+        document.querySelectorAll('.fit-btn').forEach(b => {
+            b.classList.remove('bg-neutral-900', 'text-white', 'border-neutral-900');
+            b.classList.add('bg-white', 'text-neutral-800', 'border-neutral-300');
+        });
+        if (btn) {
+            btn.classList.remove('bg-white', 'text-neutral-800', 'border-neutral-300');
+            btn.classList.add('bg-neutral-900', 'text-white', 'border-neutral-900');
+        }
 
         const descElem = document.getElementById('fit-description');
 

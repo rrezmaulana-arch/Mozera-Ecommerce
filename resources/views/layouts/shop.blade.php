@@ -44,8 +44,8 @@
                     <nav class="hidden lg:flex items-center space-x-8 text-xs font-bold tracking-wider uppercase">
                         <a href="{{ route('shop.catalog') }}" class="text-neutral-700 hover:text-neutral-950 transition-colors py-2 cursor-pointer {{ request()->routeIs('shop.catalog') && !request('series') ? 'text-neutral-950 border-b-2 border-neutral-950' : '' }}">Koleksi</a>
                         <a href="{{ route('shop.catalog', ['series' => 'PUSPA']) }}" class="text-neutral-700 hover:text-neutral-950 transition-colors py-2 cursor-pointer {{ request('series') == 'PUSPA' ? 'text-neutral-950 border-b-2 border-neutral-950' : '' }}">Seri</a>
-                        <a href="#fit-helper" class="text-neutral-700 hover:text-neutral-950 transition-colors py-2 cursor-pointer">Panduan Ukuran</a>
-                        <a href="{{ route('shop.returns') }}" class="text-neutral-700 hover:text-neutral-950 transition-colors py-2 cursor-pointer">Bantuan</a>
+                        <a href="{{ route('shop.home') }}#fit-helper" class="text-neutral-700 hover:text-neutral-950 transition-colors py-2 cursor-pointer">Panduan Ukuran</a>
+                        <a href="{{ route('shop.returns') }}" class="text-neutral-700 hover:text-neutral-950 transition-colors py-2 cursor-pointer {{ request()->routeIs('shop.returns') ? 'text-neutral-950 border-b-2 border-neutral-950' : '' }}">Bantuan</a>
                     </nav>
 
                     <!-- Right Action Icons (Search, Cart - min 44x44px touch targets) -->
@@ -93,6 +93,10 @@
                 </div>
 
                 <div class="space-y-2 pt-1 text-xs">
+                    <a href="{{ route('shop.home') }}#fit-helper" class="block font-semibold text-neutral-800 py-1.5 cursor-pointer flex items-center gap-2">
+                        <svg class="w-4 h-4 text-neutral-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+                        <span>Panduan Ukuran (Fit Helper)</span>
+                    </a>
                     <a href="{{ route('shop.tracking') }}" class="block font-semibold text-neutral-800 py-1.5 cursor-pointer flex items-center gap-2">
                         <svg class="w-4 h-4 text-neutral-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"/></svg>
                         <span>Lacak Pesanan Mandiri</span>
@@ -170,7 +174,7 @@
                     <ul class="space-y-2.5 text-xs sm:text-[13px] text-neutral-400">
                         <li><a href="{{ route('shop.tracking') }}" class="hover:text-white transition-colors cursor-pointer">Lacak Status Pesanan</a></li>
                         <li><a href="{{ route('shop.returns') }}" class="hover:text-white transition-colors cursor-pointer">Portal Retur & Tukar Ukuran</a></li>
-                        <li><a href="#fit-helper" class="hover:text-white transition-colors cursor-pointer">Panduan Ukuran (Fit Helper)</a></li>
+                        <li><a href="{{ route('shop.home') }}#fit-helper" class="hover:text-white transition-colors cursor-pointer">Panduan Ukuran (Fit Helper)</a></li>
                         <li><a href="{{ route('shop.returns') }}" class="hover:text-white transition-colors cursor-pointer">Kebijakan Garansi 7 Hari</a></li>
                         <li><a href="{{ route('admin.dashboard') }}" class="text-[#DCC3AD] hover:underline transition-colors cursor-pointer">Akses Portal Staf & Gudang &rarr;</a></li>
                     </ul>

@@ -305,7 +305,7 @@
     </section>
 
     <!-- G2: Cari Ukuranmu / Fit Concierge -->
-    <section id="fit-helper" class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="fit-helper" class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-24">
         <div class="bg-white rounded-3xl border border-neutral-200 p-6 sm:p-8 shadow-sm">
             <div class="max-w-2xl mx-auto text-center space-y-2 mb-6">
                 <span class="text-[11px] uppercase tracking-[0.25em] text-[#BA805E] font-bold">Fit Concierge</span>
@@ -319,16 +319,16 @@
 
             <!-- Height Selector Buttons -->
             <div class="grid grid-cols-2 sm:grid-cols-4 gap-2.5 max-w-xl mx-auto mb-6 text-xs" id="fit-buttons">
-                <button type="button" onclick="setFitHeight(105, '150 - 155 cm', 'Jatuh pas 10 cm di bawah lutut, memberi siluet jenjang tanpa perlu dipotong.')" class="fit-btn min-h-[44px] p-3 rounded-xl border border-neutral-200 hover:border-neutral-900 font-bold transition-all text-neutral-800 focus:outline-none">
+                <button type="button" onclick="setFitHeight(this, 105, 'Jatuh pas 10 cm di bawah lutut, memberi siluet jenjang tanpa perlu dipotong.')" class="fit-btn min-h-[44px] p-3 rounded-xl border border-neutral-200 hover:border-neutral-900 font-bold transition-all text-neutral-800 focus:outline-none cursor-pointer">
                     150 – 155 cm
                 </button>
-                <button type="button" onclick="setFitHeight(110, '156 - 160 cm', 'Panjang midi ideal di pertengahan betis, sangat leluasa saat berjalan aktif.')" class="fit-btn min-h-[44px] p-3 rounded-xl border border-neutral-900 bg-neutral-900 text-white font-bold transition-all focus:outline-none">
+                <button type="button" onclick="setFitHeight(this, 110, 'Panjang midi ideal di pertengahan betis, sangat leluasa saat berjalan aktif.')" class="fit-btn min-h-[44px] p-3 rounded-xl border border-neutral-900 bg-neutral-900 text-white font-bold transition-all focus:outline-none cursor-pointer">
                     156 – 160 cm
                 </button>
-                <button type="button" onclick="setFitHeight(115, '161 - 165 cm', 'Jatuh proporsional 15 cm di atas mata kaki, siluet semampai dan rapi.')" class="fit-btn min-h-[44px] p-3 rounded-xl border border-neutral-200 hover:border-neutral-900 font-bold transition-all text-neutral-800 focus:outline-none">
+                <button type="button" onclick="setFitHeight(this, 115, 'Jatuh proporsional 15 cm di atas mata kaki, siluet semampai dan rapi.')" class="fit-btn min-h-[44px] p-3 rounded-xl border border-neutral-200 hover:border-neutral-900 font-bold transition-all text-neutral-800 focus:outline-none cursor-pointer">
                     161 – 165 cm
                 </button>
-                <button type="button" onclick="setFitHeight(120, '166+ cm', 'Tampilan full-length elegan, jatuh tepat di batas atas sepatu/heels.')" class="fit-btn min-h-[44px] p-3 rounded-xl border border-neutral-200 hover:border-neutral-900 font-bold transition-all text-neutral-800 focus:outline-none">
+                <button type="button" onclick="setFitHeight(this, 120, 'Tampilan full-length elegan, jatuh tepat di batas atas sepatu/heels.')" class="fit-btn min-h-[44px] p-3 rounded-xl border border-neutral-200 hover:border-neutral-900 font-bold transition-all text-neutral-800 focus:outline-none cursor-pointer">
                     166+ cm
                 </button>
             </div>
@@ -504,19 +504,18 @@
 
 @push('scripts')
 <script>
-function setFitHeight(length, range, desc) {
+function setFitHeight(btn, length, desc) {
     document.getElementById('fit-result-length').innerText = length + ' cm';
     document.getElementById('fit-result-desc').innerText = desc;
     
     // Toggle active style on buttons
     const buttons = document.querySelectorAll('#fit-buttons .fit-btn');
-    buttons.forEach(btn => {
-        if (btn.innerText.includes(range.split(' ')[0])) {
-            btn.className = 'fit-btn min-h-[44px] p-3 rounded-xl border border-neutral-900 bg-neutral-900 text-white font-bold transition-all focus:outline-none';
-        } else {
-            btn.className = 'fit-btn min-h-[44px] p-3 rounded-xl border border-neutral-200 hover:border-neutral-900 font-bold transition-all text-neutral-800 focus:outline-none';
-        }
+    buttons.forEach(b => {
+        b.className = 'fit-btn min-h-[44px] p-3 rounded-xl border border-neutral-200 hover:border-neutral-900 font-bold transition-all text-neutral-800 focus:outline-none cursor-pointer';
     });
+    if (btn) {
+        btn.className = 'fit-btn min-h-[44px] p-3 rounded-xl border border-neutral-900 bg-neutral-900 text-white font-bold transition-all focus:outline-none cursor-pointer';
+    }
 }
 </script>
 @endpush
