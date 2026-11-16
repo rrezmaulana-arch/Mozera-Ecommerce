@@ -21,6 +21,16 @@ class AppServiceProvider extends ServiceProvider
 
     public function boot(): void
     {
+        // Security & Configuration boot check for non-local / non-testing environments
+        if (! $this->app->environment('local', 'testing')) {
+            if (empty(config('services.midtrans.server_key'))) {
+                throw new \RuntimeException('MIDTRANS_SERVER_KEY must not be empty in non-local environments.');
+            }
+            if (config('app.debug') === true) {
+                throw new \RuntimeException('APP_DEBUG must be false in non-local environments.');
+            }
+        }
+
         // 1. Event: order.created -> Reserve stock in WMS
         DomainEventDispatcher::register('order.created', function (array $payload) {
             $order = Order::with('items')->find($payload['order_id'] ?? null);
