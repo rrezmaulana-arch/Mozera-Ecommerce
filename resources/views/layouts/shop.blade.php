@@ -80,9 +80,9 @@
                 <div class="space-y-2 pb-3 border-b border-neutral-200">
                     <span class="text-[10px] font-bold uppercase tracking-widest text-[#BA805E]">Menu Belanja</span>
                     <a href="{{ route('shop.catalog') }}" class="block text-sm font-semibold text-neutral-900 py-1.5 cursor-pointer">Seluruh Koleksi</a>
-                    <a href="{{ route('shop.catalog', ['category' => 'outerwear']) }}" class="block text-sm text-neutral-700 py-1 cursor-pointer">Outerwear & Kimono</a>
+                    <a href="{{ route('shop.catalog', ['category' => 'outerwear']) }}" class="block text-sm text-neutral-700 py-1 cursor-pointer">Outerwear dan Kimono</a>
                     <a href="{{ route('shop.catalog', ['category' => 'scarf']) }}" class="block text-sm text-neutral-700 py-1 cursor-pointer">Voal Scarf 120x120</a>
-                    <a href="{{ route('shop.catalog', ['category' => 'dress']) }}" class="block text-sm text-neutral-700 py-1 cursor-pointer">Tiered Midi Dress</a>
+                    <a href="{{ route('shop.catalog', ['category' => 'outerwear']) }}" class="block text-sm text-neutral-700 py-1 cursor-pointer">Koleksi Atasan Modest</a>
                 </div>
 
                 <div class="space-y-2 pb-3 border-b border-neutral-200">
@@ -103,11 +103,11 @@
                     </a>
                     <a href="{{ route('shop.returns') }}" class="block font-semibold text-neutral-800 py-1.5 cursor-pointer flex items-center gap-2">
                         <svg class="w-4 h-4 text-neutral-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 15v-1a4 4 0 00-4-4H4m0 0l3-3m-3 3l3 3"/></svg>
-                        <span>Portal Retur & Tukar Ukuran</span>
+                        <span>Portal Retur dan Tukar Ukuran</span>
                     </a>
                     <a href="{{ route('admin.dashboard') }}" class="block font-semibold text-[#BA805E] py-1.5 cursor-pointer flex items-center gap-2">
                         <svg class="w-4 h-4 text-[#BA805E]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
-                        <span>Portal Staf & Admin</span>
+                        <span>Portal Staf dan Admin</span>
                     </a>
                 </div>
             </div>
@@ -163,23 +163,23 @@
                 <div>
                     <h4 class="text-xs font-bold uppercase tracking-widest text-neutral-100 mb-3.5">Koleksi Busana</h4>
                     <ul class="space-y-2.5 text-xs sm:text-[13px] text-neutral-400">
-                        <li><a href="{{ route('shop.catalog', ['category' => 'outerwear']) }}" class="hover:text-white transition-colors cursor-pointer">Outerwear & Kimono</a></li>
+                        <li><a href="{{ route('shop.catalog', ['category' => 'outerwear']) }}" class="hover:text-white transition-colors cursor-pointer">Outerwear dan Kimono</a></li>
                         <li><a href="{{ route('shop.catalog', ['category' => 'scarf']) }}" class="hover:text-white transition-colors cursor-pointer">Voal Ultrafine Scarf 120x120</a></li>
-                        <li><a href="{{ route('shop.catalog', ['category' => 'dress']) }}" class="hover:text-white transition-colors cursor-pointer">Tiered Midi Dress</a></li>
                         <li><a href="{{ route('shop.catalog', ['series' => 'PUSPA']) }}" class="hover:text-white transition-colors cursor-pointer">Seri PUSPA Koleksi</a></li>
+                        <li><a href="{{ route('shop.catalog', ['series' => 'ISLA']) }}" class="hover:text-white transition-colors cursor-pointer">Seri ISLA Koleksi</a></li>
                         <li><a href="{{ route('shop.catalog', ['series' => 'SEPT_DROPS']) }}" class="hover:text-white transition-colors cursor-pointer">Sept Drops Eksklusif</a></li>
                     </ul>
                 </div>
 
                 <!-- Col 3: Layanan Pelanggan -->
                 <div>
-                    <h4 class="text-xs font-bold uppercase tracking-widest text-neutral-100 mb-3.5">Bantuan & Layanan</h4>
+                    <h4 class="text-xs font-bold uppercase tracking-widest text-neutral-100 mb-3.5">Bantuan dan Layanan</h4>
                     <ul class="space-y-2.5 text-xs sm:text-[13px] text-neutral-400">
                         <li><a href="{{ route('shop.tracking') }}" class="hover:text-white transition-colors cursor-pointer">Lacak Status Pesanan</a></li>
-                        <li><a href="{{ route('shop.returns') }}" class="hover:text-white transition-colors cursor-pointer">Portal Retur & Tukar Ukuran</a></li>
+                        <li><a href="{{ route('shop.returns') }}" class="hover:text-white transition-colors cursor-pointer">Portal Retur dan Tukar Ukuran</a></li>
                         <li><a href="{{ route('shop.home') }}#fit-helper" class="hover:text-white transition-colors cursor-pointer">Panduan Ukuran (Fit Helper)</a></li>
                         <li><a href="{{ route('shop.returns') }}" class="hover:text-white transition-colors cursor-pointer">Kebijakan Garansi 7 Hari</a></li>
-                        <li><a href="{{ route('admin.dashboard') }}" class="text-[#DCC3AD] hover:underline transition-colors cursor-pointer">Akses Portal Staf & Gudang &rarr;</a></li>
+                        <li><a href="{{ route('admin.dashboard') }}" class="text-[#DCC3AD] hover:underline transition-colors cursor-pointer">Akses Portal Staf dan Gudang &rarr;</a></li>
                     </ul>
                 </div>
 
@@ -206,9 +206,9 @@
                 <div class="flex items-center gap-4 text-xs">
                     <a href="{{ route('shop.returns') }}" class="hover:text-white transition-colors">Kebijakan Retur</a>
                     <span>&bull;</span>
-                    <a href="{{ route('shop.catalog') }}" class="hover:text-white transition-colors">Syarat & Ketentuan</a>
+                    <a href="{{ route('shop.catalog') }}" class="hover:text-white transition-colors">Syarat dan Ketentuan</a>
                     <span>&bull;</span>
-                    <span class="text-neutral-500">Jakarta & Surabaya, Indonesia</span>
+                    <span class="text-neutral-500">Jakarta dan Surabaya, Indonesia</span>
                 </div>
             </div>
         </div>

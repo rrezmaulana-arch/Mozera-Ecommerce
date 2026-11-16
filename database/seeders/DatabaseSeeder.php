@@ -119,21 +119,22 @@ class DatabaseSeeder extends Seeder
             'banner_image' => 'https://images.unsplash.com/photo-1469334031218-e382a71b716b?w=1200&q=80',
         ]);
 
-        // 5. Products & SKUs
+        // 5. Products & SKUs (Fokus 100% Atasan Kimono Outer & Scarf Modest)
         $prod1 = Product::create([
             'series_id' => $seriesPuspa->id,
             'name' => 'PUSPA Floral Outer Kimono',
             'slug' => 'puspa-floral-outer-kimono',
             'category' => 'outerwear',
-            'description' => 'Outer berpotongan kimono dengan detail print eksklusif PUSPA. Cocok dipadukan dengan inner polos untuk aktivitas formal maupun santai.',
+            'description' => 'Outer berpotongan kimono dengan detail print eksklusif flora terakota hangat. Siluet longgar santun yang cocok dipadukan dengan inner atau celana kulot untuk beragam acara.',
             'material' => 'Premium Rayon Twill (Lembut, dingin, tidak menerawang)',
             'care_instructions' => 'Cuci tangan dengan air dingin, jemur di tempat teduh, setrika suhu sedang.',
             'length_cm' => 110,
             'is_preorder' => false,
-            'primary_image' => 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=800&q=80',
+            'primary_image' => '/images/models/look-1-terracotta.png',
             'gallery_images' => [
-                'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=800&q=80',
-                'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=800&q=80',
+                '/images/models/look-1-terracotta.png',
+                '/images/models/look-2-sage.png',
+                '/images/models/look-3-navy.png',
             ],
             'is_active' => true,
         ]);
@@ -148,7 +149,7 @@ class DatabaseSeeder extends Seeder
             'price_idr' => 389000,
             'cost_idr' => 175000,
             'weight_grams' => 350,
-            'image_url' => 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=800&q=80',
+            'image_url' => '/images/models/look-2-sage.png',
         ]);
 
         $sku1_terracotta_all = Sku::create([
@@ -161,7 +162,20 @@ class DatabaseSeeder extends Seeder
             'price_idr' => 389000,
             'cost_idr' => 175000,
             'weight_grams' => 350,
-            'image_url' => 'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=800&q=80',
+            'image_url' => '/images/models/look-1-terracotta.png',
+        ]);
+
+        $sku1_navy_all = Sku::create([
+            'product_id' => $prod1->id,
+            'sku_code' => 'PUSPA-OUT-NVY-ALL',
+            'barcode' => '8991001003',
+            'name' => 'PUSPA Floral Outer - Indigo Navy (All Size)',
+            'color' => 'Indigo Navy',
+            'size' => 'All Size',
+            'price_idr' => 389000,
+            'cost_idr' => 175000,
+            'weight_grams' => 350,
+            'image_url' => '/images/models/look-3-navy.png',
         ]);
 
         $prod2 = Product::create([
@@ -174,7 +188,7 @@ class DatabaseSeeder extends Seeder
             'care_instructions' => 'Cuci dengan sampo lembut, hindari memeras terlalu kencang.',
             'length_cm' => 120,
             'is_preorder' => false,
-            'primary_image' => 'https://images.unsplash.com/photo-1601924994987-69e26d50dc26?w=800&q=80',
+            'primary_image' => '/images/models/look-1-terracotta.png',
             'gallery_images' => [
                 'https://images.unsplash.com/photo-1601924994987-69e26d50dc26?w=800&q=80',
             ],
@@ -209,18 +223,18 @@ class DatabaseSeeder extends Seeder
 
         $prod3 = Product::create([
             'series_id' => $seriesIsla->id,
-            'name' => 'ISLA Tiered Midi Dress',
-            'slug' => 'isla-tiered-midi-dress',
-            'category' => 'dress',
-            'description' => 'Dress berpotongan A-line dengan aksen tingkat manis dan lengan karet wudhu-friendly. Nyaman dipakai seharian.',
-            'material' => 'Pure Crinkle Airflow (Tanpa perlu disetrika)',
+            'name' => 'ISLA Geometrik Kimono Outer',
+            'slug' => 'isla-geometrik-kimono-outer',
+            'category' => 'outerwear',
+            'description' => 'Atasan kimono bermotif geometrik modern bernuansa sage green sejuk. Siluet santai wudhu-friendly untuk tampilan effortless chic sehari-hari (#everydaymozera).',
+            'material' => 'Pure Crinkle Airflow & Rayon Twill (Tanpa perlu disetrika)',
             'care_instructions' => 'Cuci mesin putaran lembut.',
-            'length_cm' => 125,
+            'length_cm' => 105,
             'is_preorder' => true,
             'preorder_lead_days' => 10,
-            'primary_image' => 'https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=800&q=80',
+            'primary_image' => '/images/models/look-2-sage.png',
             'gallery_images' => [
-                'https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=800&q=80',
+                '/images/models/look-2-sage.png',
             ],
             'is_active' => true,
         ]);
@@ -229,41 +243,41 @@ class DatabaseSeeder extends Seeder
             'product_id' => $prod3->id,
             'sku_code' => 'ISLA-DRS-OAT-SM',
             'barcode' => '8991003001',
-            'name' => 'ISLA Dress - Oat Milk (S/M)',
-            'color' => 'Oat Milk',
+            'name' => 'ISLA Geometrik Outer - Sage Green (S/M)',
+            'color' => 'Sage Green',
             'size' => 'S/M',
             'price_idr' => 429000,
             'cost_idr' => 195000,
             'weight_grams' => 450,
-            'image_url' => 'https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=800&q=80',
+            'image_url' => '/images/models/look-2-sage.png',
         ]);
 
         $sku3_isla_lxl = Sku::create([
             'product_id' => $prod3->id,
             'sku_code' => 'ISLA-DRS-OAT-LXL',
             'barcode' => '8991003002',
-            'name' => 'ISLA Dress - Oat Milk (L/XL)',
-            'color' => 'Oat Milk',
+            'name' => 'ISLA Geometrik Outer - Sage Green (L/XL)',
+            'color' => 'Sage Green',
             'size' => 'L/XL',
             'price_idr' => 429000,
             'cost_idr' => 195000,
             'weight_grams' => 480,
-            'image_url' => 'https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=800&q=80',
+            'image_url' => '/images/models/look-2-sage.png',
         ]);
 
         $prod4 = Product::create([
             'series_id' => $seriesSept->id,
-            'name' => 'Sept Drops Heritage Linen Trench Outer',
+            'name' => 'Sept Drops Heritage Parang Trench Outer',
             'slug' => 'sept-drops-heritage-linen-trench',
             'category' => 'outerwear',
-            'description' => 'Trench outer berstruktur kokoh dengan material linen rami ramah lingkungan. Dilengkapi sabuk serut untuk siluet ramping.',
-            'material' => '100% Belgian Washed Linen',
+            'description' => 'Trench outer berstruktur kokoh dengan motif parang heritage modern. Dilengkapi sabuk serut untuk siluet ramping dan santun.',
+            'material' => '100% Belgian Washed Linen & Heritage Batik Print',
             'care_instructions' => 'Dry clean direkomendasikan.',
             'length_cm' => 115,
             'is_preorder' => false,
-            'primary_image' => 'https://images.unsplash.com/photo-1485968579580-b6d095142e6e?w=800&q=80',
+            'primary_image' => '/images/models/look-4-parang.png',
             'gallery_images' => [
-                'https://images.unsplash.com/photo-1485968579580-b6d095142e6e?w=800&q=80',
+                '/images/models/look-4-parang.png',
             ],
             'is_active' => true,
         ]);
@@ -272,13 +286,13 @@ class DatabaseSeeder extends Seeder
             'product_id' => $prod4->id,
             'sku_code' => 'SEPT-TRN-SND-ALL',
             'barcode' => '8991004001',
-            'name' => 'Sept Drops Trench - Sand Beige (All Size)',
-            'color' => 'Sand Beige',
+            'name' => 'Sept Drops Trench - Heritage Parang (All Size)',
+            'color' => 'Heritage Parang',
             'size' => 'All Size',
             'price_idr' => 549000,
             'cost_idr' => 240000,
             'weight_grams' => 550,
-            'image_url' => 'https://images.unsplash.com/photo-1485968579580-b6d095142e6e?w=800&q=80',
+            'image_url' => '/images/models/look-4-parang.png',
         ]);
 
         // 6. Inbound Stock & Initial Ledger Movements
@@ -302,6 +316,7 @@ class DatabaseSeeder extends Seeder
         $initialQuantities = [
             $sku1_sage_all->id => 45,
             $sku1_terracotta_all->id => 38,
+            $sku1_navy_all->id => 30,
             $sku2_dusty_pink->id => 80,
             $sku2_olive->id => 65,
             $sku3_isla_sm->id => 25,

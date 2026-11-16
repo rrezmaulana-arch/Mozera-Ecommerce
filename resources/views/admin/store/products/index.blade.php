@@ -1,8 +1,8 @@
 @extends('layouts.admin')
 
-@section('title', 'Katalog Produk & SKU — ITSFRIDAY')
-@section('page_title', 'Katalog Produk & Varian SKU')
-@section('page_subtitle', 'Manajemen Busana, Seri, Harga, HPP & Panjang Baju (Fit Helper)')
+@section('title', 'Katalog Produk dan SKU — MOZÉRA')
+@section('page_title', 'Katalog Produk dan Varian SKU')
+@section('page_subtitle', 'Manajemen Busana Atasan, Seri, Harga, HPP dan Panjang Baju (Fit Helper)')
 
 @section('content')
 <div class="space-y-6">

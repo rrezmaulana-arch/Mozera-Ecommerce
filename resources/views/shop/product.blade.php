@@ -148,8 +148,8 @@
                 <div class="border border-[#BA805E]/30 rounded-3xl p-5 bg-[#FAF8F5] space-y-3.5 shadow-sm">
                     <div class="flex items-center justify-between">
                         <div class="flex items-center gap-2.5">
-                            <div class="w-7 h-7 rounded-full bg-[#BA805E]/20 text-[#8A4F35] flex items-center justify-center flex-shrink-0 font-bold text-xs">
-                                📏
+                            <div class="w-7 h-7 rounded-full bg-[#BA805E]/20 text-[#8A4F35] flex items-center justify-center flex-shrink-0">
+                                <svg class="w-4 h-4 text-[#BA805E]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 6h16M4 10h16M4 14h16M4 18h16M8 6v4m4-4v4m4-4v4"/></svg>
                             </div>
                             <div>
                                 <h4 class="text-xs font-bold uppercase tracking-wider text-neutral-900">Interactive Fit Helper</h4>

@@ -15,7 +15,7 @@
                 <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
                     <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#F5EFEB] border border-[#BA805E]/30 text-[#BA805E] text-xs font-bold uppercase tracking-wider">
                         <span class="w-1.5 h-1.5 rounded-full bg-[#BA805E]"></span>
-                        <span>Koleksi Modest Atasan & Outerwear</span>
+                        <span>Koleksi Modest Atasan dan Outerwear</span>
                     </div>
 
                     <h1 class="font-serif text-[clamp(2.2rem,5vw,3.75rem)] font-bold tracking-tight text-neutral-950 leading-[1.12]">
@@ -128,7 +128,7 @@
             <div>
                 <span class="text-[11px] uppercase tracking-[0.25em] text-[#BA805E] font-bold">Koleksi Tematik</span>
                 <h2 class="font-serif text-[clamp(1.5rem,3.5vw,2.25rem)] font-bold text-neutral-950 mt-1">
-                    Seri & Rilisan Eksklusif
+                    Seri dan Rilisan Eksklusif
                 </h2>
             </div>
             <a href="{{ route('shop.catalog') }}" class="text-xs font-bold text-neutral-900 hover:text-[#BA805E] transition-colors pb-0.5 border-b border-neutral-900 hover:border-[#BA805E] shrink-0">
@@ -186,50 +186,50 @@
             <!-- Momen 1 -->
             <a href="{{ route('shop.catalog', ['category' => 'outerwear']) }}" class="group p-4 sm:p-5 rounded-2xl bg-white border border-neutral-200 hover:border-[#BA805E] transition-all text-center space-y-2 block shadow-sm hover:shadow-md">
                 <div class="w-10 h-10 mx-auto rounded-full bg-[#F5EFEB] text-[#BA805E] flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <span class="text-base">✨</span>
+                    <svg class="w-5 h-5 text-[#BA805E]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.286L13 21l-2.286-6.857L5 12l5.714-2.286L13 3z"/></svg>
                 </div>
-                <h4 class="font-serif font-bold text-neutral-900 text-sm group-hover:text-[#BA805E] transition-colors">Kondangan & Pesta</h4>
-                <p class="text-[11px] text-neutral-500 leading-snug">Outer jatuh mewah & voal ultrafine berkilau</p>
+                <h4 class="font-serif font-bold text-neutral-900 text-sm group-hover:text-[#BA805E] transition-colors">Kondangan dan Pesta</h4>
+                <p class="text-[11px] text-neutral-500 leading-snug">Outer jatuh mewah dan voal ultrafine berkilau</p>
             </a>
 
             <!-- Momen 2 -->
             <a href="{{ route('shop.catalog', ['category' => 'outerwear']) }}" class="group p-4 sm:p-5 rounded-2xl bg-white border border-neutral-200 hover:border-[#BA805E] transition-all text-center space-y-2 block shadow-sm hover:shadow-md">
                 <div class="w-10 h-10 mx-auto rounded-full bg-[#F5EFEB] text-[#BA805E] flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <span class="text-base">🎓</span>
+                    <svg class="w-5 h-5 text-[#BA805E]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-5.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5"/></svg>
                 </div>
-                <h4 class="font-serif font-bold text-neutral-900 text-sm group-hover:text-[#BA805E] transition-colors">Wisuda & Sidang</h4>
+                <h4 class="font-serif font-bold text-neutral-900 text-sm group-hover:text-[#BA805E] transition-colors">Wisuda dan Sidang</h4>
                 <p class="text-[11px] text-neutral-500 leading-snug">Siluet santun rapi berwibawa</p>
             </a>
 
             <!-- Momen 3 -->
-            <a href="{{ route('shop.catalog', ['category' => 'dress']) }}" class="group p-4 sm:p-5 rounded-2xl bg-white border border-neutral-200 hover:border-[#BA805E] transition-all text-center space-y-2 block shadow-sm hover:shadow-md">
+            <a href="{{ route('shop.catalog', ['category' => 'outerwear']) }}" class="group p-4 sm:p-5 rounded-2xl bg-white border border-neutral-200 hover:border-[#BA805E] transition-all text-center space-y-2 block shadow-sm hover:shadow-md">
                 <div class="w-10 h-10 mx-auto rounded-full bg-[#F5EFEB] text-[#BA805E] flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <span class="text-base">🕊️</span>
+                    <svg class="w-5 h-5 text-[#BA805E]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
                 </div>
-                <h4 class="font-serif font-bold text-neutral-900 text-sm group-hover:text-[#BA805E] transition-colors">Kajian & Silaturahmi</h4>
+                <h4 class="font-serif font-bold text-neutral-900 text-sm group-hover:text-[#BA805E] transition-colors">Kajian dan Silaturahmi</h4>
                 <p class="text-[11px] text-neutral-500 leading-snug">Potongan longgar sejuk tanpa terawang</p>
             </a>
 
             <!-- Momen 4 -->
             <a href="{{ route('shop.catalog', ['category' => 'outerwear']) }}" class="group p-4 sm:p-5 rounded-2xl bg-white border border-neutral-200 hover:border-[#BA805E] transition-all text-center space-y-2 block shadow-sm hover:shadow-md">
                 <div class="w-10 h-10 mx-auto rounded-full bg-[#F5EFEB] text-[#BA805E] flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <span class="text-base">☕</span>
+                    <svg class="w-5 h-5 text-[#BA805E]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8zM6 1v3M10 1v3M14 1v3"/></svg>
                 </div>
-                <h4 class="font-serif font-bold text-neutral-900 text-sm group-hover:text-[#BA805E] transition-colors">Kuliah & Hangout</h4>
-                <p class="text-[11px] text-neutral-500 leading-snug">Casual chic, mudah di-layering</p>
+                <h4 class="font-serif font-bold text-neutral-900 text-sm group-hover:text-[#BA805E] transition-colors">Kuliah dan Hangout</h4>
+                <p class="text-[11px] text-neutral-500 leading-snug">Casual chic, santun dan mudah di-layering</p>
             </a>
         </div>
     </section>
 
-    <!-- G1: FULL-WIDTH VIEWPORT-FITTED OPEN RUNWAY ("Try The Look" — 1 Layar Penuh Desktop) -->
-    <section id="try-the-look" class="w-full relative py-6 lg:py-8 bg-[#FAF9F6] border-y border-neutral-200/50 overflow-hidden select-none scroll-mt-16 lg:h-[calc(100vh-64px)] lg:max-h-[820px] lg:min-h-[660px] lg:flex lg:flex-col lg:justify-between">
+    <!-- G1: VIEWPORT-FITTED OPEN RUNWAY ("Try The Look" — 1 Layar Penuh Desktop Bebas Scroll) -->
+    <section id="try-the-look" class="w-full relative py-4 lg:py-5 bg-[#FAF9F6] border-y border-neutral-200/50 overflow-hidden select-none scroll-mt-16 lg:h-[calc(100vh-64px)] lg:max-h-[760px] lg:min-h-[580px] lg:flex lg:flex-col lg:justify-between">
         
         <!-- Header: Minimal Luxury Editorial Title (Compact, Centered) -->
         <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 text-center shrink-0">
             <span class="text-[10px] uppercase tracking-[0.3em] font-bold text-[#BA805E] block">
                 Virtual Styling Runway • Koleksi Atasan
             </span>
-            <h2 class="font-serif text-[clamp(1.75rem,3.8vw,2.5rem)] font-bold text-neutral-950 mt-0.5 tracking-tight">
+            <h2 class="font-serif text-[clamp(1.6rem,3vw,2.25rem)] font-bold text-neutral-950 mt-0.5 tracking-tight">
                 Try The Look.
             </h2>
             <p class="text-xs sm:text-sm text-neutral-500 font-light mt-0.5 max-w-lg mx-auto">
@@ -237,11 +237,11 @@
             </p>
         </div>
 
-        <!-- FULL-WIDTH OPEN STAGE CONTAINER (Viewport Fitted, No Box, Seamless Studio Canvas) -->
-        <div class="relative w-full flex-1 flex items-center justify-center my-auto overflow-hidden">
+        <!-- STAGE & EDITORIAL SPLIT (Dedicated side-by-side columns on desktop, ZERO overlap) -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex-1 flex flex-col lg:flex-row items-center justify-between gap-6 lg:gap-8 my-auto overflow-hidden">
             
-            <!-- Models Runway Stage (Desktop & Mobile) -->
-            <div class="relative w-full h-[360px] sm:h-[400px] lg:h-[440px] flex items-center justify-center overflow-hidden" id="open-runway-stage">
+            <!-- Models Runway Stage (Desktop Left Column: Models glide strictly inside this area) -->
+            <div class="relative flex-1 w-full h-[320px] sm:h-[360px] lg:h-[390px] flex items-center justify-center overflow-hidden" id="open-runway-stage">
                 
                 @foreach($curatedLooks as $idx => $look)
                     <div 
@@ -251,10 +251,10 @@
                         style="will-change: transform, opacity;"
                     >
                         <!-- Realistic Floor Contact Shadow (No Card Borders) -->
-                        <div class="model-floor-shadow absolute bottom-1 w-28 sm:w-36 h-3 bg-neutral-950/15 rounded-full filter blur-[2.5px] transition-all duration-500"></div>
+                        <div class="model-floor-shadow absolute bottom-1 w-24 sm:w-32 h-3 bg-neutral-950/15 rounded-full filter blur-[2.5px] transition-all duration-500"></div>
 
                         <!-- Cutout Model Image: Authentic Transparent PNG from user -->
-                        <div class="relative h-[310px] sm:h-[350px] lg:h-[390px] flex items-end justify-center">
+                        <div class="relative h-[280px] sm:h-[320px] lg:h-[350px] flex items-end justify-center">
                             <img 
                                 src="{{ $look['model_image'] }}" 
                                 alt="{{ $look['title'] }} — Model Modest MOZÉRA" 
@@ -264,18 +264,18 @@
                         </div>
 
                         <!-- Minimal Floor Tag (Only on active model) -->
-                        <div class="active-model-tag opacity-0 transition-opacity duration-300 absolute -bottom-2 px-3 py-0.5 rounded-full bg-neutral-900/90 text-white text-[9px] font-bold uppercase tracking-wider backdrop-blur-md shadow-xs pointer-events-none">
+                        <div class="active-model-tag opacity-0 transition-opacity duration-300 absolute -bottom-2 px-3 py-0.5 rounded-full bg-neutral-900/90 text-white text-[9px] font-bold uppercase tracking-wider backdrop-blur-md shadow-xs pointer-events-none whitespace-nowrap">
                             {{ $look['title'] }}
                         </div>
                     </div>
                 @endforeach
 
-                <!-- Sleek Minimal Arrow Controls (Desktop Left/Right) -->
+                <!-- Sleek Minimal Arrow Controls (Desktop Inside Stage Left/Right) -->
                 <button 
                     type="button" 
                     onclick="prevLook()" 
                     aria-label="Look Sebelumnya" 
-                    class="hidden lg:flex absolute left-8 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/80 hover:bg-neutral-950 hover:text-white text-neutral-800 shadow-sm border border-neutral-200/60 backdrop-blur-md items-center justify-center transition-all cursor-pointer z-30"
+                    class="hidden lg:flex absolute left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-neutral-950 hover:text-white text-neutral-800 shadow-sm border border-neutral-200/80 backdrop-blur-md items-center justify-center transition-all cursor-pointer z-30"
                 >
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
                 </button>
@@ -283,15 +283,15 @@
                     type="button" 
                     onclick="nextLook()" 
                     aria-label="Look Berikutnya" 
-                    class="hidden lg:flex absolute right-8 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/80 hover:bg-neutral-950 hover:text-white text-neutral-800 shadow-sm border border-neutral-200/60 backdrop-blur-md items-center justify-center transition-all cursor-pointer z-30"
+                    class="hidden lg:flex absolute right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full bg-white/85 hover:bg-neutral-950 hover:text-white text-neutral-800 shadow-sm border border-neutral-200/80 backdrop-blur-md items-center justify-center transition-all cursor-pointer z-30"
                 >
                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
                 </button>
 
             </div>
 
-            <!-- FLOATING EDITORIAL PANEL: "In this look" (Desktop: Floating Right; Mobile: Below Stage) -->
-            <div class="hidden lg:block absolute right-8 xl:right-16 top-1/2 -translate-y-1/2 w-[310px] z-40 bg-white/95 backdrop-blur-md p-4 sm:p-5 rounded-2xl border border-neutral-200/80 shadow-md space-y-3">
+            <!-- DEDICATED EDITORIAL PANEL (Desktop Right Column: Clean, Separate, No Overlap) -->
+            <div class="hidden lg:block w-[310px] xl:w-[325px] shrink-0 bg-white/95 backdrop-blur-md p-4 sm:p-5 rounded-2xl border border-neutral-200/80 shadow-md space-y-3">
                 <div class="flex items-center justify-between pb-2 border-b border-neutral-100">
                     <div>
                         <span class="text-[9px] uppercase tracking-[0.2em] font-bold text-[#BA805E]">In This Look</span>
@@ -307,18 +307,19 @@
                 <!-- Dynamic Items per look -->
                 @foreach($curatedLooks as $idx => $look)
                     <div id="desk-items-{{ $idx }}" class="desk-items-container space-y-2.5 {{ $idx === 0 ? 'block' : 'hidden' }}">
-                        <!-- Hero Top Item -->
+                        <!-- Hero Top Item (Actual Cutout Thumbnail) -->
                         <div class="flex items-center gap-2.5">
-                            <div class="w-12 h-14 rounded-lg overflow-hidden bg-[#F5EFEB] shrink-0 border border-neutral-200/60">
-                                <img src="{{ $look['hero_product']->primary_image }}" alt="{{ $look['hero_product']->name }}" class="w-full h-full object-cover">
+                            <div class="w-12 h-14 rounded-lg overflow-hidden bg-[#FAF9F6] shrink-0 border border-neutral-200/60 p-0.5 flex items-center justify-center">
+                                <img src="{{ $look['model_image'] }}" alt="{{ $look['hero_product']->name }}" class="h-full w-auto object-contain">
                             </div>
                             <div class="flex-1 min-w-0 text-xs">
                                 <span class="text-[8px] uppercase font-bold text-[#BA805E] tracking-wider block">{{ $look['hero_role'] }}</span>
                                 <h4 class="font-bold text-neutral-900 truncate text-[11px]">{{ $look['hero_product']->name }}</h4>
                                 <div class="flex items-center justify-between mt-0.5">
                                     <span class="font-bold font-mono text-neutral-950 text-[11px]">{{ \App\Modules\Shared\Money\Money::format($look['hero_sku']?->price_idr ?? 389000) }}</span>
-                                    <button type="button" onclick="openHangerModal({{ $idx }})" class="text-[9px] font-bold text-[#BA805E] hover:underline cursor-pointer">
-                                        🔍 Detail Hanger
+                                    <button type="button" onclick="openHangerModal({{ $idx }})" class="inline-flex items-center gap-1 text-[9px] font-bold text-[#BA805E] hover:underline cursor-pointer">
+                                        <svg class="w-2.5 h-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                                        <span>Detail Atasan</span>
                                     </button>
                                 </div>
                             </div>
@@ -326,8 +327,8 @@
 
                         <!-- Secondary Item (Scarf / Inner) -->
                         <div class="flex items-center gap-2.5 pt-1.5 border-t border-neutral-100">
-                            <div class="w-12 h-14 rounded-lg overflow-hidden bg-[#F5EFEB] shrink-0 border border-neutral-200/60">
-                                <img src="{{ $look['secondary_product']->primary_image }}" alt="{{ $look['secondary_product']->name }}" class="w-full h-full object-cover">
+                            <div class="w-12 h-14 rounded-lg overflow-hidden bg-[#FAF9F6] shrink-0 border border-neutral-200/60 p-0.5 flex items-center justify-center">
+                                <img src="{{ $look['secondary_product']->model_image ?? $look['secondary_product']->primary_image }}" alt="{{ $look['secondary_product']->name }}" class="w-full h-full object-contain rounded">
                             </div>
                             <div class="flex-1 min-w-0 text-xs">
                                 <span class="text-[8px] uppercase font-bold text-neutral-500 tracking-wider block">{{ $look['secondary_role'] }}</span>
@@ -415,8 +416,9 @@
                                 <span class="text-[9px] text-neutral-400 line-through font-mono block">{{ \App\Modules\Shared\Money\Money::format($sN) }}</span>
                                 <span class="font-serif font-bold text-sm text-[#BA805E] font-mono">{{ \App\Modules\Shared\Money\Money::format($bT) }}</span>
                             </div>
-                            <button type="button" onclick="openHangerModal({{ $idx }})" class="text-[10px] font-bold text-neutral-700 bg-neutral-100 px-2.5 py-1 rounded-lg hover:bg-neutral-200 cursor-pointer">
-                                🔍 Detail Atasan
+                            <button type="button" onclick="openHangerModal({{ $idx }})" class="inline-flex items-center gap-1 text-[10px] font-bold text-neutral-700 bg-neutral-100 px-2.5 py-1 rounded-lg hover:bg-neutral-200 cursor-pointer">
+                                <svg class="w-3 h-3 text-[#BA805E]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                                <span>Detail Atasan</span>
                             </button>
                         </div>
 
@@ -565,7 +567,7 @@
                 currentLookIdx = idx;
 
                 const isDesktop = window.innerWidth >= 1024;
-                const spacing = isDesktop ? 230 : 160;
+                const spacing = isDesktop ? 175 : 130;
 
                 // 1. Position Models on Open Floor (0-Latency 2D Hardware-Accelerated Translations)
                 looks.forEach((_, i) => {
@@ -854,7 +856,7 @@
                                     <span class="text-[10px] text-neutral-400 font-mono ml-0.5">+2</span>
                                 </div>
                                 <div class="flex items-center text-amber-500 font-bold text-[11px] gap-0.5">
-                                    <span>★</span>
+                                    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
                                     <span class="text-neutral-700">4.9</span>
                                 </div>
                             </div>

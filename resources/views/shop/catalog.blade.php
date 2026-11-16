@@ -44,13 +44,10 @@
             Semua Busana
         </a>
         <a href="{{ route('shop.catalog', ['category' => 'outerwear']) }}" class="px-4 py-2 rounded-full font-bold whitespace-nowrap transition-all {{ request('category') === 'outerwear' ? 'bg-[#BA805E] text-white shadow-md' : 'bg-white border border-neutral-200 text-neutral-700 hover:border-[#BA805E]' }}">
-            Outerwear
+            Outerwear dan Kimono
         </a>
         <a href="{{ route('shop.catalog', ['category' => 'scarf']) }}" class="px-4 py-2 rounded-full font-bold whitespace-nowrap transition-all {{ request('category') === 'scarf' ? 'bg-[#BA805E] text-white shadow-md' : 'bg-white border border-neutral-200 text-neutral-700 hover:border-[#BA805E]' }}">
-            Scarf & Hijab
-        </a>
-        <a href="{{ route('shop.catalog', ['category' => 'dress']) }}" class="px-4 py-2 rounded-full font-bold whitespace-nowrap transition-all {{ request('category') === 'dress' ? 'bg-[#BA805E] text-white shadow-md' : 'bg-white border border-neutral-200 text-neutral-700 hover:border-[#BA805E]' }}">
-            Tiered Dress
+            Scarf dan Hijab
         </a>
         <span class="text-neutral-300">|</span>
         @foreach($allSeries as $s)

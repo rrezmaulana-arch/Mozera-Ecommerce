@@ -12,10 +12,10 @@
             <svg class="w-3.5 h-3.5 text-brand-700" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"/>
             </svg>
-            <span>Garansi Kualitas & Kepuasan 7 Hari</span>
+            <span>Garansi Kualitas dan Kepuasan 7 Hari</span>
         </div>
         <h1 class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-neutral-900 tracking-tight">
-            Portal Retur & Penukaran
+            Portal Retur dan Penukaran
         </h1>
         <p class="text-xs sm:text-sm text-neutral-600 mt-3 leading-relaxed">
             Kenyamanan Anda adalah prioritas kami. Tukar ukuran (<span class="italic font-medium">size exchange</span>) atau ajukan klaim produk secara instan, transparan, dan tanpa perlu menunggu balasan admin chat.
@@ -84,14 +84,14 @@
             </div>
             <div class="bg-white/80 p-5 rounded-2xl border border-neutral-200/70 space-y-2">
                 <div class="w-7 h-7 rounded-lg bg-neutral-100 text-neutral-800 font-bold text-xs flex items-center justify-center">2</div>
-                <h3 class="text-xs font-bold text-neutral-900">Pilih Varian & Alasan</h3>
+                <h3 class="text-xs font-bold text-neutral-900">Pilih Varian dan Alasan</h3>
                 <p class="text-[11px] text-neutral-500 leading-relaxed">
                     Pilih busana yang ingin ditukar ukuran atau dilaporkan cacat jahit dalam masa 7 hari.
                 </p>
             </div>
             <div class="bg-white/80 p-5 rounded-2xl border border-neutral-200/70 space-y-2">
                 <div class="w-7 h-7 rounded-lg bg-neutral-100 text-neutral-800 font-bold text-xs flex items-center justify-center">3</div>
-                <h3 class="text-xs font-bold text-neutral-900">QC Cepat & Pengiriman Baru</h3>
+                <h3 class="text-xs font-bold text-neutral-900">QC Cepat dan Pengiriman Baru</h3>
                 <p class="text-[11px] text-neutral-500 leading-relaxed">
                     Tim gudang menerima paket, melakukan sanitasi QC, dan mengirimkan unit pengganti segera.
                 </p>
