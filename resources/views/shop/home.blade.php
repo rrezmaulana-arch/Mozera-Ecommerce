@@ -294,31 +294,32 @@
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col items-center justify-center my-auto">
             
             <!-- Models Runway Stage (Wide Center Runway, No Bottom Overflow Clipping) -->
-            <div class="relative w-full h-[390px] sm:h-[450px] lg:h-[490px] flex items-center justify-center pb-6" id="open-runway-stage">
+            <div class="relative w-full h-[420px] sm:h-[480px] lg:h-[530px] flex items-center justify-center pb-5" id="open-runway-stage">
                 
                 <!-- Couture Runway Architectural Arch Backdrop (Stage Depth) -->
-                <div class="absolute inset-x-4 sm:inset-x-12 lg:inset-x-24 top-2 bottom-6 rounded-t-[160px] sm:rounded-t-[220px] bg-gradient-to-b from-[#F2ECE3]/85 via-[#FAF7F2]/45 to-transparent border-t border-x border-[#E6DAC9]/70 shadow-[inset_0_4px_24px_rgba(230,218,201,0.35)] pointer-events-none -z-0"></div>
+                <div class="absolute inset-x-4 sm:inset-x-12 lg:inset-x-20 top-2 bottom-5 rounded-t-[170px] sm:rounded-t-[230px] bg-gradient-to-b from-[#F2ECE3]/85 via-[#FAF7F2]/45 to-transparent border-t border-x border-[#E6DAC9]/70 shadow-[inset_0_4px_24px_rgba(230,218,201,0.35)] pointer-events-none -z-0"></div>
 
                 <!-- Runway Spotlight Floor Glow -->
-                <div class="absolute bottom-5 w-[300px] sm:w-[440px] lg:w-[560px] h-12 bg-gradient-to-r from-transparent via-[#E8DEC9]/75 to-transparent rounded-[100%] filter blur-lg pointer-events-none -z-0"></div>
+                <div class="absolute bottom-4 w-[340px] sm:w-[480px] lg:w-[620px] h-14 bg-gradient-to-r from-transparent via-[#E8DEC9]/75 to-transparent rounded-[100%] filter blur-lg pointer-events-none -z-0"></div>
 
                 @foreach($curatedLooks as $idx => $look)
                     <div 
                         id="runway-model-{{ $idx }}" 
                         onclick="switchLook({{ $idx }})"
-                        class="runway-model-item absolute bottom-4 flex flex-col items-center justify-end transition-all duration-500 ease-out cursor-pointer z-10"
+                        class="runway-model-item absolute bottom-3 flex flex-col items-center justify-end transition-all duration-500 ease-out cursor-pointer z-10"
                         style="will-change: transform, opacity;"
                     >
                         <!-- Floor Contact Shadow -->
-                        <div class="model-floor-shadow absolute bottom-1 w-28 sm:w-36 lg:w-44 h-3.5 bg-neutral-950/20 rounded-full filter blur-[3px] transition-all duration-500"></div>
+                        <div class="model-floor-shadow absolute bottom-1 w-32 sm:w-40 lg:w-48 h-3.5 bg-neutral-950/20 rounded-full filter blur-[3.5px] transition-all duration-500"></div>
 
-                        <!-- Cutout Model Image: Model Utuh dari Kepala sampai Kaki (Tidak Tertimpa Tag) -->
-                        <div class="relative h-[310px] sm:h-[370px] lg:h-[420px] flex items-end justify-center">
+                        <!-- Cutout Model Image: Model Lebih Besar, Jernih & Utuh (Head-to-Toe HD) -->
+                        <div class="relative h-[340px] sm:h-[410px] lg:h-[470px] flex items-end justify-center">
                             <img 
                                 src="{{ $look['model_image'] }}" 
                                 alt="{{ $look['title'] }} — Model Modest MOZÉRA" 
                                 class="h-full w-auto max-w-none object-contain select-none pointer-events-none filter drop-shadow-md transition-all duration-500"
                                 loading="eager"
+                                style="image-rendering: auto; -webkit-backface-visibility: hidden; transform: translateZ(0);"
                             >
                         </div>
 
@@ -356,16 +357,14 @@
         </div>
 
         <!-- DEDICATED ACTIVE LOOK HIGHLIGHT (Clear, Centered, No Foot Overlap, No Text Truncation) -->
-        <div class="max-w-md mx-auto px-4 mt-1 flex flex-col items-center justify-center gap-2 text-center z-20">
-            <div class="flex items-center justify-center gap-2 flex-wrap">
-                <span id="runway-look-type" class="px-2.5 py-0.5 rounded-full text-[9px] font-mono uppercase tracking-wider font-bold bg-[#FAF8F5] text-[#A66747] border border-[#E4D7C5] shadow-2xs">
-                    {{ $curatedLooks[0]['type_label'] }}
-                </span>
-                <span id="runway-look-title" class="px-3.5 py-1 rounded-full bg-neutral-950/90 text-[#F5EFEB] border border-[#BA805E]/40 text-[10px] font-bold uppercase tracking-wider backdrop-blur-md shadow-md">
-                    {{ $curatedLooks[0]['title'] }}
-                </span>
-            </div>
-            <a id="runway-look-btn" href="{{ $curatedLooks[0]['product_url'] }}" class="inline-flex items-center gap-1.5 text-xs font-bold text-neutral-900 bg-white hover:bg-neutral-950 hover:text-white px-5 py-2 rounded-full border border-[#DCC3AD] shadow-sm transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer">
+        <div class="max-w-2xl mx-auto px-4 mt-2 flex flex-wrap items-center justify-center gap-2.5 text-center z-20">
+            <span id="runway-look-type" class="px-3 py-1 rounded-full text-[10px] font-mono uppercase tracking-wider font-bold bg-[#FAF8F5] text-[#A66747] border border-[#E4D7C5] shadow-2xs">
+                {{ $curatedLooks[0]['type_label'] }}
+            </span>
+            <span id="runway-look-title" class="px-4 py-1.5 rounded-full bg-neutral-950/90 text-[#F5EFEB] border border-[#BA805E]/40 text-xs font-bold uppercase tracking-wider backdrop-blur-md shadow-md">
+                {{ $curatedLooks[0]['title'] }}
+            </span>
+            <a id="runway-look-btn" href="{{ $curatedLooks[0]['product_url'] }}" class="inline-flex items-center gap-1.5 text-xs font-bold text-neutral-900 bg-white hover:bg-neutral-950 hover:text-white px-5 py-1.5 rounded-full border border-[#DCC3AD] shadow-sm transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer">
                 <span>Lihat Detail Busana</span>
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
             </a>
