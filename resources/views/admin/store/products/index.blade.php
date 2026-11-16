@@ -81,7 +81,9 @@
                                 @endif
                             </td>
                             <td class="py-3.5 px-4 text-right space-x-2">
-                                <a href="{{ route('admin.store.products.show', $p->id) }}" class="text-brand-300 hover:underline font-semibold">Detail & Stok</a>
+                                <a href="{{ route('admin.store.products.edit', $p->id) }}" class="text-[#BA805E] hover:underline font-semibold">Edit</a>
+                                <span class="text-neutral-700">|</span>
+                                <a href="{{ route('admin.store.products.show', $p->id) }}" class="text-neutral-300 hover:underline font-semibold">Detail & Stok</a>
                                 <a href="{{ route('shop.product', $p->slug) }}" target="_blank" class="text-neutral-500 hover:text-white" title="Lihat di Toko">
                                     ↗
                                 </a>

@@ -105,3 +105,27 @@ textarea {
 ::-webkit-scrollbar-thumb:hover {
     background: #A1A1AA;
 }
+
+/* Custom sleek scrollbar for category pills, drawers & admin sidebars */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+    height: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(186, 128, 94, 0.35);
+    border-radius: 9999px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(186, 128, 94, 0.7);
+}
+
+.custom-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(186, 128, 94, 0.35) transparent;
+}

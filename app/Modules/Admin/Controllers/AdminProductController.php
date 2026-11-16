@@ -106,5 +106,93 @@ class AdminProductController extends Controller
 
         return view('admin.store.products.show', compact('product', 'stockBalances'));
     }
+
+    public function edit(int $id)
+    {
+        $product = Product::with(['series', 'skus'])->findOrFail($id);
+        $allSeries = Series::where('is_active', true)->get();
+
+        return view('admin.store.products.edit', compact('product', 'allSeries'));
+    }
+
+    public function update(Request $request, int $id)
+    {
+        $product = Product::with('skus')->findOrFail($id);
+
+        $request->validate([
+            'name' => 'required|string|max:200',
+            'series_id' => 'nullable|exists:series,id',
+            'category' => 'required|string',
+            'material' => 'nullable|string',
+            'length_cm' => 'nullable|integer',
+            'care_instructions' => 'nullable|string',
+            'description' => 'nullable|string',
+            'primary_image' => 'nullable|url',
+            'is_preorder' => 'nullable|boolean',
+            'preorder_lead_days' => 'nullable|integer',
+            'is_active' => 'nullable|boolean',
+            // SKUs
+            'skus' => 'nullable|array',
+            'skus.*.id' => 'nullable|exists:skus,id',
+            'skus.*.sku_code' => 'required|string',
+            'skus.*.name' => 'required|string',
+            'skus.*.color' => 'nullable|string',
+            'skus.*.size' => 'nullable|string',
+            'skus.*.price_idr' => 'required|integer|min:0',
+            'skus.*.cost_idr' => 'nullable|integer|min:0',
+            'skus.*.barcode' => 'nullable|string',
+            'skus.*.is_active' => 'nullable|boolean',
+        ]);
+
+        $product->update([
+            'name' => $request->name,
+            'slug' => Str::slug($request->name),
+            'series_id' => $request->series_id,
+            'category' => $request->category,
+            'material' => $request->material,
+            'length_cm' => $request->length_cm,
+            'care_instructions' => $request->care_instructions,
+            'description' => $request->description,
+            'primary_image' => $request->primary_image ?: $product->primary_image,
+            'is_preorder' => (bool)$request->is_preorder,
+            'preorder_lead_days' => $request->preorder_lead_days ?: 0,
+            'is_active' => $request->has('is_active') ? (bool)$request->is_active : true,
+        ]);
+
+        if ($request->has('skus')) {
+            foreach ($request->skus as $skuData) {
+                if (!empty($skuData['id'])) {
+                    $sku = Sku::where('id', $skuData['id'])->where('product_id', $product->id)->first();
+                    if ($sku) {
+                        $sku->update([
+                            'sku_code' => strtoupper($skuData['sku_code']),
+                            'name' => $skuData['name'],
+                            'color' => $skuData['color'] ?? $sku->color,
+                            'size' => $skuData['size'] ?? $sku->size,
+                            'price_idr' => $skuData['price_idr'],
+                            'cost_idr' => $skuData['cost_idr'] ?? $sku->cost_idr,
+                            'barcode' => $skuData['barcode'] ?? $sku->barcode,
+                            'is_active' => isset($skuData['is_active']) ? (bool)$skuData['is_active'] : true,
+                        ]);
+                    }
+                } else {
+                    Sku::create([
+                        'product_id' => $product->id,
+                        'sku_code' => strtoupper($skuData['sku_code']),
+                        'name' => $skuData['name'],
+                        'color' => $skuData['color'] ?? null,
+                        'size' => $skuData['size'] ?? 'All Size',
+                        'price_idr' => $skuData['price_idr'],
+                        'cost_idr' => $skuData['cost_idr'] ?? 0,
+                        'barcode' => $skuData['barcode'] ?? null,
+                        'image_url' => $product->primary_image,
+                        'is_active' => true,
+                    ]);
+                }
+            }
+        }
+
+        return redirect()->route('admin.store.products.show', $product->id)->with('success', "Produk '{$product->name}' berhasil diperbarui!");
+    }
 }
 

@@ -35,6 +35,11 @@ return Application::configure(basePath: dirname(__DIR__))
 
         // Redirect unauthenticated users to admin login page
         $middleware->redirectGuestsTo('/admin/login');
+
+        // Middleware aliases
+        $middleware->alias([
+            'role' => \App\Http\Middleware\EnsureRole::class,
+        ]);
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         //

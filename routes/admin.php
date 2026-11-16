@@ -21,26 +21,28 @@ use App\Modules\Admin\Controllers\WmsReorderController;
 use App\Modules\Admin\Controllers\WmsStocktakeController;
 use Illuminate\Support\Facades\Route;
 
-// Authentication
+// Authentication with rate limiting to prevent brute force
 Route::get('/login', [AuthController::class, 'showLogin'])->name('login');
-Route::post('/login', [AuthController::class, 'login'])->name('login.submit');
+Route::post('/login', [AuthController::class, 'login'])->middleware('throttle:5,1')->name('login.submit');
 Route::get('/quick-login/{userId}', [AuthController::class, 'quickLogin'])->name('quick-login');
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // Protected Admin Portal
 Route::middleware('auth')->group(function () {
-    // Command Center / Daily Decision Dashboard
+    // Command Center / Daily Decision Dashboard (Owner only)
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
-    Route::post('/actions/{id}/resolve', [DashboardController::class, 'resolveActionItem'])->name('actions.resolve');
-    Route::post('/actions/{id}/dismiss', [DashboardController::class, 'dismissActionItem'])->name('actions.dismiss');
+    Route::post('/actions/{id}/resolve', [DashboardController::class, 'resolveActionItem'])->middleware('role:owner')->name('actions.resolve');
+    Route::post('/actions/{id}/dismiss', [DashboardController::class, 'dismissActionItem'])->middleware('role:owner')->name('actions.dismiss');
 
-    // Store & E-commerce Operations
-    Route::prefix('store')->name('store.')->group(function () {
+    // Store & E-commerce Operations (owner, store_admin)
+    Route::prefix('store')->name('store.')->middleware('role:store_admin')->group(function () {
         // Products
         Route::get('/products', [AdminProductController::class, 'index'])->name('products.index');
         Route::get('/products/create', [AdminProductController::class, 'create'])->name('products.create');
         Route::post('/products', [AdminProductController::class, 'store'])->name('products.store');
         Route::get('/products/{id}', [AdminProductController::class, 'show'])->name('products.show');
+        Route::get('/products/{id}/edit', [AdminProductController::class, 'edit'])->name('products.edit');
+        Route::put('/products/{id}', [AdminProductController::class, 'update'])->name('products.update');
 
         // Orders
         Route::get('/orders', [AdminOrderController::class, 'index'])->name('orders.index');
@@ -61,8 +63,8 @@ Route::middleware('auth')->group(function () {
         Route::post('/drops', [AdminDropController::class, 'store'])->name('drops.store');
     });
 
-    // WMS & Warehouse Operations
-    Route::prefix('wms')->name('wms.')->group(function () {
+    // WMS & Warehouse Operations (owner, warehouse_staff)
+    Route::prefix('wms')->name('wms.')->middleware('role:warehouse_staff')->group(function () {
         // Live inventory balances and immutable movements ledger
         Route::get('/inventory', [WmsInventoryController::class, 'index'])->name('inventory');
         Route::post('/inventory/adjust', [WmsInventoryController::class, 'adjust'])->name('inventory.adjust');
@@ -93,8 +95,8 @@ Route::middleware('auth')->group(function () {
         Route::post('/reorder/po', [WmsReorderController::class, 'createPo'])->name('reorder.po');
     });
 
-    // CRM & Retention
-    Route::prefix('crm')->name('crm.')->group(function () {
+    // CRM & Retention (owner, crm_marketer)
+    Route::prefix('crm')->name('crm.')->middleware('role:crm_marketer')->group(function () {
         // Customer 360 & Identity Resolution
         Route::get('/customers', [CrmCustomerController::class, 'index'])->name('customers.index');
         Route::get('/customers/{id}', [CrmCustomerController::class, 'show'])->name('customers.show');

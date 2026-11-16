@@ -22,10 +22,14 @@
                 </div>
                 <h2 class="text-xl font-bold text-white">{{ $product->name }}</h2>
                 <p class="text-xs text-neutral-400 leading-relaxed">{{ $product->description }}</p>
-                <div class="pt-2 text-xs flex items-center gap-6 text-neutral-400">
+                <div class="pt-2 text-xs flex flex-wrap items-center gap-4 text-neutral-400">
                     <span>Material: <strong class="text-white">{{ $product->material }}</strong></span>
                     <span>Status: <strong class="text-emerald-400">{{ $product->is_active ? 'Aktif di Toko' : 'Non-Aktif' }}</strong></span>
                     <a href="{{ route('shop.product', $product->slug) }}" target="_blank" class="text-brand-300 hover:underline">Lihat Tampilan Toko ↗</a>
+                    <a href="{{ route('admin.store.products.edit', $product->id) }}" class="inline-flex items-center gap-1.5 px-3 py-1 bg-[#BA805E] hover:bg-[#a66f4e] text-white font-bold rounded-lg shadow-sm transition-colors text-xs">
+                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg>
+                        Edit Produk & Varian
+                    </a>
                 </div>
             </div>
         </div>
