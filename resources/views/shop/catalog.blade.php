@@ -100,39 +100,43 @@
             </a>
         </div>
     @else
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 sm:gap-6">
             @foreach($products as $product)
-                <div class="group bg-white rounded-3xl overflow-hidden border border-neutral-200/70 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col">
-                    <a href="{{ route('shop.product', $product->slug) }}" class="relative aspect-[3/4] bg-[#FAF9F6] overflow-hidden flex items-center justify-center p-3 sm:p-4 group/img">
-                        <img src="{{ $product->primary_image }}" alt="{{ $product->name }}" class="w-full h-full object-contain filter drop-shadow-sm group-hover/img:scale-105 transition-transform duration-500">
+                <div class="group bg-white rounded-2xl sm:rounded-3xl overflow-hidden border border-[#EAE0D4] shadow-2xs hover:shadow-lg transition-all duration-300 flex flex-col justify-between hover:-translate-y-1">
+                    <!-- Compact Image Frame (No Vertical Stretched Space) -->
+                    <a href="{{ route('shop.product', $product->slug) }}" class="relative h-[210px] sm:h-[240px] bg-[#FAF9F6] overflow-hidden flex items-center justify-center p-3 group/img">
+                        <img 
+                            src="{{ $product->primary_image }}" 
+                            alt="{{ $product->name }}" 
+                            class="h-full w-auto max-w-full object-contain filter drop-shadow-sm group-hover/img:scale-105 transition-transform duration-500"
+                        >
                         @if($product->is_preorder)
-                            <span class="absolute top-3 left-3 bg-neutral-900/90 text-white text-[9px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full backdrop-blur-sm">
+                            <span class="absolute top-2.5 left-2.5 bg-neutral-900/90 text-white text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full backdrop-blur-sm">
                                 Pre-Order
                             </span>
                         @endif
-                        <span class="absolute top-3 right-3 bg-white/95 text-neutral-800 text-[9px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full shadow-xs border border-neutral-200/60">
+                        <span class="absolute top-2.5 right-2.5 bg-white/95 text-neutral-800 text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full shadow-2xs border border-neutral-200/60">
                             {{ ucfirst($product->category) }}
                         </span>
                     </a>
-                    <div class="p-5 flex-1 flex flex-col justify-between space-y-3">
+
+                    <!-- Compact Content Section -->
+                    <div class="p-3.5 sm:p-4 space-y-2 flex-1 flex flex-col justify-between">
                         <div class="space-y-1">
                             @if($product->series)
-                                <p class="text-[10px] uppercase tracking-widest text-[#BA805E] font-bold">{{ $product->series->name }}</p>
+                                <p class="text-[9px] uppercase tracking-widest text-[#BA805E] font-bold">{{ $product->series->name }}</p>
                             @endif
-                            <h3 class="font-serif text-base font-bold text-neutral-900 group-hover:text-[#BA805E] transition-colors leading-snug line-clamp-2 min-h-[2.5rem]">
+                            <h3 class="font-serif text-sm sm:text-base font-bold text-neutral-950 group-hover:text-[#BA805E] transition-colors leading-snug line-clamp-1">
                                 <a href="{{ route('shop.product', $product->slug) }}">{{ $product->name }}</a>
                             </h3>
-                            <p class="text-xs text-neutral-500 line-clamp-1 font-light">{{ $product->material }}</p>
+                            <p class="text-[11px] text-neutral-500 line-clamp-1 font-light">{{ $product->material }}</p>
                         </div>
 
-                        <div class="pt-3 border-t border-neutral-100 flex items-center justify-between">
-                            <div>
-                                <span class="text-[10px] text-neutral-400 block uppercase tracking-wider">Harga</span>
-                                <span class="font-bold text-neutral-900 text-sm">
-                                    {{ \App\Modules\Shared\Money\Money::format($product->min_price) }}
-                                </span>
-                            </div>
-                            <a href="{{ route('shop.product', $product->slug) }}" class="inline-flex items-center gap-1 text-xs font-bold text-neutral-900 group-hover:text-[#BA805E] transition-colors">
+                        <div class="pt-2.5 border-t border-neutral-100 flex items-center justify-between">
+                            <span class="font-bold text-neutral-950 text-xs sm:text-sm font-mono">
+                                {{ \App\Modules\Shared\Money\Money::format($product->min_price) }}
+                            </span>
+                            <a href="{{ route('shop.product', $product->slug) }}" class="inline-flex items-center gap-1 text-[11px] font-bold text-neutral-900 group-hover:text-[#BA805E] transition-colors">
                                 <span>Detail</span>
                                 <svg class="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
                             </a>

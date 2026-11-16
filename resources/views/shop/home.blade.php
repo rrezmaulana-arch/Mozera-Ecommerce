@@ -825,11 +825,14 @@
                         </div>
                     </div>
 
-                    <!-- 3 Modest Proportion Intelligence Insights -->
+                    <!-- 3 Modest Proportion Intelligence Insights (Clean Line Icons - No Emoticons) -->
                     <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                         <!-- Insight 1: Hemline Safety -->
                         <div class="bg-white p-3.5 rounded-2xl border border-neutral-200/80 shadow-2xs space-y-1">
-                            <span class="text-[10px] font-bold text-[#A66747] uppercase tracking-wider block">📏 Jatuh Baju</span>
+                            <div class="flex items-center gap-1.5 text-[#BA805E]">
+                                <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zM9 3v18m-4-14h4m-4 5h4m-4 5h4"/></svg>
+                                <span class="text-[10px] font-bold uppercase tracking-wider">Jatuh Baju</span>
+                            </div>
                             <p class="text-xs font-bold text-neutral-900" id="fit-insight-hemline">Midi Santun</p>
                             <p class="text-[10px] text-neutral-500 leading-snug" id="fit-result-desc">
                                 Panjang midi ideal di pertengahan betis, sangat leluasa saat berjalan aktif.
@@ -838,16 +841,22 @@
 
                         <!-- Insight 2: Scarf Proportion -->
                         <div class="bg-white p-3.5 rounded-2xl border border-neutral-200/80 shadow-2xs space-y-1">
-                            <span class="text-[10px] font-bold text-[#A66747] uppercase tracking-wider block">🧕 Padanan Hijab</span>
+                            <div class="flex items-center gap-1.5 text-[#BA805E]">
+                                <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/></svg>
+                                <span class="text-[10px] font-bold uppercase tracking-wider">Padanan Hijab</span>
+                            </div>
                             <p class="text-xs font-bold text-neutral-900" id="fit-insight-hijab">Voal 120x120</p>
                             <p class="text-[10px] text-neutral-500 leading-snug">Menutup dada proporsional, siluet tetap ramping & jenjang.</p>
                         </div>
 
                         <!-- Insight 3: Footwear Guidance -->
                         <div class="bg-white p-3.5 rounded-2xl border border-neutral-200/80 shadow-2xs space-y-1">
-                            <span class="text-[10px] font-bold text-[#A66747] uppercase tracking-wider block">👠 Rekomendasi Alas</span>
+                            <div class="flex items-center gap-1.5 text-[#BA805E]">
+                                <svg class="w-3.5 h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+                                <span class="text-[10px] font-bold uppercase tracking-wider">Rekomendasi Alas</span>
+                            </div>
                             <p class="text-xs font-bold text-neutral-900" id="fit-insight-shoes">Mules / 3cm Heels</p>
-                            <p class="text-[10px] text-neutral-500 leading-snug">Proporsi jatuh baju semakin rapi dan semampai.</p>
+                            <p class="text-[10px] text-neutral-500 leading-snug" id="fit-shoes-desc">Proporsi jatuh baju semakin rapi dan semampai.</p>
                         </div>
                     </div>
 
@@ -894,14 +903,14 @@
                 <div class="group bg-white rounded-2xl sm:rounded-3xl overflow-hidden border border-[#EAE0D4] shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between hover:-translate-y-1">
                     
                     <div>
-                        <!-- Product Image (Aspect 3/4, max height 360px desktop, 280px mobile) -->
-                        <div class="relative aspect-[3/4] max-h-[280px] sm:max-h-[360px] bg-[#FAF9F6] overflow-hidden block">
-                            <a href="{{ route('shop.product', $product->slug) }}" class="block w-full h-full">
+                        <!-- Product Image (Compact, Balanced Height - No Vertical Stretching) -->
+                        <div class="relative h-[200px] sm:h-[230px] bg-[#FAF9F6] overflow-hidden flex items-center justify-center p-2.5 sm:p-3 block">
+                            <a href="{{ route('shop.product', $product->slug) }}" class="block w-full h-full flex items-center justify-center">
                                 <img 
                                     src="{{ $product->primary_image }}" 
                                     alt="{{ $product->name }} — Modest Fashion" 
                                     loading="lazy" 
-                                    class="w-full h-full object-contain p-2.5 sm:p-3.5 filter drop-shadow-sm group-hover:scale-[1.04] transition-transform duration-500 block"
+                                    class="h-full w-auto max-w-full object-contain filter drop-shadow-sm group-hover:scale-[1.04] transition-transform duration-500 block"
                                 >
                             </a>
 
@@ -924,7 +933,7 @@
 
                             <!-- Desktop Quick View Button (hover reveal) -->
                             <div class="absolute inset-x-3 bottom-3 hidden lg:flex justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <a href="{{ route('shop.product', $product->slug) }}" class="min-h-[40px] w-full py-2 bg-white/95 hover:bg-neutral-950 hover:text-white text-neutral-900 text-xs font-bold rounded-xl shadow-md text-center transition-colors flex items-center justify-center">
+                                <a href="{{ route('shop.product', $product->slug) }}" class="min-h-[36px] w-full py-1.5 bg-white/95 hover:bg-neutral-950 hover:text-white text-neutral-900 text-xs font-bold rounded-xl shadow-md text-center transition-colors flex items-center justify-center">
                                     Lihat Cepat
                                 </a>
                             </div>
