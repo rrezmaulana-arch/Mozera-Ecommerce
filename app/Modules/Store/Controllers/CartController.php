@@ -9,6 +9,7 @@ use App\Modules\Store\Models\CartItem;
 use App\Modules\Store\Models\Voucher;
 use App\Modules\Wms\Models\StockBalance;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class CartController extends Controller
 {
@@ -83,6 +84,51 @@ class CartController extends Controller
         $item->save();
 
         return redirect()->route('shop.cart')->with('success', "{$sku->name} berhasil ditambahkan ke keranjang belanja!");
+    }
+
+    public function addBundle(Request $request)
+    {
+        $request->validate([
+            'sku_ids' => 'required|array|min:1|max:5',
+            'sku_ids.*' => 'required|exists:skus,id',
+            'bundle_title' => 'nullable|string|max:100',
+        ]);
+
+        $cart = $this->getOrCreateCart($request);
+        $addedCount = 0;
+
+        DB::transaction(function () use ($request, $cart, &$addedCount) {
+            foreach ($request->sku_ids as $skuId) {
+                $sku = Sku::with('product')->find($skuId);
+                if (! $sku || ! $sku->is_active || ! $sku->product || ! $sku->product->is_active) {
+                    continue;
+                }
+
+                $available = (int) StockBalance::where('sku_id', $sku->id)->sum('available_qty');
+                if ($available < 1) {
+                    continue;
+                }
+
+                $item = CartItem::firstOrNew([
+                    'cart_id' => $cart->id,
+                    'sku_id' => $sku->id,
+                ]);
+
+                $totalQty = ($item->exists ? (int) $item->quantity : 0) + 1;
+                if ($totalQty <= 10 && $totalQty <= $available) {
+                    $item->quantity = $totalQty;
+                    $item->save();
+                    $addedCount++;
+                }
+            }
+        });
+
+        if ($addedCount === 0) {
+            return back()->with('error', 'Maaf, produk dalam paket ini saat ini sedang habis atau tidak tersedia.');
+        }
+
+        $bundleName = $request->bundle_title ?: 'Paket Look Lengkap';
+        return redirect()->route('shop.cart')->with('success', "{$bundleName} ({$addedCount} busana) berhasil ditambahkan ke keranjang belanja!");
     }
 
     public function update(Request $request)

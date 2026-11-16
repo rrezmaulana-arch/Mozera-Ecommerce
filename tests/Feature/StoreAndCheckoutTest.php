@@ -106,4 +106,34 @@ class StoreAndCheckoutTest extends TestCase
         $order->refresh();
         $this->assertEquals('paid', $order->status);
     }
+
+    public function test_interactive_lookbook_renders_and_bundle_adds_to_cart(): void
+    {
+        $sessionId = 'test-bundle-session-' . uniqid();
+
+        // 1. Verify Homepage contains the Virtual Styling Runway section
+        $homeResponse = $this->get('/');
+        $homeResponse->assertStatus(200);
+        $homeResponse->assertSee('Virtual Styling Runway');
+        $homeResponse->assertSee('Try The Look');
+        $homeResponse->assertSee('Beli 1 Look Lengkap');
+
+        // 2. Test 1-Click Add Bundle to Cart
+        $sku1 = Sku::where('sku_code', 'PUSPA-OUT-SGE-ALL')->firstOrFail();
+        $sku2 = Sku::where('sku_code', 'PUSPA-SCF-DPK-120')->firstOrFail();
+
+        $bundleResponse = $this->withHeaders(['X-Session-ID' => $sessionId])->post('/cart/add-bundle', [
+            'sku_ids' => [$sku1->id, $sku2->id],
+            'bundle_title' => 'Set The Grand Senja Kimono',
+        ]);
+
+        $bundleResponse->assertRedirect('/cart');
+        $bundleResponse->assertSessionHas('success');
+
+        // 3. Verify Cart contains both items
+        $cartResponse = $this->withHeaders(['X-Session-ID' => $sessionId])->get('/cart');
+        $cartResponse->assertStatus(200);
+        $cartResponse->assertSee($sku1->name);
+        $cartResponse->assertSee($sku2->name);
+    }
 }

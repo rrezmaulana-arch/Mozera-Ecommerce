@@ -217,92 +217,629 @@
         </div>
     </section>
 
-    <!-- G1: Shop the Look (Max height 520px desktop) -->
-    <section class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="bg-[#FAF8F5] border border-[#EADCCE] rounded-3xl p-6 sm:p-8 lg:p-10 shadow-sm">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center max-h-none lg:max-h-[520px]">
-                
-                <!-- Model Lookbook Image -->
-                <div class="lg:col-span-5 relative aspect-[4/5] max-h-[320px] sm:max-h-[380px] lg:max-h-[440px] rounded-2xl overflow-hidden shadow-sm">
-                    <img 
-                        src="https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=800&q=80" 
-                        alt="Shop The Look Modest Styling MOZÉRA" 
-                        loading="lazy" 
-                        class="w-full h-full object-cover block"
+    <!-- G1: INTERACTIVE ATASAN RUNWAY ("Try The Look" & Virtual Hanger Studio) -->
+    <section id="try-the-look" class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-24">
+        <!-- Section Header -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 pb-4 border-b border-neutral-200">
+            <div>
+                <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#FAF8F5] border border-[#BA805E]/30 text-[#BA805E] text-xs font-bold uppercase tracking-wider mb-2">
+                    <span class="w-1.5 h-1.5 rounded-full bg-[#BA805E] animate-pulse"></span>
+                    <span>Virtual Styling Runway</span>
+                </div>
+                <h2 class="font-serif text-[clamp(1.6rem,3.8vw,2.5rem)] font-bold text-neutral-950 leading-tight">
+                    Try The Look — Padu-Padan Atasan Pilihan
+                </h2>
+                <p class="text-xs sm:text-sm text-neutral-600 mt-1 max-w-2xl">
+                    Geser inspirasi busana untuk melihat siluet jatuh atasan modest di tubuh model, atau klik detail atasan untuk melihatnya tergantung di studio.
+                </p>
+            </div>
+            
+            <!-- Quick Look Tabs (Desktop) -->
+            <div class="hidden lg:flex items-center gap-1.5 bg-[#F5EFEB] p-1.5 rounded-2xl border border-neutral-200/80 text-xs font-bold shrink-0 mt-4 md:mt-0">
+                @foreach($curatedLooks as $idx => $look)
+                    <button 
+                        type="button" 
+                        onclick="switchLook({{ $idx }})" 
+                        id="look-tab-{{ $idx }}" 
+                        class="look-tab-btn px-4 py-2 rounded-xl transition-all cursor-pointer {{ $idx === 0 ? 'bg-neutral-900 text-white shadow-xs' : 'text-neutral-600 hover:text-neutral-950' }}"
                     >
-                    <span class="absolute top-3 left-3 bg-neutral-900/90 text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1 rounded-full">
-                        Set Inspirasi
-                    </span>
+                        {{ $look['title'] }}
+                    </button>
+                @endforeach
+            </div>
+        </div>
+
+        <!-- Main Stage Container: 3D Runway (Left/Center) + Dynamic "In This Look" Sidebar (Right) -->
+        <div class="bg-[#FAF8F5] border border-[#EADCCE] rounded-3xl p-4 sm:p-6 lg:p-8 shadow-sm">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
+                
+                <!-- Left/Center Stage: Desktop 3D Runway + Mobile Horizontal Swipe -->
+                <div class="lg:col-span-7 flex flex-col items-center">
+                    
+                    <!-- DESKTOP 3D PERSPECTIVE RUNWAY (Visible on lg+) -->
+                    <div class="hidden lg:block relative w-full h-[520px] overflow-hidden rounded-2xl bg-gradient-to-b from-[#F5EFEB]/50 to-[#EADCCE]/30 border border-neutral-200/60 p-4">
+                        <div class="relative w-full h-full flex items-center justify-center perspective-[1200px]" id="runway-stage">
+                            @foreach($curatedLooks as $idx => $look)
+                                <div 
+                                    id="desktop-model-{{ $idx }}" 
+                                    onclick="switchLook({{ $idx }})"
+                                    class="desktop-model-card absolute inset-y-6 w-[280px] rounded-2xl overflow-hidden shadow-xl transition-all duration-700 ease-out cursor-pointer group"
+                                    style="transform-style: preserve-3d;"
+                                >
+                                    <img 
+                                        src="{{ $look['model_image'] }}" 
+                                        alt="{{ $look['title'] }} — Model Modest MOZÉRA" 
+                                        class="w-full h-full object-cover block"
+                                    >
+                                    <!-- Subtle dark overlay on hover / inactive -->
+                                    <div class="model-overlay absolute inset-0 bg-neutral-950/20 transition-opacity"></div>
+                                    
+                                    <!-- Tag & Click Prompt -->
+                                    <div class="absolute bottom-4 inset-x-4 flex items-center justify-between text-white drop-shadow-md">
+                                        <span class="text-[10px] uppercase font-bold tracking-wider px-2.5 py-1 rounded-full bg-neutral-950/75 backdrop-blur-md">
+                                            {{ $look['tag'] }}
+                                        </span>
+                                        <span class="active-badge hidden text-[11px] font-bold px-2 py-0.5 rounded-full bg-[#BA805E] text-white">
+                                            Aktif
+                                        </span>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+
+                        <!-- Previous / Next Floating Arrows (Desktop) -->
+                        <button 
+                            type="button" 
+                            onclick="prevLook()" 
+                            aria-label="Look Sebelumnya" 
+                            class="absolute left-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/90 hover:bg-neutral-950 hover:text-white text-neutral-800 shadow-md backdrop-blur-md flex items-center justify-center transition-all cursor-pointer z-30"
+                        >
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                        </button>
+                        <button 
+                            type="button" 
+                            onclick="nextLook()" 
+                            aria-label="Look Berikutnya" 
+                            class="absolute right-4 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-white/90 hover:bg-neutral-950 hover:text-white text-neutral-800 shadow-md backdrop-blur-md flex items-center justify-center transition-all cursor-pointer z-30"
+                        >
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                        </button>
+                    </div>
+
+                    <!-- MOBILE TOUCH-SNAP RUNWAY (Visible on < lg) -->
+                    <div class="lg:hidden w-full space-y-3">
+                        <div 
+                            id="mobile-runway-carousel" 
+                            class="flex overflow-x-auto snap-x snap-mandatory gap-3.5 -mx-4 px-4 pb-2 pt-1 custom-scrollbar scroll-smooth"
+                        >
+                            @foreach($curatedLooks as $idx => $look)
+                                <div 
+                                    id="mobile-model-{{ $idx }}" 
+                                    onclick="switchLook({{ $idx }})" 
+                                    class="mobile-model-card w-[78vw] max-w-[300px] shrink-0 snap-center aspect-[3/4] rounded-2xl overflow-hidden relative shadow-md border-2 border-transparent transition-all cursor-pointer"
+                                >
+                                    <img 
+                                        src="{{ $look['model_image'] }}" 
+                                        alt="{{ $look['title'] }} — Modest Look MOZÉRA" 
+                                        class="w-full h-full object-cover block"
+                                    >
+                                    <div class="absolute inset-0 bg-gradient-to-t from-neutral-950/80 via-transparent to-transparent"></div>
+                                    <div class="absolute bottom-3 left-3 right-3 text-white">
+                                        <span class="text-[9px] uppercase font-bold tracking-wider px-2 py-0.5 rounded-full bg-white/20 backdrop-blur-md text-[#DCC3AD]">
+                                            {{ $look['tag'] }}
+                                        </span>
+                                        <h4 class="font-serif font-bold text-base mt-1 line-clamp-1">{{ $look['title'] }}</h4>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+
+                        <!-- Mobile Pagination Indicators -->
+                        <div class="flex items-center justify-center gap-1.5 pt-1">
+                            @foreach($curatedLooks as $idx => $look)
+                                <button 
+                                    type="button" 
+                                    onclick="switchLook({{ $idx }})" 
+                                    id="mobile-dot-{{ $idx }}" 
+                                    class="mobile-dot w-2 h-2 rounded-full transition-all cursor-pointer {{ $idx === 0 ? 'w-6 bg-[#BA805E]' : 'bg-neutral-300' }}"
+                                    aria-label="Pilih Look {{ $idx + 1 }}"
+                                ></button>
+                            @endforeach
+                        </div>
+                    </div>
+
+                    <!-- Runway Bottom Status Bar: Occasion & Look Description -->
+                    <div class="w-full mt-4 p-3.5 rounded-xl bg-white border border-neutral-200/80 flex items-center justify-between text-xs gap-3">
+                        <div class="flex items-center gap-2.5">
+                            <span class="w-2 h-2 rounded-full bg-[#BA805E]"></span>
+                            <div>
+                                <span class="font-bold text-neutral-900" id="look-status-title">{{ $curatedLooks[0]['title'] }}</span>
+                                <span class="text-neutral-400 hidden sm:inline">•</span>
+                                <span class="text-neutral-500 block sm:inline mt-0.5 sm:mt-0" id="look-status-vibe">{{ $curatedLooks[0]['vibe'] }}</span>
+                            </div>
+                        </div>
+                        <span class="text-[11px] font-mono font-bold text-[#BA805E] shrink-0" id="look-counter-indicator">
+                            01 / {{ sprintf('%02d', count($curatedLooks)) }}
+                        </span>
+                    </div>
                 </div>
 
-                <!-- Products in this look -->
-                <div class="lg:col-span-7 space-y-4">
-                    <div>
-                        <span class="text-[11px] uppercase tracking-[0.25em] text-[#BA805E] font-bold">Gaya Lengkap</span>
-                        <h3 class="font-serif text-2xl sm:text-3xl font-bold text-neutral-950 mt-1">
-                            Set "Effortless Friday"
-                        </h3>
-                        <p class="text-xs sm:text-sm text-neutral-600 mt-1">
-                            Perpaduan kimono outer, voal scarf ultrafine, dan tiered inner dengan harmoni warna earth-tone.
-                        </p>
-                    </div>
-
-                    <!-- 3 Items in Look -->
-                    <div class="space-y-2.5">
-                        <div class="flex items-center justify-between p-3 rounded-xl bg-white border border-neutral-200 text-xs">
-                            <div class="flex items-center gap-3">
-                                <span class="w-6 h-6 rounded-full bg-[#F5EFEB] text-[#BA805E] font-bold text-[11px] flex items-center justify-center">1</span>
-                                <div>
-                                    <p class="font-bold text-neutral-900">PUSPA Floral Kimono Outer</p>
-                                    <p class="text-[11px] text-neutral-500">Bahan Rayon Twill Adem</p>
-                                </div>
-                            </div>
-                            <span class="font-bold font-mono text-neutral-900">Rp 389.000</span>
-                        </div>
-
-                        <div class="flex items-center justify-between p-3 rounded-xl bg-white border border-neutral-200 text-xs">
-                            <div class="flex items-center gap-3">
-                                <span class="w-6 h-6 rounded-full bg-[#F5EFEB] text-[#BA805E] font-bold text-[11px] flex items-center justify-center">2</span>
-                                <div>
-                                    <p class="font-bold text-neutral-900">PUSPA Voal Printed Scarf 120x120</p>
-                                    <p class="text-[11px] text-neutral-500">Tegak di Dahi, Lembut</p>
-                                </div>
-                            </div>
-                            <span class="font-bold font-mono text-neutral-900">Rp 149.000</span>
-                        </div>
-
-                        <div class="flex items-center justify-between p-3 rounded-xl bg-white border border-neutral-200 text-xs">
-                            <div class="flex items-center gap-3">
-                                <span class="w-6 h-6 rounded-full bg-[#F5EFEB] text-[#BA805E] font-bold text-[11px] flex items-center justify-center">3</span>
-                                <div>
-                                    <p class="font-bold text-neutral-900">ISLA Tiered Inner Maxi</p>
-                                    <p class="text-[11px] text-neutral-500">Pure Crinkle Airflow</p>
-                                </div>
-                            </div>
-                            <span class="font-bold font-mono text-neutral-900">Rp 299.000</span>
-                        </div>
-                    </div>
-
-                    <!-- Bundle Action -->
-                    <div class="pt-2 flex flex-col sm:flex-row items-center justify-between gap-3 border-t border-neutral-200/80">
+                <!-- Right Sticky Panel: "In This Look" Items & 1-Click Bundle Checkout -->
+                <div class="lg:col-span-5 space-y-4">
+                    
+                    <!-- Panel Header -->
+                    <div class="flex items-center justify-between pb-3 border-b border-neutral-200">
                         <div>
-                            <span class="text-[11px] text-neutral-500 block">Harga 1 Paket Spesial:</span>
-                            <div class="flex items-center gap-2">
-                                <span class="font-bold text-lg text-neutral-950 font-mono">Rp 753.000</span>
-                                <span class="text-xs text-neutral-400 line-through font-mono">Rp 837.000</span>
-                                <span class="px-2 py-0.5 rounded text-[10px] font-bold bg-[#BA805E]/15 text-[#BA805E]">Hemat 10%</span>
-                            </div>
+                            <span class="text-[10px] uppercase tracking-[0.2em] font-bold text-[#BA805E]">Kelengkapan Set</span>
+                            <h3 class="font-serif text-xl sm:text-2xl font-bold text-neutral-950 mt-0.5" id="panel-look-title">
+                                {{ $curatedLooks[0]['title'] }}
+                            </h3>
                         </div>
-                        <a href="{{ route('shop.catalog') }}" class="w-full sm:w-auto min-h-[44px] px-6 py-2.5 bg-neutral-950 hover:bg-[#BA805E] text-white font-bold text-xs uppercase tracking-wider rounded-full transition-colors flex items-center justify-center gap-2">
-                            <span>Jelajahi Paket Lengkap</span>
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                        </a>
+                        <span class="px-2.5 py-1 rounded-full bg-[#BA805E]/15 text-[#BA805E] text-[11px] font-bold font-mono">
+                            Diskon 10% Set
+                        </span>
                     </div>
+
+                    <!-- Dynamic Look Items List -->
+                    @foreach($curatedLooks as $idx => $look)
+                        <div id="look-items-panel-{{ $idx }}" class="look-items-container space-y-3 {{ $idx === 0 ? 'block' : 'hidden' }}">
+                            
+                            <!-- ITEM 1: HERO ATASAN / OUTER (With Virtual Hanger Quick Trigger) -->
+                            <div class="p-3.5 rounded-2xl bg-white border border-neutral-200/90 hover:border-[#BA805E] transition-all shadow-2xs space-y-3">
+                                <div class="flex items-start gap-3">
+                                    <div class="relative w-16 h-20 rounded-xl overflow-hidden bg-[#F5EFEB] shrink-0">
+                                        <img 
+                                            src="{{ $look['hero_product']->primary_image }}" 
+                                            alt="{{ $look['hero_product']->name }}" 
+                                            class="w-full h-full object-cover"
+                                        >
+                                    </div>
+                                    <div class="flex-1 min-w-0">
+                                        <span class="text-[10px] uppercase font-bold text-[#BA805E] tracking-wider block">
+                                            {{ $look['hero_role'] }}
+                                        </span>
+                                        <h4 class="font-serif font-bold text-neutral-950 text-sm leading-snug truncate mt-0.5">
+                                            {{ $look['hero_product']->name }}
+                                        </h4>
+                                        <p class="text-[11px] text-neutral-500 line-clamp-1 mt-0.5">
+                                            {{ $look['hero_sku']?->color ? 'Warna ' . $look['hero_sku']->color . ' • ' : '' }} {{ $look['hero_product']->material }}
+                                        </p>
+                                        <div class="flex items-center justify-between mt-2">
+                                            <span class="font-bold text-sm font-mono text-neutral-950">
+                                                {{ \App\Modules\Shared\Money\Money::format($look['hero_sku']?->price_idr ?? 389000) }}
+                                            </span>
+                                            <!-- Open Hanger Modal Button -->
+                                            <button 
+                                                type="button" 
+                                                onclick="openHangerModal({{ $idx }})" 
+                                                class="px-2.5 py-1 rounded-lg bg-[#FAF8F5] hover:bg-neutral-950 hover:text-white border border-neutral-300 text-neutral-800 text-[11px] font-bold transition-all flex items-center gap-1 cursor-pointer"
+                                            >
+                                                <span>🔍 Cek di Hanger</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- ITEM 2: COMPLEMENTARY ITEM (Scarf / Inner) -->
+                            <div class="p-3.5 rounded-2xl bg-white border border-neutral-200/90 hover:border-[#BA805E] transition-all shadow-2xs">
+                                <div class="flex items-start gap-3">
+                                    <div class="relative w-16 h-20 rounded-xl overflow-hidden bg-[#F5EFEB] shrink-0">
+                                        <img 
+                                            src="{{ $look['secondary_product']->primary_image }}" 
+                                            alt="{{ $look['secondary_product']->name }}" 
+                                            class="w-full h-full object-cover"
+                                        >
+                                    </div>
+                                    <div class="flex-1 min-w-0">
+                                        <span class="text-[10px] uppercase font-bold text-neutral-500 tracking-wider block">
+                                            {{ $look['secondary_role'] }}
+                                        </span>
+                                        <h4 class="font-serif font-bold text-neutral-950 text-sm leading-snug truncate mt-0.5">
+                                            {{ $look['secondary_product']->name }}
+                                        </h4>
+                                        <p class="text-[11px] text-neutral-500 line-clamp-1 mt-0.5">
+                                            {{ $look['secondary_sku']?->color ? 'Varian ' . $look['secondary_sku']->color : 'Material Voal Lembut' }}
+                                        </p>
+                                        <div class="flex items-center justify-between mt-2">
+                                            <span class="font-bold text-sm font-mono text-neutral-950">
+                                                {{ \App\Modules\Shared\Money\Money::format($look['secondary_sku']?->price_idr ?? 149000) }}
+                                            </span>
+                                            <a 
+                                                href="{{ route('shop.product', $look['secondary_product']->slug) }}" 
+                                                class="text-[11px] font-bold text-neutral-600 hover:text-[#BA805E] transition-colors"
+                                            >
+                                                Lihat Produk &rarr;
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            @php
+                                $priceHero = $look['hero_sku']?->price_idr ?? 389000;
+                                $priceSecondary = $look['secondary_sku']?->price_idr ?? 149000;
+                                $subtotalNormal = $priceHero + $priceSecondary;
+                                $discountAmount = (int) round($subtotalNormal * 0.10);
+                                $bundleTotal = $subtotalNormal - $discountAmount;
+                            @endphp
+
+                            <!-- BUNDLE SUMMARY & 1-CLICK ACTION -->
+                            <div class="p-4 rounded-2xl bg-white border border-[#EADCCE] space-y-3 mt-4">
+                                <div class="flex items-center justify-between text-xs">
+                                    <span class="text-neutral-500">Harga Satuan Terpisah:</span>
+                                    <span class="font-mono text-neutral-400 line-through">
+                                        {{ \App\Modules\Shared\Money\Money::format($subtotalNormal) }}
+                                    </span>
+                                </div>
+                                <div class="flex items-center justify-between text-xs">
+                                    <span class="text-neutral-700 font-medium">Diskon Paket Hemat (10%):</span>
+                                    <span class="font-mono font-bold text-emerald-600">
+                                        - {{ \App\Modules\Shared\Money\Money::format($discountAmount) }}
+                                    </span>
+                                </div>
+                                <div class="pt-2 border-t border-neutral-100 flex items-center justify-between">
+                                    <div>
+                                        <span class="text-[10px] text-neutral-500 uppercase tracking-wider block">Total 1 Set Lengkap:</span>
+                                        <span class="font-bold text-lg font-mono text-[#BA805E]">
+                                            {{ \App\Modules\Shared\Money\Money::format($bundleTotal) }}
+                                        </span>
+                                    </div>
+                                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2.5 py-1 rounded-full border border-emerald-200">
+                                        Stok Tersedia
+                                    </span>
+                                </div>
+
+                                <!-- Form 1-Klik Tambah Bundle Look ke Keranjang -->
+                                <form action="{{ route('shop.cart.add-bundle') }}" method="POST" class="pt-1">
+                                    @csrf
+                                    <input type="hidden" name="sku_ids[]" value="{{ $look['hero_sku']?->id }}">
+                                    <input type="hidden" name="sku_ids[]" value="{{ $look['secondary_sku']?->id }}">
+                                    <input type="hidden" name="bundle_title" value="Set {{ $look['title'] }}">
+                                    
+                                    <button 
+                                        type="submit" 
+                                        class="w-full min-h-[46px] px-6 py-3 bg-neutral-950 hover:bg-[#BA805E] text-white font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2 cursor-pointer"
+                                    >
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+                                        <span>Beli 1 Look Lengkap (2 Busana)</span>
+                                    </button>
+                                </form>
+                            </div>
+
+                        </div>
+                    @endforeach
+
                 </div>
 
             </div>
         </div>
     </section>
+
+    <!-- FLOATING WOODEN HANGER MODAL (Virtual Garment Studio Drill-Down) -->
+    <div 
+        id="hanger-modal" 
+        class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-neutral-950/70 backdrop-blur-md transition-opacity duration-300"
+        role="dialog" 
+        aria-modal="true"
+    >
+        <div 
+            class="relative w-full max-w-3xl bg-[#FAF9F6] rounded-3xl border border-neutral-200 shadow-2xl overflow-hidden transition-all transform scale-95 opacity-0" 
+            id="hanger-modal-content"
+        >
+            <!-- Close Button -->
+            <button 
+                type="button" 
+                onclick="closeHangerModal()" 
+                aria-label="Tutup Detail Hanger" 
+                class="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-white/90 hover:bg-neutral-950 hover:text-white text-neutral-800 shadow-md flex items-center justify-center transition-colors cursor-pointer"
+            >
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
+            </button>
+
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center p-6 sm:p-8">
+                
+                <!-- Left Column: The Floating Garment on Wooden Hanger -->
+                <div class="md:col-span-6 flex flex-col items-center justify-center bg-white rounded-2xl border border-neutral-200/80 p-6 relative min-h-[360px]">
+                    <!-- Stylized Wooden Hanger Graphic Header -->
+                    <div class="w-24 h-4 border-t-4 border-amber-800 rounded-t-full mb-1 opacity-80"></div>
+                    
+                    <div class="relative w-full aspect-[3/4] max-h-[320px] overflow-hidden rounded-xl">
+                        <img 
+                            id="hanger-modal-img" 
+                            src="" 
+                            alt="Detail Busana di Hanger" 
+                            class="w-full h-full object-contain filter drop-shadow-lg transition-transform duration-500"
+                        >
+                    </div>
+
+                    <!-- Front / Back Angle Switcher -->
+                    <div class="flex items-center gap-2 mt-4 text-[11px] font-bold">
+                        <button 
+                            type="button" 
+                            id="hanger-angle-front" 
+                            onclick="setHangerAngle('front')" 
+                            class="px-3 py-1 rounded-full bg-neutral-900 text-white cursor-pointer"
+                        >
+                            Tampak Depan
+                        </button>
+                        <button 
+                            type="button" 
+                            id="hanger-angle-back" 
+                            onclick="setHangerAngle('back')" 
+                            class="px-3 py-1 rounded-full bg-neutral-100 text-neutral-700 hover:bg-neutral-200 cursor-pointer"
+                        >
+                            Tampak Belakang
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Right Column: Specifications, Fit & Direct Cart Form -->
+                <div class="md:col-span-6 space-y-4">
+                    <div>
+                        <div class="flex items-center gap-2">
+                            <span class="text-[10px] uppercase font-bold text-[#BA805E] tracking-wider" id="hanger-modal-category">
+                                Outerwear Modest
+                            </span>
+                            <span class="text-[10px] font-bold px-2 py-0.5 rounded bg-emerald-50 text-emerald-700 border border-emerald-200">
+                                Siap Kirim
+                            </span>
+                        </div>
+                        <h3 class="font-serif text-2xl font-bold text-neutral-950 mt-1" id="hanger-modal-title">
+                            Nama Atasan
+                        </h3>
+                        <p class="font-serif text-xl font-bold text-[#BA805E] mt-1 font-mono" id="hanger-modal-price">
+                            Rp 0
+                        </p>
+                    </div>
+
+                    <!-- Material & Fit Helper Info -->
+                    <div class="space-y-2 text-xs text-neutral-600 bg-[#FAF8F5] p-3.5 rounded-xl border border-[#EADCCE]">
+                        <div class="flex items-start gap-2">
+                            <span class="font-bold text-neutral-900 shrink-0">Bahan:</span>
+                            <span id="hanger-modal-material">-</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <span class="font-bold text-neutral-900 shrink-0">Panjang:</span>
+                            <span id="hanger-modal-length">-</span>
+                        </div>
+                        <div class="flex items-start gap-2">
+                            <span class="font-bold text-neutral-900 shrink-0">Siluet:</span>
+                            <span>Jatuh anggun santun, wudhu-friendly, tidak menerawang.</span>
+                        </div>
+                    </div>
+
+                    <!-- Direct Add To Cart Form -->
+                    <form action="{{ route('shop.cart.add') }}" method="POST" class="space-y-3 pt-1">
+                        @csrf
+                        <input type="hidden" name="sku_id" id="hanger-modal-sku-id" value="">
+                        
+                        <div>
+                            <label class="text-[11px] font-bold text-neutral-700 block mb-1.5 uppercase tracking-wider">
+                                Pilihan Ukuran:
+                            </label>
+                            <div class="flex items-center gap-2">
+                                <span class="px-3.5 py-1.5 rounded-lg border border-neutral-900 bg-neutral-900 text-white text-xs font-bold font-mono">
+                                    All Size (Fit S – XL)
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="pt-2 flex items-center gap-2">
+                            <button 
+                                type="submit" 
+                                class="flex-1 min-h-[46px] px-6 py-3 bg-[#BA805E] hover:bg-[#a66f4e] text-white font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md hover:shadow-lg flex items-center justify-center gap-2 cursor-pointer"
+                            >
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
+                                <span>Tambah Atasan ke Bag</span>
+                            </button>
+                            <a 
+                                id="hanger-modal-product-link" 
+                                href="#" 
+                                class="min-h-[46px] px-4 py-3 rounded-xl border border-neutral-300 hover:border-neutral-900 text-neutral-800 text-xs font-bold transition-colors flex items-center justify-center shrink-0"
+                            >
+                                Detail &rarr;
+                            </a>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- JAVASCRIPT: Runway Stage 3D Perspective + Synchronization + Hanger Modal -->
+    <script>
+        (function() {
+            const looks = @json($curatedLooks);
+            let currentLookIdx = 0;
+
+            window.switchLook = function(idx) {
+                if (idx < 0 || idx >= looks.length) return;
+                currentLookIdx = idx;
+
+                // 1. Update Desktop Runway Models Positioning (3D Perspective Math)
+                looks.forEach((_, i) => {
+                    const card = document.getElementById(`desktop-model-${i}`);
+                    if (!card) return;
+
+                    const diff = i - currentLookIdx;
+                    const overlay = card.querySelector('.model-overlay');
+                    const badge = card.querySelector('.active-badge');
+
+                    if (diff === 0) {
+                        // Center Active Model
+                        card.style.transform = 'translateX(0px) scale(1.04) rotateY(0deg)';
+                        card.style.zIndex = '30';
+                        card.style.opacity = '1';
+                        card.style.filter = 'none';
+                        if (overlay) overlay.style.opacity = '0';
+                        if (badge) badge.classList.remove('hidden');
+                    } else if (diff === -1 || (currentLookIdx === 0 && i === looks.length - 1 && looks.length > 2)) {
+                        // Left Flanking Model
+                        card.style.transform = 'translateX(-190px) scale(0.88) rotateY(16deg)';
+                        card.style.zIndex = '20';
+                        card.style.opacity = '0.72';
+                        card.style.filter = 'blur(0.5px)';
+                        if (overlay) overlay.style.opacity = '0.35';
+                        if (badge) badge.classList.add('hidden');
+                    } else if (diff === 1 || (currentLookIdx === looks.length - 1 && i === 0 && looks.length > 2)) {
+                        // Right Flanking Model
+                        card.style.transform = 'translateX(190px) scale(0.88) rotateY(-16deg)';
+                        card.style.zIndex = '20';
+                        card.style.opacity = '0.72';
+                        card.style.filter = 'blur(0.5px)';
+                        if (overlay) overlay.style.opacity = '0.35';
+                        if (badge) badge.classList.add('hidden');
+                    } else {
+                        // Out of primary focus
+                        const offset = diff > 0 ? 320 : -320;
+                        card.style.transform = `translateX(${offset}px) scale(0.75) rotateY(${diff > 0 ? -26 : 26}deg)`;
+                        card.style.zIndex = '10';
+                        card.style.opacity = '0.25';
+                        card.style.filter = 'blur(1.5px)';
+                        if (overlay) overlay.style.opacity = '0.6';
+                        if (badge) badge.classList.add('hidden');
+                    }
+                });
+
+                // 2. Update Desktop Tabs
+                document.querySelectorAll('.look-tab-btn').forEach((btn, i) => {
+                    if (i === currentLookIdx) {
+                        btn.className = 'look-tab-btn px-4 py-2 rounded-xl transition-all cursor-pointer bg-neutral-900 text-white shadow-xs';
+                    } else {
+                        btn.className = 'look-tab-btn px-4 py-2 rounded-xl transition-all cursor-pointer text-neutral-600 hover:text-neutral-950';
+                    }
+                });
+
+                // 3. Update Mobile Carousel Scroll & Dots
+                const mobileCard = document.getElementById(`mobile-model-${currentLookIdx}`);
+                const mobileCarousel = document.getElementById('mobile-runway-carousel');
+                if (mobileCard && mobileCarousel) {
+                    mobileCarousel.scrollTo({
+                        left: mobileCard.offsetLeft - 24,
+                        behavior: 'smooth'
+                    });
+                }
+                document.querySelectorAll('.mobile-dot').forEach((dot, i) => {
+                    if (i === currentLookIdx) {
+                        dot.className = 'mobile-dot w-6 h-2 rounded-full bg-[#BA805E] transition-all cursor-pointer';
+                    } else {
+                        dot.className = 'mobile-dot w-2 h-2 rounded-full bg-neutral-300 transition-all cursor-pointer';
+                    }
+                });
+
+                // 4. Update Bottom Status Bar
+                const look = looks[currentLookIdx];
+                const statusTitle = document.getElementById('look-status-title');
+                const statusVibe = document.getElementById('look-status-vibe');
+                const counter = document.getElementById('look-counter-indicator');
+                const panelTitle = document.getElementById('panel-look-title');
+
+                if (statusTitle) statusTitle.textContent = look.title;
+                if (statusVibe) statusVibe.textContent = look.vibe;
+                if (counter) counter.textContent = `0${currentLookIdx + 1} / 0${looks.length}`;
+                if (panelTitle) panelTitle.textContent = look.title;
+
+                // 5. Update Right Items Panel
+                document.querySelectorAll('.look-items-container').forEach((el, i) => {
+                    if (i === currentLookIdx) {
+                        el.classList.remove('hidden');
+                        el.classList.add('block');
+                    } else {
+                        el.classList.remove('block');
+                        el.classList.add('hidden');
+                    }
+                });
+            };
+
+            window.nextLook = function() {
+                const nextIdx = (currentLookIdx + 1) % looks.length;
+                switchLook(nextIdx);
+            };
+
+            window.prevLook = function() {
+                const prevIdx = (currentLookIdx - 1 + looks.length) % looks.length;
+                switchLook(prevIdx);
+            };
+
+            // HANGER MODAL LOGIC
+            let activeModalLook = null;
+            window.openHangerModal = function(idx) {
+                const look = looks[idx];
+                if (!look) return;
+                activeModalLook = look;
+
+                const modal = document.getElementById('hanger-modal');
+                const content = document.getElementById('hanger-modal-content');
+                const img = document.getElementById('hanger-modal-img');
+                const title = document.getElementById('hanger-modal-title');
+                const price = document.getElementById('hanger-modal-price');
+                const material = document.getElementById('hanger-modal-material');
+                const length = document.getElementById('hanger-modal-length');
+                const skuInput = document.getElementById('hanger-modal-sku-id');
+                const prodLink = document.getElementById('hanger-modal-product-link');
+
+                if (img) img.src = look.hanger_image;
+                if (title) title.textContent = look.hero_product.name;
+                if (price) {
+                    const heroPrice = look.hero_sku ? look.hero_sku.price_idr : 389000;
+                    price.textContent = 'Rp ' + heroPrice.toLocaleString('id-ID');
+                }
+                if (material) material.textContent = look.hero_product.material || 'Rayon Twill Lembut';
+                if (length) length.textContent = (look.hero_product.length_cm || 110) + ' cm (Midi santun)';
+                if (skuInput && look.hero_sku) skuInput.value = look.hero_sku.id;
+                if (prodLink) prodLink.href = `/products/${look.hero_product.slug}`;
+
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                setTimeout(() => {
+                    content.classList.remove('scale-95', 'opacity-0');
+                    content.classList.add('scale-100', 'opacity-100');
+                }, 20);
+            };
+
+            window.closeHangerModal = function() {
+                const modal = document.getElementById('hanger-modal');
+                const content = document.getElementById('hanger-modal-content');
+                content.classList.remove('scale-100', 'opacity-100');
+                content.classList.add('scale-95', 'opacity-0');
+                setTimeout(() => {
+                    modal.classList.remove('flex');
+                    modal.classList.add('hidden');
+                }, 200);
+            };
+
+            window.setHangerAngle = function(angle) {
+                const img = document.getElementById('hanger-modal-img');
+                const btnFront = document.getElementById('hanger-angle-front');
+                const btnBack = document.getElementById('hanger-angle-back');
+                if (!activeModalLook || !img) return;
+
+                if (angle === 'front') {
+                    img.src = activeModalLook.hanger_image;
+                    btnFront.className = 'px-3 py-1 rounded-full bg-neutral-900 text-white cursor-pointer';
+                    btnBack.className = 'px-3 py-1 rounded-full bg-neutral-100 text-neutral-700 hover:bg-neutral-200 cursor-pointer';
+                } else {
+                    img.src = activeModalLook.model_image;
+                    btnBack.className = 'px-3 py-1 rounded-full bg-neutral-900 text-white cursor-pointer';
+                    btnFront.className = 'px-3 py-1 rounded-full bg-neutral-100 text-neutral-700 hover:bg-neutral-200 cursor-pointer';
+                }
+            };
+
+            // ESC key to close modal
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') closeHangerModal();
+            });
+
+            // Initialize look on DOM ready
+            document.addEventListener('DOMContentLoaded', function() {
+                switchLook(0);
+            });
+            // Also call switchLook(0) immediately in case script runs after load
+            switchLook(0);
+        })();
+    </script>
 
     <!-- G2: Cari Ukuranmu / Fit Concierge -->
     <section id="fit-helper" class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-24">

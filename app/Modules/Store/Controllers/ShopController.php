@@ -23,7 +23,81 @@ class ShopController extends Controller
             ->get();
         $liveDrop = Drop::where('is_active', true)->latest()->first();
 
-        return view('shop.home', compact('series', 'featuredProducts', 'liveDrop'));
+        // Curated Modest Tops & Layering Looks for the Interactive Runway Lookbook
+        $puspaOuter = Product::with('skus')->where('slug', 'puspa-floral-outer-kimono')->first() ?? $featuredProducts->first();
+        $puspaScarf = Product::with('skus')->where('slug', 'puspa-voal-printed-scarf')->first() ?? $featuredProducts->skip(1)->first() ?? $puspaOuter;
+        $septTrench = Product::with('skus')->where('slug', 'sept-drops-heritage-linen-trench')->first() ?? $featuredProducts->skip(2)->first() ?? $puspaOuter;
+        $islaDress = Product::with('skus')->where('slug', 'isla-tiered-midi-dress')->first() ?? $featuredProducts->skip(3)->first() ?? $puspaOuter;
+
+        $curatedLooks = collect();
+
+        if ($puspaOuter && $puspaOuter->skus->isNotEmpty()) {
+            $curatedLooks->push([
+                'id' => 1,
+                'tag' => '01 • KAJIAN & FORMAL',
+                'title' => 'The Grand Senja Kimono',
+                'vibe' => 'Potongan kimono santun dengan siluet jatuh bebas kusut, dipadukan voal segiempat tegak di dahi.',
+                'model_image' => 'https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=900&q=80',
+                'hanger_image' => 'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?w=800&q=80',
+                'hero_product' => $puspaOuter,
+                'hero_sku' => $puspaOuter->skus->first(),
+                'hero_role' => 'Atasan / Outer Utama',
+                'secondary_product' => $puspaScarf,
+                'secondary_sku' => $puspaScarf?->skus->first() ?? $puspaOuter->skus->first(),
+                'secondary_role' => 'Scarf Voal Ultrafine 120x120',
+                'bundle_discount_pct' => 10,
+            ]);
+
+            $curatedLooks->push([
+                'id' => 2,
+                'tag' => '02 • WISUDA & KANTOR',
+                'title' => 'Belgian Linen Trench Set',
+                'vibe' => 'Struktur berwibawa dari 100% Belgian Washed Linen dengan tali serut untuk siluet ramping modest.',
+                'model_image' => 'https://images.unsplash.com/photo-1485968579580-b6d095142e6e?w=900&q=80',
+                'hanger_image' => 'https://images.unsplash.com/photo-1485968579580-b6d095142e6e?w=800&q=80',
+                'hero_product' => $septTrench ?? $puspaOuter,
+                'hero_sku' => ($septTrench ?? $puspaOuter)->skus->first(),
+                'hero_role' => 'Trench Outerwear',
+                'secondary_product' => $puspaScarf,
+                'secondary_sku' => $puspaScarf?->skus->skip(1)->first() ?? $puspaScarf?->skus->first() ?? $puspaOuter->skus->first(),
+                'secondary_role' => 'Scarf Voal Segiempat Olive',
+                'bundle_discount_pct' => 10,
+            ]);
+
+            $curatedLooks->push([
+                'id' => 3,
+                'tag' => '03 • CASUAL HANGOUT',
+                'title' => 'Terracotta Sunset Outer',
+                'vibe' => 'Nuansa earth-tone terakota hangat untuk momen santai sore dan silaturahmi akhir pekan.',
+                'model_image' => 'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=900&q=80',
+                'hanger_image' => 'https://images.unsplash.com/photo-1509631179647-0177331693ae?w=800&q=80',
+                'hero_product' => $puspaOuter,
+                'hero_sku' => $puspaOuter->skus->skip(1)->first() ?? $puspaOuter->skus->first(),
+                'hero_role' => 'Outer Kimono Terakota',
+                'secondary_product' => $puspaScarf,
+                'secondary_sku' => $puspaScarf?->skus->first() ?? $puspaOuter->skus->first(),
+                'secondary_role' => 'Voal Ultrafine Glow',
+                'bundle_discount_pct' => 10,
+            ]);
+
+            $curatedLooks->push([
+                'id' => 4,
+                'tag' => '04 • KONDANGAN ELEGAN',
+                'title' => 'Timeless Layering Maxi',
+                'vibe' => 'Paduan outerwear santun dengan maxi inner tanpa terawang untuk jamuan formal & kondangan.',
+                'model_image' => 'https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?w=900&q=80',
+                'hanger_image' => 'https://images.unsplash.com/photo-1496747611176-843222e1e57c?w=800&q=80',
+                'hero_product' => $septTrench ?? $puspaOuter,
+                'hero_sku' => ($septTrench ?? $puspaOuter)->skus->first(),
+                'hero_role' => 'Linen Trench Outer',
+                'secondary_product' => $islaDress ?? $puspaOuter,
+                'secondary_sku' => ($islaDress ?? $puspaOuter)->skus->first(),
+                'secondary_role' => 'Maxi Inner Crinkle Airflow',
+                'bundle_discount_pct' => 10,
+            ]);
+        }
+
+        return view('shop.home', compact('series', 'featuredProducts', 'liveDrop', 'curatedLooks'));
     }
 
     public function catalog(Request $request)

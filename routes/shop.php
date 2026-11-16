@@ -21,6 +21,7 @@ Route::get('/products/{slug}', [ShopController::class, 'product'])->name('shop.p
 // Cart
 Route::get('/cart', [CartController::class, 'index'])->name('shop.cart');
 Route::post('/cart/add', [CartController::class, 'add'])->name('shop.cart.add');
+Route::post('/cart/add-bundle', [CartController::class, 'addBundle'])->name('shop.cart.add-bundle');
 Route::post('/cart/update', [CartController::class, 'update'])->name('shop.cart.update');
 Route::post('/cart/remove/{itemId}', [CartController::class, 'remove'])->name('shop.cart.remove');
 Route::post('/cart/voucher', [CartController::class, 'applyVoucher'])->name('shop.cart.voucher');
