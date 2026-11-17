@@ -43,7 +43,6 @@
                     <!-- Desktop Navigation Links (Max 4-5 focused items) -->
                     <nav class="hidden lg:flex items-center space-x-8 text-xs font-bold tracking-wider uppercase">
                         <a href="{{ route('shop.catalog') }}" class="text-neutral-700 hover:text-neutral-950 transition-colors py-2 cursor-pointer {{ request()->routeIs('shop.catalog') && !request('series') ? 'text-neutral-950 border-b-2 border-neutral-950' : '' }}">Koleksi</a>
-                        <a href="{{ route('shop.catalog', ['series' => 'PUSPA']) }}" class="text-neutral-700 hover:text-neutral-950 transition-colors py-2 cursor-pointer {{ request('series') ? 'text-neutral-950 border-b-2 border-neutral-950' : '' }}">Seri</a>
                         <a href="{{ route('shop.home') }}#fit-helper" class="text-neutral-700 hover:text-neutral-950 transition-colors py-2 cursor-pointer">Panduan Ukuran</a>
                         <a href="{{ route('shop.returns') }}" class="text-neutral-700 hover:text-neutral-950 transition-colors py-2 cursor-pointer {{ request()->routeIs('shop.returns') ? 'text-neutral-950 border-b-2 border-neutral-950' : '' }}">Bantuan</a>
                     </nav>
