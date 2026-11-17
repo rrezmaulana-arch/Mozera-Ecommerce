@@ -333,45 +333,57 @@
                         <!-- Cutout Model Image: Model Responsif -->
                         <div class="relative h-[250px] sm:h-[330px] md:h-[390px] lg:h-[460px] flex items-end justify-center">
                             <!-- Side Angle Left (Hadap Samping) -->
-                            @if($look['has_angles'])
+                            <div id="angle-side-wrap-{{ $idx }}" class="absolute bottom-0 -left-16 sm:-left-24 lg:-left-32 opacity-0 scale-90 -translate-x-6 transition-all duration-500 ease-out z-0 flex flex-col items-center pointer-events-none">
+                                <span class="text-[9px] font-mono uppercase tracking-wider font-bold text-neutral-600 bg-white/95 backdrop-blur-xs px-2 py-0.5 rounded-full border border-neutral-200 shadow-2xs mb-1">
+                                    Samping
+                                </span>
                                 <img 
                                     id="angle-side-{{ $idx }}"
                                     src="{{ $look['side_image'] }}" 
                                     alt="Hadap Samping" 
-                                    class="h-[92%] w-auto max-w-none object-contain select-none pointer-events-none absolute bottom-0 -left-16 sm:-left-28 lg:-left-36 opacity-0 scale-90 -translate-x-6 transition-all duration-500 ease-out z-0"
+                                    class="h-[230px] sm:h-[305px] md:h-[360px] lg:h-[425px] w-auto max-w-none object-contain select-none"
                                 >
-                            @endif
+                            </div>
 
                             <!-- Center Front Model -->
-                            <img 
-                                id="angle-front-{{ $idx }}"
-                                src="{{ $look['model_image'] }}" 
-                                alt="{{ $look['title'] }} — Model Modest MOZÉRA" 
-                                class="h-full w-auto max-w-none object-contain select-none pointer-events-none transition-all duration-500 z-10"
-                                loading="eager"
-                                style="image-rendering: auto; -webkit-backface-visibility: hidden; transform: translateZ(0);"
-                            >
+                            <div class="flex flex-col items-center z-10">
+                                <span id="angle-front-tag-{{ $idx }}" class="opacity-0 transition-opacity duration-300 text-[9px] font-mono uppercase tracking-wider font-bold text-[#BA805E] bg-white/95 backdrop-blur-xs px-2.5 py-0.5 rounded-full border border-[#EADCCE] shadow-2xs mb-1 flex items-center gap-1">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-[#BA805E]"></span>
+                                    <span>Tampak Depan</span>
+                                </span>
+                                <img 
+                                    id="angle-front-{{ $idx }}"
+                                    src="{{ $look['model_image'] }}" 
+                                    alt="{{ $look['title'] }} — Model Modest MOZÉRA" 
+                                    class="h-[250px] sm:h-[330px] md:h-[390px] lg:h-[460px] w-auto max-w-none object-contain select-none pointer-events-none transition-all duration-500"
+                                    loading="eager"
+                                    style="image-rendering: auto; -webkit-backface-visibility: hidden; transform: translateZ(0);"
+                                >
+                            </div>
 
                             <!-- Back Angle Right (Hadap Belakang) -->
-                            @if($look['has_angles'])
+                            <div id="angle-back-wrap-{{ $idx }}" class="absolute bottom-0 -right-16 sm:-right-24 lg:-right-32 opacity-0 scale-90 translate-x-6 transition-all duration-500 ease-out z-0 flex flex-col items-center pointer-events-none">
+                                <span class="text-[9px] font-mono uppercase tracking-wider font-bold text-neutral-600 bg-white/95 backdrop-blur-xs px-2 py-0.5 rounded-full border border-neutral-200 shadow-2xs mb-1">
+                                    Belakang
+                                </span>
                                 <img 
                                     id="angle-back-{{ $idx }}"
                                     src="{{ $look['back_image'] }}" 
                                     alt="Hadap Belakang" 
-                                    class="h-[92%] w-auto max-w-none object-contain select-none pointer-events-none absolute bottom-0 -right-16 sm:-right-28 lg:-right-36 opacity-0 scale-90 translate-x-6 transition-all duration-500 ease-out z-0"
+                                    class="h-[230px] sm:h-[305px] md:h-[360px] lg:h-[425px] w-auto max-w-none object-contain select-none"
                                 >
-                            @endif
+                            </div>
                         </div>
 
-                        <!-- Micro Hint on Active Center Model (Klik untuk 3 Sudut Pandang) -->
-                        @if($look['has_angles'])
-                            <div class="active-angle-hint opacity-0 transition-opacity duration-300 absolute -top-1 pointer-events-none">
-                                <span class="px-2.5 py-0.5 rounded-full bg-neutral-900/80 backdrop-blur-sm text-[9px] font-mono text-[#DCC3AD] uppercase tracking-wider flex items-center gap-1 shadow-md">
-                                    <svg class="w-3 h-3 text-[#BA805E]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
-                                    <span id="angle-hint-text-{{ $idx }}">Klik: Lihat Sudut Samping & Belakang</span>
+                        <!-- Micro Hint on Active Center Model (Semua model bisa diklik) -->
+                        <div class="active-angle-hint opacity-0 transition-opacity duration-300 absolute -top-1 pointer-events-none">
+                            <span class="px-2.5 py-0.5 rounded-full bg-neutral-900/85 backdrop-blur-sm text-[9px] font-mono text-[#DCC3AD] uppercase tracking-wider flex items-center gap-1 shadow-md">
+                                <svg class="w-3 h-3 text-[#BA805E]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                                <span id="angle-hint-text-{{ $idx }}">
+                                    {{ $look['has_angles'] ? 'Klik: Buka Sudut Samping & Belakang' : 'Klik: Detail Busana' }}
                                 </span>
-                            </div>
-                        @endif
+                            </span>
+                        </div>
 
                         <!-- Hidden Form for bundle cart test -->
                         <form action="{{ route('shop.cart.add-bundle') }}" method="POST" class="hidden">
@@ -407,7 +419,7 @@
         </div>
 
         <!-- DEDICATED ACTIVE LOOK HIGHLIGHT (Clean, Focused, Direct CTA) -->
-        <div class="max-w-2xl mx-auto px-4 mt-2 pb-2 flex flex-wrap items-center justify-center gap-2.5 text-center z-20">
+        <div class="max-w-3xl mx-auto px-4 mt-2 pb-1 flex flex-wrap items-center justify-center gap-2.5 text-center z-20">
             <span id="runway-look-type" class="px-3 py-1 rounded-full text-[10px] font-mono uppercase tracking-wider font-bold bg-[#FAF8F5] text-[#A66747] border border-[#E4D7C5] shadow-2xs">
                 {{ $curatedLooks[0]['type_label'] }}
             </span>
@@ -418,6 +430,24 @@
                 <span>Lihat Detail Busana</span>
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
             </a>
+        </div>
+
+        <!-- Mini Feature Highlights Strip (Mengisi ruang bawah agar tidak kopong) -->
+        <div class="max-w-2xl mx-auto px-4 mt-3 flex items-center justify-center gap-4 sm:gap-8 text-[11px] sm:text-xs text-neutral-500 font-medium border-t border-neutral-200/50 pt-2.5">
+            <span class="flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-[#BA805E]"></span>
+                <span>Klik Foto: 3 Sudut Fitting</span>
+            </span>
+            <span class="text-neutral-300">•</span>
+            <span class="flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
+                <span>Bahan Sejuk & Ringan</span>
+            </span>
+            <span class="text-neutral-300">•</span>
+            <span class="flex items-center gap-1.5">
+                <span class="w-1.5 h-1.5 rounded-full bg-neutral-800"></span>
+                <span>Garansi Tukar Ukuran</span>
+            </span>
         </div>
 
     </section>
@@ -442,60 +472,87 @@
 
             window.toggleAngles = function(idx) {
                 const look = looks[idx];
-                if (!look || !look.has_angles) return;
+                if (!look) return;
 
-                const sideImg = document.getElementById(`angle-side-${idx}`);
-                const backImg = document.getElementById(`angle-back-${idx}`);
+                // Jika model belum punya gambar samping/belakang, klik langsung arahkan ke halaman detail produk
+                if (!look.has_angles) {
+                    if (look.product_url) window.location.href = look.product_url;
+                    return;
+                }
+
+                const sideWrap = document.getElementById(`angle-side-wrap-${idx}`);
+                const backWrap = document.getElementById(`angle-back-wrap-${idx}`);
+                const frontTag = document.getElementById(`angle-front-tag-${idx}`);
                 const frontImg = document.getElementById(`angle-front-${idx}`);
                 const hintText = document.getElementById(`angle-hint-text-${idx}`);
 
                 anglesOpen = !anglesOpen;
 
-                if (anglesOpen) {
-                    // Buka jejer ke kiri & kanan dengan animasi halus
-                    if (sideImg) {
-                        sideImg.style.opacity = '1';
-                        sideImg.style.transform = 'translate3d(-24px, -4px, 0px) scale(0.96)';
-                        sideImg.style.pointerEvents = 'auto';
+                // 1. Sembunyikan SEMUA model di samping kiri & kanan agar panggung bersih khusus 3 sudut ini!
+                looks.forEach((_, i) => {
+                    if (i !== idx) {
+                        const otherModel = document.getElementById(`runway-model-${i}`);
+                        if (otherModel) {
+                            otherModel.style.opacity = anglesOpen ? '0' : '';
+                            otherModel.style.pointerEvents = anglesOpen ? 'none' : '';
+                        }
                     }
-                    if (backImg) {
-                        backImg.style.opacity = '1';
-                        backImg.style.transform = 'translate3d(24px, -4px, 0px) scale(0.96)';
-                        backImg.style.pointerEvents = 'auto';
+                });
+
+                if (anglesOpen) {
+                    // Buka jejer ke kiri & kanan dengan rapi dan munculkan label keterangan
+                    if (sideWrap) {
+                        sideWrap.style.opacity = '1';
+                        sideWrap.style.transform = 'translate3d(-20px, 0px, 0px) scale(0.96)';
+                        sideWrap.style.pointerEvents = 'auto';
+                    }
+                    if (backWrap) {
+                        backWrap.style.opacity = '1';
+                        backWrap.style.transform = 'translate3d(20px, 0px, 0px) scale(0.96)';
+                        backWrap.style.pointerEvents = 'auto';
+                    }
+                    if (frontTag) {
+                        frontTag.style.opacity = '1';
                     }
                     if (frontImg) {
-                        frontImg.style.transform = 'scale(1.03)';
+                        frontImg.style.transform = 'scale(1.02)';
                     }
-                    if (hintText) hintText.textContent = 'Klik lagi untuk menutup sudut';
+                    if (hintText) hintText.textContent = 'Klik untuk Menutup Sudut';
                 } else {
-                    // Tutup kembali ke posisi awal
+                    // Tutup kembali
                     closeAnglesInline();
+                    switchLook(idx);
                 }
             };
 
             window.closeAnglesInline = function() {
                 anglesOpen = false;
                 looks.forEach((look, idx) => {
-                    if (!look.has_angles) return;
-                    const sideImg = document.getElementById(`angle-side-${idx}`);
-                    const backImg = document.getElementById(`angle-back-${idx}`);
+                    const sideWrap = document.getElementById(`angle-side-wrap-${idx}`);
+                    const backWrap = document.getElementById(`angle-back-wrap-${idx}`);
+                    const frontTag = document.getElementById(`angle-front-tag-${idx}`);
                     const frontImg = document.getElementById(`angle-front-${idx}`);
                     const hintText = document.getElementById(`angle-hint-text-${idx}`);
 
-                    if (sideImg) {
-                        sideImg.style.opacity = '0';
-                        sideImg.style.transform = 'translate3d(-40px, 0px, 0px) scale(0.85)';
-                        sideImg.style.pointerEvents = 'none';
+                    if (sideWrap) {
+                        sideWrap.style.opacity = '0';
+                        sideWrap.style.transform = 'translate3d(-40px, 0px, 0px) scale(0.85)';
+                        sideWrap.style.pointerEvents = 'none';
                     }
-                    if (backImg) {
-                        backImg.style.opacity = '0';
-                        backImg.style.transform = 'translate3d(40px, 0px, 0px) scale(0.85)';
-                        backImg.style.pointerEvents = 'none';
+                    if (backWrap) {
+                        backWrap.style.opacity = '0';
+                        backWrap.style.transform = 'translate3d(40px, 0px, 0px) scale(0.85)';
+                        backWrap.style.pointerEvents = 'none';
+                    }
+                    if (frontTag) {
+                        frontTag.style.opacity = '0';
                     }
                     if (frontImg) {
                         frontImg.style.transform = 'scale(1)';
                     }
-                    if (hintText) hintText.textContent = 'Klik: Lihat Sudut Samping & Belakang';
+                    if (hintText) {
+                        hintText.textContent = look.has_angles ? 'Klik: Buka Sudut Samping & Belakang' : 'Klik: Detail Busana';
+                    }
                 });
             };
 
