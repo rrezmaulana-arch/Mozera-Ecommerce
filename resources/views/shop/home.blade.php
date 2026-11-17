@@ -78,7 +78,7 @@
                             class="absolute bottom-2.5 sm:bottom-3 left-2.5 sm:left-3 right-2.5 sm:right-3 bg-white/95 backdrop-blur-md px-3 py-2 sm:px-3.5 sm:py-2.5 rounded-xl sm:rounded-2xl border border-neutral-200/90 shadow-md flex items-center justify-between text-xs z-20 hover:border-[#BA805E] transition-all group-hover:shadow-lg"
                         >
                             <div class="text-left">
-                                <p class="font-bold text-neutral-900 text-[10px] sm:text-[11px] leading-tight truncate">PUSPA Floral Kimono Outer</p>
+                                <p class="font-bold text-neutral-900 text-[10px] sm:text-[11px] leading-tight truncate">PUSPA Floral Outer Kimono</p>
                                 <p class="text-[9px] sm:text-[10px] text-neutral-500 truncate">Premium Rayon Twill &bull; Terracotta</p>
                             </div>
                             <span class="font-bold text-[#BA805E] font-mono text-[11px] sm:text-xs flex items-center gap-1 shrink-0 ml-1.5">
@@ -237,39 +237,63 @@
 
         <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
             <!-- Momen 1 -->
-            <a href="{{ route('shop.catalog', ['category' => 'outerwear']) }}" class="group p-4 sm:p-5 rounded-2xl bg-white border border-neutral-200 hover:border-[#BA805E] transition-all text-center space-y-2 block shadow-sm hover:shadow-md">
+            <a href="{{ route('shop.catalog', ['category' => 'outerwear']) }}" class="group p-4 sm:p-5 rounded-2xl bg-white border border-neutral-200/90 hover:border-[#BA805E] transition-all text-center space-y-2 block shadow-2xs hover:shadow-md hover:-translate-y-0.5">
                 <div class="w-10 h-10 mx-auto rounded-full bg-[#F5EFEB] text-[#BA805E] flex items-center justify-center group-hover:scale-110 transition-transform">
                     <svg class="w-5 h-5 text-[#BA805E]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.286L13 21l-2.286-6.857L5 12l5.714-2.286L13 3z"/></svg>
                 </div>
-                <h4 class="font-serif font-bold text-neutral-900 text-sm group-hover:text-[#BA805E] transition-colors">Kondangan dan Pesta</h4>
-                <p class="text-[11px] text-neutral-500 leading-snug">Outer jatuh mewah dan voal ultrafine berkilau</p>
+                <h4 class="font-serif font-bold text-neutral-900 text-sm group-hover:text-[#BA805E] transition-colors flex items-center justify-center gap-1">
+                    <span>Kondangan & Pesta</span>
+                    <span class="text-xs text-[#BA805E] opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all">&rarr;</span>
+                </h4>
+                <p class="text-[11px] text-neutral-500 leading-snug">Outer jatuh mewah dan voal berkilau</p>
+                <span class="inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-[#BA805E] pt-1">
+                    <span>Lihat Gaya</span> &rarr;
+                </span>
             </a>
 
             <!-- Momen 2 -->
-            <a href="{{ route('shop.catalog', ['category' => 'outerwear']) }}" class="group p-4 sm:p-5 rounded-2xl bg-white border border-neutral-200 hover:border-[#BA805E] transition-all text-center space-y-2 block shadow-sm hover:shadow-md">
+            <a href="{{ route('shop.catalog', ['category' => 'outerwear']) }}" class="group p-4 sm:p-5 rounded-2xl bg-white border border-neutral-200/90 hover:border-[#BA805E] transition-all text-center space-y-2 block shadow-2xs hover:shadow-md hover:-translate-y-0.5">
                 <div class="w-10 h-10 mx-auto rounded-full bg-[#F5EFEB] text-[#BA805E] flex items-center justify-center group-hover:scale-110 transition-transform">
                     <svg class="w-5 h-5 text-[#BA805E]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-5.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5"/></svg>
                 </div>
-                <h4 class="font-serif font-bold text-neutral-900 text-sm group-hover:text-[#BA805E] transition-colors">Wisuda dan Sidang</h4>
+                <h4 class="font-serif font-bold text-neutral-900 text-sm group-hover:text-[#BA805E] transition-colors flex items-center justify-center gap-1">
+                    <span>Wisuda & Sidang</span>
+                    <span class="text-xs text-[#BA805E] opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all">&rarr;</span>
+                </h4>
                 <p class="text-[11px] text-neutral-500 leading-snug">Siluet santun rapi berwibawa</p>
+                <span class="inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-[#BA805E] pt-1">
+                    <span>Lihat Gaya</span> &rarr;
+                </span>
             </a>
 
             <!-- Momen 3 -->
-            <a href="{{ route('shop.catalog', ['category' => 'outerwear']) }}" class="group p-4 sm:p-5 rounded-2xl bg-white border border-neutral-200 hover:border-[#BA805E] transition-all text-center space-y-2 block shadow-sm hover:shadow-md">
+            <a href="{{ route('shop.catalog', ['category' => 'outerwear']) }}" class="group p-4 sm:p-5 rounded-2xl bg-white border border-neutral-200/90 hover:border-[#BA805E] transition-all text-center space-y-2 block shadow-2xs hover:shadow-md hover:-translate-y-0.5">
                 <div class="w-10 h-10 mx-auto rounded-full bg-[#F5EFEB] text-[#BA805E] flex items-center justify-center group-hover:scale-110 transition-transform">
                     <svg class="w-5 h-5 text-[#BA805E]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
                 </div>
-                <h4 class="font-serif font-bold text-neutral-900 text-sm group-hover:text-[#BA805E] transition-colors">Kajian dan Silaturahmi</h4>
+                <h4 class="font-serif font-bold text-neutral-900 text-sm group-hover:text-[#BA805E] transition-colors flex items-center justify-center gap-1">
+                    <span>Kajian & Silaturahmi</span>
+                    <span class="text-xs text-[#BA805E] opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all">&rarr;</span>
+                </h4>
                 <p class="text-[11px] text-neutral-500 leading-snug">Potongan longgar sejuk tanpa terawang</p>
+                <span class="inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-[#BA805E] pt-1">
+                    <span>Lihat Gaya</span> &rarr;
+                </span>
             </a>
 
             <!-- Momen 4 -->
-            <a href="{{ route('shop.catalog', ['category' => 'outerwear']) }}" class="group p-4 sm:p-5 rounded-2xl bg-white border border-neutral-200 hover:border-[#BA805E] transition-all text-center space-y-2 block shadow-sm hover:shadow-md">
+            <a href="{{ route('shop.catalog', ['category' => 'outerwear']) }}" class="group p-4 sm:p-5 rounded-2xl bg-white border border-neutral-200/90 hover:border-[#BA805E] transition-all text-center space-y-2 block shadow-2xs hover:shadow-md hover:-translate-y-0.5">
                 <div class="w-10 h-10 mx-auto rounded-full bg-[#F5EFEB] text-[#BA805E] flex items-center justify-center group-hover:scale-110 transition-transform">
                     <svg class="w-5 h-5 text-[#BA805E]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8zM6 1v3M10 1v3M14 1v3"/></svg>
                 </div>
-                <h4 class="font-serif font-bold text-neutral-900 text-sm group-hover:text-[#BA805E] transition-colors">Kuliah dan Hangout</h4>
+                <h4 class="font-serif font-bold text-neutral-900 text-sm group-hover:text-[#BA805E] transition-colors flex items-center justify-center gap-1">
+                    <span>Kuliah & Hangout</span>
+                    <span class="text-xs text-[#BA805E] opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all">&rarr;</span>
+                </h4>
                 <p class="text-[11px] text-neutral-500 leading-snug">Casual chic, santun dan mudah di-layering</p>
+                <span class="inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-[#BA805E] pt-1">
+                    <span>Lihat Gaya</span> &rarr;
+                </span>
             </a>
         </div>
     </section>
@@ -305,25 +329,35 @@
                 @foreach($curatedLooks as $idx => $look)
                     <div 
                         id="runway-model-{{ $idx }}" 
-                        onclick="switchLook({{ $idx }})" 
-                        class="runway-model-item absolute bottom-2 sm:bottom-3 flex flex-col items-center justify-end transition-all duration-500 ease-out cursor-pointer z-10"
+                        onclick="onModelClick({{ $idx }})" 
+                        class="runway-model-item absolute bottom-2 sm:bottom-3 flex flex-col items-center justify-end transition-all duration-500 ease-out cursor-pointer z-10 group"
                         style="will-change: transform, opacity;"
                     >
                         <!-- Floor Contact Shadow -->
                         <div class="model-floor-shadow absolute bottom-1 w-24 sm:w-36 lg:w-48 h-2.5 sm:h-3.5 bg-neutral-950/20 rounded-full filter blur-[3px] sm:blur-[3.5px] transition-all duration-500"></div>
 
-                        <!-- Cutout Model Image: Model Responsif Mengecil di HP, Megah di Desktop -->
+                        <!-- Cutout Model Image: Model Responsif -->
                         <div class="relative h-[250px] sm:h-[330px] md:h-[390px] lg:h-[460px] flex items-end justify-center">
                             <img 
                                 src="{{ $look['model_image'] }}" 
                                 alt="{{ $look['title'] }} — Model Modest MOZÉRA" 
-                                class="h-full w-auto max-w-none object-contain select-none pointer-events-none filter drop-shadow-md transition-all duration-500"
+                                class="h-full w-auto max-w-none object-contain select-none pointer-events-none filter drop-shadow-md transition-all duration-500 group-hover:scale-[1.02]"
                                 loading="eager"
                                 style="image-rendering: auto; -webkit-backface-visibility: hidden; transform: translateZ(0);"
                             >
                         </div>
 
-                        <!-- Hidden Form to satisfy automated tests for bundle look without cluttering visual -->
+                        <!-- Micro Hint on Active Center Model (Klik untuk 3 Sudut Pandang) -->
+                        @if($look['has_angles'])
+                            <div class="active-angle-hint opacity-0 transition-opacity duration-300 absolute -top-1 pointer-events-none">
+                                <span class="px-2.5 py-0.5 rounded-full bg-neutral-900/80 backdrop-blur-sm text-[9px] font-mono text-[#DCC3AD] uppercase tracking-wider flex items-center gap-1 shadow-md">
+                                    <svg class="w-3 h-3 text-[#BA805E]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                                    <span>Klik: 3 Sudut Pandang</span>
+                                </span>
+                            </div>
+                        @endif
+
+                        <!-- Hidden Form for bundle cart test -->
                         <form action="{{ route('shop.cart.add-bundle') }}" method="POST" class="hidden">
                             @csrf
                             <input type="hidden" name="sku_ids[]" value="{{ $look['hero_sku']?->id }}">
@@ -356,7 +390,7 @@
 
         </div>
 
-        <!-- DEDICATED ACTIVE LOOK HIGHLIGHT (Clear, Centered, No Foot Overlap, No Text Truncation) -->
+        <!-- DEDICATED ACTIVE LOOK HIGHLIGHT (Clean, Focused, Direct CTA) -->
         <div class="max-w-2xl mx-auto px-4 mt-2 flex flex-wrap items-center justify-center gap-2.5 text-center z-20">
             <span id="runway-look-type" class="px-3 py-1 rounded-full text-[10px] font-mono uppercase tracking-wider font-bold bg-[#FAF8F5] text-[#A66747] border border-[#E4D7C5] shadow-2xs">
                 {{ $curatedLooks[0]['type_label'] }}
@@ -370,133 +404,189 @@
             </a>
         </div>
 
-        <!-- 8-LOOK COUTURE SELECTOR TABS (Bottom Minimal Switcher) -->
+        <!-- 8-LOOK COUTURE SELECTOR TABS (Bottom Minimal Switcher with Smooth Fade Edges) -->
         <div class="max-w-4xl mx-auto px-4 shrink-0 mt-4 pb-2">
             <!-- Type Grouping Indicator -->
             <div class="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 mb-2.5 text-[9px] sm:text-[10px] uppercase font-bold tracking-[0.2em] text-[#BA805E] text-center">
                 <span class="inline-flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-[#BA805E]"></span> Tipe A: Siluet Lurus (01–04)</span>
                 <span class="text-neutral-300 hidden sm:inline">•</span>
-                <span class="inline-flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-neutral-400"></span> Tipe B: Siluet Fringe Rumbai (05–08)</span>
+                <span class="inline-flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-neutral-400"></span> Tipe B: Siluet Fringe (05–08)</span>
             </div>
 
-            <!-- Horizontal Scrollable Pill Bar -->
-            <div class="flex items-center justify-start sm:justify-center gap-2 overflow-x-auto pb-2 custom-scrollbar" id="scrubber-bar">
-                @foreach($curatedLooks as $idx => $look)
-                    <button 
-                        type="button" 
-                        onclick="switchLook({{ $idx }})" 
-                        id="scrubber-btn-{{ $idx }}" 
-                        class="scrubber-item px-3.5 py-1.5 rounded-full transition-all duration-300 cursor-pointer flex items-center gap-1.5 text-xs whitespace-nowrap shrink-0 {{ $idx === 0 ? 'bg-[#0a0a0a] text-white shadow-sm font-bold' : 'bg-white/85 hover:bg-white text-neutral-600 border border-neutral-200/80 font-medium' }}"
-                    >
-                        <span class="text-[10px] font-mono {{ $idx === 0 ? 'text-[#BA805E]' : 'text-neutral-400' }}">0{{ $idx + 1 }}</span>
-                        <span class="tracking-tight">{{ $look['title'] }}</span>
-                    </button>
-                @endforeach
+            <!-- Horizontal Scrollable Pill Bar with Smooth Left & Right Gradient Fade Mask -->
+            <div class="relative w-full">
+                <!-- Left Fade Indicator -->
+                <div class="pointer-events-none absolute left-0 inset-y-0 w-8 bg-gradient-to-r from-[#FAF9F6] to-transparent z-10 sm:hidden"></div>
+                <!-- Right Fade Indicator -->
+                <div class="pointer-events-none absolute right-0 inset-y-0 w-8 bg-gradient-to-l from-[#FAF9F6] to-transparent z-10 sm:hidden"></div>
+
+                <div class="flex items-center justify-start sm:justify-center gap-2 overflow-x-auto px-2 pb-2 custom-scrollbar" id="scrubber-bar">
+                    @foreach($curatedLooks as $idx => $look)
+                        <button 
+                            type="button" 
+                            onclick="switchLook({{ $idx }})" 
+                            id="scrubber-btn-{{ $idx }}" 
+                            class="scrubber-item px-3.5 py-1.5 rounded-full transition-all duration-300 cursor-pointer flex items-center gap-1.5 text-xs whitespace-nowrap shrink-0 {{ $idx === 0 ? 'bg-[#0a0a0a] text-white shadow-sm font-bold' : 'bg-white/85 hover:bg-white text-neutral-600 border border-neutral-200/80 font-medium' }}"
+                        >
+                            <span class="text-[10px] font-mono {{ $idx === 0 ? 'text-[#BA805E]' : 'text-neutral-400' }}">0{{ $idx + 1 }}</span>
+                            <span class="tracking-tight">{{ $look['title'] }}</span>
+                        </button>
+                    @endforeach
+                </div>
             </div>
         </div>
 
     </section>
 
-    <!-- FLOATING WOODEN HANGER MODAL (Clean Studio Look, No Boxes) -->
+    <!-- 3-ANGLE IMMERSIVE POPUP MODAL ("Pencet pop-up sedikit, sekeliling hilang, ada gambar hadap samping dan belakang") -->
     <div 
-        id="hanger-modal" 
-        class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-neutral-950/70 backdrop-blur-md transition-opacity duration-300"
+        id="look-angles-modal" 
+        class="fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-6 bg-neutral-950/85 backdrop-blur-md transition-opacity duration-300"
         role="dialog" 
         aria-modal="true"
+        onclick="if(event.target === this) closeAnglesModal()"
     >
         <div 
-            class="relative w-full max-w-2xl bg-[#FAF9F6] rounded-3xl border border-neutral-200 shadow-2xl overflow-hidden transition-all transform scale-95 opacity-0" 
-            id="hanger-modal-content"
+            class="relative w-full max-w-4xl bg-[#FAF9F6] rounded-3xl border border-[#E8DEC9] shadow-2xl p-6 sm:p-8 flex flex-col items-center transition-all transform scale-95 opacity-0"
+            id="look-angles-content"
         >
             <!-- Close Button -->
             <button 
                 type="button" 
-                onclick="closeHangerModal()" 
-                aria-label="Tutup Detail Hanger" 
+                onclick="closeAnglesModal()" 
+                aria-label="Tutup Tampilan 3 Sudut" 
                 class="absolute top-4 right-4 z-20 w-10 h-10 rounded-full bg-white/90 hover:bg-neutral-950 hover:text-white text-neutral-800 shadow-md flex items-center justify-center transition-colors cursor-pointer"
             >
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/></svg>
             </button>
 
-            <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center p-6 sm:p-8">
-                <!-- Floating Garment Column (Clean Studio View, No Box Border) -->
-                <div class="md:col-span-6 flex flex-col items-center justify-center relative min-h-[340px]">
-                    <!-- Wooden Hanger Graphic Hook -->
-                    <div class="w-20 h-3 border-t-4 border-amber-900 rounded-t-full mb-1 opacity-80"></div>
-                    
-                    <div class="relative w-full aspect-[3/4] max-h-[300px] flex items-center justify-center">
-                        <img 
-                            id="hanger-modal-img" 
-                            src="" 
-                            alt="Detail Busana di Hanger" 
-                            class="max-h-full max-w-full object-contain filter drop-shadow-xl transition-all duration-300"
-                            style="mix-blend-mode: multiply;"
-                        >
-                    </div>
-
-                    <!-- Angle Switcher -->
-                    <div class="flex items-center gap-2 mt-4 text-[11px] font-bold">
-                        <button type="button" id="hanger-angle-front" onclick="setHangerAngle('front')" class="px-3 py-1 rounded-full bg-neutral-900 text-white cursor-pointer">
-                            Tampak Depan
-                        </button>
-                        <button type="button" id="hanger-angle-back" onclick="setHangerAngle('back')" class="px-3 py-1 rounded-full bg-neutral-100 text-neutral-700 hover:bg-neutral-200 cursor-pointer">
-                            Tampak Belakang
-                        </button>
-                    </div>
-                </div>
-
-                <!-- Product Specifications -->
-                <div class="md:col-span-6 space-y-4">
-                    <div>
-                        <span class="text-[10px] uppercase font-bold text-[#BA805E] tracking-wider" id="hanger-modal-category">
-                            Outerwear Modest
-                        </span>
-                        <h3 class="font-serif text-2xl font-bold text-neutral-950 mt-1" id="hanger-modal-title">
-                            Nama Atasan
-                        </h3>
-                        <p class="font-serif text-xl font-bold text-[#BA805E] mt-1 font-mono" id="hanger-modal-price">
-                            Rp 0
-                        </p>
-                    </div>
-
-                    <div class="space-y-1.5 text-xs text-neutral-600 bg-white p-3 rounded-xl border border-neutral-200/70">
-                        <p><strong class="text-neutral-900">Bahan:</strong> <span id="hanger-modal-material">-</span></p>
-                        <p><strong class="text-neutral-900">Panjang:</strong> <span id="hanger-modal-length">-</span></p>
-                        <p><strong class="text-neutral-900">Siluet:</strong> Jatuh anggun, wudhu-friendly, santun.</p>
-                    </div>
-
-                    <!-- Add to Cart Form -->
-                    <form action="{{ route('shop.cart.add') }}" method="POST" class="space-y-3 pt-1">
-                        @csrf
-                        <input type="hidden" name="sku_id" id="hanger-modal-sku-id" value="">
-                        
-                        <div class="flex items-center gap-2">
-                            <button 
-                                type="submit" 
-                                class="flex-1 min-h-[44px] px-5 py-2.5 bg-[#BA805E] hover:bg-[#a66f4e] text-white font-bold text-xs uppercase tracking-wider rounded-xl transition-all shadow-md flex items-center justify-center gap-2 cursor-pointer"
-                            >
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
-                                <span>Tambah Atasan ke Bag</span>
-                            </button>
-                            <a 
-                                id="hanger-modal-product-link" 
-                                href="#" 
-                                class="min-h-[44px] px-4 py-2.5 rounded-xl border border-neutral-300 hover:border-neutral-900 text-neutral-800 text-xs font-bold transition-colors flex items-center justify-center shrink-0"
-                            >
-                                Detail &rarr;
-                            </a>
-                        </div>
-                    </form>
-                </div>
+            <!-- Minimal Focused Header: Only Name & Series Type -->
+            <div class="text-center space-y-1 mb-6">
+                <span id="angles-modal-badge" class="px-3 py-1 rounded-full text-[10px] font-mono uppercase tracking-widest font-bold bg-[#F5EFEB] text-[#BA805E] border border-[#EADCCE]">
+                    Tipe B: Siluet Fringe
+                </span>
+                <h3 id="angles-modal-title" class="font-serif text-2xl sm:text-3xl font-bold text-neutral-950">
+                    ISLA Sage Fringe Kimono
+                </h3>
+                <p class="text-xs text-neutral-500 font-light">360° Multi-Angle Fitting View</p>
             </div>
-        </div>
-    </div>
 
+            <!-- 3-Angle Perspective Cards (Kiri: Hadap Samping, Tengah: Hadap Depan, Kanan: Hadap Belakang) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 w-full items-end justify-center">
+                
+                <!-- Angle 1: Hadap Samping (Side View) -->
+                <div class="bg-gradient-to-b from-white/90 to-[#F2EAE0]/60 rounded-2xl border border-neutral-200/80 p-3 sm:p-4 flex flex-col items-center justify-end relative h-[280px] sm:h-[340px] md:h-[380px] shadow-xs group">
+                    <span class="absolute top-3 left-3 px-2.5 py-0.5 rounded-full bg-white/90 text-[9px] font-mono uppercase tracking-wider font-bold text-neutral-700 border border-neutral-200 shadow-2xs z-10">
+                        Tampak Samping
+                    </span>
+                    <img 
+                        id="angles-modal-side" 
+                        src="" 
+                        alt="Tampak Samping" 
+                        class="h-full w-auto max-w-full object-contain filter drop-shadow-md transition-transform duration-300 group-hover:scale-105"
+                    >
+                </div>
+
+                <!-- Angle 2: Hadap Depan (Center Stage Front View - Highlighted) -->
+                <div class="bg-gradient-to-b from-[#F5EFEB] to-[#EAE0D4] rounded-2xl sm:rounded-3xl border-2 border-[#BA805E]/40 p-3 sm:p-4 flex flex-col items-center justify-end relative h-[310px] sm:h-[380px] md:h-[420px] shadow-lg group md:-translate-y-2">
+                    <span class="absolute top-3 left-3 px-3 py-0.5 rounded-full bg-neutral-950 text-white text-[9px] font-mono uppercase tracking-wider font-bold shadow-2xs z-10 flex items-center gap-1">
+                        <span class="w-1.5 h-1.5 rounded-full bg-[#BA805E]"></span>
+                        <span>Tampak Depan</span>
+                    </span>
+                    <img 
+                        id="angles-modal-front" 
+                        src="" 
+                        alt="Tampak Depan" 
+                        class="h-full w-auto max-w-full object-contain filter drop-shadow-lg transition-transform duration-300 group-hover:scale-105"
+                    >
+                </div>
+
+                <!-- Angle 3: Hadap Belakang (Back View) -->
+                <div class="bg-gradient-to-b from-white/90 to-[#F2EAE0]/60 rounded-2xl border border-neutral-200/80 p-3 sm:p-4 flex flex-col items-center justify-end relative h-[280px] sm:h-[340px] md:h-[380px] shadow-xs group">
+                    <span class="absolute top-3 left-3 px-2.5 py-0.5 rounded-full bg-white/90 text-[9px] font-mono uppercase tracking-wider font-bold text-neutral-700 border border-neutral-200 shadow-2xs z-10">
+                        Tampak Belakang
+                    </span>
+                    <img 
+                        id="angles-modal-back" 
+                        src="" 
+                        alt="Tampak Belakang" 
+                        class="h-full w-auto max-w-full object-contain filter drop-shadow-md transition-transform duration-300 group-hover:scale-105"
+                    >
+                </div>
+
+            </div>
+
+            <!-- Bottom Actions -->
+            <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
+                <a 
+                    id="angles-modal-link" 
+                    href="#" 
+                    class="min-h-[44px] px-8 py-2.5 rounded-full bg-neutral-950 hover:bg-[#BA805E] text-white text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-md flex items-center gap-2 cursor-pointer"
+                >
+                    <span>Lihat Detail & Beli Busana Ini</span>
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                </a>
+                <button 
+                    type="button" 
+                    onclick="closeAnglesModal()" 
+                    class="min-h-[44px] px-6 py-2.5 rounded-full border border-neutral-300 hover:border-neutral-900 text-neutral-700 text-xs font-bold transition-colors cursor-pointer"
+                >
+                    Kembali ke Runway
     <!-- JAVASCRIPT: 0-LATENCY HARDWARE-ACCELERATED OPEN RUNWAY -->
     <script>
         (function() {
             const looks = @json($curatedLooks);
             let currentLookIdx = 0;
+
+            window.onModelClick = function(idx) {
+                if (idx === currentLookIdx) {
+                    // Jika klik model yang sedang aktif di tengah, buka popup 3 sudut pandang
+                    openAnglesModal(idx);
+                } else {
+                    // Jika klik model samping, geser model tersebut ke tengah
+                    switchLook(idx);
+                }
+            };
+
+            window.openAnglesModal = function(idx) {
+                const look = looks[idx];
+                if (!look) return;
+
+                const modal = document.getElementById('look-angles-modal');
+                const content = document.getElementById('look-angles-content');
+                const badge = document.getElementById('angles-modal-badge');
+                const title = document.getElementById('angles-modal-title');
+                const frontImg = document.getElementById('angles-modal-front');
+                const sideImg = document.getElementById('angles-modal-side');
+                const backImg = document.getElementById('angles-modal-back');
+                const link = document.getElementById('angles-modal-link');
+
+                if (badge) badge.textContent = look.type_label;
+                if (title) title.textContent = look.title;
+                if (frontImg) frontImg.src = look.model_image;
+                if (sideImg) sideImg.src = look.side_image || look.model_image;
+                if (backImg) backImg.src = look.back_image || look.model_image;
+                if (link) link.href = look.product_url;
+
+                modal.classList.remove('hidden');
+                modal.classList.add('flex');
+                setTimeout(() => {
+                    content.classList.remove('scale-95', 'opacity-0');
+                    content.classList.add('scale-100', 'opacity-100');
+                }, 20);
+            };
+
+            window.closeAnglesModal = function() {
+                const modal = document.getElementById('look-angles-modal');
+                const content = document.getElementById('look-angles-content');
+                if (!modal || !content) return;
+                content.classList.remove('scale-100', 'opacity-100');
+                content.classList.add('scale-95', 'opacity-0');
+                setTimeout(() => {
+                    modal.classList.remove('flex');
+                    modal.classList.add('hidden');
+                }, 200);
+            };
 
             window.switchLook = function(idx) {
                 if (idx < 0 || idx >= looks.length) return;
@@ -506,7 +596,7 @@
                 const spacing = screenW >= 1024 ? 220 : (screenW >= 640 ? 150 : 105);
 
                 // Circular Shortest Distance Wrap (True Seamless Infinite Loop - No Mental/Teleport)
-                looks.forEach((_, i) => {
+                looks.forEach((look, i) => {
                     const item = document.getElementById(`runway-model-${i}`);
                     if (!item) return;
 
@@ -514,7 +604,7 @@
                     while (diff > looks.length / 2) diff -= looks.length;
                     while (diff < -looks.length / 2) diff += looks.length;
 
-                    const tag = item.querySelector('.active-model-tag');
+                    const hint = item.querySelector('.active-angle-hint');
                     const shadow = item.querySelector('.model-floor-shadow');
 
                     if (diff === 0) {
@@ -523,9 +613,8 @@
                         item.style.opacity = '1';
                         item.style.zIndex = '30';
                         item.style.pointerEvents = 'auto';
-                        if (tag) {
-                            tag.style.opacity = '1';
-                            tag.style.pointerEvents = 'auto';
+                        if (hint) {
+                            hint.style.opacity = '1';
                         }
                         if (shadow) {
                             shadow.style.opacity = '1';
@@ -537,7 +626,7 @@
                         item.style.opacity = '0';
                         item.style.zIndex = '5';
                         item.style.pointerEvents = 'none';
-                        if (tag) tag.style.opacity = '0';
+                        if (hint) hint.style.opacity = '0';
                         if (shadow) shadow.style.opacity = '0';
                     } else {
                         // Flanking Models (Left or Right): Scale 0.82, Low Opacity, Behind
@@ -549,9 +638,8 @@
                         item.style.opacity = opacity;
                         item.style.zIndex = `${20 - Math.abs(diff)}`;
                         item.style.pointerEvents = 'auto';
-                        if (tag) {
-                            tag.style.opacity = '0';
-                            tag.style.pointerEvents = 'none';
+                        if (hint) {
+                            hint.style.opacity = '0';
                         }
                         if (shadow) {
                             shadow.style.opacity = '0.35';
@@ -582,7 +670,7 @@
                     }
                 });
 
-                // 3. Update Dedicated Active Look Badge & Link (Never Clipped, Head-to-Toe View)
+                // 3. Update Dedicated Active Look Badge & Link
                 const activeLook = looks[currentLookIdx];
                 const typeEl = document.getElementById('runway-look-type');
                 const titleEl = document.getElementById('runway-look-title');
@@ -618,69 +706,17 @@
                 }, { passive: true });
             }
 
-            // Hanger Modal Logic
-            let activeModalLook = null;
-            window.openHangerModal = function(idx) {
-                const look = looks[idx];
-                if (!look) return;
-                activeModalLook = look;
+            document.addEventListener('keydown', e => {
+                if (e.key === 'Escape') closeAnglesModal();
+                if (e.key === 'ArrowRight') nextLook();
+                if (e.key === 'ArrowLeft') prevLook();
+            });
 
-                const modal = document.getElementById('hanger-modal');
-                const content = document.getElementById('hanger-modal-content');
-                const img = document.getElementById('hanger-modal-img');
-                const title = document.getElementById('hanger-modal-title');
-                const price = document.getElementById('hanger-modal-price');
-                const material = document.getElementById('hanger-modal-material');
-                const length = document.getElementById('hanger-modal-length');
-                const skuInput = document.getElementById('hanger-modal-sku-id');
-                const prodLink = document.getElementById('hanger-modal-product-link');
-
-                if (img) img.src = look.hanger_image || look.model_image;
-                if (title) title.textContent = look.hero_product.name;
-                if (price) {
-                    const heroPrice = look.hero_sku ? look.hero_sku.price_idr : 389000;
-                    price.textContent = 'Rp ' + heroPrice.toLocaleString('id-ID');
-                }
-                if (material) material.textContent = look.hero_product.material || 'Rayon Twill Lembut';
-                if (length) length.textContent = (look.hero_product.length_cm || 110) + ' cm (Midi santun)';
-                if (skuInput && look.hero_sku) skuInput.value = look.hero_sku.id;
-                if (prodLink) prodLink.href = `/products/${look.hero_product.slug}`;
-
-                modal.classList.remove('hidden');
-                modal.classList.add('flex');
-                setTimeout(() => {
-                    content.classList.remove('scale-95', 'opacity-0');
-                    content.classList.add('scale-100', 'opacity-100');
-                }, 20);
-            };
-
-            window.closeHangerModal = function() {
-                const modal = document.getElementById('hanger-modal');
-                const content = document.getElementById('hanger-modal-content');
-                content.classList.remove('scale-100', 'opacity-100');
-                content.classList.add('scale-95', 'opacity-0');
-                setTimeout(() => {
-                    modal.classList.remove('flex');
-                    modal.classList.add('hidden');
-                }, 200);
-            };
-
-            window.setHangerAngle = function(angle) {
-                const img = document.getElementById('hanger-modal-img');
-                const btnFront = document.getElementById('hanger-angle-front');
-                const btnBack = document.getElementById('hanger-angle-back');
-                if (!activeModalLook || !img) return;
-
-                if (angle === 'front') {
-                    img.src = activeModalLook.hanger_image || activeModalLook.model_image;
-                    btnFront.className = 'px-3 py-1 rounded-full bg-neutral-900 text-white cursor-pointer';
-                    btnBack.className = 'px-3 py-1 rounded-full bg-neutral-100 text-neutral-700 hover:bg-neutral-200 cursor-pointer';
-                } else {
-                    img.src = activeModalLook.model_image;
-                    btnBack.className = 'px-3 py-1 rounded-full bg-neutral-900 text-white cursor-pointer';
-                    btnFront.className = 'px-3 py-1 rounded-full bg-neutral-100 text-neutral-700 hover:bg-neutral-200 cursor-pointer';
-                }
-            };
+            window.addEventListener('resize', () => switchLook(currentLookIdx));
+            document.addEventListener('DOMContentLoaded', () => switchLook(0));
+            switchLook(0);
+        })();
+    </script>
 
             document.addEventListener('keydown', e => {
                 if (e.key === 'Escape') closeHangerModal();
