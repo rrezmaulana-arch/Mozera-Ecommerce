@@ -7,6 +7,7 @@ $tmpDirs = [
     '/tmp/storage/framework/sessions',
     '/tmp/storage/logs',
     '/tmp/database',
+    '/tmp/bootstrap/cache',  // Fresh bootstrap cache (bypasses Vercel's corrupted one)
 ];
 
 foreach ($tmpDirs as $dir) {
@@ -39,6 +40,7 @@ $defaults = [
     'MIDTRANS_IS_PRODUCTION' => 'false',
     'VIEW_COMPILED_PATH' => '/tmp/storage/framework/views',
     'APP_STORAGE' => '/tmp/storage',
+    'APP_BOOTSTRAP_PATH' => '/tmp/bootstrap',  // Use /tmp so Laravel regenerates cache fresh
 ];
 
 foreach ($defaults as $k => $v) {
