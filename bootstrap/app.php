@@ -52,8 +52,4 @@ if (getenv('APP_STORAGE')) {
     $app->useStoragePath(getenv('APP_STORAGE'));
 }
 
-if (getenv('APP_BOOTSTRAP_PATH')) {
-    $app->useBootstrapPath(getenv('APP_BOOTSTRAP_PATH'));
-}
-
 return $app;

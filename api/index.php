@@ -4,10 +4,10 @@
 $tmpDirs = [
     '/tmp/storage/framework/views',
     '/tmp/storage/framework/cache/data',
+    '/tmp/storage/framework/cache',
     '/tmp/storage/framework/sessions',
     '/tmp/storage/logs',
     '/tmp/database',
-    '/tmp/bootstrap/cache',  // Fresh bootstrap cache (bypasses Vercel's corrupted one)
 ];
 
 foreach ($tmpDirs as $dir) {
@@ -24,11 +24,11 @@ if (file_exists($sourceDb) && !file_exists($targetDb)) {
     @copy($sourceDb, $targetDb);
 }
 
-// 3. Fallback Environment Variables jika tidak diset manual di dashboard Vercel
+// 3. Environment Variables untuk Vercel Serverless
 $defaults = [
     'APP_NAME' => 'MOZERA',
     'APP_ENV' => 'production',
-    'APP_DEBUG' => 'true',
+    'APP_DEBUG' => 'false',
     'APP_KEY' => 'base64:PNzL/zrGxhyw4DiwrQRpHcUEVgMC+dP76O7jSegFVwg=',
     'DB_CONNECTION' => 'sqlite',
     'DB_DATABASE' => file_exists($targetDb) ? $targetDb : (file_exists($sourceDb) ? $sourceDb : ':memory:'),
@@ -40,7 +40,11 @@ $defaults = [
     'MIDTRANS_IS_PRODUCTION' => 'false',
     'VIEW_COMPILED_PATH' => '/tmp/storage/framework/views',
     'APP_STORAGE' => '/tmp/storage',
-    'APP_BOOTSTRAP_PATH' => '/tmp/bootstrap',  // Use /tmp so Laravel regenerates cache fresh
+    'APP_SERVICES_CACHE' => '/tmp/storage/framework/cache/services.php',
+    'APP_PACKAGES_CACHE' => '/tmp/storage/framework/cache/packages.php',
+    'APP_CONFIG_CACHE' => '/tmp/storage/framework/cache/config.php',
+    'APP_ROUTES_CACHE' => '/tmp/storage/framework/cache/routes.php',
+    'APP_EVENTS_CACHE' => '/tmp/storage/framework/cache/events.php',
 ];
 
 foreach ($defaults as $k => $v) {
