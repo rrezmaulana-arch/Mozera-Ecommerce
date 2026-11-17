@@ -148,7 +148,7 @@
         </div>
     </section>
 
-    <!-- SECTION E: KARTU SERI (Aspect 4/5, Max height 420px, Mobile scroll-snap carousel 78vw) -->
+    <!-- SECTION E: KARTU SERI (Atelier Editorial Showcase - Bersih, Mewah, & Teratur) -->
     <section class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-end justify-between mb-6 pb-3 border-b border-neutral-200">
             <div>
@@ -165,32 +165,59 @@
         <!-- Series Grid / Mobile Scroll-snap Carousel -->
         <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 -mx-4 px-4 pb-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-3 sm:gap-6 custom-scrollbar">
             @foreach($series as $s)
+                @php
+                    $koleksiNum = '0' . ($loop->index + 1);
+                    $tipeBadge = $loop->index === 0 ? 'Tipe A: Siluet Lurus' : ($loop->index === 1 ? 'Tipe B: Siluet Fringe' : 'Heritage Limited');
+                @endphp
                 <a 
                     href="{{ route('shop.catalog', ['series' => $s->code]) }}" 
-                    class="group relative w-[78vw] max-w-[320px] shrink-0 snap-center sm:w-full sm:max-w-none aspect-[4/5] max-h-[420px] rounded-2xl sm:rounded-3xl overflow-hidden block shadow-sm hover:shadow-xl transition-all duration-300"
+                    class="group relative w-[75vw] max-w-[290px] shrink-0 snap-center sm:w-full sm:max-w-none rounded-2xl sm:rounded-3xl overflow-hidden block shadow-xs hover:shadow-xl transition-all duration-500 bg-white border border-[#E8DEC9] hover:-translate-y-1 flex flex-col justify-between"
                 >
-                    <img 
-                        src="{{ $s->banner_image }}" 
-                        alt="{{ $s->name }} — Modest Collection" 
-                        loading="lazy" 
-                        class="w-full h-full object-cover group-hover:scale-[1.03] transition-transform duration-500 block"
-                    >
-                    <!-- Bottom Gradient Overlay (Contrast > 4.5:1) -->
-                    <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/45 to-transparent"></div>
+                    <!-- Visual Model Frame (Atas: Foto Model Jernih & Kompak, Tanpa Memanjang Berlebih) -->
+                    <div class="relative h-[220px] sm:h-[250px] lg:h-[270px] bg-gradient-to-b from-[#FAF8F5] to-[#F2EAE0] flex items-center justify-center p-3 sm:p-4 overflow-hidden">
+                        <!-- Subtle Background Arch Motif -->
+                        <div class="absolute inset-x-8 top-3 bottom-0 rounded-t-full bg-white/50 border-t border-x border-white/80 pointer-events-none group-hover:scale-105 transition-transform duration-500"></div>
 
-                    <div class="absolute bottom-5 left-5 right-5 text-white space-y-1.5">
-                        <div class="flex items-center justify-between">
-                            <span class="text-[10px] uppercase tracking-wider font-bold px-2.5 py-0.5 rounded-full bg-white/20 backdrop-blur-md text-[#DCC3AD]">
+                        <!-- Top Badges -->
+                        <div class="absolute top-3 left-3 right-3 flex items-center justify-between z-10">
+                            <span class="text-[9px] uppercase font-mono tracking-wider font-bold text-[#A66747] bg-white/95 px-2.5 py-0.5 rounded-full border border-[#E8DEC9] shadow-2xs">
+                                {{ $tipeBadge }}
+                            </span>
+                            <span class="text-[9px] uppercase tracking-wider font-bold px-2 py-0.5 rounded-full bg-white/95 text-neutral-800 border border-[#E8DEC9] shadow-2xs">
                                 {{ $s->products_count }} Busana
                             </span>
-                            <span class="text-xs font-semibold text-white group-hover:translate-x-1 transition-transform">&rarr;</span>
                         </div>
-                        <h3 class="font-serif text-xl sm:text-2xl font-bold tracking-tight text-white line-clamp-1">
-                            {{ $s->name }}
-                        </h3>
-                        <p class="text-xs text-neutral-200 line-clamp-2 font-light leading-relaxed">
-                            {{ $s->description }}
-                        </p>
+
+                        <!-- Modest Model Image -->
+                        <img 
+                            src="{{ $s->banner_image }}" 
+                            alt="{{ $s->name }} — Modest Collection" 
+                            loading="lazy" 
+                            class="h-full w-auto max-w-full object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-700 block relative z-0"
+                        >
+                    </div>
+
+                    <!-- Editorial Content Section (Bawah: Ringkas, Proporsional & Elegan) -->
+                    <div class="p-4 sm:p-4.5 bg-white space-y-1.5 flex-1 flex flex-col justify-between border-t border-[#F2ECE3]">
+                        <div class="space-y-1">
+                            <div class="flex items-center justify-between text-[10px] font-mono font-bold text-[#BA805E] uppercase tracking-wider">
+                                <span>Koleksi {{ $koleksiNum }}</span>
+                                <span class="text-neutral-400">Edisi Khusus</span>
+                            </div>
+                            <h3 class="font-serif text-lg font-bold tracking-tight text-neutral-950 group-hover:text-[#BA805E] transition-colors leading-snug">
+                                {{ $s->name }}
+                            </h3>
+                            <p class="text-xs text-neutral-500 line-clamp-2 font-light leading-relaxed">
+                                {{ $s->description }}
+                            </p>
+                        </div>
+
+                        <div class="pt-3 border-t border-neutral-100 flex items-center justify-between text-xs font-bold text-neutral-900 group-hover:text-[#BA805E] transition-colors">
+                            <span class="text-[11px] uppercase tracking-wider">Jelajahi Koleksi</span>
+                            <span class="w-7 h-7 rounded-full bg-[#FAF8F5] group-hover:bg-[#BA805E] group-hover:text-white flex items-center justify-center transition-all duration-300 text-xs text-[#BA805E] border border-[#E8DEC9] group-hover:border-transparent">
+                                &rarr;
+                            </span>
+                        </div>
                     </div>
                 </a>
             @endforeach
@@ -273,12 +300,20 @@
 
     <!-- G1: VIEWPORT-FITTED OPEN RUNWAY ("Try The Look" — Full Look Experience, Center Stage Tanpa Clutter Harga) -->
     <style>
-        /* Clean stage guarantee: Saat 3 sudut pandang aktif, sembunyikan SEMUA model lain agar tidak ada bayangan/ghosting */
+        /* Smooth Haute-Couture Stage Transitions */
+        .runway-model-item {
+            transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1), opacity 450ms ease-out !important;
+            will-change: transform, opacity;
+        }
+        .runway-angle-wrap {
+            transition: transform 550ms cubic-bezier(0.22, 1, 0.36, 1), opacity 400ms ease-out !important;
+            will-change: transform, opacity;
+        }
+        /* Saat 3 sudut pandang aktif, sembunyikan model lain secara halus tanpa lag repaint */
         #open-runway-stage.angles-open .runway-model-item:not(.active-expanded) {
-            display: none !important;
             opacity: 0 !important;
-            visibility: hidden !important;
             pointer-events: none !important;
+            transform: scale(0.65) !important;
         }
     </style>
     <section id="try-the-look" class="w-full relative py-6 lg:py-8 bg-[#FAF9F6] border-y border-neutral-200/50 select-none scroll-mt-16 overflow-hidden">
@@ -312,13 +347,12 @@
                     <div 
                         id="runway-model-{{ $idx }}" 
                         onclick="onModelClick({{ $idx }})" 
-                        class="runway-model-item absolute bottom-2 sm:bottom-3 flex flex-col items-center justify-end transition-all duration-500 ease-out cursor-pointer z-10 group"
-                        style="will-change: transform, opacity;"
+                        class="runway-model-item absolute bottom-2 sm:bottom-3 flex flex-col items-center justify-end cursor-pointer z-10 group"
                     >
                         <!-- Cutout Model Image: Model Responsif -->
                         <div class="relative h-[250px] sm:h-[330px] md:h-[390px] lg:h-[460px] flex items-end justify-center">
                             <!-- Side Angle Left (Hadap Samping) -->
-                            <div id="angle-side-wrap-{{ $idx }}" class="absolute bottom-0 -left-16 sm:-left-28 md:-left-36 lg:-left-48 opacity-0 scale-90 -translate-x-6 transition-all duration-500 ease-out z-0 flex flex-col items-center pointer-events-none">
+                            <div id="angle-side-wrap-{{ $idx }}" class="runway-angle-wrap absolute bottom-0 -left-16 sm:-left-28 md:-left-36 lg:-left-48 opacity-0 scale-90 -translate-x-6 z-0 flex flex-col items-center pointer-events-none">
                                 <span class="text-[9px] font-mono uppercase tracking-wider font-bold text-neutral-800 bg-white/95 backdrop-blur-xs px-3 py-0.5 rounded-full border border-neutral-200/80 shadow-2xs mb-1">
                                     Tampak Samping
                                 </span>
@@ -340,14 +374,14 @@
                                     id="angle-front-{{ $idx }}"
                                     src="{{ $look['model_image'] }}" 
                                     alt="{{ $look['title'] }} — Model Modest MOZÉRA" 
-                                    class="h-[250px] sm:h-[330px] md:h-[390px] lg:h-[460px] w-auto max-w-none object-contain select-none pointer-events-none transition-all duration-500"
+                                    class="h-[250px] sm:h-[330px] md:h-[390px] lg:h-[460px] w-auto max-w-none object-contain select-none pointer-events-none"
                                     loading="eager"
                                     style="image-rendering: auto; -webkit-backface-visibility: hidden; transform: translateZ(0);"
                                 >
                             </div>
 
                             <!-- Back Angle Right (Hadap Belakang) -->
-                            <div id="angle-back-wrap-{{ $idx }}" class="absolute bottom-0 -right-16 sm:-right-28 md:-right-36 lg:-right-48 opacity-0 scale-90 translate-x-6 transition-all duration-500 ease-out z-0 flex flex-col items-center pointer-events-none">
+                            <div id="angle-back-wrap-{{ $idx }}" class="runway-angle-wrap absolute bottom-0 -right-16 sm:-right-28 md:-right-36 lg:-right-48 opacity-0 scale-90 translate-x-6 z-0 flex flex-col items-center pointer-events-none">
                                 <span class="text-[9px] font-mono uppercase tracking-wider font-bold text-neutral-800 bg-white/95 backdrop-blur-xs px-3 py-0.5 rounded-full border border-neutral-200/80 shadow-2xs mb-1">
                                     Tampak Belakang
                                 </span>
@@ -485,20 +519,7 @@
                     if (stage) stage.classList.add('angles-open');
                     if (activeModel) activeModel.classList.add('active-expanded');
 
-                    // 1. Sembunyikan SEMUA model lain agar panggung benar-benar bersih tanpa bayangan hantu!
-                    looks.forEach((_, i) => {
-                        if (i !== idx) {
-                            const other = document.getElementById(`runway-model-${i}`);
-                            if (other) {
-                                other.style.display = 'none';
-                                other.style.opacity = '0';
-                                other.style.visibility = 'hidden';
-                                other.style.pointerEvents = 'none';
-                            }
-                        }
-                    });
-
-                    // 2. Buka jejer ke kiri & kanan dengan rapi dan munculkan label keterangan
+                    // Buka jejer ke kiri & kanan dengan transisi smooth
                     if (sideWrap) {
                         sideWrap.style.opacity = '1';
                         sideWrap.style.transform = 'translate3d(-24px, 0px, 0px) scale(0.96)';
@@ -538,10 +559,6 @@
 
                     if (activeModel) {
                         activeModel.classList.remove('active-expanded');
-                        activeModel.style.display = '';
-                        activeModel.style.visibility = '';
-                        activeModel.style.opacity = '';
-                        activeModel.style.pointerEvents = '';
                     }
 
                     if (sideWrap) {
