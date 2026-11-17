@@ -148,7 +148,80 @@
         </div>
     </section>
 
-    <!-- SECTION E: STUDIO PADU-PADAN HIJAB & OUTERWEAR (Mix & Match Studio) -->
+    <!-- SECTION E: KARTU SERI (Atelier Editorial Showcase - Bersih, Mewah, & Teratur) -->
+    <section class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-end justify-between mb-6 pb-3 border-b border-neutral-200">
+            <div>
+                <span class="text-[11px] uppercase tracking-[0.25em] text-[#BA805E] font-bold">Koleksi Tematik</span>
+                <h2 class="font-serif text-[clamp(1.5rem,3.5vw,2.25rem)] font-bold text-neutral-950 mt-1">
+                    Seri dan Rilisan Eksklusif
+                </h2>
+            </div>
+            <a href="{{ route('shop.catalog') }}" class="text-xs font-bold text-neutral-900 hover:text-[#BA805E] transition-colors pb-0.5 border-b border-neutral-900 hover:border-[#BA805E] shrink-0">
+                Semua Seri &rarr;
+            </a>
+        </div>
+
+        <!-- Series Grid / Mobile Scroll-snap Carousel -->
+        <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 -mx-4 px-4 pb-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-3 sm:gap-6 custom-scrollbar">
+            @foreach($series as $s)
+                @php
+                    $koleksiNum = '0' . ($loop->index + 1);
+                    $tipeBadge = $loop->index === 0 ? 'Tipe A: Siluet Lurus' : ($loop->index === 1 ? 'Tipe B: Siluet Fringe' : 'Heritage Limited');
+                @endphp
+                <a 
+                    href="{{ route('shop.catalog', ['series' => $s->code]) }}" 
+                    class="group relative w-[75vw] max-w-[290px] shrink-0 snap-center sm:w-full sm:max-w-none rounded-2xl sm:rounded-3xl overflow-hidden block shadow-xs hover:shadow-xl transition-all duration-300 bg-white border border-[#EAE0D4] hover:-translate-y-1 flex flex-col justify-between"
+                >
+                    <!-- Visual Model Frame (Clean & Modern, Same as Product Cards) -->
+                    <div class="relative h-[220px] sm:h-[250px] lg:h-[270px] bg-[#FAF9F6] flex items-center justify-center p-3 sm:p-4 overflow-hidden">
+                        <!-- Top Badges -->
+                        <div class="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between z-10">
+                            <span class="text-[9px] uppercase font-mono tracking-wider font-bold text-[#A66747] bg-white/95 px-2.5 py-0.5 rounded-full border border-neutral-200/60 shadow-2xs">
+                                {{ $tipeBadge }}
+                            </span>
+                            <span class="text-[9px] uppercase tracking-wider font-bold px-2 py-0.5 rounded-full bg-white/95 text-neutral-800 border border-neutral-200/60 shadow-2xs">
+                                {{ $s->products_count }} Busana
+                            </span>
+                        </div>
+
+                        <!-- Modest Model Image -->
+                        <img 
+                            src="{{ $s->banner_image }}" 
+                            alt="{{ $s->name }} — Modest Collection" 
+                            loading="lazy" 
+                            class="h-full w-auto max-w-full object-contain filter drop-shadow-sm group-hover:scale-105 transition-transform duration-500 block relative z-0"
+                        >
+                    </div>
+
+                    <!-- Editorial Content Section -->
+                    <div class="p-3.5 sm:p-4 bg-white space-y-1.5 flex-1 flex flex-col justify-between border-t border-neutral-100">
+                        <div class="space-y-1">
+                            <div class="flex items-center justify-between text-[10px] font-mono font-bold text-[#BA805E] uppercase tracking-wider">
+                                <span>Koleksi {{ $koleksiNum }}</span>
+                                <span class="text-neutral-400">Edisi Khusus</span>
+                            </div>
+                            <h3 class="font-serif text-base sm:text-lg font-bold tracking-tight text-neutral-950 group-hover:text-[#BA805E] transition-colors leading-snug">
+                                {{ $s->name }}
+                            </h3>
+                            <p class="text-[11px] sm:text-xs text-neutral-500 line-clamp-2 font-light leading-relaxed">
+                                {{ $s->description }}
+                            </p>
+                        </div>
+
+                        <div class="pt-2.5 border-t border-neutral-100 flex items-center justify-between text-xs font-bold text-neutral-900 group-hover:text-[#BA805E] transition-colors">
+                            <span class="text-[11px] uppercase tracking-wider">Jelajahi Koleksi</span>
+                            <span class="w-6 h-6 rounded-full bg-neutral-100 group-hover:bg-[#BA805E] group-hover:text-white flex items-center justify-center transition-all duration-300 text-xs">
+                                &rarr;
+                            </span>
+                        </div>
+                    </div>
+                </a>
+            @endforeach
+        </div>
+    </section>
+
+    <!-- SECTION E2: STUDIO PADU-PADAN HIJAB & OUTERWEAR (Mix & Match Studio) -->
     <section id="mix-and-match" class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <div class="bg-gradient-to-b from-[#FAF7F2] to-white rounded-3xl border border-[#E8DEC9] p-5 sm:p-8 lg:p-10 shadow-xs relative overflow-hidden">
             

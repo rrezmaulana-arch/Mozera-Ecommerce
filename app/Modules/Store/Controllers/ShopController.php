@@ -35,7 +35,7 @@ class ShopController extends Controller
         $defaultSecSku = $puspaScarf?->skus->first();
         
         $curatedLooks = collect([
-            // --- TIPE A: Siluet Lurus Klasik (01 - 04) ---
+            // --- TIPE A: Siluet Lurus Klasik (01 - 04, Foto Tampak Depan) ---
             [
                 'id' => 1,
                 'type' => 'Tipe A',

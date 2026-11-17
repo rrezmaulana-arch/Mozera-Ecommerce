@@ -43,7 +43,7 @@
                     <!-- Desktop Navigation Links (Max 4-5 focused items) -->
                     <nav class="hidden lg:flex items-center space-x-8 text-xs font-bold tracking-wider uppercase">
                         <a href="{{ route('shop.catalog') }}" class="text-neutral-700 hover:text-neutral-950 transition-colors py-2 cursor-pointer {{ request()->routeIs('shop.catalog') && !request('series') ? 'text-neutral-950 border-b-2 border-neutral-950' : '' }}">Koleksi</a>
-                        <a href="{{ route('shop.catalog', ['series' => 'PUSPA']) }}" class="text-neutral-700 hover:text-neutral-950 transition-colors py-2 cursor-pointer {{ request('series') == 'PUSPA' ? 'text-neutral-950 border-b-2 border-neutral-950' : '' }}">Seri</a>
+                        <a href="{{ route('shop.catalog', ['series' => 'PUSPA']) }}" class="text-neutral-700 hover:text-neutral-950 transition-colors py-2 cursor-pointer {{ request('series') ? 'text-neutral-950 border-b-2 border-neutral-950' : '' }}">Seri</a>
                         <a href="{{ route('shop.home') }}#fit-helper" class="text-neutral-700 hover:text-neutral-950 transition-colors py-2 cursor-pointer">Panduan Ukuran</a>
                         <a href="{{ route('shop.returns') }}" class="text-neutral-700 hover:text-neutral-950 transition-colors py-2 cursor-pointer {{ request()->routeIs('shop.returns') ? 'text-neutral-950 border-b-2 border-neutral-950' : '' }}">Bantuan</a>
                     </nav>
@@ -82,14 +82,6 @@
                     <a href="{{ route('shop.catalog') }}" class="block text-sm font-semibold text-neutral-900 py-1.5 cursor-pointer">Seluruh Koleksi</a>
                     <a href="{{ route('shop.catalog', ['category' => 'outerwear']) }}" class="block text-sm text-neutral-700 py-1 cursor-pointer">Outerwear dan Kimono</a>
                     <a href="{{ route('shop.catalog', ['category' => 'scarf']) }}" class="block text-sm text-neutral-700 py-1 cursor-pointer">Voal Scarf 120x120</a>
-                    <a href="{{ route('shop.catalog', ['category' => 'outerwear']) }}" class="block text-sm text-neutral-700 py-1 cursor-pointer">Koleksi Atasan Modest</a>
-                </div>
-
-                <div class="space-y-2 pb-3 border-b border-neutral-200">
-                    <span class="text-[10px] font-bold uppercase tracking-widest text-[#BA805E]">Seri Tematik</span>
-                    <a href="{{ route('shop.catalog', ['series' => 'PUSPA']) }}" class="block text-sm text-neutral-700 py-1 cursor-pointer">Seri PUSPA</a>
-                    <a href="{{ route('shop.catalog', ['series' => 'ISLA']) }}" class="block text-sm text-neutral-700 py-1 cursor-pointer">Seri ISLA</a>
-                    <a href="{{ route('shop.catalog', ['series' => 'SEPT_DROPS']) }}" class="block text-sm text-neutral-700 py-1 cursor-pointer">Sept Drops</a>
                 </div>
 
                 <div class="space-y-2 pt-1 text-xs">
