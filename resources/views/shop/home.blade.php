@@ -391,7 +391,7 @@
         </div>
 
         <!-- DEDICATED ACTIVE LOOK HIGHLIGHT (Clean, Focused, Direct CTA) -->
-        <div class="max-w-2xl mx-auto px-4 mt-2 flex flex-wrap items-center justify-center gap-2.5 text-center z-20">
+        <div class="max-w-2xl mx-auto px-4 mt-2 pb-2 flex flex-wrap items-center justify-center gap-2.5 text-center z-20">
             <span id="runway-look-type" class="px-3 py-1 rounded-full text-[10px] font-mono uppercase tracking-wider font-bold bg-[#FAF8F5] text-[#A66747] border border-[#E4D7C5] shadow-2xs">
                 {{ $curatedLooks[0]['type_label'] }}
             </span>
@@ -402,38 +402,6 @@
                 <span>Lihat Detail Busana</span>
                 <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
             </a>
-        </div>
-
-        <!-- 8-LOOK COUTURE SELECTOR TABS (Bottom Minimal Switcher with Smooth Fade Edges) -->
-        <div class="max-w-4xl mx-auto px-4 shrink-0 mt-4 pb-2">
-            <!-- Type Grouping Indicator -->
-            <div class="flex flex-wrap items-center justify-center gap-x-3 gap-y-1 mb-2.5 text-[9px] sm:text-[10px] uppercase font-bold tracking-[0.2em] text-[#BA805E] text-center">
-                <span class="inline-flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-[#BA805E]"></span> Tipe A: Siluet Lurus (01–04)</span>
-                <span class="text-neutral-300 hidden sm:inline">•</span>
-                <span class="inline-flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-neutral-400"></span> Tipe B: Siluet Fringe (05–08)</span>
-            </div>
-
-            <!-- Horizontal Scrollable Pill Bar with Smooth Left & Right Gradient Fade Mask -->
-            <div class="relative w-full">
-                <!-- Left Fade Indicator -->
-                <div class="pointer-events-none absolute left-0 inset-y-0 w-8 bg-gradient-to-r from-[#FAF9F6] to-transparent z-10 sm:hidden"></div>
-                <!-- Right Fade Indicator -->
-                <div class="pointer-events-none absolute right-0 inset-y-0 w-8 bg-gradient-to-l from-[#FAF9F6] to-transparent z-10 sm:hidden"></div>
-
-                <div class="flex items-center justify-start sm:justify-center gap-2 overflow-x-auto px-2 pb-2 custom-scrollbar" id="scrubber-bar">
-                    @foreach($curatedLooks as $idx => $look)
-                        <button 
-                            type="button" 
-                            onclick="switchLook({{ $idx }})" 
-                            id="scrubber-btn-{{ $idx }}" 
-                            class="scrubber-item px-3.5 py-1.5 rounded-full transition-all duration-300 cursor-pointer flex items-center gap-1.5 text-xs whitespace-nowrap shrink-0 {{ $idx === 0 ? 'bg-[#0a0a0a] text-white shadow-sm font-bold' : 'bg-white/85 hover:bg-white text-neutral-600 border border-neutral-200/80 font-medium' }}"
-                        >
-                            <span class="text-[10px] font-mono {{ $idx === 0 ? 'text-[#BA805E]' : 'text-neutral-400' }}">0{{ $idx + 1 }}</span>
-                            <span class="tracking-tight">{{ $look['title'] }}</span>
-                        </button>
-                    @endforeach
-                </div>
-            </div>
         </div>
 
     </section>
@@ -645,28 +613,6 @@
                             shadow.style.opacity = '0.35';
                             shadow.style.transform = 'scale(0.85)';
                         }
-                    }
-                });
-
-                // 2. Synchronize Bottom Timeline Scrubber Pills
-                looks.forEach((_, i) => {
-                    const btn = document.getElementById(`scrubber-btn-${i}`);
-                    if (!btn) return;
-                    const numSpan = btn.querySelector('span:first-child');
-
-                    if (i === currentLookIdx) {
-                        btn.className = 'scrubber-item px-3.5 py-1.5 rounded-full transition-all duration-300 cursor-pointer flex items-center gap-1.5 text-xs bg-[#0a0a0a] text-white shadow-sm font-bold whitespace-nowrap shrink-0';
-                        if (numSpan) numSpan.className = 'text-[10px] font-mono text-[#BA805E]';
-                        
-                        // Scroll strictly within local scrubberBar without causing window/body viewport horizontal shifting
-                        const scrubberBar = document.getElementById('scrubber-bar');
-                        if (scrubberBar) {
-                            const scrollTarget = btn.offsetLeft - (scrubberBar.clientWidth / 2) + (btn.clientWidth / 2);
-                            scrubberBar.scrollTo({ left: Math.max(0, scrollTarget), behavior: 'smooth' });
-                        }
-                    } else {
-                        btn.className = 'scrubber-item px-3.5 py-1.5 rounded-full transition-all duration-300 cursor-pointer flex items-center gap-1.5 text-xs bg-white/85 hover:bg-white text-neutral-600 border border-neutral-200/80 font-medium whitespace-nowrap shrink-0';
-                        if (numSpan) numSpan.className = 'text-[10px] font-mono text-neutral-400';
                     }
                 });
 
