@@ -27,7 +27,7 @@ if (file_exists($sourceDb) && !file_exists($targetDb)) {
 $defaults = [
     'APP_NAME' => 'MOZERA',
     'APP_ENV' => 'production',
-    'APP_DEBUG' => 'false',
+    'APP_DEBUG' => 'true',
     'APP_KEY' => 'base64:PNzL/zrGxhyw4DiwrQRpHcUEVgMC+dP76O7jSegFVwg=',
     'DB_CONNECTION' => 'sqlite',
     'DB_DATABASE' => file_exists($targetDb) ? $targetDb : (file_exists($sourceDb) ? $sourceDb : ':memory:'),
