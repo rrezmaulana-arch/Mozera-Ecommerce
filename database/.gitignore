@@ -1,1 +1,2 @@
-*.sqlite*
+# SQLite database is kept for Vercel instant deployment
+# *.sqlite

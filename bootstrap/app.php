@@ -47,3 +47,9 @@ return Application::configure(basePath: dirname(__DIR__))
     ->withExceptions(function (Exceptions $exceptions): void {
         //
     })->create();
+
+if (getenv('APP_STORAGE')) {
+    $app->useStoragePath(getenv('APP_STORAGE'));
+}
+
+return $app;
