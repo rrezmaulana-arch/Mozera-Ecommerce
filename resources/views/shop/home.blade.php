@@ -171,19 +171,16 @@
                 @endphp
                 <a 
                     href="{{ route('shop.catalog', ['series' => $s->code]) }}" 
-                    class="group relative w-[75vw] max-w-[290px] shrink-0 snap-center sm:w-full sm:max-w-none rounded-2xl sm:rounded-3xl overflow-hidden block shadow-xs hover:shadow-xl transition-all duration-500 bg-white border border-[#E8DEC9] hover:-translate-y-1 flex flex-col justify-between"
+                    class="group relative w-[75vw] max-w-[290px] shrink-0 snap-center sm:w-full sm:max-w-none rounded-2xl sm:rounded-3xl overflow-hidden block shadow-xs hover:shadow-xl transition-all duration-300 bg-white border border-[#EAE0D4] hover:-translate-y-1 flex flex-col justify-between"
                 >
-                    <!-- Visual Model Frame (Atas: Foto Model Jernih & Kompak, Tanpa Memanjang Berlebih) -->
-                    <div class="relative h-[220px] sm:h-[250px] lg:h-[270px] bg-gradient-to-b from-[#FAF8F5] to-[#F2EAE0] flex items-center justify-center p-3 sm:p-4 overflow-hidden">
-                        <!-- Subtle Background Arch Motif -->
-                        <div class="absolute inset-x-8 top-3 bottom-0 rounded-t-full bg-white/50 border-t border-x border-white/80 pointer-events-none group-hover:scale-105 transition-transform duration-500"></div>
-
+                    <!-- Visual Model Frame (Clean & Modern, Same as Product Cards) -->
+                    <div class="relative h-[220px] sm:h-[250px] lg:h-[270px] bg-[#FAF9F6] flex items-center justify-center p-3 sm:p-4 overflow-hidden">
                         <!-- Top Badges -->
-                        <div class="absolute top-3 left-3 right-3 flex items-center justify-between z-10">
-                            <span class="text-[9px] uppercase font-mono tracking-wider font-bold text-[#A66747] bg-white/95 px-2.5 py-0.5 rounded-full border border-[#E8DEC9] shadow-2xs">
+                        <div class="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between z-10">
+                            <span class="text-[9px] uppercase font-mono tracking-wider font-bold text-[#A66747] bg-white/95 px-2.5 py-0.5 rounded-full border border-neutral-200/60 shadow-2xs">
                                 {{ $tipeBadge }}
                             </span>
-                            <span class="text-[9px] uppercase tracking-wider font-bold px-2 py-0.5 rounded-full bg-white/95 text-neutral-800 border border-[#E8DEC9] shadow-2xs">
+                            <span class="text-[9px] uppercase tracking-wider font-bold px-2 py-0.5 rounded-full bg-white/95 text-neutral-800 border border-neutral-200/60 shadow-2xs">
                                 {{ $s->products_count }} Busana
                             </span>
                         </div>
@@ -193,12 +190,12 @@
                             src="{{ $s->banner_image }}" 
                             alt="{{ $s->name }} — Modest Collection" 
                             loading="lazy" 
-                            class="h-full w-auto max-w-full object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-700 block relative z-0"
+                            class="h-full w-auto max-w-full object-contain filter drop-shadow-sm group-hover:scale-105 transition-transform duration-500 block relative z-0"
                         >
                     </div>
 
-                    <!-- Editorial Content Section (Bawah: Ringkas, Proporsional & Elegan) -->
-                    <div class="p-4 sm:p-4.5 bg-white space-y-1.5 flex-1 flex flex-col justify-between border-t border-[#F2ECE3]">
+                    <!-- Editorial Content Section -->
+                    <div class="p-3.5 sm:p-4 bg-white space-y-1.5 flex-1 flex flex-col justify-between border-t border-neutral-100">
                         <div class="space-y-1">
                             <div class="flex items-center justify-between text-[10px] font-mono font-bold text-[#BA805E] uppercase tracking-wider">
                                 <span>Koleksi {{ $koleksiNum }}</span>
@@ -214,7 +211,7 @@
 
                         <div class="pt-2.5 border-t border-neutral-100 flex items-center justify-between text-xs font-bold text-neutral-900 group-hover:text-[#BA805E] transition-colors">
                             <span class="text-[11px] uppercase tracking-wider">Jelajahi Koleksi</span>
-                            <span class="w-6 h-6 rounded-full bg-[#FAF8F5] group-hover:bg-[#BA805E] group-hover:text-white flex items-center justify-center transition-all duration-300 text-xs">
+                            <span class="w-6 h-6 rounded-full bg-neutral-100 group-hover:bg-[#BA805E] group-hover:text-white flex items-center justify-center transition-all duration-300 text-xs">
                                 &rarr;
                             </span>
                         </div>
