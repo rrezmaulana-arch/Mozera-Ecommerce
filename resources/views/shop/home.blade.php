@@ -926,41 +926,43 @@
                     $uniqueColors = $product->skus->pluck('color')->filter()->unique()->values();
                     $isScarf = str_contains(strtolower($product->slug), 'scarf');
                 @endphp
-                <div class="group bg-white rounded-2xl sm:rounded-3xl overflow-hidden border border-[#EAE0D4] shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between hover:-translate-y-1">
+                <div class="group bg-white rounded-2xl sm:rounded-3xl overflow-hidden border border-[#E8DEC9] shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between hover:-translate-y-1">
                     
                     <div>
-                        <!-- Product Visual Frame: Pedestal Arsitektural Bersih -->
-                        <div class="relative h-[220px] sm:h-[250px] bg-gradient-to-b from-[#F7F4EF]/80 via-[#FAF8F5] to-[#F0EAE1]/60 overflow-hidden flex items-end justify-center p-3 border-b border-neutral-100">
+                        <!-- Product Visual Frame: Signature Arch Motif Butik Mewah (Tanpa Garis Bayangan Gelap) -->
+                        <div class="relative h-[230px] sm:h-[260px] bg-gradient-to-b from-[#FAF8F5] to-[#F2EAE0] overflow-hidden flex items-center justify-center p-3 border-b border-[#F2ECE3]">
                             
+                            <!-- Subtle Background Arch Motif -->
+                            <div class="absolute inset-x-6 top-3 bottom-0 rounded-t-full bg-white/50 border-t border-x border-white/80 pointer-events-none group-hover:scale-105 transition-transform duration-500"></div>
+
                             <!-- Badges Top Left & Right -->
                             <div class="absolute top-2.5 left-2.5 flex flex-col gap-1 items-start z-10 pointer-events-none">
                                 @if($product->is_preorder)
-                                    <span class="bg-[#BA805E] text-white text-[9px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full shadow-xs">
+                                    <span class="bg-[#BA805E] text-white text-[9px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full shadow-2xs">
                                         Pre-Order
                                     </span>
                                 @elseif($index === 0)
-                                    <span class="bg-neutral-900 text-white text-[9px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full shadow-xs">
+                                    <span class="bg-neutral-900 text-white text-[9px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full shadow-2xs">
                                         Terlaris
                                     </span>
                                 @else
-                                    <span class="bg-neutral-800 text-white text-[9px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full shadow-xs">
+                                    <span class="bg-neutral-800 text-white text-[9px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full shadow-2xs">
                                         Boutique
                                     </span>
                                 @endif
                             </div>
 
-                            <span class="absolute top-2.5 right-2.5 bg-white/95 text-[#A66747] text-[9px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full shadow-2xs border border-[#EADCCE] z-10 pointer-events-none">
+                            <span class="absolute top-2.5 right-2.5 bg-white/95 text-[#A66747] text-[9px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full shadow-2xs border border-[#E8DEC9] z-10 pointer-events-none">
                                 {{ $product->series?->name ?? ucfirst($product->category) }}
                             </span>
 
-
-                            <!-- Product Visual Link & Image -->
-                            <a href="{{ route('shop.product', $product->slug) }}" class="block w-full h-full flex items-center justify-center relative z-10">
+                            <!-- Product Visual Link & Image (Tanpa Filter Drop-shadow yang Bikin Garis Hitam) -->
+                            <a href="{{ route('shop.product', $product->slug) }}" class="block w-full h-full flex items-center justify-center relative z-0">
                                 <img 
                                     src="{{ $product->primary_image }}" 
                                     alt="{{ $product->name }} — Modest Fashion" 
                                     loading="lazy" 
-                                    class="{{ $isScarf ? 'w-auto max-h-[85%] object-contain rounded-xl shadow-xs' : 'h-full w-auto max-w-full object-contain filter drop-shadow-sm' }} group-hover:scale-[1.04] transition-transform duration-500 block"
+                                    class="{{ $isScarf ? 'w-auto max-h-[85%] object-contain rounded-xl shadow-xs' : 'h-full w-auto max-w-full object-contain' }} group-hover:scale-[1.04] transition-transform duration-500 block relative z-10"
                                 >
                             </a>
 

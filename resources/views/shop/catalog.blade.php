@@ -183,18 +183,13 @@
                             </span>
                         </div>
 
-                        <!-- Floor Contact Shadow under cutout model -->
-                        @if(!$isScarf)
-                            <div class="absolute bottom-2.5 w-24 sm:w-32 h-2.5 bg-neutral-950/15 rounded-full filter blur-[2.5px] pointer-events-none"></div>
-                        @endif
-
-                        <!-- Product Visual Link & Image (Zero unwanted hover overlays) -->
+                        <!-- Product Visual Link & Image (Zero unwanted hover overlays, no black drop shadow) -->
                         <a href="{{ route('shop.product', $product->slug) }}" class="block w-full h-full flex items-center justify-center relative z-0">
                             <img 
                                 src="{{ $product->primary_image }}" 
                                 alt="{{ $product->name }} — MOZÉRA" 
                                 loading="lazy" 
-                                class="{{ $isScarf ? 'w-auto max-h-[85%] object-contain rounded-xl shadow-xs' : 'h-full w-auto max-w-full object-contain filter drop-shadow-md' }} group-hover:scale-105 transition-transform duration-500 block relative z-10"
+                                class="{{ $isScarf ? 'w-auto max-h-[85%] object-contain rounded-xl' : 'h-full w-auto max-w-full object-contain' }} group-hover:scale-105 transition-transform duration-500 block relative z-10"
                             >
                         </a>
                     </div>
@@ -269,5 +264,28 @@
             {{ $products->links() }}
         </div>
     @endif
+
+    <!-- Atelier Size & Fit Concierge Callout (Peningkatan Halaman Katalog) -->
+    <div class="mt-10 bg-gradient-to-r from-[#FAF8F5] via-[#F5EFEB] to-[#FAF8F5] rounded-3xl border border-[#E8DEC9] p-6 sm:p-8 flex flex-col sm:flex-row items-center justify-between gap-6 shadow-xs">
+        <div class="flex items-center gap-4 text-center sm:text-left">
+            <div class="w-12 h-12 rounded-2xl bg-white border border-[#EADCCE] text-[#BA805E] flex items-center justify-center shrink-0 shadow-xs hidden sm:flex">
+                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+            </div>
+            <div>
+                <span class="text-[10px] uppercase font-mono font-bold tracking-[0.2em] text-[#BA805E] block">Atelier Fit Concierge</span>
+                <h3 class="font-serif text-lg sm:text-xl font-bold text-neutral-950 mt-0.5">Ragu Memilih Panjang Outer yang Pas?</h3>
+                <p class="text-xs text-neutral-600 font-light mt-1 max-w-xl">
+                    Gunakan simulator interaktif kami untuk melihat simulasi visual di mana ujung busana outer MOZÉRA akan jatuh di tubuh sesuai tinggi badanmu.
+                </p>
+            </div>
+        </div>
+        <a 
+            href="{{ route('shop.home') }}#fit-helper" 
+            class="min-h-[44px] px-6 py-2.5 rounded-full bg-neutral-950 hover:bg-[#BA805E] text-white text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-sm flex items-center gap-2 shrink-0 cursor-pointer"
+        >
+            <span>Coba Fit Simulator</span>
+            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+        </a>
+    </div>
 </div>
 @endsection
