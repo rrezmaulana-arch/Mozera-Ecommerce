@@ -49,4 +49,14 @@ foreach ($defaults as $k => $v) {
     }
 }
 
-require __DIR__ . '/../public/index.php';
+try {
+    require __DIR__ . '/../public/index.php';
+} catch (\Throwable $e) {
+    http_response_code(500);
+    echo '<div style="font-family:sans-serif;padding:30px;background:#fff1f2;color:#991b1b;border-radius:12px;margin:40px auto;max-width:800px;border:1px solid #fecdd3">';
+    echo '<h2 style="margin-top:0">Laravel Startup Error on Vercel</h2>';
+    echo '<p><strong>Pesan:</strong> ' . htmlspecialchars($e->getMessage()) . '</p>';
+    echo '<p><strong>Lokasi:</strong> ' . htmlspecialchars($e->getFile()) . ':' . $e->getLine() . '</p>';
+    echo '<details><summary style="cursor:pointer;font-weight:bold">Stack Trace</summary><pre style="background:#fff;padding:15px;overflow:auto;font-size:12px;border:1px solid #fecdd3">' . htmlspecialchars($e->getTraceAsString()) . '</pre></details>';
+    echo '</div>';
+}
