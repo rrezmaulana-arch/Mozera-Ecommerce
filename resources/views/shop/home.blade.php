@@ -718,18 +718,6 @@
         })();
     </script>
 
-            document.addEventListener('keydown', e => {
-                if (e.key === 'Escape') closeHangerModal();
-                if (e.key === 'ArrowRight') nextLook();
-                if (e.key === 'ArrowLeft') prevLook();
-            });
-
-            window.addEventListener('resize', () => switchLook(currentLookIdx));
-            document.addEventListener('DOMContentLoaded', () => switchLook(0));
-            switchLook(0);
-        })();
-    </script>
-
     <!-- G2: INNOVATIVE ATELIER PROPORTION & FIT CONCIERGE -->
     <section id="fit-helper" class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-24">
         <div class="bg-gradient-to-b from-white to-[#FAF8F5] rounded-2xl sm:rounded-3xl border border-[#E8DEC9] p-4 sm:p-7 lg:p-9 shadow-sm relative overflow-hidden">
