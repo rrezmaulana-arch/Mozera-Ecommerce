@@ -42,7 +42,114 @@
 
                     <!-- Desktop Navigation Links (Max 4-5 focused items) -->
                     <nav class="hidden lg:flex items-center space-x-8 text-xs font-bold tracking-wider uppercase">
-                        <a href="{{ route('shop.catalog') }}" class="text-neutral-700 hover:text-neutral-950 transition-colors py-2 cursor-pointer {{ request()->routeIs('shop.catalog') && !request('series') ? 'text-neutral-950 border-b-2 border-neutral-950' : '' }}">Koleksi</a>
+                        <!-- Koleksi with Luxury Atelier Dropdown -->
+                        <div class="relative group py-5">
+                            <a href="{{ route('shop.catalog') }}" class="inline-flex items-center gap-1.5 text-neutral-700 group-hover:text-neutral-950 transition-colors cursor-pointer {{ request()->routeIs('shop.catalog') ? 'text-neutral-950' : '' }}">
+                                <span>Koleksi</span>
+                                <svg class="w-3.5 h-3.5 text-neutral-400 group-hover:text-neutral-900 group-hover:rotate-180 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                            </a>
+
+                            <!-- Luxury Atelier Dropdown Panel -->
+                            <div class="absolute left-0 top-full pt-1 opacity-0 invisible translate-y-2 group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-300 ease-out z-50 pointer-events-none group-hover:pointer-events-auto">
+                                <div class="w-[620px] bg-[#FAF9F6]/98 backdrop-blur-md rounded-2xl border border-[#EADCCE] shadow-xl p-5 text-left normal-case">
+                                    <div class="grid grid-cols-12 gap-5">
+                                        <!-- Col 1: Kategori Pilihan (5 cols) -->
+                                        <div class="col-span-5 space-y-3 border-r border-[#EADCCE]/70 pr-4">
+                                            <span class="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-[#BA805E] block">
+                                                Kategori Busana
+                                            </span>
+                                            
+                                            <div class="space-y-1.5">
+                                                <a href="{{ route('shop.catalog') }}" class="group/item flex items-start gap-2.5 p-2 rounded-xl hover:bg-white transition-all">
+                                                    <div class="w-7 h-7 rounded-lg bg-[#F5EFEB] text-[#BA805E] flex items-center justify-center shrink-0 mt-0.5 group-hover/item:scale-105 transition-transform">
+                                                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"/></svg>
+                                                    </div>
+                                                    <div>
+                                                        <span class="text-xs font-bold text-neutral-900 group-hover/item:text-[#BA805E] transition-colors block">Seluruh Koleksi</span>
+                                                        <span class="text-[11px] text-neutral-500 leading-tight block">Katalog lengkap busana modest</span>
+                                                    </div>
+                                                </a>
+
+                                                <a href="{{ route('shop.catalog', ['category' => 'outerwear']) }}" class="group/item flex items-start gap-2.5 p-2 rounded-xl hover:bg-white transition-all">
+                                                    <div class="w-7 h-7 rounded-lg bg-[#F5EFEB] text-[#BA805E] flex items-center justify-center shrink-0 mt-0.5 group-hover/item:scale-105 transition-transform">
+                                                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/></svg>
+                                                    </div>
+                                                    <div>
+                                                        <div class="flex items-center gap-1.5">
+                                                            <span class="text-xs font-bold text-neutral-900 group-hover/item:text-[#BA805E] transition-colors">Outer & Kimono</span>
+                                                            <span class="text-[8px] font-mono font-bold uppercase tracking-wider px-1.5 py-0.2 rounded bg-[#BA805E]/10 text-[#BA805E]">Fav</span>
+                                                        </div>
+                                                        <span class="text-[11px] text-neutral-500 leading-tight block">Siluet santun, jatuh & sejuk</span>
+                                                    </div>
+                                                </a>
+
+                                                <a href="{{ route('shop.catalog', ['category' => 'scarf']) }}" class="group/item flex items-start gap-2.5 p-2 rounded-xl hover:bg-white transition-all">
+                                                    <div class="w-7 h-7 rounded-lg bg-[#F5EFEB] text-[#BA805E] flex items-center justify-center shrink-0 mt-0.5 group-hover/item:scale-105 transition-transform">
+                                                        <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.286L13 21l-2.286-6.857L5 12l5.714-2.286L13 3z"/></svg>
+                                                    </div>
+                                                    <div>
+                                                        <div class="flex items-center gap-1.5">
+                                                            <span class="text-xs font-bold text-neutral-900 group-hover/item:text-[#BA805E] transition-colors">Voal Scarf 120x120</span>
+                                                            <span class="text-[8px] font-mono font-bold uppercase tracking-wider px-1.5 py-0.2 rounded bg-neutral-100 text-neutral-700">Voal</span>
+                                                        </div>
+                                                        <span class="text-[11px] text-neutral-500 leading-tight block">Ultrafine glow menutup dada</span>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <!-- Col 2: Seri & Rilisan Eksklusif (7 cols) -->
+                                        <div class="col-span-7 space-y-3">
+                                            <div class="flex items-center justify-between">
+                                                <span class="text-[10px] font-mono font-bold uppercase tracking-[0.2em] text-[#BA805E]">
+                                                    Seri & Rilisan Eksklusif
+                                                </span>
+                                                <span class="text-[10px] text-neutral-400 font-mono">Edisi Terbatas</span>
+                                            </div>
+
+                                            <div class="grid grid-cols-1 gap-1.5">
+                                                <a href="{{ route('shop.catalog', ['series' => 'PUSPA']) }}" class="group/sub flex items-center justify-between p-2.5 rounded-xl bg-white/70 hover:bg-white border border-transparent hover:border-[#EADCCE] transition-all">
+                                                    <div>
+                                                        <span class="text-xs font-bold text-neutral-900 group-hover/sub:text-[#BA805E] transition-colors block">PUSPA Series</span>
+                                                        <span class="text-[11px] text-neutral-500 font-light block">Motif flora nusantara & siluet lurus santun</span>
+                                                    </div>
+                                                    <span class="text-[9px] font-mono font-bold uppercase px-2 py-0.5 rounded-full bg-[#FAF8F5] text-[#A66747] border border-[#EADCCE]">Tipe A</span>
+                                                </a>
+
+                                                <a href="{{ route('shop.catalog', ['series' => 'ISLA']) }}" class="group/sub flex items-center justify-between p-2.5 rounded-xl bg-white/70 hover:bg-white border border-transparent hover:border-[#EADCCE] transition-all">
+                                                    <div>
+                                                        <span class="text-xs font-bold text-neutral-900 group-hover/sub:text-[#BA805E] transition-colors block">ISLA Collection</span>
+                                                        <span class="text-[11px] text-neutral-500 font-light block">Siluet santai kasual dengan aksen fringe</span>
+                                                    </div>
+                                                    <span class="text-[9px] font-mono font-bold uppercase px-2 py-0.5 rounded-full bg-[#FAF8F5] text-neutral-600 border border-neutral-200">Tipe B</span>
+                                                </a>
+
+                                                <a href="{{ route('shop.catalog', ['series' => 'SEPT_DROPS']) }}" class="group/sub flex items-center justify-between p-2.5 rounded-xl bg-white/70 hover:bg-white border border-transparent hover:border-[#EADCCE] transition-all">
+                                                    <div>
+                                                        <span class="text-xs font-bold text-neutral-900 group-hover/sub:text-[#BA805E] transition-colors block">Sept Drops</span>
+                                                        <span class="text-[11px] text-neutral-500 font-light block">Heritage parang linen edisi terbatas</span>
+                                                    </div>
+                                                    <span class="text-[9px] font-mono font-bold uppercase px-2 py-0.5 rounded-full bg-[#FAF8F5] text-[#BA805E] border border-[#EADCCE]">Heritage</span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Footer strip inside menu -->
+                                    <div class="mt-4 pt-3 border-t border-[#EADCCE]/80 flex items-center justify-between text-xs">
+                                        <a href="{{ route('shop.home') }}#try-the-look" class="inline-flex items-center gap-1.5 text-neutral-600 hover:text-[#BA805E] font-medium transition-colors">
+                                            <span class="w-1.5 h-1.5 rounded-full bg-[#BA805E]"></span>
+                                            <span>Lihat Try The Look Virtual Runway</span>
+                                        </a>
+                                        <a href="{{ route('shop.catalog') }}" class="font-bold text-neutral-900 hover:text-[#BA805E] transition-colors inline-flex items-center gap-1">
+                                            <span>Buka Katalog Lengkap</span>
+                                            <span>&rarr;</span>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
                         <a href="{{ route('shop.home') }}#fit-helper" class="text-neutral-700 hover:text-neutral-950 transition-colors py-2 cursor-pointer">Panduan Ukuran</a>
                         <a href="{{ route('shop.returns') }}" class="text-neutral-700 hover:text-neutral-950 transition-colors py-2 cursor-pointer {{ request()->routeIs('shop.returns') ? 'text-neutral-950 border-b-2 border-neutral-950' : '' }}">Bantuan</a>
                     </nav>
@@ -75,12 +182,51 @@
             </div>
 
             <!-- Mobile Navigation Drawer -->
-            <div id="mobile-menu" class="hidden lg:hidden border-t border-neutral-200 bg-[#FAF9F6] px-5 py-5 space-y-4 shadow-lg">
-                <div class="space-y-2 pb-3 border-b border-neutral-200">
-                    <span class="text-[10px] font-bold uppercase tracking-widest text-[#BA805E]">Menu Belanja</span>
-                    <a href="{{ route('shop.catalog') }}" class="block text-sm font-semibold text-neutral-900 py-1.5 cursor-pointer">Seluruh Koleksi</a>
-                    <a href="{{ route('shop.catalog', ['category' => 'outerwear']) }}" class="block text-sm text-neutral-700 py-1 cursor-pointer">Outerwear dan Kimono</a>
-                    <a href="{{ route('shop.catalog', ['category' => 'scarf']) }}" class="block text-sm text-neutral-700 py-1 cursor-pointer">Voal Scarf 120x120</a>
+            <div id="mobile-menu" class="hidden lg:hidden border-t border-[#E8DEC9] bg-[#FAF9F6] px-5 py-5 space-y-4 shadow-xl">
+                <!-- Group 1: Kategori Koleksi -->
+                <div class="space-y-1 pb-3 border-b border-neutral-200/80">
+                    <div class="flex items-center justify-between pb-1.5">
+                        <span class="text-[10px] font-bold uppercase tracking-widest text-[#BA805E]">Koleksi Busana</span>
+                        <a href="{{ route('shop.catalog') }}" class="text-[10px] text-neutral-500 hover:text-neutral-900 font-bold uppercase">Lihat Semua &rarr;</a>
+                    </div>
+                    <a href="{{ route('shop.catalog') }}" class="flex items-center justify-between p-2 rounded-xl hover:bg-white text-sm font-semibold text-neutral-900 transition-colors">
+                        <div class="flex items-center gap-2.5">
+                            <span class="w-1.5 h-1.5 rounded-full bg-[#BA805E]"></span>
+                            <span>Seluruh Koleksi</span>
+                        </div>
+                        <span class="text-[10px] font-mono text-neutral-400">Semua</span>
+                    </a>
+                    <a href="{{ route('shop.catalog', ['category' => 'outerwear']) }}" class="flex items-center justify-between p-2 rounded-xl hover:bg-white text-sm text-neutral-800 transition-colors">
+                        <div class="flex items-center gap-2.5">
+                            <span class="w-1.5 h-1.5 rounded-full bg-neutral-300"></span>
+                            <span>Outerwear dan Kimono</span>
+                        </div>
+                        <span class="text-[9px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-[#F5EFEB] text-[#BA805E] border border-[#EADCCE]">Terlaris</span>
+                    </a>
+                    <a href="{{ route('shop.catalog', ['category' => 'scarf']) }}" class="flex items-center justify-between p-2 rounded-xl hover:bg-white text-sm text-neutral-800 transition-colors">
+                        <div class="flex items-center gap-2.5">
+                            <span class="w-1.5 h-1.5 rounded-full bg-neutral-300"></span>
+                            <span>Voal Scarf 120x120</span>
+                        </div>
+                        <span class="text-[9px] font-mono font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-white text-neutral-700 border border-neutral-200">Ultrafine</span>
+                    </a>
+                </div>
+
+                <!-- Group 2: Seri Eksklusif -->
+                <div class="space-y-1 pb-3 border-b border-neutral-200/80">
+                    <span class="text-[10px] font-bold uppercase tracking-widest text-[#BA805E] block pb-1">Seri & Rilisan Eksklusif</span>
+                    <a href="{{ route('shop.catalog', ['series' => 'PUSPA']) }}" class="flex items-center justify-between p-2 rounded-xl hover:bg-white text-xs font-medium text-neutral-800 transition-colors">
+                        <span>Seri PUSPA (Flora Nusantara)</span>
+                        <span class="text-[9px] font-mono font-bold text-[#A66747]">Tipe A</span>
+                    </a>
+                    <a href="{{ route('shop.catalog', ['series' => 'ISLA']) }}" class="flex items-center justify-between p-2 rounded-xl hover:bg-white text-xs font-medium text-neutral-800 transition-colors">
+                        <span>Seri ISLA (Siluet Fringe)</span>
+                        <span class="text-[9px] font-mono font-bold text-neutral-500">Tipe B</span>
+                    </a>
+                    <a href="{{ route('shop.catalog', ['series' => 'SEPT_DROPS']) }}" class="flex items-center justify-between p-2 rounded-xl hover:bg-white text-xs font-medium text-neutral-800 transition-colors">
+                        <span>Sept Drops (Heritage Parang)</span>
+                        <span class="text-[9px] font-mono font-bold text-[#BA805E]">Limited</span>
+                    </a>
                 </div>
 
                 <div class="space-y-2 pt-1 text-xs">
