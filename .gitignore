@@ -31,4 +31,6 @@ Dockerfile*
 .dockerignore
 docker-entrypoint.sh
 *.sql
+gambar/
+public/images/try-the-look/
 

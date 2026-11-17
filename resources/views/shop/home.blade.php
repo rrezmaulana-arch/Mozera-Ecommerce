@@ -148,78 +148,404 @@
         </div>
     </section>
 
-    <!-- SECTION E: KARTU SERI (Atelier Editorial Showcase - Bersih, Mewah, & Teratur) -->
-    <section class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-end justify-between mb-6 pb-3 border-b border-neutral-200">
-            <div>
-                <span class="text-[11px] uppercase tracking-[0.25em] text-[#BA805E] font-bold">Koleksi Tematik</span>
-                <h2 class="font-serif text-[clamp(1.5rem,3.5vw,2.25rem)] font-bold text-neutral-950 mt-1">
-                    Seri dan Rilisan Eksklusif
+    <!-- SECTION E: STUDIO PADU-PADAN HIJAB & OUTERWEAR (Mix & Match Studio) -->
+    <section id="mix-and-match" class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div class="bg-gradient-to-b from-[#FAF7F2] to-white rounded-3xl border border-[#E8DEC9] p-5 sm:p-8 lg:p-10 shadow-xs relative overflow-hidden">
+            
+            <!-- Atmospheric Arch Background Decoration -->
+            <div class="absolute -right-20 -top-20 w-80 h-80 rounded-full bg-[#BA805E]/5 blur-3xl pointer-events-none"></div>
+            <div class="absolute -left-20 -bottom-20 w-80 h-80 rounded-full bg-[#BA805E]/5 blur-3xl pointer-events-none"></div>
+
+            <!-- Studio Header -->
+            <div class="text-center max-w-2xl mx-auto mb-8 relative z-10">
+                <span class="text-[10px] sm:text-[11px] uppercase tracking-[0.28em] text-[#BA805E] font-bold block mb-1">
+                    Atelier Styling Studio
+                </span>
+                <h2 class="font-serif text-[clamp(1.5rem,3.2vw,2.4rem)] font-bold text-neutral-950 tracking-tight leading-tight">
+                    Padu-Padan Outer & Hijab Segiempat
                 </h2>
+                <p class="text-xs sm:text-sm text-neutral-600 font-light mt-1.5 leading-relaxed">
+                    Pilih potongan outer favoritmu dan temukan palet hijab voal paling selaras untuk tampilan santun effortless.
+                </p>
             </div>
-            <a href="{{ route('shop.catalog') }}" class="text-xs font-bold text-neutral-900 hover:text-[#BA805E] transition-colors pb-0.5 border-b border-neutral-900 hover:border-[#BA805E] shrink-0">
-                Semua Seri &rarr;
-            </a>
-        </div>
 
-        <!-- Series Grid / Mobile Scroll-snap Carousel -->
-        <div class="flex overflow-x-auto snap-x snap-mandatory gap-4 -mx-4 px-4 pb-4 sm:mx-0 sm:px-0 sm:grid sm:grid-cols-3 sm:gap-6 custom-scrollbar">
-            @foreach($series as $s)
-                @php
-                    $koleksiNum = '0' . ($loop->index + 1);
-                    $tipeBadge = $loop->index === 0 ? 'Tipe A: Siluet Lurus' : ($loop->index === 1 ? 'Tipe B: Siluet Fringe' : 'Heritage Limited');
-                @endphp
-                <a 
-                    href="{{ route('shop.catalog', ['series' => $s->code]) }}" 
-                    class="group relative w-[75vw] max-w-[290px] shrink-0 snap-center sm:w-full sm:max-w-none rounded-2xl sm:rounded-3xl overflow-hidden block shadow-xs hover:shadow-xl transition-all duration-300 bg-white border border-[#EAE0D4] hover:-translate-y-1 flex flex-col justify-between"
-                >
-                    <!-- Visual Model Frame (Clean & Modern, Same as Product Cards) -->
-                    <div class="relative h-[220px] sm:h-[250px] lg:h-[270px] bg-[#FAF9F6] flex items-center justify-center p-3 sm:p-4 overflow-hidden">
-                        <!-- Top Badges -->
-                        <div class="absolute top-2.5 left-2.5 right-2.5 flex items-center justify-between z-10">
-                            <span class="text-[9px] uppercase font-mono tracking-wider font-bold text-[#A66747] bg-white/95 px-2.5 py-0.5 rounded-full border border-neutral-200/60 shadow-2xs">
-                                {{ $tipeBadge }}
-                            </span>
-                            <span class="text-[9px] uppercase tracking-wider font-bold px-2 py-0.5 rounded-full bg-white/95 text-neutral-800 border border-neutral-200/60 shadow-2xs">
-                                {{ $s->products_count }} Busana
-                            </span>
-                        </div>
+            <!-- Interactive Studio Stage Grid -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-center relative z-10">
+                
+                <!-- Left: Outerwear Selector -->
+                <div class="lg:col-span-4 space-y-3">
+                    <div class="flex items-center justify-between pb-1 border-b border-neutral-200">
+                        <span class="text-xs font-mono font-bold uppercase tracking-wider text-neutral-900">
+                            1. Pilih Outerwear
+                        </span>
+                        <span class="text-[10px] font-mono text-[#BA805E] font-bold">4 Pilihan</span>
+                    </div>
 
-                        <!-- Modest Model Image -->
-                        <img 
-                            src="{{ $s->banner_image }}" 
-                            alt="{{ $s->name }} — Modest Collection" 
-                            loading="lazy" 
-                            class="h-full w-auto max-w-full object-contain filter drop-shadow-sm group-hover:scale-105 transition-transform duration-500 block relative z-0"
+                    <div class="grid grid-cols-2 lg:grid-cols-1 gap-2.5">
+                        <!-- Outer Option 1 -->
+                        <button 
+                            type="button" 
+                            onclick="selectStudioOuter(0)" 
+                            id="studio-outer-btn-0"
+                            class="studio-outer-opt p-2.5 sm:p-3 rounded-2xl bg-white border-2 border-[#BA805E] shadow-sm flex items-center gap-3 transition-all text-left w-full cursor-pointer hover:bg-[#FAF8F5]"
                         >
+                            <div class="w-12 h-14 rounded-xl bg-[#FAF9F6] border border-neutral-200/80 flex items-center justify-center shrink-0 p-1 overflow-hidden">
+                                <img src="/images/models/model-a-1-front.png" alt="Heritage Parang" class="h-full w-auto object-contain">
+                            </div>
+                            <div class="min-w-0 flex-1">
+                                <span class="text-[9px] font-mono font-bold uppercase tracking-wider text-[#BA805E] block truncate">Heritage Series</span>
+                                <h4 class="text-xs font-bold text-neutral-950 truncate">Parang Trench Outer</h4>
+                                <span class="text-[11px] font-mono text-neutral-700 font-bold block mt-0.5">Rp 549.000</span>
+                            </div>
+                        </button>
+
+                        <!-- Outer Option 2 -->
+                        <button 
+                            type="button" 
+                            onclick="selectStudioOuter(1)" 
+                            id="studio-outer-btn-1"
+                            class="studio-outer-opt p-2.5 sm:p-3 rounded-2xl bg-white/70 border border-neutral-200/90 shadow-2xs flex items-center gap-3 transition-all text-left w-full cursor-pointer hover:bg-white hover:border-[#BA805E]/60"
+                        >
+                            <div class="w-12 h-14 rounded-xl bg-[#FAF9F6] border border-neutral-200/80 flex items-center justify-center shrink-0 p-1 overflow-hidden">
+                                <img src="/images/models/model-a-4-front.png" alt="PUSPA Terracotta" class="h-full w-auto object-contain">
+                            </div>
+                            <div class="min-w-0 flex-1">
+                                <span class="text-[9px] font-mono font-bold uppercase tracking-wider text-neutral-400 block truncate">PUSPA Series</span>
+                                <h4 class="text-xs font-bold text-neutral-950 truncate">Terracotta Kimono</h4>
+                                <span class="text-[11px] font-mono text-neutral-700 font-bold block mt-0.5">Rp 389.000</span>
+                            </div>
+                        </button>
+
+                        <!-- Outer Option 3 -->
+                        <button 
+                            type="button" 
+                            onclick="selectStudioOuter(2)" 
+                            id="studio-outer-btn-2"
+                            class="studio-outer-opt p-2.5 sm:p-3 rounded-2xl bg-white/70 border border-neutral-200/90 shadow-2xs flex items-center gap-3 transition-all text-left w-full cursor-pointer hover:bg-white hover:border-[#BA805E]/60"
+                        >
+                            <div class="w-12 h-14 rounded-xl bg-[#FAF9F6] border border-neutral-200/80 flex items-center justify-center shrink-0 p-1 overflow-hidden">
+                                <img src="/images/models/model-b-1-front.png" alt="ISLA Sage Fringe" class="h-full w-auto object-contain">
+                            </div>
+                            <div class="min-w-0 flex-1">
+                                <span class="text-[9px] font-mono font-bold uppercase tracking-wider text-neutral-400 block truncate">ISLA Collection</span>
+                                <h4 class="text-xs font-bold text-neutral-950 truncate">Sage Fringe Kimono</h4>
+                                <span class="text-[11px] font-mono text-neutral-700 font-bold block mt-0.5">Rp 429.000</span>
+                            </div>
+                        </button>
+
+                        <!-- Outer Option 4 -->
+                        <button 
+                            type="button" 
+                            onclick="selectStudioOuter(3)" 
+                            id="studio-outer-btn-3"
+                            class="studio-outer-opt p-2.5 sm:p-3 rounded-2xl bg-white/70 border border-neutral-200/90 shadow-2xs flex items-center gap-3 transition-all text-left w-full cursor-pointer hover:bg-white hover:border-[#BA805E]/60"
+                        >
+                            <div class="w-12 h-14 rounded-xl bg-[#FAF9F6] border border-neutral-200/80 flex items-center justify-center shrink-0 p-1 overflow-hidden">
+                                <img src="/images/models/model-a-2-front.png" alt="Indigo Navy" class="h-full w-auto object-contain">
+                            </div>
+                            <div class="min-w-0 flex-1">
+                                <span class="text-[9px] font-mono font-bold uppercase tracking-wider text-neutral-400 block truncate">PUSPA Series</span>
+                                <h4 class="text-xs font-bold text-neutral-950 truncate">Indigo Navy Kimono</h4>
+                                <span class="text-[11px] font-mono text-neutral-700 font-bold block mt-0.5">Rp 389.000</span>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Center: Live Harmonious Canvas (Side-by-side Visual Presentation) -->
+                <div class="lg:col-span-5 bg-white rounded-3xl border border-[#E6DAC9] p-5 sm:p-6 shadow-md flex flex-col items-center justify-between min-h-[380px]">
+                    
+                    <!-- Top Match Badge -->
+                    <div class="w-full flex items-center justify-between pb-3 border-b border-neutral-100">
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-[#FAF5F0] text-[#BA805E] text-[10px] font-mono font-bold uppercase tracking-wider border border-[#E8DEC9]">
+                            <span class="w-1.5 h-1.5 rounded-full bg-[#BA805E] animate-pulse"></span>
+                            <span id="studio-harmony-badge">98% Sangat Selaras</span>
+                        </span>
+                        <span class="text-[11px] font-mono text-neutral-500 font-medium">
+                            Set Padu-Padan Santun
+                        </span>
                     </div>
 
-                    <!-- Editorial Content Section -->
-                    <div class="p-3.5 sm:p-4 bg-white space-y-1.5 flex-1 flex flex-col justify-between border-t border-neutral-100">
-                        <div class="space-y-1">
-                            <div class="flex items-center justify-between text-[10px] font-mono font-bold text-[#BA805E] uppercase tracking-wider">
-                                <span>Koleksi {{ $koleksiNum }}</span>
-                                <span class="text-neutral-400">Edisi Khusus</span>
+                    <!-- Side-by-Side Visual Display -->
+                    <div class="w-full py-4 flex items-center justify-center gap-3 sm:gap-6 my-auto">
+                        <!-- Outer Preview -->
+                        <div class="flex flex-col items-center flex-1 max-w-[150px]">
+                            <div class="relative w-full h-[180px] sm:h-[210px] bg-[#FAF9F6] rounded-2xl border border-neutral-200/80 flex items-end justify-center p-2 overflow-hidden shadow-2xs group">
+                                <img 
+                                    id="studio-preview-outer-img"
+                                    src="/images/models/model-a-1-front.png" 
+                                    alt="Outer Paduan" 
+                                    class="h-full w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                                >
                             </div>
-                            <h3 class="font-serif text-base sm:text-lg font-bold tracking-tight text-neutral-950 group-hover:text-[#BA805E] transition-colors leading-snug">
-                                {{ $s->name }}
-                            </h3>
-                            <p class="text-[11px] sm:text-xs text-neutral-500 line-clamp-2 font-light leading-relaxed">
-                                {{ $s->description }}
-                            </p>
+                            <span id="studio-preview-outer-title" class="text-xs font-bold text-neutral-900 mt-2 text-center line-clamp-1">
+                                Parang Trench Outer
+                            </span>
+                            <span id="studio-preview-outer-price" class="text-[11px] font-mono text-[#BA805E] font-bold">
+                                Rp 549.000
+                            </span>
                         </div>
 
-                        <div class="pt-2.5 border-t border-neutral-100 flex items-center justify-between text-xs font-bold text-neutral-900 group-hover:text-[#BA805E] transition-colors">
-                            <span class="text-[11px] uppercase tracking-wider">Jelajahi Koleksi</span>
-                            <span class="w-6 h-6 rounded-full bg-neutral-100 group-hover:bg-[#BA805E] group-hover:text-white flex items-center justify-center transition-all duration-300 text-xs">
-                                &rarr;
+                        <!-- Plus Harmony Connector -->
+                        <div class="flex flex-col items-center justify-center shrink-0">
+                            <span class="w-8 h-8 rounded-full bg-[#F5EFEB] border border-[#BA805E]/40 text-[#BA805E] flex items-center justify-center font-bold text-base shadow-2xs">
+                                +
+                            </span>
+                            <span class="text-[9px] font-mono uppercase tracking-wider text-neutral-400 mt-1 font-bold">Padu</span>
+                        </div>
+
+                        <!-- Scarf Preview -->
+                        <div class="flex flex-col items-center flex-1 max-w-[150px]">
+                            <div class="relative w-full h-[180px] sm:h-[210px] bg-[#FAF9F6] rounded-2xl border border-neutral-200/80 flex items-center justify-center p-2.5 overflow-hidden shadow-2xs group">
+                                <img 
+                                    id="studio-preview-scarf-img"
+                                    src="/images/models/puspa-scarf-voal.png" 
+                                    alt="Scarf Paduan" 
+                                    class="w-full h-auto max-h-full object-contain rounded-xl transition-transform duration-300 group-hover:scale-105"
+                                >
+                            </div>
+                            <span id="studio-preview-scarf-title" class="text-xs font-bold text-neutral-900 mt-2 text-center line-clamp-1">
+                                Voal Scarf - Dusty Pink
+                            </span>
+                            <span id="studio-preview-scarf-price" class="text-[11px] font-mono text-[#BA805E] font-bold">
+                                Rp 149.000
                             </span>
                         </div>
                     </div>
-                </a>
-            @endforeach
+
+                    <!-- Stylist Note & Bundle Price CTA -->
+                    <div class="w-full pt-3 border-t border-neutral-100 space-y-3">
+                        <p id="studio-styling-note" class="text-[11px] text-neutral-500 text-center font-light leading-snug">
+                            "Motif parang klasik cokelat berpadu lembut dengan hijab dusty pink menciptakan nuansa feminin berwibawa."
+                        </p>
+
+                        <div class="flex items-center justify-between pt-1">
+                            <div>
+                                <span class="text-[10px] text-neutral-400 block line-through" id="studio-original-price">Rp 698.000</span>
+                                <div class="flex items-baseline gap-1.5">
+                                    <span class="text-sm sm:text-base font-bold font-mono text-neutral-950" id="studio-bundle-price">Rp 648.000</span>
+                                    <span class="text-[10px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200/60">Hemat Rp 50.000</span>
+                                </div>
+                            </div>
+
+                            <a 
+                                id="studio-bundle-btn"
+                                href="{{ route('shop.product', 'sept-drops-heritage-linen-trench') }}" 
+                                class="min-h-[42px] px-5 py-2.5 bg-neutral-950 hover:bg-[#BA805E] text-white rounded-full text-xs font-bold uppercase tracking-wider flex items-center gap-1.5 shadow-sm transition-all hover:scale-105"
+                            >
+                                <span>Lihat Paduan Busana</span>
+                                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Right: Hijab Scarf Selector -->
+                <div class="lg:col-span-3 space-y-3">
+                    <div class="flex items-center justify-between pb-1 border-b border-neutral-200">
+                        <span class="text-xs font-mono font-bold uppercase tracking-wider text-neutral-900">
+                            2. Pilih Warna Hijab
+                        </span>
+                        <span class="text-[10px] font-mono text-[#BA805E] font-bold">Voal 120×120</span>
+                    </div>
+
+                    <div class="grid grid-cols-2 lg:grid-cols-1 gap-2.5">
+                        <!-- Scarf Option 0: Dusty Pink -->
+                        <button 
+                            type="button" 
+                            onclick="selectStudioScarf(0)" 
+                            id="studio-scarf-btn-0"
+                            class="studio-scarf-opt p-2.5 sm:p-3 rounded-2xl bg-white border-2 border-[#BA805E] shadow-sm flex items-center gap-2.5 transition-all text-left w-full cursor-pointer hover:bg-[#FAF8F5]"
+                        >
+                            <span class="w-7 h-7 rounded-full bg-[#D8A49B] border border-white shadow-xs shrink-0"></span>
+                            <div class="min-w-0 flex-1">
+                                <h4 class="text-xs font-bold text-neutral-950 truncate">Dusty Pink</h4>
+                                <span class="text-[10px] text-neutral-500 block truncate">Nuansa Mawar Lembut</span>
+                            </div>
+                        </button>
+
+                        <!-- Scarf Option 1: Olive Ash -->
+                        <button 
+                            type="button" 
+                            onclick="selectStudioScarf(1)" 
+                            id="studio-scarf-btn-1"
+                            class="studio-scarf-opt p-2.5 sm:p-3 rounded-2xl bg-white/70 border border-neutral-200/90 shadow-2xs flex items-center gap-2.5 transition-all text-left w-full cursor-pointer hover:bg-white hover:border-[#BA805E]/60"
+                        >
+                            <span class="w-7 h-7 rounded-full bg-[#878C74] border border-white shadow-xs shrink-0"></span>
+                            <div class="min-w-0 flex-1">
+                                <h4 class="text-xs font-bold text-neutral-950 truncate">Olive Ash</h4>
+                                <span class="text-[10px] text-neutral-500 block truncate">Nuansa Zaitun Sejuk</span>
+                            </div>
+                        </button>
+
+                        <!-- Scarf Option 2: Terracotta Glow -->
+                        <button 
+                            type="button" 
+                            onclick="selectStudioScarf(2)" 
+                            id="studio-scarf-btn-2"
+                            class="studio-scarf-opt p-2.5 sm:p-3 rounded-2xl bg-white/70 border border-neutral-200/90 shadow-2xs flex items-center gap-2.5 transition-all text-left w-full cursor-pointer hover:bg-white hover:border-[#BA805E]/60"
+                        >
+                            <span class="w-7 h-7 rounded-full bg-[#BA805E] border border-white shadow-xs shrink-0"></span>
+                            <div class="min-w-0 flex-1">
+                                <h4 class="text-xs font-bold text-neutral-950 truncate">Terracotta Glow</h4>
+                                <span class="text-[10px] text-neutral-500 block truncate">Nuansa Bumi Hangat</span>
+                            </div>
+                        </button>
+
+                        <!-- Scarf Option 3: Slate Navy -->
+                        <button 
+                            type="button" 
+                            onclick="selectStudioScarf(3)" 
+                            id="studio-scarf-btn-3"
+                            class="studio-scarf-opt p-2.5 sm:p-3 rounded-2xl bg-white/70 border border-neutral-200/90 shadow-2xs flex items-center gap-2.5 transition-all text-left w-full cursor-pointer hover:bg-white hover:border-[#BA805E]/60"
+                        >
+                            <span class="w-7 h-7 rounded-full bg-[#2D3A4B] border border-white shadow-xs shrink-0"></span>
+                            <div class="min-w-0 flex-1">
+                                <h4 class="text-xs font-bold text-neutral-950 truncate">Slate Navy</h4>
+                                <span class="text-[10px] text-neutral-500 block truncate">Nuansa Teduh Monokrom</span>
+                            </div>
+                        </button>
+                    </div>
+                </div>
+
+            </div>
         </div>
     </section>
+
+    <!-- JAVASCRIPT: STUDIO PADU-PADAN INTERAKTIF -->
+    <script>
+        (function() {
+            const studioOuters = [
+                {
+                    title: 'Parang Trench Outer',
+                    price: 549000,
+                    img: '/images/models/model-a-1-front.png',
+                    slug: 'sept-drops-heritage-linen-trench',
+                    series: 'Sept Drops Heritage',
+                    notes: [
+                        '"Motif parang klasik cokelat berpadu lembut dengan hijab dusty pink menciptakan nuansa feminin berwibawa."',
+                        '"Perpaduan motif parang dengan hijab olive ash memberi kesan etnik kontemporer yang tenang."',
+                        '"Harmoni monokromatik bumi yang hangat, sangat cocok untuk acara formal dan resepsi santun."',
+                        '"Kontras berani antara parang hangat dan navy teduh memberikan siluet tegas yang ramping."'
+                    ]
+                },
+                {
+                    title: 'PUSPA Terracotta Kimono',
+                    price: 389000,
+                    img: '/images/models/model-a-4-front.png',
+                    slug: 'puspa-floral-outer-kimono',
+                    series: 'PUSPA Series',
+                    notes: [
+                        '"Warna terakota hangat dan dusty pink memancarkan aura lembut nan manis khas wanita bersahaja."',
+                        '"Kombinasi terakota dan olive ash menghadirkan nuansa alam Nusantara yang segar dan adem di mata."',
+                        '"Perpaduan senada tone bumi yang mempertegas keanggunan motif flora terakota."',
+                        '"Padanan klasik terakota dan navy pekat memberikan kontras mewah tanpa kehilangan kesan santun."'
+                    ]
+                },
+                {
+                    title: 'ISLA Sage Fringe Kimono',
+                    price: 429000,
+                    img: '/images/models/model-b-1-front.png',
+                    slug: 'isla-geometrik-kimono-outer',
+                    series: 'ISLA Collection',
+                    notes: [
+                        '"Aksen rumbai halus sage green berpadu dusty pink menciptakan tampilan santai chic yang sangat manis."',
+                        '"Monokromatik hijau sage dan olive ash: perpaduan paling adem untuk aktivitas harian dari pagi hingga sore."',
+                        '"Kontras segar antara sage green dan terakota memberi energi muda yang elegan (#everydaymozera)."',
+                        '"Kombinasi rumbai sage dengan navy malam memberikan kesan rapi siap kerja yang effortless."'
+                    ]
+                },
+                {
+                    title: 'PUSPA Indigo Navy Kimono',
+                    price: 389000,
+                    img: '/images/models/model-a-2-front.png',
+                    slug: 'puspa-floral-outer-kimono',
+                    series: 'PUSPA Series',
+                    notes: [
+                        '"Indigo navy pekat berpadu dusty pink melembutkan siluet gelap menjadi tampilan semi-formal yang anggun."',
+                        '"Kombinasi navy dan olive ash menghadirkan estetika minimalis modern yang sangat menenangkan."',
+                        '"Paduan warna malam dan terakota memancarkan pesona eksotis yang berkelas."',
+                        '"Total look monokrom navy yang tegas, ramping, dan siap menghadiri acara penting dengan penuh percaya diri."'
+                    ]
+                }
+            ];
+
+            const studioScarves = [
+                { title: 'Voal Scarf - Dusty Pink', price: 149000, harmony: '98% Sangat Selaras', img: '/images/models/puspa-scarf-voal.png' },
+                { title: 'Voal Scarf - Olive Ash', price: 149000, harmony: '96% Harmoni Alami', img: '/images/models/puspa-scarf-voal.png' },
+                { title: 'Voal Scarf - Terracotta Glow', price: 149000, harmony: '99% Palet Senada', img: '/images/models/puspa-scarf-voal.png' },
+                { title: 'Voal Scarf - Slate Navy', price: 149000, harmony: '95% Kontras Elegan', img: '/images/models/puspa-scarf-voal.png' }
+            ];
+
+            let selectedOuterIdx = 0;
+            let selectedScarfIdx = 0;
+
+            function formatIdr(num) {
+                return 'Rp ' + num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+            }
+
+            window.selectStudioOuter = function(idx) {
+                selectedOuterIdx = idx;
+                document.querySelectorAll('.studio-outer-opt').forEach((btn, i) => {
+                    if (i === idx) {
+                        btn.className = 'studio-outer-opt p-2.5 sm:p-3 rounded-2xl bg-white border-2 border-[#BA805E] shadow-sm flex items-center gap-3 transition-all text-left w-full cursor-pointer hover:bg-[#FAF8F5]';
+                    } else {
+                        btn.className = 'studio-outer-opt p-2.5 sm:p-3 rounded-2xl bg-white/70 border border-neutral-200/90 shadow-2xs flex items-center gap-3 transition-all text-left w-full cursor-pointer hover:bg-white hover:border-[#BA805E]/60';
+                    }
+                });
+                updateStudioCanvas();
+            };
+
+            window.selectStudioScarf = function(idx) {
+                selectedScarfIdx = idx;
+                document.querySelectorAll('.studio-scarf-opt').forEach((btn, i) => {
+                    if (i === idx) {
+                        btn.className = 'studio-scarf-opt p-2.5 sm:p-3 rounded-2xl bg-white border-2 border-[#BA805E] shadow-sm flex items-center gap-2.5 transition-all text-left w-full cursor-pointer hover:bg-[#FAF8F5]';
+                    } else {
+                        btn.className = 'studio-scarf-opt p-2.5 sm:p-3 rounded-2xl bg-white/70 border border-neutral-200/90 shadow-2xs flex items-center gap-2.5 transition-all text-left w-full cursor-pointer hover:bg-white hover:border-[#BA805E]/60';
+                    }
+                });
+                updateStudioCanvas();
+            };
+
+            function updateStudioCanvas() {
+                const outer = studioOuters[selectedOuterIdx];
+                const scarf = studioScarves[selectedScarfIdx];
+                if (!outer || !scarf) return;
+
+                const outerImg = document.getElementById('studio-preview-outer-img');
+                const outerTitle = document.getElementById('studio-preview-outer-title');
+                const outerPrice = document.getElementById('studio-preview-outer-price');
+                const scarfTitle = document.getElementById('studio-preview-scarf-title');
+                const scarfPrice = document.getElementById('studio-preview-scarf-price');
+                const harmonyBadge = document.getElementById('studio-harmony-badge');
+                const stylingNote = document.getElementById('studio-styling-note');
+                const origPrice = document.getElementById('studio-original-price');
+                const bundlePrice = document.getElementById('studio-bundle-price');
+                const bundleBtn = document.getElementById('studio-bundle-btn');
+
+                if (outerImg) outerImg.src = outer.img;
+                if (outerTitle) outerTitle.textContent = outer.title;
+                if (outerPrice) outerPrice.textContent = formatIdr(outer.price);
+                if (scarfTitle) scarfTitle.textContent = scarf.title;
+                if (scarfPrice) scarfPrice.textContent = formatIdr(scarf.price);
+                if (harmonyBadge) harmonyBadge.textContent = scarf.harmony;
+
+                if (stylingNote && outer.notes && outer.notes[selectedScarfIdx]) {
+                    stylingNote.textContent = outer.notes[selectedScarfIdx];
+                }
+
+                const total = outer.price + scarf.price;
+                const discounted = total - 50000;
+                if (origPrice) origPrice.textContent = formatIdr(total);
+                if (bundlePrice) bundlePrice.textContent = formatIdr(discounted);
+                if (bundleBtn) {
+                    bundleBtn.href = '/product/' + outer.slug;
+                }
+            }
+        })();
+    </script>
 
     <!-- SECTION G: FITUR BARU RINGKAS -->
     
@@ -296,6 +622,15 @@
     </section>
 
     <!-- G1: VIEWPORT-FITTED OPEN RUNWAY ("Try The Look" — Full Look Experience, Center Stage Tanpa Clutter Harga) -->
+    <style>
+        /* Clean stage guarantee: Saat 3 sudut pandang aktif, sembunyikan SEMUA model lain agar tidak ada bayangan/ghosting */
+        #open-runway-stage.angles-open .runway-model-item:not(.active-expanded) {
+            display: none !important;
+            opacity: 0 !important;
+            visibility: hidden !important;
+            pointer-events: none !important;
+        }
+    </style>
     <section id="try-the-look" class="w-full relative py-6 lg:py-8 bg-[#FAF9F6] border-y border-neutral-200/50 select-none scroll-mt-16 overflow-hidden">
         
         <!-- Header: Minimal Luxury Editorial Title (Compact, Centered) -->
@@ -307,7 +642,7 @@
                 Try The Look.
             </h2>
             <p class="text-xs sm:text-sm text-neutral-500 font-light mt-0.5 max-w-xl mx-auto">
-                Eksplorasi padu-padan atasan santun MOZÉRA. Klik atau geser model untuk melihat siluet busana secara utuh.
+                Eksplorasi padu-padan atasan santun MOZÉRA. Klik foto model untuk membuka 3 sudut pandang fitting secara utuh.
             </p>
         </div>
 
@@ -333,21 +668,21 @@
                         <!-- Cutout Model Image: Model Responsif -->
                         <div class="relative h-[250px] sm:h-[330px] md:h-[390px] lg:h-[460px] flex items-end justify-center">
                             <!-- Side Angle Left (Hadap Samping) -->
-                            <div id="angle-side-wrap-{{ $idx }}" class="absolute bottom-0 -left-16 sm:-left-24 lg:-left-32 opacity-0 scale-90 -translate-x-6 transition-all duration-500 ease-out z-0 flex flex-col items-center pointer-events-none">
-                                <span class="text-[9px] font-mono uppercase tracking-wider font-bold text-neutral-600 bg-white/95 backdrop-blur-xs px-2 py-0.5 rounded-full border border-neutral-200 shadow-2xs mb-1">
-                                    Samping
+                            <div id="angle-side-wrap-{{ $idx }}" class="absolute bottom-0 -left-16 sm:-left-28 md:-left-36 lg:-left-48 opacity-0 scale-90 -translate-x-6 transition-all duration-500 ease-out z-0 flex flex-col items-center pointer-events-none">
+                                <span class="text-[9px] font-mono uppercase tracking-wider font-bold text-neutral-800 bg-white/95 backdrop-blur-xs px-3 py-0.5 rounded-full border border-neutral-200/80 shadow-2xs mb-1">
+                                    Tampak Samping
                                 </span>
                                 <img 
                                     id="angle-side-{{ $idx }}"
                                     src="{{ $look['side_image'] }}" 
-                                    alt="Hadap Samping" 
+                                    alt="Tampak Samping" 
                                     class="h-[230px] sm:h-[305px] md:h-[360px] lg:h-[425px] w-auto max-w-none object-contain select-none"
                                 >
                             </div>
 
                             <!-- Center Front Model -->
                             <div class="flex flex-col items-center z-10">
-                                <span id="angle-front-tag-{{ $idx }}" class="opacity-0 transition-opacity duration-300 text-[9px] font-mono uppercase tracking-wider font-bold text-[#BA805E] bg-white/95 backdrop-blur-xs px-2.5 py-0.5 rounded-full border border-[#EADCCE] shadow-2xs mb-1 flex items-center gap-1">
+                                <span id="angle-front-tag-{{ $idx }}" class="opacity-0 transition-opacity duration-300 text-[9px] font-mono uppercase tracking-wider font-bold text-[#BA805E] bg-white/95 backdrop-blur-xs px-3 py-0.5 rounded-full border border-[#EADCCE] shadow-2xs mb-1 flex items-center gap-1">
                                     <span class="w-1.5 h-1.5 rounded-full bg-[#BA805E]"></span>
                                     <span>Tampak Depan</span>
                                 </span>
@@ -362,14 +697,14 @@
                             </div>
 
                             <!-- Back Angle Right (Hadap Belakang) -->
-                            <div id="angle-back-wrap-{{ $idx }}" class="absolute bottom-0 -right-16 sm:-right-24 lg:-right-32 opacity-0 scale-90 translate-x-6 transition-all duration-500 ease-out z-0 flex flex-col items-center pointer-events-none">
-                                <span class="text-[9px] font-mono uppercase tracking-wider font-bold text-neutral-600 bg-white/95 backdrop-blur-xs px-2 py-0.5 rounded-full border border-neutral-200 shadow-2xs mb-1">
-                                    Belakang
+                            <div id="angle-back-wrap-{{ $idx }}" class="absolute bottom-0 -right-16 sm:-right-28 md:-right-36 lg:-right-48 opacity-0 scale-90 translate-x-6 transition-all duration-500 ease-out z-0 flex flex-col items-center pointer-events-none">
+                                <span class="text-[9px] font-mono uppercase tracking-wider font-bold text-neutral-800 bg-white/95 backdrop-blur-xs px-3 py-0.5 rounded-full border border-neutral-200/80 shadow-2xs mb-1">
+                                    Tampak Belakang
                                 </span>
                                 <img 
                                     id="angle-back-{{ $idx }}"
                                     src="{{ $look['back_image'] }}" 
-                                    alt="Hadap Belakang" 
+                                    alt="Tampak Belakang" 
                                     class="h-[230px] sm:h-[305px] md:h-[360px] lg:h-[425px] w-auto max-w-none object-contain select-none"
                                 >
                             </div>
@@ -380,7 +715,7 @@
                             <span class="px-2.5 py-0.5 rounded-full bg-neutral-900/85 backdrop-blur-sm text-[9px] font-mono text-[#DCC3AD] uppercase tracking-wider flex items-center gap-1 shadow-md">
                                 <svg class="w-3 h-3 text-[#BA805E]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
                                 <span id="angle-hint-text-{{ $idx }}">
-                                    {{ $look['has_angles'] ? 'Klik: Buka Sudut Samping & Belakang' : 'Klik: Detail Busana' }}
+                                    Klik Foto: 3 Sudut Fitting
                                 </span>
                             </span>
                         </div>
@@ -418,22 +753,42 @@
 
         </div>
 
-        <!-- DEDICATED ACTIVE LOOK HIGHLIGHT (Clean, Focused, Direct CTA) -->
-        <div class="max-w-3xl mx-auto px-4 mt-2 pb-1 flex flex-wrap items-center justify-center gap-2.5 text-center z-20">
-            <span id="runway-look-type" class="px-3 py-1 rounded-full text-[10px] font-mono uppercase tracking-wider font-bold bg-[#FAF8F5] text-[#A66747] border border-[#E4D7C5] shadow-2xs">
-                {{ $curatedLooks[0]['type_label'] }}
-            </span>
-            <span id="runway-look-title" class="px-4 py-1.5 rounded-full bg-neutral-950/90 text-[#F5EFEB] border border-[#BA805E]/40 text-xs font-bold uppercase tracking-wider backdrop-blur-md shadow-md">
-                {{ $curatedLooks[0]['title'] }}
-            </span>
-            <a id="runway-look-btn" href="{{ $curatedLooks[0]['product_url'] }}" class="inline-flex items-center gap-1.5 text-xs font-bold text-neutral-900 bg-white hover:bg-neutral-950 hover:text-white px-5 py-1.5 rounded-full border border-[#DCC3AD] shadow-sm transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer">
-                <span>Lihat Detail Busana</span>
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-            </a>
+        <!-- DEDICATED ACTIVE LOOK HIGHLIGHT & RICH INFORMATION -->
+        <div class="max-w-3xl mx-auto px-4 mt-3 pb-1 flex flex-col items-center justify-center text-center z-20">
+            <!-- Badges & Title -->
+            <div class="flex flex-wrap items-center justify-center gap-2">
+                <span id="runway-look-type" class="px-3 py-1 rounded-full text-[10px] font-mono uppercase tracking-wider font-bold bg-[#FAF8F5] text-[#A66747] border border-[#E4D7C5] shadow-2xs">
+                    {{ $curatedLooks[0]['type_label'] }}
+                </span>
+                <span id="runway-look-title" class="px-4 py-1.5 rounded-full bg-neutral-950/90 text-[#F5EFEB] border border-[#BA805E]/40 text-xs font-bold uppercase tracking-wider backdrop-blur-md shadow-md">
+                    {{ $curatedLooks[0]['title'] }}
+                </span>
+            </div>
+
+            <!-- Vibe Description Paragraph -->
+            <p id="runway-look-vibe" class="text-xs sm:text-sm text-neutral-600 max-w-xl mx-auto font-light leading-relaxed mt-2 mb-2.5">
+                {{ $curatedLooks[0]['vibe'] }}
+            </p>
+
+            <!-- Actions Row: CTA + Close Angles button -->
+            <div class="flex flex-wrap items-center justify-center gap-2.5">
+                <a id="runway-look-btn" href="{{ $curatedLooks[0]['product_url'] }}" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-white bg-neutral-950 hover:bg-[#BA805E] px-6 py-2.5 rounded-full shadow-sm transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer">
+                    <span>Lihat Detail & Beli Busana Ini</span>
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                </a>
+                <button 
+                    id="runway-toggle-angles-btn" 
+                    type="button" 
+                    onclick="closeAnglesInline()" 
+                    class="hidden inline-flex items-center gap-1.5 text-xs font-bold text-neutral-800 bg-white hover:bg-neutral-100 px-5 py-2.5 rounded-full border border-neutral-300 shadow-2xs transition-all hover:scale-105 cursor-pointer"
+                >
+                    <span>Tutup Sudut Fitting (Kembali ke Runway)</span>
+                </button>
+            </div>
         </div>
 
         <!-- Mini Feature Highlights Strip (Mengisi ruang bawah agar tidak kopong) -->
-        <div class="max-w-2xl mx-auto px-4 mt-3 flex items-center justify-center gap-4 sm:gap-8 text-[11px] sm:text-xs text-neutral-500 font-medium border-t border-neutral-200/50 pt-2.5">
+        <div class="max-w-2xl mx-auto px-4 mt-4 flex items-center justify-center gap-4 sm:gap-8 text-[11px] sm:text-xs text-neutral-500 font-medium border-t border-neutral-200/50 pt-3">
             <span class="flex items-center gap-1.5">
                 <span class="w-1.5 h-1.5 rounded-full bg-[#BA805E]"></span>
                 <span>Klik Foto: 3 Sudut Fitting</span>
@@ -474,41 +829,43 @@
                 const look = looks[idx];
                 if (!look) return;
 
-                // Jika model belum punya gambar samping/belakang, klik langsung arahkan ke halaman detail produk
-                if (!look.has_angles) {
-                    if (look.product_url) window.location.href = look.product_url;
-                    return;
-                }
-
+                const stage = document.getElementById('open-runway-stage');
+                const activeModel = document.getElementById(`runway-model-${idx}`);
                 const sideWrap = document.getElementById(`angle-side-wrap-${idx}`);
                 const backWrap = document.getElementById(`angle-back-wrap-${idx}`);
                 const frontTag = document.getElementById(`angle-front-tag-${idx}`);
                 const frontImg = document.getElementById(`angle-front-${idx}`);
                 const hintText = document.getElementById(`angle-hint-text-${idx}`);
+                const toggleBtn = document.getElementById('runway-toggle-angles-btn');
 
                 anglesOpen = !anglesOpen;
 
-                // 1. Sembunyikan SEMUA model di samping kiri & kanan agar panggung bersih khusus 3 sudut ini!
-                looks.forEach((_, i) => {
-                    if (i !== idx) {
-                        const otherModel = document.getElementById(`runway-model-${i}`);
-                        if (otherModel) {
-                            otherModel.style.opacity = anglesOpen ? '0' : '';
-                            otherModel.style.pointerEvents = anglesOpen ? 'none' : '';
-                        }
-                    }
-                });
-
                 if (anglesOpen) {
-                    // Buka jejer ke kiri & kanan dengan rapi dan munculkan label keterangan
+                    if (stage) stage.classList.add('angles-open');
+                    if (activeModel) activeModel.classList.add('active-expanded');
+
+                    // 1. Sembunyikan SEMUA model lain agar panggung benar-benar bersih tanpa bayangan hantu!
+                    looks.forEach((_, i) => {
+                        if (i !== idx) {
+                            const other = document.getElementById(`runway-model-${i}`);
+                            if (other) {
+                                other.style.display = 'none';
+                                other.style.opacity = '0';
+                                other.style.visibility = 'hidden';
+                                other.style.pointerEvents = 'none';
+                            }
+                        }
+                    });
+
+                    // 2. Buka jejer ke kiri & kanan dengan rapi dan munculkan label keterangan
                     if (sideWrap) {
                         sideWrap.style.opacity = '1';
-                        sideWrap.style.transform = 'translate3d(-20px, 0px, 0px) scale(0.96)';
+                        sideWrap.style.transform = 'translate3d(-24px, 0px, 0px) scale(0.96)';
                         sideWrap.style.pointerEvents = 'auto';
                     }
                     if (backWrap) {
                         backWrap.style.opacity = '1';
-                        backWrap.style.transform = 'translate3d(20px, 0px, 0px) scale(0.96)';
+                        backWrap.style.transform = 'translate3d(24px, 0px, 0px) scale(0.96)';
                         backWrap.style.pointerEvents = 'auto';
                     }
                     if (frontTag) {
@@ -517,7 +874,8 @@
                     if (frontImg) {
                         frontImg.style.transform = 'scale(1.02)';
                     }
-                    if (hintText) hintText.textContent = 'Klik untuk Menutup Sudut';
+                    if (hintText) hintText.textContent = 'Klik Model untuk Menutup Sudut';
+                    if (toggleBtn) toggleBtn.classList.remove('hidden');
                 } else {
                     // Tutup kembali
                     closeAnglesInline();
@@ -527,12 +885,21 @@
 
             window.closeAnglesInline = function() {
                 anglesOpen = false;
+                const stage = document.getElementById('open-runway-stage');
+                if (stage) stage.classList.remove('angles-open');
+
                 looks.forEach((look, idx) => {
+                    const activeModel = document.getElementById(`runway-model-${idx}`);
                     const sideWrap = document.getElementById(`angle-side-wrap-${idx}`);
                     const backWrap = document.getElementById(`angle-back-wrap-${idx}`);
                     const frontTag = document.getElementById(`angle-front-tag-${idx}`);
                     const frontImg = document.getElementById(`angle-front-${idx}`);
                     const hintText = document.getElementById(`angle-hint-text-${idx}`);
+
+                    if (activeModel) {
+                        activeModel.classList.remove('active-expanded');
+                        activeModel.style.display = '';
+                    }
 
                     if (sideWrap) {
                         sideWrap.style.opacity = '0';
@@ -551,9 +918,12 @@
                         frontImg.style.transform = 'scale(1)';
                     }
                     if (hintText) {
-                        hintText.textContent = look.has_angles ? 'Klik: Buka Sudut Samping & Belakang' : 'Klik: Detail Busana';
+                        hintText.textContent = 'Klik Foto: 3 Sudut Fitting';
                     }
                 });
+
+                const toggleBtn = document.getElementById('runway-toggle-angles-btn');
+                if (toggleBtn) toggleBtn.classList.add('hidden');
             };
 
             window.switchLook = function(idx) {
@@ -567,6 +937,9 @@
                 looks.forEach((look, i) => {
                     const item = document.getElementById(`runway-model-${i}`);
                     if (!item) return;
+
+                    item.style.display = '';
+                    item.style.visibility = '';
 
                     let diff = i - currentLookIdx;
                     while (diff > looks.length / 2) diff -= looks.length;
@@ -616,13 +989,15 @@
                     }
                 });
 
-                // 3. Update Dedicated Active Look Badge & Link
+                // 3. Update Dedicated Active Look Badge, Title, Vibe & Link
                 const activeLook = looks[currentLookIdx];
                 const typeEl = document.getElementById('runway-look-type');
                 const titleEl = document.getElementById('runway-look-title');
+                const vibeEl = document.getElementById('runway-look-vibe');
                 const btnEl = document.getElementById('runway-look-btn');
                 if (typeEl && activeLook) typeEl.textContent = activeLook.type_label;
                 if (titleEl && activeLook) titleEl.textContent = activeLook.title;
+                if (vibeEl && activeLook) vibeEl.textContent = activeLook.vibe;
                 if (btnEl && activeLook) btnEl.href = activeLook.product_url;
             };
 
@@ -858,7 +1233,7 @@
         </div>
     </section>
 
-    <!-- SECTION F: KARTU PRODUK (4 Kolom desktop, 3 tablet, 2 mobile. Max height 360px desktop, 280px mobile) -->
+    <!-- SECTION F: KARTU PRODUK (Koleksi Terpopuler - Atelier Editorial Gallery) -->
     <section class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-end justify-between mb-6 pb-3 border-b border-neutral-200">
             <div>
@@ -875,54 +1250,87 @@
         <!-- Responsive Grid: 4 cols (≥1024px), 3 cols (768-1023px), 2 cols (<768px) -->
         <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-5 lg:gap-6">
             @foreach($featuredProducts as $index => $product)
+                @php
+                    $colorMap = [
+                        'Terracotta' => '#BA805E',
+                        'Sage Green' => '#8C9A86',
+                        'Indigo Navy' => '#2D3A4B',
+                        'Heritage Parang' => '#6A4A33',
+                        'Dusty Pink' => '#D8A49B',
+                        'Olive Ash' => '#878C74',
+                        'Ivory Sand' => '#DCD3C5',
+                        'Burgundy Wine' => '#691F2B',
+                        'Midnight Indigo' => '#1F2430',
+                    ];
+                    $uniqueColors = $product->skus->pluck('color')->filter()->unique()->values();
+                    $isScarf = str_contains(strtolower($product->slug), 'scarf');
+                @endphp
                 <div class="group bg-white rounded-2xl sm:rounded-3xl overflow-hidden border border-[#EAE0D4] shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between hover:-translate-y-1">
                     
                     <div>
-                        <!-- Product Image (Compact, Balanced Height - No Vertical Stretching) -->
-                        <div class="relative h-[200px] sm:h-[230px] bg-[#FAF9F6] overflow-hidden flex items-center justify-center p-2.5 sm:p-3 block">
-                            <a href="{{ route('shop.product', $product->slug) }}" class="block w-full h-full flex items-center justify-center">
-                                <img 
-                                    src="{{ $product->primary_image }}" 
-                                    alt="{{ $product->name }} — Modest Fashion" 
-                                    loading="lazy" 
-                                    class="h-full w-auto max-w-full object-contain filter drop-shadow-sm group-hover:scale-[1.04] transition-transform duration-500 block"
-                                >
-                            </a>
-
-                            <!-- Badges (Never overlap: Preorder on top-left, Category on top-right) -->
-                            <div class="absolute top-2.5 left-2.5 flex flex-col gap-1 items-start pointer-events-none">
+                        <!-- Product Visual Frame: Pedestal Arsitektural Bersih -->
+                        <div class="relative h-[220px] sm:h-[250px] bg-gradient-to-b from-[#F7F4EF]/80 via-[#FAF8F5] to-[#F0EAE1]/60 overflow-hidden flex items-end justify-center p-3 border-b border-neutral-100">
+                            
+                            <!-- Badges Top Left & Right -->
+                            <div class="absolute top-2.5 left-2.5 flex flex-col gap-1 items-start z-10 pointer-events-none">
                                 @if($product->is_preorder)
-                                    <span class="bg-[#BA805E] text-white text-[9px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full shadow-xs">
+                                    <span class="bg-[#BA805E] text-white text-[9px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full shadow-xs">
                                         Pre-Order
                                     </span>
                                 @elseif($index === 0)
-                                    <span class="bg-neutral-900 text-white text-[9px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full shadow-xs">
+                                    <span class="bg-neutral-900 text-white text-[9px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full shadow-xs">
                                         Terlaris
+                                    </span>
+                                @else
+                                    <span class="bg-neutral-800 text-white text-[9px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full shadow-xs">
+                                        Boutique
                                     </span>
                                 @endif
                             </div>
 
-                            <span class="absolute top-2.5 right-2.5 bg-white/95 text-neutral-800 text-[9px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full shadow-2xs border border-neutral-200/60 pointer-events-none">
-                                {{ ucfirst($product->category) }}
+                            <span class="absolute top-2.5 right-2.5 bg-white/95 text-[#A66747] text-[9px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full shadow-2xs border border-[#EADCCE] z-10 pointer-events-none">
+                                {{ $product->series?->name ?? ucfirst($product->category) }}
                             </span>
 
+                            <!-- Visual Anchor / Floor Contact Shadow untuk model busana -->
+                            @if(!$isScarf)
+                                <div class="absolute bottom-2.5 w-24 sm:w-28 h-2 bg-neutral-900/15 rounded-full filter blur-[2px] z-0"></div>
+                            @endif
+
+                            <!-- Product Visual Link & Image -->
+                            <a href="{{ route('shop.product', $product->slug) }}" class="block w-full h-full flex items-center justify-center relative z-10">
+                                <img 
+                                    src="{{ $product->primary_image }}" 
+                                    alt="{{ $product->name }} — Modest Fashion" 
+                                    loading="lazy" 
+                                    class="{{ $isScarf ? 'w-auto max-h-[85%] object-contain rounded-xl shadow-xs' : 'h-full w-auto max-w-full object-contain filter drop-shadow-sm' }} group-hover:scale-[1.04] transition-transform duration-500 block"
+                                >
+                            </a>
+
                             <!-- Desktop Quick View Button (hover reveal) -->
-                            <div class="absolute inset-x-3 bottom-3 hidden lg:flex justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                <a href="{{ route('shop.product', $product->slug) }}" class="min-h-[36px] w-full py-1.5 bg-white/95 hover:bg-neutral-950 hover:text-white text-neutral-900 text-xs font-bold rounded-xl shadow-md text-center transition-colors flex items-center justify-center">
-                                    Lihat Cepat
+                            <div class="absolute inset-x-3 bottom-3 hidden lg:flex justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-20">
+                                <a href="{{ route('shop.product', $product->slug) }}" class="min-h-[36px] w-full py-1.5 bg-neutral-950/90 hover:bg-[#BA805E] text-white text-xs font-bold rounded-xl shadow-md text-center transition-colors flex items-center justify-center backdrop-blur-xs">
+                                    Lihat Detail Busana
                                 </a>
                             </div>
                         </div>
 
-                        <!-- Card Content -->
+                        <!-- Card Content Section -->
                         <div class="p-3.5 sm:p-4 space-y-2">
-                            <!-- Color Swatches & Rating -->
+                            <!-- Real Dynamic SKU Swatches & Rating -->
                             <div class="flex items-center justify-between text-[11px]">
-                                <div class="flex items-center gap-1">
-                                    <span class="w-3 h-3 rounded-full bg-[#BA805E] border border-white shadow-xs"></span>
-                                    <span class="w-3 h-3 rounded-full bg-[#EADCCE] border border-white shadow-xs"></span>
-                                    <span class="w-3 h-3 rounded-full bg-neutral-800 border border-white shadow-xs"></span>
-                                    <span class="text-[10px] text-neutral-400 font-mono ml-0.5">+2</span>
+                                <div class="flex items-center gap-1.5">
+                                    @forelse($uniqueColors->take(4) as $col)
+                                        @php
+                                            $hex = $colorMap[$col] ?? '#BA805E';
+                                        @endphp
+                                        <span class="w-3.5 h-3.5 rounded-full border border-white shadow-2xs block" style="background-color: {{ $hex }};" title="{{ $col }}"></span>
+                                    @empty
+                                        <span class="w-3.5 h-3.5 rounded-full bg-[#BA805E] border border-white shadow-2xs"></span>
+                                    @endforelse
+                                    @if($uniqueColors->count() > 4)
+                                        <span class="text-[10px] text-neutral-400 font-mono ml-0.5">+{{ $uniqueColors->count() - 4 }}</span>
+                                    @endif
                                 </div>
                                 <div class="flex items-center text-amber-500 font-bold text-[11px] gap-0.5">
                                     <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
@@ -935,23 +1343,27 @@
                                 <a href="{{ route('shop.product', $product->slug) }}">{{ $product->name }}</a>
                             </h3>
 
-                            <!-- Short Description (Desktop only, max 1 line) -->
-                            <p class="hidden md:block text-xs text-neutral-500 line-clamp-1 font-light">
-                                {{ $product->material ?: 'Material rayon twill lembut & dingin' }}
+                            <!-- Short Material Description (Clean & Informative) -->
+                            <p class="text-xs text-neutral-500 line-clamp-1 font-light flex items-center gap-1">
+                                <span class="w-1.5 h-1.5 rounded-full bg-[#BA805E]/60 shrink-0"></span>
+                                <span class="truncate">{{ $product->material ?: 'Material sejuk & nyaman sepanjang hari' }}</span>
                             </p>
                         </div>
                     </div>
 
                     <!-- Price & Quick Add Button (Bottom row) -->
-                    <div class="px-3.5 pb-3.5 sm:px-4 sm:pb-4 pt-2 border-t border-neutral-100 flex items-center justify-between gap-2">
+                    <div class="px-3.5 pb-3.5 sm:px-4 sm:pb-4 pt-2.5 border-t border-neutral-100 flex items-center justify-between gap-2">
                         <div>
                             <span class="font-bold text-neutral-950 text-xs sm:text-sm block font-mono">
                                 {{ \App\Modules\Shared\Money\Money::format($product->min_price) }}
                             </span>
                             @if($product->is_preorder)
-                                <span class="text-[10px] text-[#BA805E] font-medium block">Lead time 7 hari</span>
+                                <span class="text-[10px] text-[#BA805E] font-medium block">Lead time 7-10 hari</span>
                             @else
-                                <span class="text-[10px] text-emerald-700 font-medium block">Stok Siap Kirim</span>
+                                <span class="text-[10px] text-emerald-700 font-medium block flex items-center gap-1">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
+                                    <span>Stok Siap Kirim</span>
+                                </span>
                             @endif
                         </div>
 
@@ -959,7 +1371,7 @@
                         <a 
                             href="{{ route('shop.product', $product->slug) }}" 
                             aria-label="Pilih varian {{ $product->name }}" 
-                            class="min-h-[44px] min-w-[44px] rounded-xl bg-neutral-100 hover:bg-[#BA805E] hover:text-white text-neutral-800 flex items-center justify-center transition-colors cursor-pointer"
+                            class="min-h-[44px] min-w-[44px] rounded-xl bg-neutral-100 hover:bg-[#BA805E] hover:text-white text-neutral-800 flex items-center justify-center transition-all cursor-pointer shadow-2xs hover:scale-105 active:scale-95"
                         >
                             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
                         </a>
