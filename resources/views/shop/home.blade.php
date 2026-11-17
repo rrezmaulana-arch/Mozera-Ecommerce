@@ -406,16 +406,16 @@
 
     </section>
 
-    <!-- 3-ANGLE IMMERSIVE POPUP MODAL ("Pencet pop-up sedikit, sekeliling hilang, ada gambar hadap samping dan belakang") -->
+    <!-- 3-ANGLE IMMERSIVE POPUP MODAL ("Pencet pop-up sedikit, sekeliling hilang, ada gambar hadap samping dan belakang jejer") -->
     <div 
         id="look-angles-modal" 
-        class="fixed inset-0 z-50 hidden items-center justify-center p-4 sm:p-6 bg-neutral-950/85 backdrop-blur-md transition-opacity duration-300"
+        class="fixed inset-0 z-50 hidden items-center justify-center p-3 sm:p-6 bg-neutral-950/85 backdrop-blur-md transition-opacity duration-300 overflow-y-auto"
         role="dialog" 
         aria-modal="true"
         onclick="if(event.target === this) closeAnglesModal()"
     >
         <div 
-            class="relative w-full max-w-4xl bg-[#FAF9F6] rounded-3xl border border-[#E8DEC9] shadow-2xl p-6 sm:p-8 flex flex-col items-center transition-all transform scale-95 opacity-0"
+            class="relative w-full max-w-5xl bg-[#FAF9F6] rounded-3xl border border-[#E8DEC9] shadow-2xl p-5 sm:p-8 flex flex-col items-center transition-all transform scale-95 opacity-0 my-auto"
             id="look-angles-content"
         >
             <!-- Close Button -->
@@ -429,7 +429,7 @@
             </button>
 
             <!-- Minimal Focused Header: Only Name & Series Type -->
-            <div class="text-center space-y-1 mb-6">
+            <div class="text-center space-y-1 mb-5 sm:mb-7">
                 <span id="angles-modal-badge" class="px-3 py-1 rounded-full text-[10px] font-mono uppercase tracking-widest font-bold bg-[#F5EFEB] text-[#BA805E] border border-[#EADCCE]">
                     Tipe B: Siluet Fringe
                 </span>
@@ -439,53 +439,59 @@
                 <p class="text-xs text-neutral-500 font-light">360° Multi-Angle Fitting View</p>
             </div>
 
-            <!-- 3-Angle Perspective Cards (Kiri: Hadap Samping, Tengah: Hadap Depan, Kanan: Hadap Belakang) -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 w-full items-end justify-center">
+            <!-- 3 Gambar Berjejer Bersih Tanpa Kotak-kotak (Natural Studio Lineup) -->
+            <div class="flex flex-row items-end justify-center gap-3 sm:gap-8 lg:gap-12 w-full overflow-x-auto py-2">
                 
                 <!-- Angle 1: Hadap Samping (Side View) -->
-                <div class="bg-gradient-to-b from-white/90 to-[#F2EAE0]/60 rounded-2xl border border-neutral-200/80 p-3 sm:p-4 flex flex-col items-center justify-end relative h-[280px] sm:h-[340px] md:h-[380px] shadow-xs group">
-                    <span class="absolute top-3 left-3 px-2.5 py-0.5 rounded-full bg-white/90 text-[9px] font-mono uppercase tracking-wider font-bold text-neutral-700 border border-neutral-200 shadow-2xs z-10">
+                <div class="flex-1 flex flex-col items-center justify-end relative min-w-[90px] max-w-[280px]">
+                    <span class="text-[9px] sm:text-[10px] font-mono uppercase tracking-wider font-bold text-neutral-500 mb-2 block">
                         Tampak Samping
                     </span>
-                    <img 
-                        id="angles-modal-side" 
-                        src="" 
-                        alt="Tampak Samping" 
-                        class="h-full w-auto max-w-full object-contain filter drop-shadow-md transition-transform duration-300 group-hover:scale-105"
-                    >
+                    <div class="h-[240px] sm:h-[350px] md:h-[420px] flex items-end justify-center">
+                        <img 
+                            id="angles-modal-side" 
+                            src="" 
+                            alt="Tampak Samping" 
+                            class="h-full w-auto max-w-full object-contain filter drop-shadow-md transition-transform duration-300 hover:scale-105"
+                        >
+                    </div>
                 </div>
 
-                <!-- Angle 2: Hadap Depan (Center Stage Front View - Highlighted) -->
-                <div class="bg-gradient-to-b from-[#F5EFEB] to-[#EAE0D4] rounded-2xl sm:rounded-3xl border-2 border-[#BA805E]/40 p-3 sm:p-4 flex flex-col items-center justify-end relative h-[310px] sm:h-[380px] md:h-[420px] shadow-lg group md:-translate-y-2">
-                    <span class="absolute top-3 left-3 px-3 py-0.5 rounded-full bg-neutral-950 text-white text-[9px] font-mono uppercase tracking-wider font-bold shadow-2xs z-10 flex items-center gap-1">
+                <!-- Angle 2: Hadap Depan (Center Front View) -->
+                <div class="flex-1 flex flex-col items-center justify-end relative min-w-[100px] max-w-[300px]">
+                    <span class="text-[9px] sm:text-[10px] font-mono uppercase tracking-wider font-bold text-[#BA805E] mb-2 block flex items-center gap-1">
                         <span class="w-1.5 h-1.5 rounded-full bg-[#BA805E]"></span>
                         <span>Tampak Depan</span>
                     </span>
-                    <img 
-                        id="angles-modal-front" 
-                        src="" 
-                        alt="Tampak Depan" 
-                        class="h-full w-auto max-w-full object-contain filter drop-shadow-lg transition-transform duration-300 group-hover:scale-105"
-                    >
+                    <div class="h-[250px] sm:h-[370px] md:h-[440px] flex items-end justify-center">
+                        <img 
+                            id="angles-modal-front" 
+                            src="" 
+                            alt="Tampak Depan" 
+                            class="h-full w-auto max-w-full object-contain filter drop-shadow-xl transition-transform duration-300 hover:scale-105"
+                        >
+                    </div>
                 </div>
 
                 <!-- Angle 3: Hadap Belakang (Back View) -->
-                <div class="bg-gradient-to-b from-white/90 to-[#F2EAE0]/60 rounded-2xl border border-neutral-200/80 p-3 sm:p-4 flex flex-col items-center justify-end relative h-[280px] sm:h-[340px] md:h-[380px] shadow-xs group">
-                    <span class="absolute top-3 left-3 px-2.5 py-0.5 rounded-full bg-white/90 text-[9px] font-mono uppercase tracking-wider font-bold text-neutral-700 border border-neutral-200 shadow-2xs z-10">
+                <div class="flex-1 flex flex-col items-center justify-end relative min-w-[90px] max-w-[280px]">
+                    <span class="text-[9px] sm:text-[10px] font-mono uppercase tracking-wider font-bold text-neutral-500 mb-2 block">
                         Tampak Belakang
                     </span>
-                    <img 
-                        id="angles-modal-back" 
-                        src="" 
-                        alt="Tampak Belakang" 
-                        class="h-full w-auto max-w-full object-contain filter drop-shadow-md transition-transform duration-300 group-hover:scale-105"
-                    >
+                    <div class="h-[240px] sm:h-[350px] md:h-[420px] flex items-end justify-center">
+                        <img 
+                            id="angles-modal-back" 
+                            src="" 
+                            alt="Tampak Belakang" 
+                            class="h-full w-auto max-w-full object-contain filter drop-shadow-md transition-transform duration-300 hover:scale-105"
+                        >
+                    </div>
                 </div>
 
             </div>
 
             <!-- Bottom Actions -->
-            <div class="mt-6 flex flex-wrap items-center justify-center gap-3">
+            <div class="mt-6 sm:mt-8 flex flex-wrap items-center justify-center gap-3">
                 <a 
                     id="angles-modal-link" 
                     href="#" 
@@ -498,6 +504,12 @@
                     type="button" 
                     onclick="closeAnglesModal()" 
                     class="min-h-[44px] px-6 py-2.5 rounded-full border border-neutral-300 hover:border-neutral-900 text-neutral-700 text-xs font-bold transition-colors cursor-pointer"
+                >
+                    Kembali ke Runway
+                </button>
+            </div>
+        </div>
+    </div>
                 >
                     Kembali ke Runway
     <!-- JAVASCRIPT: 0-LATENCY HARDWARE-ACCELERATED OPEN RUNWAY -->
