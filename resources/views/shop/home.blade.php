@@ -4,7 +4,7 @@
 @section('meta_description', 'Koleksi modest fashion wanita Indonesia: outerwear santun, voal scarf ultrafine, dan tiered dress casual-elegan. #everydaymozera')
 
 @section('content')
-<div class="space-y-12 sm:space-y-20 lg:space-y-24">
+<div class="space-y-10 sm:space-y-14 lg:space-y-16">
 
     <!-- HERO: TRY THE LOOK — INTERACTIVE VIRTUAL STYLING RUNWAY -->
     <style>
@@ -164,16 +164,6 @@
             </div>
         </div>
 
-    </section>
-
-    <!-- SOFT SERVICE STRIP -->
-    <section class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="bg-[#F6F2EC] border border-[#EAE1D5] rounded-2xl px-5 py-4 grid grid-cols-2 md:grid-cols-4 gap-3 text-xs text-neutral-700 text-center md:text-left">
-            <div class="font-medium text-neutral-900">Ready Stock Surabaya</div>
-            <div class="font-medium text-neutral-900">Bahan Rayon &amp; Voal Sejuk</div>
-            <div><a href="{{ route('shop.home') }}#fit-helper" class="hover:text-[#BA805E] transition-colors font-medium text-neutral-900">Panduan Panjang Outer &rarr;</a></div>
-            <div class="md:text-right"><a href="{{ route('shop.returns') }}" class="hover:text-[#BA805E] transition-colors font-medium text-neutral-900">Garansi Tukar Ukuran 7 Hari &rarr;</a></div>
-        </div>
     </section>
 
     <!-- SECTION E: KARTU SERI (Atelier Editorial Showcase) -->
@@ -469,6 +459,82 @@
         })();
     </script>
 
+    <!-- SECTION F: KOLEKSI TERPOPULER (Fluid Soft Editorial Grid) -->
+    <section class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-end justify-between mb-6 pb-3 border-b border-[#EAE1D5]">
+            <div>
+                <span class="text-[11px] uppercase tracking-[0.22em] text-[#BA805E] font-semibold">Pilihan Favorit</span>
+                <h2 class="font-serif text-[clamp(1.5rem,3.5vw,2.25rem)] font-bold text-neutral-950 mt-0.5">
+                    Koleksi Terpopuler
+                </h2>
+            </div>
+            <a href="{{ route('shop.catalog') }}" class="text-xs font-semibold text-neutral-800 hover:text-[#BA805E] transition-colors pb-0.5 border-b border-neutral-800 hover:border-[#BA805E] shrink-0">
+                Lihat Semua &rarr;
+            </a>
+        </div>
+
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+            @foreach($featuredProducts as $product)
+                @php
+                    $colorMap = [
+                        'Terracotta' => '#BA805E',
+                        'Sage Green' => '#8C9A86',
+                        'Indigo Navy' => '#2D3A4B',
+                        'Heritage Parang' => '#6A4A33',
+                        'Dusty Pink' => '#D8A49B',
+                        'Olive Ash' => '#878C74',
+                        'Ivory Sand' => '#DCD3C5',
+                        'Burgundy Wine' => '#691F2B',
+                        'Midnight Indigo' => '#1F2430',
+                    ];
+                    $uniqueColors = $product->skus->pluck('color')->filter()->unique()->values();
+                    $isScarf = str_contains(strtolower($product->slug), 'scarf');
+                @endphp
+                <a href="{{ route('shop.product', $product->slug) }}" class="group block">
+                    <!-- Soft Warm Editorial Frame -->
+                    <div class="relative h-[240px] sm:h-[290px] rounded-2xl bg-gradient-to-b from-[#FAF8F5] to-[#F2ECE3] border border-[#EDE6DC] group-hover:border-[#D9C7B4] group-hover:shadow-md overflow-hidden flex items-center justify-center p-4 transition-all duration-300">
+                        @if($product->is_preorder)
+                            <span class="absolute top-3 left-3 text-[9px] uppercase tracking-[0.14em] font-semibold text-[#8A4F35] bg-white/90 px-2.5 py-0.5 rounded-full border border-[#E8DEC9] z-10">
+                                Pre-Order
+                            </span>
+                        @endif
+
+                        <img
+                            src="{{ $product->primary_image }}"
+                            alt="{{ $product->name }}"
+                            loading="lazy"
+                            class="{{ $isScarf ? 'w-auto max-h-[82%] object-contain rounded-xl' : 'h-full w-auto max-w-full object-contain' }} group-hover:scale-[1.04] transition-transform duration-500 block"
+                        >
+                    </div>
+
+                    <!-- Clean Soft Caption -->
+                    <div class="pt-3 px-0.5 space-y-1">
+                        <div class="flex items-center justify-between gap-2">
+                            <span class="text-[10px] uppercase tracking-wider text-neutral-400">
+                                {{ $product->series?->name ?? ucfirst($product->category) }}
+                            </span>
+                            @if($uniqueColors->count() > 0)
+                                <div class="flex items-center gap-1">
+                                    @foreach($uniqueColors->take(4) as $col)
+                                        <span class="w-2.5 h-2.5 rounded-full border border-neutral-300/60 block" style="background-color: {{ $colorMap[$col] ?? '#BA805E' }};" title="{{ $col }}"></span>
+                                    @endforeach
+                                </div>
+                            @endif
+                        </div>
+
+                        <h3 class="font-serif text-sm sm:text-base font-medium text-neutral-950 group-hover:text-[#BA805E] transition-colors leading-snug line-clamp-1">
+                            {{ $product->name }}
+                        </h3>
+
+                        <p class="text-xs sm:text-sm text-neutral-700">
+                            {{ \App\Modules\Shared\Money\Money::format($product->min_price) }}
+                        </p>
+                    </div>
+                </a>
+            @endforeach
+        </div>
+    </section>
+
     <!-- G2: PANDUAN PANJANG OUTER (Soft Modern Luxury Size Guide) -->
     <section id="fit-helper" class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-24">
         <div class="bg-white rounded-3xl border border-[#EAE1D5] p-6 sm:p-9 shadow-2xs">
@@ -580,82 +646,6 @@
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <!-- SECTION F: KOLEKSI TERPOPULER (Fluid Soft Editorial Grid) -->
-    <section class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-end justify-between mb-6 pb-3 border-b border-[#EAE1D5]">
-            <div>
-                <span class="text-[11px] uppercase tracking-[0.22em] text-[#BA805E] font-semibold">Pilihan Favorit</span>
-                <h2 class="font-serif text-[clamp(1.5rem,3.5vw,2.25rem)] font-bold text-neutral-950 mt-0.5">
-                    Koleksi Terpopuler
-                </h2>
-            </div>
-            <a href="{{ route('shop.catalog') }}" class="text-xs font-semibold text-neutral-800 hover:text-[#BA805E] transition-colors pb-0.5 border-b border-neutral-800 hover:border-[#BA805E] shrink-0">
-                Lihat Semua &rarr;
-            </a>
-        </div>
-
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
-            @foreach($featuredProducts as $product)
-                @php
-                    $colorMap = [
-                        'Terracotta' => '#BA805E',
-                        'Sage Green' => '#8C9A86',
-                        'Indigo Navy' => '#2D3A4B',
-                        'Heritage Parang' => '#6A4A33',
-                        'Dusty Pink' => '#D8A49B',
-                        'Olive Ash' => '#878C74',
-                        'Ivory Sand' => '#DCD3C5',
-                        'Burgundy Wine' => '#691F2B',
-                        'Midnight Indigo' => '#1F2430',
-                    ];
-                    $uniqueColors = $product->skus->pluck('color')->filter()->unique()->values();
-                    $isScarf = str_contains(strtolower($product->slug), 'scarf');
-                @endphp
-                <a href="{{ route('shop.product', $product->slug) }}" class="group block">
-                    <!-- Soft Warm Editorial Frame -->
-                    <div class="relative h-[240px] sm:h-[290px] rounded-2xl bg-gradient-to-b from-[#FAF8F5] to-[#F2ECE3] border border-[#EDE6DC] group-hover:border-[#D9C7B4] group-hover:shadow-md overflow-hidden flex items-center justify-center p-4 transition-all duration-300">
-                        @if($product->is_preorder)
-                            <span class="absolute top-3 left-3 text-[9px] uppercase tracking-[0.14em] font-semibold text-[#8A4F35] bg-white/90 px-2.5 py-0.5 rounded-full border border-[#E8DEC9] z-10">
-                                Pre-Order
-                            </span>
-                        @endif
-
-                        <img
-                            src="{{ $product->primary_image }}"
-                            alt="{{ $product->name }}"
-                            loading="lazy"
-                            class="{{ $isScarf ? 'w-auto max-h-[82%] object-contain rounded-xl' : 'h-full w-auto max-w-full object-contain' }} group-hover:scale-[1.04] transition-transform duration-500 block"
-                        >
-                    </div>
-
-                    <!-- Clean Soft Caption -->
-                    <div class="pt-3 px-0.5 space-y-1">
-                        <div class="flex items-center justify-between gap-2">
-                            <span class="text-[10px] uppercase tracking-wider text-neutral-400">
-                                {{ $product->series?->name ?? ucfirst($product->category) }}
-                            </span>
-                            @if($uniqueColors->count() > 0)
-                                <div class="flex items-center gap-1">
-                                    @foreach($uniqueColors->take(4) as $col)
-                                        <span class="w-2.5 h-2.5 rounded-full border border-neutral-300/60 block" style="background-color: {{ $colorMap[$col] ?? '#BA805E' }};" title="{{ $col }}"></span>
-                                    @endforeach
-                                </div>
-                            @endif
-                        </div>
-
-                        <h3 class="font-serif text-sm sm:text-base font-medium text-neutral-950 group-hover:text-[#BA805E] transition-colors leading-snug line-clamp-1">
-                            {{ $product->name }}
-                        </h3>
-
-                        <p class="text-xs sm:text-sm text-neutral-700">
-                            {{ \App\Modules\Shared\Money\Money::format($product->min_price) }}
-                        </p>
-                    </div>
-                </a>
-            @endforeach
         </div>
     </section>
 
