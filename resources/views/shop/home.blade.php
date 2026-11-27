@@ -6,86 +6,186 @@
 @section('content')
 <div class="space-y-12 sm:space-y-20 lg:space-y-24">
 
-    <!-- HERO SECTION (Editorial Minimalist) -->
-    <section class="w-full relative bg-[#FAF9F6] border-b border-neutral-200/70 py-10 lg:py-16">
-        <div class="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+    <!-- HERO: TRY THE LOOK — INTERACTIVE VIRTUAL STYLING RUNWAY -->
+    <style>
+        /* Smooth Haute-Couture Stage Transitions */
+        .runway-model-item {
+            transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1), opacity 450ms ease-out !important;
+            will-change: transform, opacity;
+        }
+        .runway-angle-wrap {
+            transition: transform 550ms cubic-bezier(0.22, 1, 0.36, 1), opacity 400ms ease-out !important;
+            will-change: transform, opacity;
+        }
+        /* Saat 3 sudut pandang aktif, sembunyikan model lain secara halus tanpa lag repaint */
+        #open-runway-stage.angles-open .runway-model-item:not(.active-expanded) {
+            opacity: 0 !important;
+            pointer-events: none !important;
+            transform: scale(0.65) !important;
+        }
+    </style>
+    <section id="try-the-look" class="w-full relative pt-6 pb-10 lg:pt-8 lg:pb-12 bg-gradient-to-b from-[#FAF9F6] via-[#FAF8F4] to-[#FAF9F6] border-b border-[#EAE1D5]/70 select-none scroll-mt-16 overflow-hidden">
+        
+        <!-- Hero Runway Header -->
+        <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 text-center shrink-0 mb-3">
+            <span class="text-[10px] sm:text-[11px] uppercase tracking-[0.28em] font-semibold text-[#BA805E] block">
+                Virtual Styling Runway &bull; Koleksi Modest MOZÉRA
+            </span>
+            <h1 class="font-serif text-[clamp(2rem,4.5vw,3.2rem)] font-bold text-neutral-950 mt-1 tracking-tight leading-tight">
+                Try The <span class="italic font-normal text-[#BA805E]">Look.</span>
+            </h1>
+            <p class="text-xs sm:text-sm text-neutral-500 font-light mt-1 max-w-lg mx-auto">
+                Geser untuk memilih busana atau klik model di tengah untuk melihat 3 sudut pandang fitting.
+            </p>
+        </div>
 
-                <!-- Left Text Column -->
-                <div class="lg:col-span-7 space-y-5 text-center lg:text-left">
-                    <p class="text-[11px] uppercase tracking-[0.25em] text-[#BA805E] font-semibold">
-                        Koleksi Modest Atasan &amp; Outerwear
-                    </p>
+        <!-- FULL RUNWAY STAGE -->
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col items-center justify-center my-auto">
+            
+            <!-- Models Runway Stage -->
+            <div class="relative w-full h-[330px] sm:h-[410px] md:h-[470px] lg:h-[520px] flex items-center justify-center pb-4 sm:pb-5 overflow-hidden" id="open-runway-stage">
+                
+                <!-- Soft Architectural Arch Backdrop -->
+                <div class="absolute inset-x-3 sm:inset-x-10 lg:inset-x-20 top-1.5 sm:top-2 bottom-3 sm:bottom-5 rounded-t-[130px] sm:rounded-t-[190px] lg:rounded-t-[240px] bg-gradient-to-b from-[#F3ECE2]/90 via-[#FAF7F2]/50 to-transparent border-t border-x border-[#E8DEC9]/70 pointer-events-none -z-0"></div>
 
-                    <h1 class="font-serif text-[clamp(2.2rem,5vw,3.6rem)] font-bold tracking-tight text-neutral-950 leading-[1.12]">
-                        Outer yang <span class="font-serif italic font-normal text-[#BA805E]">Jatuh Anggun</span>, dari Kuliah sampai Kondangan.
-                    </h1>
+                @foreach($curatedLooks as $idx => $look)
+                    <div 
+                        id="runway-model-{{ $idx }}" 
+                        onclick="onModelClick({{ $idx }})" 
+                        class="runway-model-item absolute bottom-2 sm:bottom-3 flex flex-col items-center justify-end cursor-pointer z-10 group"
+                    >
+                        <!-- Cutout Model Image -->
+                        <div class="relative h-[255px] sm:h-[335px] md:h-[395px] lg:h-[460px] flex items-end justify-center">
+                            <!-- Side Angle Left -->
+                            <div id="angle-side-wrap-{{ $idx }}" class="runway-angle-wrap absolute bottom-0 -left-16 sm:-left-28 md:-left-36 lg:-left-48 opacity-0 scale-90 -translate-x-6 z-0 flex flex-col items-center pointer-events-none">
+                                <span class="text-[9px] uppercase tracking-wider font-semibold text-neutral-700 bg-white/95 backdrop-blur-xs px-3 py-0.5 rounded-full border border-[#E8DEC9] shadow-2xs mb-1">
+                                    Tampak Samping
+                                </span>
+                                <img 
+                                    id="angle-side-{{ $idx }}"
+                                    src="{{ $look['side_image'] }}" 
+                                    alt="Tampak Samping" 
+                                    class="h-[235px] sm:h-[310px] md:h-[365px] lg:h-[425px] w-auto max-w-none object-contain select-none"
+                                >
+                            </div>
 
-                    <p class="text-neutral-600 text-[15px] sm:text-base leading-relaxed max-w-lg mx-auto lg:mx-0 font-light">
-                        Potongan santun berbahan rayon twill dan linen pilihan. Nyaman dipakai seharian tanpa khawatir kusut.
-                    </p>
+                            <!-- Center Front Model -->
+                            <div class="flex flex-col items-center z-10">
+                                <span id="angle-front-tag-{{ $idx }}" class="opacity-0 transition-opacity duration-300 text-[9px] uppercase tracking-wider font-semibold text-[#BA805E] bg-white/95 backdrop-blur-xs px-3 py-0.5 rounded-full border border-[#EADCCE] shadow-2xs mb-1 flex items-center gap-1">
+                                    <span class="w-1.5 h-1.5 rounded-full bg-[#BA805E]"></span>
+                                    <span>Tampak Depan</span>
+                                </span>
+                                <img 
+                                    id="angle-front-{{ $idx }}"
+                                    src="{{ $look['model_image'] }}" 
+                                    alt="{{ $look['title'] }} — Model Modest MOZÉRA" 
+                                    class="h-[255px] sm:h-[335px] md:h-[395px] lg:h-[460px] w-auto max-w-none object-contain select-none pointer-events-none"
+                                    loading="eager"
+                                    style="image-rendering: auto; -webkit-backface-visibility: hidden; transform: translateZ(0);"
+                                >
+                            </div>
 
-                    <!-- CTAs -->
-                    <div class="pt-3 flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
-                        <a href="{{ route('shop.catalog') }}" class="w-full sm:w-auto min-h-[46px] px-8 py-3 bg-neutral-950 hover:bg-[#BA805E] text-white text-xs font-semibold uppercase tracking-[0.18em] transition-colors text-center flex items-center justify-center">
-                            Jelajahi Koleksi
-                        </a>
-                        <a href="#try-the-look" class="min-h-[46px] px-4 py-3 text-xs font-semibold uppercase tracking-[0.15em] text-neutral-700 hover:text-neutral-950 border-b border-neutral-300 hover:border-neutral-950 transition-colors flex items-center justify-center gap-2">
-                            <span>Try The Look</span>
-                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
-                        </a>
+                            <!-- Back Angle Right -->
+                            <div id="angle-back-wrap-{{ $idx }}" class="runway-angle-wrap absolute bottom-0 -right-16 sm:-right-28 md:-right-36 lg:-right-48 opacity-0 scale-90 translate-x-6 z-0 flex flex-col items-center pointer-events-none">
+                                <span class="text-[9px] uppercase tracking-wider font-semibold text-neutral-700 bg-white/95 backdrop-blur-xs px-3 py-0.5 rounded-full border border-[#E8DEC9] shadow-2xs mb-1">
+                                    Tampak Belakang
+                                </span>
+                                <img 
+                                    id="angle-back-{{ $idx }}"
+                                    src="{{ $look['back_image'] }}" 
+                                    alt="Tampak Belakang" 
+                                    class="h-[235px] sm:h-[310px] md:h-[365px] lg:h-[425px] w-auto max-w-none object-contain select-none"
+                                >
+                            </div>
+                        </div>
+
+                        <!-- Micro Hint on Active Center Model -->
+                        <div class="active-angle-hint opacity-0 transition-opacity duration-300 absolute -top-1 pointer-events-none">
+                            <span class="px-3 py-1 rounded-full bg-neutral-900/80 backdrop-blur-sm text-[9px] text-[#F2E6D8] tracking-wider flex items-center gap-1.5 shadow-sm">
+                                <svg class="w-3 h-3 text-[#BA805E]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
+                                <span id="angle-hint-text-{{ $idx }}">
+                                    Klik Foto: 3 Sudut Fitting
+                                </span>
+                            </span>
+                        </div>
+
+                        <!-- Hidden Form for bundle cart test -->
+                        <form action="{{ route('shop.cart.add-bundle') }}" method="POST" class="hidden">
+                            @csrf
+                            <input type="hidden" name="sku_ids[]" value="{{ $look['hero_sku']?->id }}">
+                            <input type="hidden" name="sku_ids[]" value="{{ $look['secondary_sku']?->id }}">
+                            <input type="hidden" name="bundle_title" value="Set {{ $look['title'] }}">
+                            <button type="submit" class="hidden">Beli 1 Look Lengkap</button>
+                        </form>
                     </div>
-                </div>
+                @endforeach
 
-                <!-- Right Fashion Visual Column -->
-                <div class="lg:col-span-5 relative flex flex-col items-center">
-                    <a href="{{ route('shop.product', 'puspa-floral-outer-kimono') }}" class="group block w-full max-w-[340px]">
-                        <div class="relative w-full h-[360px] sm:h-[430px] bg-[#F4F1EC] flex items-end justify-center pt-6 overflow-hidden">
-                            <img
-                                src="/images/models/look-1-terracotta.png"
-                                alt="PUSPA Floral Outer Kimono MOZÉRA"
-                                class="h-[92%] w-auto object-contain select-none transition-transform duration-500 group-hover:scale-[1.03]"
-                            >
-                        </div>
-                        <div class="pt-3 flex items-center justify-between text-xs border-b border-neutral-200 pb-2.5">
-                            <span class="font-medium text-neutral-900 group-hover:text-[#BA805E] transition-colors">PUSPA Floral Outer Kimono</span>
-                            <span class="text-neutral-600">Rp 389.000 &rarr;</span>
-                        </div>
-                    </a>
-                </div>
+                <!-- Smooth Round Arrow Controls -->
+                <button 
+                    type="button" 
+                    onclick="prevLook()" 
+                    aria-label="Look Sebelumnya" 
+                    class="flex absolute left-1 sm:left-3 xl:left-6 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white/95 hover:bg-neutral-950 hover:text-white text-neutral-800 shadow-md border border-[#E8DEC9] backdrop-blur-md items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer z-30"
+                >
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+                </button>
+                <button 
+                    type="button" 
+                    onclick="nextLook()" 
+                    aria-label="Look Berikutnya" 
+                    class="flex absolute right-1 sm:right-3 xl:right-6 top-1/2 -translate-y-1/2 w-9 h-9 sm:w-11 sm:h-11 rounded-full bg-white/95 hover:bg-neutral-950 hover:text-white text-neutral-800 shadow-md border border-[#E8DEC9] backdrop-blur-md items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer z-30"
+                >
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+                </button>
 
+            </div>
+
+        </div>
+
+        <!-- ACTIVE LOOK DETAILS & SOFT PILL CTA -->
+        <div class="max-w-2xl mx-auto px-4 mt-4 flex flex-col items-center justify-center text-center z-20">
+            <span id="runway-look-type" class="text-[10px] uppercase tracking-[0.22em] font-semibold text-[#BA805E]">
+                {{ $curatedLooks[0]['type_label'] }}
+            </span>
+            <h2 id="runway-look-title" class="font-serif text-xl sm:text-2xl font-bold text-neutral-950 mt-1">
+                {{ $curatedLooks[0]['title'] }}
+            </h2>
+            <p id="runway-look-vibe" class="text-xs sm:text-sm text-neutral-600 max-w-lg mx-auto font-light leading-relaxed mt-1.5 mb-5">
+                {{ $curatedLooks[0]['vibe'] }}
+            </p>
+            <div class="flex flex-wrap items-center justify-center gap-3">
+                <a id="runway-look-btn" href="{{ $curatedLooks[0]['product_url'] }}" class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.14em] text-white bg-neutral-950 hover:bg-[#BA805E] px-7 py-3 rounded-full shadow-sm hover:shadow-md transition-all duration-300 cursor-pointer">
+                    <span>Lihat Detail Busana</span>
+                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+                </a>
+                <a href="{{ route('shop.catalog') }}" class="inline-flex items-center gap-1.5 text-xs font-semibold text-neutral-700 hover:text-[#BA805E] px-5 py-3 rounded-full bg-white border border-[#E5DCCF] hover:border-[#BA805E] transition-all duration-300">
+                    <span>Jelajahi Katalog</span>
+                </a>
             </div>
         </div>
+
     </section>
 
-    <!-- QUIET EDITORIAL SERVICE STRIP -->
-    <section class="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 py-4 border-y border-neutral-200/80 text-xs text-neutral-600">
-            <div class="flex items-center justify-center md:justify-start gap-2">
-                <span class="font-medium text-neutral-900">Ready Stock Surabaya</span>
-            </div>
-            <div class="flex items-center justify-center md:justify-start gap-2">
-                <span class="font-medium text-neutral-900">Bahan Rayon &amp; Voal Sejuk</span>
-            </div>
-            <div class="flex items-center justify-center md:justify-start gap-2">
-                <a href="{{ route('shop.home') }}#fit-helper" class="hover:text-[#BA805E] transition-colors font-medium text-neutral-900">Panduan Panjang Outer &rarr;</a>
-            </div>
-            <div class="flex items-center justify-center md:justify-end gap-2">
-                <a href="{{ route('shop.returns') }}" class="hover:text-[#BA805E] transition-colors font-medium text-neutral-900">Garansi Tukar Ukuran 7 Hari &rarr;</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- SECTION E: KARTU SERI (Atelier Editorial Showcase - Bersih, Mewah, & Teratur) -->
+    <!-- SOFT SERVICE STRIP -->
     <section class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-end justify-between mb-6 pb-3 border-b border-neutral-200">
+        <div class="bg-[#F6F2EC] border border-[#EAE1D5] rounded-2xl px-5 py-4 grid grid-cols-2 md:grid-cols-4 gap-3 text-xs text-neutral-700 text-center md:text-left">
+            <div class="font-medium text-neutral-900">Ready Stock Surabaya</div>
+            <div class="font-medium text-neutral-900">Bahan Rayon &amp; Voal Sejuk</div>
+            <div><a href="{{ route('shop.home') }}#fit-helper" class="hover:text-[#BA805E] transition-colors font-medium text-neutral-900">Panduan Panjang Outer &rarr;</a></div>
+            <div class="md:text-right"><a href="{{ route('shop.returns') }}" class="hover:text-[#BA805E] transition-colors font-medium text-neutral-900">Garansi Tukar Ukuran 7 Hari &rarr;</a></div>
+        </div>
+    </section>
+
+    <!-- SECTION E: KARTU SERI (Atelier Editorial Showcase) -->
+    <section class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-end justify-between mb-6 pb-3 border-b border-[#EAE1D5]">
             <div>
-                <span class="text-[11px] uppercase tracking-[0.25em] text-[#BA805E] font-bold">Koleksi Tematik</span>
-                <h2 class="font-serif text-[clamp(1.5rem,3.5vw,2.25rem)] font-bold text-neutral-950 mt-1">
-                    Seri & Rilisan Eksklusif
+                <span class="text-[11px] uppercase tracking-[0.22em] text-[#BA805E] font-semibold">Koleksi Tematik</span>
+                <h2 class="font-serif text-[clamp(1.5rem,3.5vw,2.25rem)] font-bold text-neutral-950 mt-0.5">
+                    Seri &amp; Rilisan Eksklusif
                 </h2>
             </div>
-            <a href="{{ route('shop.catalog') }}" class="text-xs font-bold text-neutral-900 hover:text-[#BA805E] transition-colors pb-0.5 border-b border-neutral-900 hover:border-[#BA805E] shrink-0">
+            <a href="{{ route('shop.catalog') }}" class="text-xs font-semibold text-neutral-800 hover:text-[#BA805E] transition-colors pb-0.5 border-b border-neutral-800 hover:border-[#BA805E] shrink-0">
                 Semua Seri &rarr;
             </a>
         </div>
@@ -101,7 +201,7 @@
                     href="{{ route('shop.catalog', ['series' => $s->code]) }}" 
                     class="group relative w-[75vw] max-w-[290px] shrink-0 snap-center sm:w-full sm:max-w-none rounded-2xl sm:rounded-3xl overflow-hidden block shadow-xs hover:shadow-xl transition-all duration-500 bg-white border border-[#E8DEC9] hover:-translate-y-1 flex flex-col justify-between"
                 >
-                    <!-- Visual Model Frame (Atas: Foto Model Jernih & Kompak, Tanpa Memanjang Berlebih) -->
+                    <!-- Visual Model Frame -->
                     <div class="relative h-[220px] sm:h-[250px] lg:h-[270px] bg-gradient-to-b from-[#FAF8F5] to-[#F2EAE0] flex items-center justify-center p-3 sm:p-4 overflow-hidden">
                         <!-- Subtle Background Arch Motif -->
                         <div class="absolute inset-x-8 top-3 bottom-0 rounded-t-full bg-white/50 border-t border-x border-white/80 pointer-events-none group-hover:scale-105 transition-transform duration-500"></div>
@@ -121,12 +221,12 @@
                             src="{{ $s->banner_image }}" 
                             alt="{{ $s->name }} — Modest Collection" 
                             loading="lazy" 
-                            class="h-full w-auto max-w-full object-contain filter drop-shadow-md group-hover:scale-105 transition-transform duration-700 block relative z-0"
+                            class="h-full w-auto max-w-full object-contain group-hover:scale-105 transition-transform duration-700 block relative z-0"
                         >
                     </div>
 
-                    <!-- Editorial Content Section (Bawah: Ringkas, Proporsional & Elegan) -->
-                    <div class="p-4 sm:p-4.5 bg-white space-y-1.5 flex-1 flex flex-col justify-between border-t border-[#F2ECE3]">
+                    <!-- Editorial Content Section -->
+                    <div class="p-4 sm:p-5 bg-white space-y-1.5 flex-1 flex flex-col justify-between border-t border-[#F2ECE3]">
                         <div class="space-y-1">
                             <div class="flex items-center justify-between text-[10px] font-mono font-bold text-[#BA805E] uppercase tracking-wider">
                                 <span>Koleksi {{ $koleksiNum }}</span>
@@ -150,164 +250,6 @@
                 </a>
             @endforeach
         </div>
-    </section>
-
-    <!-- G1: VIEWPORT-FITTED OPEN RUNWAY ("Try The Look") -->
-    <style>
-        /* Smooth Haute-Couture Stage Transitions */
-        .runway-model-item {
-            transition: transform 600ms cubic-bezier(0.22, 1, 0.36, 1), opacity 450ms ease-out !important;
-            will-change: transform, opacity;
-        }
-        .runway-angle-wrap {
-            transition: transform 550ms cubic-bezier(0.22, 1, 0.36, 1), opacity 400ms ease-out !important;
-            will-change: transform, opacity;
-        }
-        /* Saat 3 sudut pandang aktif, sembunyikan model lain secara halus tanpa lag repaint */
-        #open-runway-stage.angles-open .runway-model-item:not(.active-expanded) {
-            opacity: 0 !important;
-            pointer-events: none !important;
-            transform: scale(0.65) !important;
-        }
-    </style>
-    <section id="try-the-look" class="w-full relative py-6 lg:py-8 bg-[#FAF9F6] border-y border-neutral-200/50 select-none scroll-mt-16 overflow-hidden">
-        
-        <!-- Header: Minimal Luxury Editorial Title (Compact, Centered) -->
-        <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 text-center shrink-0 mb-2">
-            <span class="text-[10px] uppercase tracking-[0.3em] font-bold text-[#BA805E] block">
-                Virtual Styling Runway • Koleksi Lengkap
-            </span>
-            <h2 class="font-serif text-[clamp(1.6rem,3.5vw,2.5rem)] font-bold text-neutral-950 mt-0.5 tracking-tight">
-                Try The Look.
-            </h2>
-            <p class="text-xs sm:text-sm text-neutral-500 font-light mt-0.5 max-w-xl mx-auto">
-                Eksplorasi padu-padan atasan santun MOZÉRA. Klik foto model untuk membuka 3 sudut pandang fitting secara utuh.
-            </p>
-        </div>
-
-        <!-- FULL RUNWAY STAGE (Center Stage Runway, Zero Price Clutter, Fluid Scaling) -->
-        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 w-full flex flex-col items-center justify-center my-auto">
-            
-            <!-- Models Runway Stage (Wide Center Runway, Fluid Responsive Height) -->
-            <div class="relative w-full h-[320px] sm:h-[400px] md:h-[460px] lg:h-[520px] flex items-center justify-center pb-4 sm:pb-5 overflow-hidden" id="open-runway-stage">
-                
-                <!-- Couture Runway Architectural Arch Backdrop (Stage Depth) -->
-                <div class="absolute inset-x-3 sm:inset-x-10 lg:inset-x-20 top-1.5 sm:top-2 bottom-3 sm:bottom-5 rounded-t-[120px] sm:rounded-t-[180px] lg:rounded-t-[230px] bg-gradient-to-b from-[#F2ECE3]/85 via-[#FAF7F2]/45 to-transparent border-t border-x border-[#E6DAC9]/70 shadow-[inset_0_4px_24px_rgba(230,218,201,0.35)] pointer-events-none -z-0"></div>
-
-                <!-- Runway Spotlight Floor Glow -->
-                <div class="absolute bottom-3 sm:bottom-4 w-[240px] sm:w-[420px] lg:w-[620px] h-10 sm:h-14 bg-gradient-to-r from-transparent via-[#E8DEC9]/75 to-transparent rounded-[100%] filter blur-md sm:blur-lg pointer-events-none -z-0"></div>
-
-                @foreach($curatedLooks as $idx => $look)
-                    <div 
-                        id="runway-model-{{ $idx }}" 
-                        onclick="onModelClick({{ $idx }})" 
-                        class="runway-model-item absolute bottom-2 sm:bottom-3 flex flex-col items-center justify-end cursor-pointer z-10 group"
-                    >
-                        <!-- Cutout Model Image: Model Responsif -->
-                        <div class="relative h-[250px] sm:h-[330px] md:h-[390px] lg:h-[460px] flex items-end justify-center">
-                            <!-- Side Angle Left (Hadap Samping) -->
-                            <div id="angle-side-wrap-{{ $idx }}" class="runway-angle-wrap absolute bottom-0 -left-16 sm:-left-28 md:-left-36 lg:-left-48 opacity-0 scale-90 -translate-x-6 z-0 flex flex-col items-center pointer-events-none">
-                                <span class="text-[9px] font-mono uppercase tracking-wider font-bold text-neutral-800 bg-white/95 backdrop-blur-xs px-3 py-0.5 rounded-full border border-neutral-200/80 shadow-2xs mb-1">
-                                    Tampak Samping
-                                </span>
-                                <img 
-                                    id="angle-side-{{ $idx }}"
-                                    src="{{ $look['side_image'] }}" 
-                                    alt="Tampak Samping" 
-                                    class="h-[230px] sm:h-[305px] md:h-[360px] lg:h-[425px] w-auto max-w-none object-contain select-none"
-                                >
-                            </div>
-
-                            <!-- Center Front Model -->
-                            <div class="flex flex-col items-center z-10">
-                                <span id="angle-front-tag-{{ $idx }}" class="opacity-0 transition-opacity duration-300 text-[9px] font-mono uppercase tracking-wider font-bold text-[#BA805E] bg-white/95 backdrop-blur-xs px-3 py-0.5 rounded-full border border-[#EADCCE] shadow-2xs mb-1 flex items-center gap-1">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-[#BA805E]"></span>
-                                    <span>Tampak Depan</span>
-                                </span>
-                                <img 
-                                    id="angle-front-{{ $idx }}"
-                                    src="{{ $look['model_image'] }}" 
-                                    alt="{{ $look['title'] }} — Model Modest MOZÉRA" 
-                                    class="h-[250px] sm:h-[330px] md:h-[390px] lg:h-[460px] w-auto max-w-none object-contain select-none pointer-events-none"
-                                    loading="eager"
-                                    style="image-rendering: auto; -webkit-backface-visibility: hidden; transform: translateZ(0);"
-                                >
-                            </div>
-
-                            <!-- Back Angle Right (Hadap Belakang) -->
-                            <div id="angle-back-wrap-{{ $idx }}" class="runway-angle-wrap absolute bottom-0 -right-16 sm:-right-28 md:-right-36 lg:-right-48 opacity-0 scale-90 translate-x-6 z-0 flex flex-col items-center pointer-events-none">
-                                <span class="text-[9px] font-mono uppercase tracking-wider font-bold text-neutral-800 bg-white/95 backdrop-blur-xs px-3 py-0.5 rounded-full border border-neutral-200/80 shadow-2xs mb-1">
-                                    Tampak Belakang
-                                </span>
-                                <img 
-                                    id="angle-back-{{ $idx }}"
-                                    src="{{ $look['back_image'] }}" 
-                                    alt="Tampak Belakang" 
-                                    class="h-[230px] sm:h-[305px] md:h-[360px] lg:h-[425px] w-auto max-w-none object-contain select-none"
-                                >
-                            </div>
-                        </div>
-
-                        <!-- Micro Hint on Active Center Model (Semua model bisa diklik) -->
-                        <div class="active-angle-hint opacity-0 transition-opacity duration-300 absolute -top-1 pointer-events-none">
-                            <span class="px-2.5 py-0.5 rounded-full bg-neutral-900/85 backdrop-blur-sm text-[9px] font-mono text-[#DCC3AD] uppercase tracking-wider flex items-center gap-1 shadow-md">
-                                <svg class="w-3 h-3 text-[#BA805E]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
-                                <span id="angle-hint-text-{{ $idx }}">
-                                    Klik Foto: 3 Sudut Fitting
-                                </span>
-                            </span>
-                        </div>
-
-                        <!-- Hidden Form for bundle cart test -->
-                        <form action="{{ route('shop.cart.add-bundle') }}" method="POST" class="hidden">
-                            @csrf
-                            <input type="hidden" name="sku_ids[]" value="{{ $look['hero_sku']?->id }}">
-                            <input type="hidden" name="sku_ids[]" value="{{ $look['secondary_sku']?->id }}">
-                            <input type="hidden" name="bundle_title" value="Set {{ $look['title'] }}">
-                            <button type="submit" class="hidden">Beli 1 Look Lengkap</button>
-                        </form>
-                    </div>
-                @endforeach
-
-                <!-- Sleek Minimal Arrow Controls (Tampil Responsif di Mobile & Desktop) -->
-                <button 
-                    type="button" 
-                    onclick="prevLook()" 
-                    aria-label="Look Sebelumnya" 
-                    class="flex absolute left-1 sm:left-3 xl:left-6 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 lg:w-11 lg:h-11 rounded-full bg-white/95 hover:bg-[#0a0a0a] hover:text-white text-neutral-800 shadow-md border border-[#E8DEC9] backdrop-blur-md items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer z-30"
-                >
-                    <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
-                </button>
-                <button 
-                    type="button" 
-                    onclick="nextLook()" 
-                    aria-label="Look Berikutnya" 
-                    class="flex absolute right-1 sm:right-3 xl:right-6 top-1/2 -translate-y-1/2 w-8 h-8 sm:w-10 sm:h-10 lg:w-11 lg:h-11 rounded-full bg-white/95 hover:bg-[#0a0a0a] hover:text-white text-neutral-800 shadow-md border border-[#E8DEC9] backdrop-blur-md items-center justify-center transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer z-30"
-                >
-                    <svg class="w-3.5 h-3.5 sm:w-4 sm:h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
-                </button>
-
-            </div>
-
-        </div>
-
-        <!-- DEDICATED ACTIVE LOOK HIGHLIGHT & RICH INFORMATION -->
-        <div class="max-w-2xl mx-auto px-4 mt-4 pb-2 flex flex-col items-center justify-center text-center z-20">
-            <span id="runway-look-type" class="text-[10px] uppercase tracking-[0.2em] font-semibold text-[#BA805E]">
-                {{ $curatedLooks[0]['type_label'] }}
-            </span>
-            <h3 id="runway-look-title" class="font-serif text-xl sm:text-2xl font-bold text-neutral-950 mt-1">
-                {{ $curatedLooks[0]['title'] }}
-            </h3>
-            <p id="runway-look-vibe" class="text-xs sm:text-sm text-neutral-600 max-w-lg mx-auto font-light leading-relaxed mt-1.5 mb-4">
-                {{ $curatedLooks[0]['vibe'] }}
-            </p>
-            <a id="runway-look-btn" href="{{ $curatedLooks[0]['product_url'] }}" class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.15em] text-white bg-neutral-950 hover:bg-[#BA805E] px-7 py-3 transition-colors cursor-pointer">
-                <span>Lihat Detail Busana</span>
-                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-            </a>
-        </div>
-
     </section>
 
     <!-- JAVASCRIPT: 0-LATENCY HARDWARE-ACCELERATED OPEN RUNWAY -->
@@ -527,10 +469,10 @@
         })();
     </script>
 
-    <!-- G2: PANDUAN PANJANG OUTER (Clean Editorial Size Guide, Tanpa Avatar SVG Kartun) -->
+    <!-- G2: PANDUAN PANJANG OUTER (Soft Modern Luxury Size Guide) -->
     <section id="fit-helper" class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-24">
-        <div class="border-y border-neutral-200 py-10 sm:py-12">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+        <div class="bg-white rounded-3xl border border-[#EAE1D5] p-6 sm:p-9 shadow-2xs">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-center">
                 <!-- Left: Heading & Height Slider -->
                 <div class="lg:col-span-6 space-y-5">
                     <div>
@@ -539,11 +481,11 @@
                             Cek Jatuh Panjang Outer
                         </h3>
                         <p class="text-xs sm:text-sm text-neutral-600 font-light mt-1.5 leading-relaxed">
-                            Sesuaikan tinggi badan Anda untuk mengetahui estimasi jatuh ujung outer dan rekomendasi panjang yang paling pas.
+                            Geser tinggi badan Anda untuk melihat estimasi jatuh ujung outer dan rekomendasi panjang yang paling pas.
                         </p>
                     </div>
 
-                    <div class="bg-white border border-neutral-200 p-5 space-y-4">
+                    <div class="bg-[#FAF8F5] rounded-2xl border border-[#EAE1D5] p-5 space-y-4">
                         <div class="flex items-baseline justify-between">
                             <div>
                                 <span class="text-[10px] uppercase tracking-wider text-neutral-400 block">Tinggi Badan</span>
@@ -554,7 +496,7 @@
                             </div>
                             <div class="text-right">
                                 <span class="text-[10px] uppercase tracking-wider text-neutral-400 block">Rekomendasi Panjang</span>
-                                <span class="font-serif text-xl sm:text-2xl font-bold text-neutral-950" id="fit-result-length">110 cm</span>
+                                <span class="font-serif text-xl sm:text-2xl font-bold text-[#BA805E]" id="fit-result-length">110 cm</span>
                             </div>
                         </div>
 
@@ -566,7 +508,7 @@
                                 max="175"
                                 value="158"
                                 oninput="onFitSliderChange(this.value)"
-                                class="w-full h-1.5 bg-neutral-200 appearance-none cursor-pointer accent-[#BA805E]"
+                                class="w-full h-2 bg-[#E8DEC9] rounded-full appearance-none cursor-pointer accent-[#BA805E]"
                             >
                             <div class="flex justify-between text-[10px] text-neutral-400">
                                 <span>148 cm</span>
@@ -578,40 +520,40 @@
                         </div>
 
                         <div class="flex flex-wrap items-center gap-2 pt-1 text-xs" id="fit-buttons">
-                            <button type="button" onclick="setFitSlider(152)" class="fit-btn px-3 py-1.5 border border-neutral-200 hover:border-neutral-900 font-medium transition-colors text-neutral-700 cursor-pointer">
+                            <button type="button" onclick="setFitSlider(152)" class="fit-btn px-3.5 py-1.5 rounded-full border border-[#E5DCCF] bg-white hover:border-neutral-900 font-medium transition-all text-neutral-700 cursor-pointer">
                                 150–155 cm
                             </button>
-                            <button type="button" onclick="setFitSlider(158)" class="fit-btn px-3 py-1.5 border border-neutral-900 bg-neutral-900 text-white font-medium transition-colors cursor-pointer">
+                            <button type="button" onclick="setFitSlider(158)" class="fit-btn px-3.5 py-1.5 rounded-full border border-neutral-900 bg-neutral-900 text-white font-medium transition-all cursor-pointer">
                                 156–160 cm
                             </button>
-                            <button type="button" onclick="setFitSlider(163)" class="fit-btn px-3 py-1.5 border border-neutral-200 hover:border-neutral-900 font-medium transition-colors text-neutral-700 cursor-pointer">
+                            <button type="button" onclick="setFitSlider(163)" class="fit-btn px-3.5 py-1.5 rounded-full border border-[#E5DCCF] bg-white hover:border-neutral-900 font-medium transition-all text-neutral-700 cursor-pointer">
                                 161–165 cm
                             </button>
-                            <button type="button" onclick="setFitSlider(168)" class="fit-btn px-3 py-1.5 border border-neutral-200 hover:border-neutral-900 font-medium transition-colors text-neutral-700 cursor-pointer">
+                            <button type="button" onclick="setFitSlider(168)" class="fit-btn px-3.5 py-1.5 rounded-full border border-[#E5DCCF] bg-white hover:border-neutral-900 font-medium transition-all text-neutral-700 cursor-pointer">
                                 166+ cm
                             </button>
                         </div>
                     </div>
                 </div>
 
-                <!-- Right: Clean Breakdown Table + CTA -->
-                <div class="lg:col-span-6 space-y-5 lg:pt-2">
-                    <div class="border border-neutral-200 bg-white divide-y divide-neutral-200">
-                        <div class="p-4 flex items-start justify-between gap-4">
+                <!-- Right: Soft Breakdown Card + Pill CTA -->
+                <div class="lg:col-span-6 space-y-5">
+                    <div class="rounded-2xl border border-[#EAE1D5] bg-[#FAF8F5]/60 divide-y divide-[#EAE1D5]/80 overflow-hidden">
+                        <div class="p-4 sm:p-4.5 flex items-start justify-between gap-4">
                             <span class="text-xs uppercase tracking-wider text-neutral-500 shrink-0">Jatuh Baju</span>
                             <div class="text-right">
                                 <p class="text-sm font-semibold text-neutral-950" id="fit-insight-hemline">Midi Santun</p>
                                 <p class="text-xs text-neutral-500 mt-0.5" id="fit-result-desc">Panjang midi ideal di pertengahan betis.</p>
                             </div>
                         </div>
-                        <div class="p-4 flex items-start justify-between gap-4">
+                        <div class="p-4 sm:p-4.5 flex items-start justify-between gap-4">
                             <span class="text-xs uppercase tracking-wider text-neutral-500 shrink-0">Padanan Hijab</span>
                             <div class="text-right">
                                 <p class="text-sm font-semibold text-neutral-950" id="fit-insight-hijab">Voal 120x120</p>
                                 <p class="text-xs text-neutral-500 mt-0.5">Menutup dada proporsional &amp; rapi.</p>
                             </div>
                         </div>
-                        <div class="p-4 flex items-start justify-between gap-4">
+                        <div class="p-4 sm:p-4.5 flex items-start justify-between gap-4">
                             <span class="text-xs uppercase tracking-wider text-neutral-500 shrink-0">Alas Kaki</span>
                             <div class="text-right">
                                 <p class="text-sm font-semibold text-neutral-950" id="fit-insight-shoes">Mules / Kitten Heels</p>
@@ -630,7 +572,7 @@
                         <a
                             id="fit-cta-btn"
                             href="{{ route('shop.catalog', ['category' => 'outerwear']) }}"
-                            class="min-h-[44px] px-6 py-2.5 bg-neutral-950 hover:bg-[#BA805E] text-white text-xs font-semibold uppercase tracking-[0.15em] transition-colors inline-flex items-center justify-center gap-2 shrink-0 cursor-pointer"
+                            class="min-h-[44px] px-6 py-2.5 rounded-full bg-neutral-950 hover:bg-[#BA805E] text-white text-xs font-semibold uppercase tracking-[0.14em] transition-all duration-300 shadow-sm hover:shadow-md inline-flex items-center justify-center gap-2 shrink-0 cursor-pointer"
                         >
                             <span id="fit-cta-text">Lihat Outer (158 cm)</span>
                             <span>&rarr;</span>
@@ -641,16 +583,16 @@
         </div>
     </section>
 
-    <!-- SECTION F: KOLEKSI TERPOPULER (Editorial Minimalist Grid — Bersih Tanpa Clutter Pill/Rating Palsu) -->
+    <!-- SECTION F: KOLEKSI TERPOPULER (Fluid Soft Editorial Grid) -->
     <section class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex items-end justify-between mb-6 pb-3 border-b border-neutral-200">
+        <div class="flex items-end justify-between mb-6 pb-3 border-b border-[#EAE1D5]">
             <div>
                 <span class="text-[11px] uppercase tracking-[0.22em] text-[#BA805E] font-semibold">Pilihan Favorit</span>
                 <h2 class="font-serif text-[clamp(1.5rem,3.5vw,2.25rem)] font-bold text-neutral-950 mt-0.5">
                     Koleksi Terpopuler
                 </h2>
             </div>
-            <a href="{{ route('shop.catalog') }}" class="text-xs font-semibold text-neutral-900 hover:text-[#BA805E] transition-colors pb-0.5 border-b border-neutral-900 hover:border-[#BA805E] shrink-0">
+            <a href="{{ route('shop.catalog') }}" class="text-xs font-semibold text-neutral-800 hover:text-[#BA805E] transition-colors pb-0.5 border-b border-neutral-800 hover:border-[#BA805E] shrink-0">
                 Lihat Semua &rarr;
             </a>
         </div>
@@ -673,10 +615,10 @@
                     $isScarf = str_contains(strtolower($product->slug), 'scarf');
                 @endphp
                 <a href="{{ route('shop.product', $product->slug) }}" class="group block">
-                    <!-- Clean Editorial Frame -->
-                    <div class="relative h-[240px] sm:h-[290px] bg-[#F4F1EC] overflow-hidden flex items-center justify-center p-4">
+                    <!-- Soft Warm Editorial Frame -->
+                    <div class="relative h-[240px] sm:h-[290px] rounded-2xl bg-gradient-to-b from-[#FAF8F5] to-[#F2ECE3] border border-[#EDE6DC] group-hover:border-[#D9C7B4] group-hover:shadow-md overflow-hidden flex items-center justify-center p-4 transition-all duration-300">
                         @if($product->is_preorder)
-                            <span class="absolute top-3 left-3 text-[9px] uppercase tracking-[0.15em] font-semibold text-neutral-800 bg-white/90 px-2 py-0.5 z-10">
+                            <span class="absolute top-3 left-3 text-[9px] uppercase tracking-[0.14em] font-semibold text-[#8A4F35] bg-white/90 px-2.5 py-0.5 rounded-full border border-[#E8DEC9] z-10">
                                 Pre-Order
                             </span>
                         @endif
@@ -685,12 +627,12 @@
                             src="{{ $product->primary_image }}"
                             alt="{{ $product->name }}"
                             loading="lazy"
-                            class="{{ $isScarf ? 'w-auto max-h-[82%] object-contain' : 'h-full w-auto max-w-full object-contain' }} group-hover:scale-[1.03] transition-transform duration-500 block"
+                            class="{{ $isScarf ? 'w-auto max-h-[82%] object-contain rounded-xl' : 'h-full w-auto max-w-full object-contain' }} group-hover:scale-[1.04] transition-transform duration-500 block"
                         >
                     </div>
 
-                    <!-- Minimalist Caption -->
-                    <div class="pt-3 space-y-1">
+                    <!-- Clean Soft Caption -->
+                    <div class="pt-3 px-0.5 space-y-1">
                         <div class="flex items-center justify-between gap-2">
                             <span class="text-[10px] uppercase tracking-wider text-neutral-400">
                                 {{ $product->series?->name ?? ucfirst($product->category) }}
@@ -717,9 +659,9 @@
         </div>
     </section>
 
-    <!-- SECTION H: EDITORIAL BRAND NOTE (#everydaymozera) -->
+    <!-- SECTION H: SOFT EDITORIAL BRAND NOTE (#everydaymozera) -->
     <section class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="border-t border-neutral-200 pt-10 pb-4 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+        <div class="bg-gradient-to-r from-[#F7F3ED] via-[#FAF8F5] to-[#F5EFE6] rounded-3xl border border-[#EAE1D5] p-7 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
             <div class="space-y-1.5 max-w-xl">
                 <span class="text-[11px] uppercase tracking-[0.22em] text-[#BA805E] font-semibold">#everydaymozera</span>
                 <h2 class="font-serif text-2xl sm:text-3xl font-bold text-neutral-950">Nyaman Dipakai, Santun Dipandang.</h2>
@@ -727,7 +669,7 @@
                     Bagikan gaya harianmu bersama MOZÉRA di Instagram dan TikTok dengan menandai <strong class="font-medium text-neutral-900">@mozera.id</strong>.
                 </p>
             </div>
-            <a href="{{ route('shop.catalog') }}" class="min-h-[44px] shrink-0 inline-flex items-center justify-center px-7 py-3 bg-neutral-950 hover:bg-[#BA805E] text-white text-xs font-semibold uppercase tracking-[0.15em] transition-colors">
+            <a href="{{ route('shop.catalog') }}" class="min-h-[44px] shrink-0 inline-flex items-center justify-center px-7 py-3 rounded-full bg-neutral-950 hover:bg-[#BA805E] text-white text-xs font-semibold uppercase tracking-[0.14em] transition-all duration-300 shadow-sm hover:shadow-md">
                 Belanja Semua Koleksi
             </a>
         </div>

@@ -21,17 +21,17 @@
 <div class="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12 space-y-6 sm:space-y-8">
 
     <!-- Editorial Header -->
-    <div class="space-y-2 pb-5 border-b border-neutral-200">
+    <div class="space-y-2 pb-5 border-b border-[#EAE1D5]">
         <nav aria-label="Breadcrumb" class="flex items-center gap-2 text-xs text-neutral-400">
             <a href="{{ route('shop.home') }}" class="hover:text-neutral-900 transition-colors">Beranda</a>
             <span>/</span>
             <a href="{{ route('shop.catalog') }}" class="{{ !request('series') && !request('category') ? 'text-neutral-900 font-medium' : 'hover:text-neutral-900' }}">Katalog</a>
             @if(request('series'))
                 <span>/</span>
-                <span class="text-neutral-900 font-medium">{{ request('series') }}</span>
+                <span class="text-[#BA805E] font-medium">{{ request('series') }}</span>
             @elseif(request('category'))
                 <span>/</span>
-                <span class="text-neutral-900 font-medium">{{ ucfirst(request('category')) }}</span>
+                <span class="text-[#BA805E] font-medium">{{ ucfirst(request('category')) }}</span>
             @endif
         </nav>
 
@@ -48,48 +48,48 @@
                 </h1>
             </div>
             <p class="text-xs text-neutral-500">
-                {{ $products->total() }} busana
+                Menampilkan <span class="font-semibold text-neutral-900">{{ $products->total() }}</span> busana
             </p>
         </div>
     </div>
 
-    <!-- Clean Editorial Filter & Search Bar -->
-    <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 border-b border-neutral-200/80 pb-4">
-        <!-- Category & Series Text Tabs -->
-        <div class="flex items-center gap-5 overflow-x-auto custom-scrollbar text-xs whitespace-nowrap pb-1 lg:pb-0">
+    <!-- Soft Filter & Search Bar -->
+    <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4 pb-2">
+        <!-- Soft Category & Series Pills -->
+        <div class="flex items-center gap-2 overflow-x-auto custom-scrollbar text-xs whitespace-nowrap pb-1 lg:pb-0">
             <a
                 href="{{ route('shop.catalog') }}"
-                class="py-1.5 border-b-2 transition-colors {{ !request('series') && !request('category') ? 'border-neutral-950 text-neutral-950 font-semibold' : 'border-transparent text-neutral-500 hover:text-neutral-900' }}"
+                class="px-4 py-2 rounded-full transition-all duration-300 {{ !request('series') && !request('category') ? 'bg-neutral-950 text-white font-semibold shadow-2xs' : 'bg-white border border-[#E5DCCF] text-neutral-700 hover:border-neutral-900' }}"
             >
                 Semua
             </a>
             <a
                 href="{{ route('shop.catalog', ['category' => 'outerwear']) }}"
-                class="py-1.5 border-b-2 transition-colors {{ request('category') === 'outerwear' ? 'border-neutral-950 text-neutral-950 font-semibold' : 'border-transparent text-neutral-500 hover:text-neutral-900' }}"
+                class="px-4 py-2 rounded-full transition-all duration-300 {{ request('category') === 'outerwear' ? 'bg-[#BA805E] text-white font-semibold shadow-2xs' : 'bg-white border border-[#E5DCCF] text-neutral-700 hover:border-[#BA805E]' }}"
             >
                 Outerwear &amp; Kimono
             </a>
             <a
                 href="{{ route('shop.catalog', ['category' => 'scarf']) }}"
-                class="py-1.5 border-b-2 transition-colors {{ request('category') === 'scarf' ? 'border-neutral-950 text-neutral-950 font-semibold' : 'border-transparent text-neutral-500 hover:text-neutral-900' }}"
+                class="px-4 py-2 rounded-full transition-all duration-300 {{ request('category') === 'scarf' ? 'bg-[#BA805E] text-white font-semibold shadow-2xs' : 'bg-white border border-[#E5DCCF] text-neutral-700 hover:border-[#BA805E]' }}"
             >
                 Voal Scarf
             </a>
 
-            <span class="text-neutral-300">|</span>
+            <div class="h-4 w-px bg-[#DFD5C7] mx-1 shrink-0"></div>
 
             @foreach($allSeries as $s)
                 <a
                     href="{{ route('shop.catalog', ['series' => $s->code]) }}"
-                    class="py-1.5 border-b-2 transition-colors {{ request('series') === $s->code ? 'border-[#BA805E] text-neutral-950 font-semibold' : 'border-transparent text-neutral-500 hover:text-neutral-900' }}"
+                    class="px-4 py-2 rounded-full transition-all duration-300 {{ request('series') === $s->code ? 'bg-neutral-950 text-white font-semibold shadow-2xs' : 'bg-white border border-[#E5DCCF] text-neutral-700 hover:border-neutral-900' }}"
                 >
                     {{ $s->name }}
                 </a>
             @endforeach
         </div>
 
-        <!-- Compact Search & Sort -->
-        <form method="GET" action="{{ route('shop.catalog') }}" class="flex items-center gap-3 w-full lg:w-auto justify-between lg:justify-end">
+        <!-- Soft Rounded Search & Sort -->
+        <form method="GET" action="{{ route('shop.catalog') }}" class="flex items-center gap-2.5 w-full lg:w-auto justify-between lg:justify-end">
             @if(request('series')) <input type="hidden" name="series" value="{{ request('series') }}"> @endif
             @if(request('category')) <input type="hidden" name="category" value="{{ request('category') }}"> @endif
 
@@ -99,15 +99,15 @@
                     name="search"
                     value="{{ request('search') }}"
                     placeholder="Cari busana atau bahan..."
-                    class="w-full text-xs pl-8 pr-3 py-2 bg-transparent border-b border-neutral-300 focus:outline-none focus:border-neutral-950 transition-colors placeholder:text-neutral-400"
+                    class="w-full text-xs pl-9 pr-4 py-2 bg-white border border-[#E5DCCF] rounded-full focus:outline-none focus:border-[#BA805E] transition-colors placeholder:text-neutral-400"
                 >
-                <svg class="w-3.5 h-3.5 text-neutral-400 absolute left-2 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+                <svg class="w-3.5 h-3.5 text-neutral-400 absolute left-3.5 top-2.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
             </div>
 
             <select
                 name="sort"
                 onchange="this.form.submit()"
-                class="text-xs px-2 py-2 bg-transparent border-b border-neutral-300 focus:outline-none focus:border-neutral-950 cursor-pointer text-neutral-700"
+                class="text-xs px-3.5 py-2 bg-white border border-[#E5DCCF] rounded-full focus:outline-none focus:border-[#BA805E] cursor-pointer text-neutral-700"
             >
                 <option value="latest" {{ request('sort') == 'latest' ? 'selected' : '' }}>Terbaru</option>
                 <option value="price_asc" {{ request('sort') == 'price_asc' ? 'selected' : '' }}>Harga Terendah</option>
@@ -115,19 +115,19 @@
             </select>
 
             @if(request('series') || request('category') || request('search') || request('sort'))
-                <a href="{{ route('shop.catalog') }}" class="text-xs text-neutral-500 hover:text-neutral-950 underline whitespace-nowrap">
+                <a href="{{ route('shop.catalog') }}" class="text-xs text-neutral-500 hover:text-neutral-950 underline whitespace-nowrap px-1">
                     Reset
                 </a>
             @endif
         </form>
     </div>
 
-    <!-- Products Grid (Editorial Minimalist) -->
+    <!-- Products Grid (Soft Modern Luxury) -->
     @if($products->isEmpty())
-        <div class="text-center py-20 border border-neutral-200 bg-white p-8">
+        <div class="text-center py-20 rounded-3xl border border-[#EAE1D5] bg-white p-8">
             <h3 class="font-serif text-lg font-bold text-neutral-900">Tidak Ada Produk yang Sesuai</h3>
             <p class="text-xs text-neutral-500 mt-1 max-w-sm mx-auto">Coba sesuaikan kata kunci pencarian atau bersihkan filter Anda.</p>
-            <a href="{{ route('shop.catalog') }}" class="mt-5 inline-block px-7 py-2.5 bg-neutral-950 text-white text-xs font-semibold uppercase tracking-[0.15em] hover:bg-[#BA805E] transition-colors">
+            <a href="{{ route('shop.catalog') }}" class="mt-5 inline-block px-7 py-2.5 rounded-full bg-neutral-950 text-white text-xs font-semibold uppercase tracking-[0.14em] hover:bg-[#BA805E] transition-colors">
                 Tampilkan Semua Koleksi
             </a>
         </div>
@@ -139,10 +139,10 @@
                     $isScarf = str_contains(strtolower($product->slug), 'scarf');
                 @endphp
                 <a href="{{ route('shop.product', $product->slug) }}" class="group block">
-                    <!-- Clean Editorial Frame -->
-                    <div class="relative h-[240px] sm:h-[300px] lg:h-[320px] bg-[#F4F1EC] overflow-hidden flex items-center justify-center p-4">
+                    <!-- Soft Warm Editorial Frame -->
+                    <div class="relative h-[240px] sm:h-[300px] lg:h-[320px] rounded-2xl bg-gradient-to-b from-[#FAF8F5] to-[#F2ECE3] border border-[#EDE6DC] group-hover:border-[#D9C7B4] group-hover:shadow-md overflow-hidden flex items-center justify-center p-4 transition-all duration-300">
                         @if($product->is_preorder)
-                            <span class="absolute top-3 left-3 text-[9px] uppercase tracking-[0.15em] font-semibold text-neutral-800 bg-white/90 px-2 py-0.5 z-10">
+                            <span class="absolute top-3 left-3 text-[9px] uppercase tracking-[0.14em] font-semibold text-[#8A4F35] bg-white/90 px-2.5 py-0.5 rounded-full border border-[#E8DEC9] z-10">
                                 Pre-Order
                             </span>
                         @endif
@@ -151,12 +151,12 @@
                             src="{{ $product->primary_image }}"
                             alt="{{ $product->name }}"
                             loading="lazy"
-                            class="{{ $isScarf ? 'w-auto max-h-[82%] object-contain' : 'h-full w-auto max-w-full object-contain' }} group-hover:scale-[1.03] transition-transform duration-500 block"
+                            class="{{ $isScarf ? 'w-auto max-h-[82%] object-contain rounded-xl' : 'h-full w-auto max-w-full object-contain' }} group-hover:scale-[1.04] transition-transform duration-500 block"
                         >
                     </div>
 
-                    <!-- Minimalist Caption -->
-                    <div class="pt-3 space-y-1">
+                    <!-- Clean Soft Caption -->
+                    <div class="pt-3 px-0.5 space-y-1">
                         <div class="flex items-center justify-between gap-2">
                             <span class="text-[10px] uppercase tracking-wider text-neutral-400">
                                 {{ $product->series?->name ?? ucfirst($product->category) }}
@@ -187,8 +187,8 @@
         </div>
     @endif
 
-    <!-- Quiet Fit Guide Link -->
-    <div class="pt-6 border-t border-neutral-200 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-neutral-600">
+    <!-- Soft Fit Guide Strip -->
+    <div class="bg-[#F6F2EC] border border-[#EAE1D5] rounded-2xl px-6 py-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3 text-xs text-neutral-600">
         <span>Ragu memilih panjang outer yang sesuai tinggi badan?</span>
         <a href="{{ route('shop.home') }}#fit-helper" class="font-semibold text-neutral-950 hover:text-[#BA805E] transition-colors">
             Cek Panduan Panjang Outer &rarr;
