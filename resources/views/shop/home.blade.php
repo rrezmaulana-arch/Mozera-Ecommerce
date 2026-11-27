@@ -535,62 +535,79 @@
         </div>
     </section>
 
-    <!-- EDITORIAL CRAFTSMANSHIP BAND (Dark Warm Contrast — Filosofi Bahan & Jahitan) -->
-    <section class="w-full bg-[#191614] text-[#F5EFE6] py-14 sm:py-18 border-y border-neutral-800">
-        <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-                <!-- Left Editorial Headline -->
-                <div class="lg:col-span-5 space-y-4">
-                    <span class="text-[11px] uppercase tracking-[0.25em] text-[#D4A383] font-semibold block">
-                        Filosofi Jahitan &amp; Material
-                    </span>
-                    <h2 class="font-serif text-[clamp(1.75rem,3.5vw,2.6rem)] font-bold leading-[1.15] text-white">
-                        Dirancang untuk <span class="italic font-normal text-[#D4A383]">Nyaman Sepanjang Hari.</span>
-                    </h2>
-                    <p class="text-xs sm:text-sm text-neutral-400 font-light leading-relaxed max-w-md">
-                        Setiap potongan MOZÉRA melewati pemilihan serat kain yang sejuk di iklim tropis, finishing jahitan butik yang rapi, serta proporsi modest yang leluasa bergerak.
-                    </p>
-                    <div class="pt-2">
-                        <a href="{{ route('shop.catalog') }}" class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-[#191614] bg-[#F5EFE6] hover:bg-[#D4A383] hover:text-white px-6 py-3 rounded-full transition-all duration-300">
-                            <span>Lihat Semua Material</span>
-                            <span>&rarr;</span>
-                        </a>
-                    </div>
-                </div>
+    <!-- EDITORIAL CRAFTSMANSHIP BAND (Organic Wave Transition — Filosofi Bahan & Jahitan) -->
+    <section class="w-full relative overflow-hidden">
+        <!-- Top Smooth Silk Wave -->
+        <div class="w-full leading-none overflow-hidden -mb-px pointer-events-none">
+            <svg class="w-full h-10 sm:h-16 lg:h-20 block" viewBox="0 0 1440 96" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#191614" d="M0,56 C320,104 720,8 1080,44 C1260,62 1380,58 1440,48 L1440,96 L0,96 Z"></path>
+            </svg>
+        </div>
 
-                <!-- Right 3 Craftsmanship Pillars -->
-                <div class="lg:col-span-7 divide-y divide-white/10 border-y border-white/10">
-                    <div class="py-5 sm:py-6 flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-8">
-                        <span class="text-xs font-mono text-[#D4A383] tracking-widest shrink-0">01</span>
-                        <div class="space-y-1">
-                            <h3 class="font-serif text-base sm:text-lg font-semibold text-white">Rayon Twill &amp; Washed Linen Pilihan</h3>
-                            <p class="text-xs sm:text-sm text-neutral-400 font-light leading-relaxed">
-                                Serat kain yang jatuh lembut, adem saat dipakai beraktivitas, tidak menerawang, dan tidak mudah kusut.
-                            </p>
+        <!-- Dark Warm Editorial Body -->
+        <div class="w-full bg-[#191614] text-[#F5EFE6] py-12 sm:py-16 lg:py-20">
+            <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+                    <!-- Left Editorial Headline -->
+                    <div class="lg:col-span-5 space-y-4">
+                        <span class="text-[11px] uppercase tracking-[0.25em] text-[#D4A383] font-medium block">
+                            Filosofi Jahitan &amp; Material
+                        </span>
+                        <h2 class="font-serif text-[clamp(2rem,3.8vw,3rem)] font-semibold leading-[1.1] text-white tracking-tight">
+                            Dirancang untuk <span class="italic font-normal text-[#D4A383]">Nyaman Sepanjang Hari.</span>
+                        </h2>
+                        <p class="text-xs sm:text-sm text-neutral-400 font-light leading-relaxed max-w-md">
+                            Setiap potongan MOZÉRA melewati pemilihan serat kain yang sejuk di iklim tropis, finishing jahitan butik yang rapi, serta proporsi modest yang leluasa bergerak.
+                        </p>
+                        <div class="pt-2">
+                            <a href="{{ route('shop.catalog') }}" class="inline-flex items-center gap-2 text-xs font-medium uppercase tracking-[0.16em] text-[#191614] bg-[#F5EFE6] hover:bg-[#D4A383] hover:text-white px-6 py-3 rounded-full transition-all duration-300">
+                                <span>Lihat Semua Material</span>
+                                <span>&rarr;</span>
+                            </a>
                         </div>
                     </div>
 
-                    <div class="py-5 sm:py-6 flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-8">
-                        <span class="text-xs font-mono text-[#D4A383] tracking-widest shrink-0">02</span>
-                        <div class="space-y-1">
-                            <h3 class="font-serif text-base sm:text-lg font-semibold text-white">Voal Ultrafine 120&times;120 Lasercut</h3>
-                            <p class="text-xs sm:text-sm text-neutral-400 font-light leading-relaxed">
-                                Berkilau halus, mudah dibentuk tegak di dahi, ringan di telinga, dan menutup dada secara proporsional.
-                            </p>
+                    <!-- Right 3 Craftsmanship Pillars -->
+                    <div class="lg:col-span-7 divide-y divide-white/10 border-y border-white/10">
+                        <div class="py-5 sm:py-6 flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-8">
+                            <span class="text-xs font-mono text-[#D4A383] tracking-widest shrink-0">01</span>
+                            <div class="space-y-1">
+                                <h3 class="font-serif text-lg sm:text-xl font-semibold text-white">Rayon Twill &amp; Washed Linen Pilihan</h3>
+                                <p class="text-xs sm:text-sm text-neutral-400 font-light leading-relaxed">
+                                    Serat kain yang jatuh lembut, adem saat dipakai beraktivitas, tidak menerawang, dan tidak mudah kusut.
+                                </p>
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="py-5 sm:py-6 flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-8">
-                        <span class="text-xs font-mono text-[#D4A383] tracking-widest shrink-0">03</span>
-                        <div class="space-y-1">
-                            <h3 class="font-serif text-base sm:text-lg font-semibold text-white">Siluet Santun &amp; Wudhu-Friendly</h3>
-                            <p class="text-xs sm:text-sm text-neutral-400 font-light leading-relaxed">
-                                Potongan longgar yang rapi untuk agenda kuliah, kantor, hingga kondangan — dilengkapi garansi tukar ukuran 7 hari.
-                            </p>
+                        <div class="py-5 sm:py-6 flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-8">
+                            <span class="text-xs font-mono text-[#D4A383] tracking-widest shrink-0">02</span>
+                            <div class="space-y-1">
+                                <h3 class="font-serif text-lg sm:text-xl font-semibold text-white">Voal Ultrafine 120&times;120 Lasercut</h3>
+                                <p class="text-xs sm:text-sm text-neutral-400 font-light leading-relaxed">
+                                    Berkilau halus, mudah dibentuk tegak di dahi, ringan di telinga, dan menutup dada secara proporsional.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="py-5 sm:py-6 flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-8">
+                            <span class="text-xs font-mono text-[#D4A383] tracking-widest shrink-0">03</span>
+                            <div class="space-y-1">
+                                <h3 class="font-serif text-lg sm:text-xl font-semibold text-white">Siluet Santun &amp; Wudhu-Friendly</h3>
+                                <p class="text-xs sm:text-sm text-neutral-400 font-light leading-relaxed">
+                                    Potongan longgar yang rapi untuk agenda kuliah, kantor, hingga kondangan — dilengkapi garansi tukar ukuran 7 hari.
+                                </p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+
+        <!-- Bottom Smooth Silk Wave -->
+        <div class="w-full leading-none overflow-hidden -mt-px pointer-events-none">
+            <svg class="w-full h-10 sm:h-16 lg:h-20 block" viewBox="0 0 1440 96" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
+                <path fill="#191614" d="M0,0 L1440,0 L1440,42 C1120,96 720,4 360,52 C180,76 60,64 0,48 Z"></path>
+            </svg>
         </div>
     </section>
 
