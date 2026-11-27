@@ -6,144 +6,72 @@
 @section('content')
 <div class="space-y-12 sm:space-y-20 lg:space-y-24">
 
-    <!-- HERO SECTION (Harmonious Editorial Canvas: Unified Headline & Architectural Model Arch) -->
-    <section class="w-full relative bg-[#FAF9F6] border-b border-neutral-200/50 py-10 lg:py-16">
-        <div class="max-w-[1360px] mx-auto px-6 sm:px-10 lg:px-16">
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+    <!-- HERO SECTION (Editorial Minimalist) -->
+    <section class="w-full relative bg-[#FAF9F6] border-b border-neutral-200/70 py-10 lg:py-16">
+        <div class="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
 
-                <!-- Left Text Column: Distinct Narrative & Clear Visual Weight -->
-                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
-                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#F5EFEB] border border-[#BA805E]/30 text-[#BA805E] text-xs font-bold uppercase tracking-wider">
-                        <span class="w-2 h-2 rounded-full bg-[#BA805E] animate-pulse"></span>
-                        <span>Koleksi Modest Atasan dan Outerwear</span>
-                    </div>
+                <!-- Left Text Column -->
+                <div class="lg:col-span-7 space-y-5 text-center lg:text-left">
+                    <p class="text-[11px] uppercase tracking-[0.25em] text-[#BA805E] font-semibold">
+                        Koleksi Modest Atasan &amp; Outerwear
+                    </p>
 
-                    <h1 class="font-serif text-[clamp(2.2rem,5vw,3.75rem)] font-bold tracking-tight text-neutral-950 leading-[1.14]">
+                    <h1 class="font-serif text-[clamp(2.2rem,5vw,3.6rem)] font-bold tracking-tight text-neutral-950 leading-[1.12]">
                         Outer yang <span class="font-serif italic font-normal text-[#BA805E]">Jatuh Anggun</span>, dari Kuliah sampai Kondangan.
                     </h1>
 
-                    <p class="text-neutral-600 text-[15px] sm:text-base leading-relaxed max-w-xl mx-auto lg:mx-0 font-light">
-                        Potongan santun dengan siluet effortless chic dan bahan adem. Dirancang menemani hari aktif wanita Indonesia tanpa khawatir kusut.
+                    <p class="text-neutral-600 text-[15px] sm:text-base leading-relaxed max-w-lg mx-auto lg:mx-0 font-light">
+                        Potongan santun berbahan rayon twill dan linen pilihan. Nyaman dipakai seharian tanpa khawatir kusut.
                     </p>
 
-                    <!-- CTAs: Primary Terracotta + Secondary Link -->
-                    <div class="pt-2 flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
-                        <a href="{{ route('shop.catalog') }}" class="w-full sm:w-auto min-h-[48px] px-8 py-3.5 bg-[#BA805E] hover:bg-[#a66f4e] text-white rounded-full font-bold text-xs uppercase tracking-wider transition-all shadow-md hover:shadow-lg text-center flex items-center justify-center">
-                            Jelajahi Koleksi Atasan
+                    <!-- CTAs -->
+                    <div class="pt-3 flex flex-col sm:flex-row items-center gap-4 justify-center lg:justify-start">
+                        <a href="{{ route('shop.catalog') }}" class="w-full sm:w-auto min-h-[46px] px-8 py-3 bg-neutral-950 hover:bg-[#BA805E] text-white text-xs font-semibold uppercase tracking-[0.18em] transition-colors text-center flex items-center justify-center">
+                            Jelajahi Koleksi
                         </a>
-                        <a href="#try-the-look" class="min-h-[48px] px-5 py-3 text-xs font-bold text-neutral-800 hover:text-[#BA805E] transition-colors flex items-center justify-center gap-2">
-                            <span>Lihat Runway Interaktif</span>
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
+                        <a href="#try-the-look" class="min-h-[46px] px-4 py-3 text-xs font-semibold uppercase tracking-[0.15em] text-neutral-700 hover:text-neutral-950 border-b border-neutral-300 hover:border-neutral-950 transition-colors flex items-center justify-center gap-2">
+                            <span>Try The Look</span>
+                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/></svg>
                         </a>
-                    </div>
-
-                    <!-- Micro Trust Line under Buttons -->
-                    <div class="pt-1 flex flex-wrap items-center gap-x-4 gap-y-1.5 text-[11px] text-neutral-500 font-light justify-center lg:justify-start">
-                        <span class="flex items-center gap-1.5 text-neutral-700 font-medium">
-                            <span class="text-[#BA805E]">&bull;</span> Bahan Rayon Twill Sejuk
-                        </span>
-                        <span class="flex items-center gap-1.5 text-neutral-700 font-medium">
-                            <span class="text-[#BA805E]">&bull;</span> Jahitan Butik Rapi
-                        </span>
-                        <span class="flex items-center gap-1.5 text-neutral-700 font-medium">
-                            <span class="text-[#BA805E]">&bull;</span> Ready Stock Surabaya
-                        </span>
                     </div>
                 </div>
 
-                <!-- Right Fashion Visual Column: Architectural Arch Framing Model -->
-                <div class="lg:col-span-5 relative flex items-center justify-center">
-                    <div class="relative w-full max-w-[270px] sm:max-w-[330px] lg:max-w-[370px] h-[330px] sm:h-[410px] lg:h-[480px] bg-gradient-to-b from-[#F5EFEB] via-[#EFE7DE] to-[#E6DDD2] rounded-t-[110px] sm:rounded-t-[140px] rounded-b-2xl sm:rounded-b-3xl border border-neutral-300/40 p-3 sm:p-4 pt-6 sm:pt-8 shadow-sm flex flex-col items-center justify-end overflow-hidden group">
-                        
-                        <!-- Top Arch Heritage Tag -->
-                        <div class="absolute top-3 sm:top-4 z-10">
-                            <span class="text-[8px] sm:text-[9px] font-bold tracking-[0.25em] text-[#8A4F35] bg-white/80 backdrop-blur-md px-2.5 sm:px-3 py-0.5 sm:py-1 rounded-full uppercase border border-[#BA805E]/20 shadow-xs">
-                                MOZÉRA ESSENTIALS
-                            </span>
+                <!-- Right Fashion Visual Column -->
+                <div class="lg:col-span-5 relative flex flex-col items-center">
+                    <a href="{{ route('shop.product', 'puspa-floral-outer-kimono') }}" class="group block w-full max-w-[340px]">
+                        <div class="relative w-full h-[360px] sm:h-[430px] bg-[#F4F1EC] flex items-end justify-center pt-6 overflow-hidden">
+                            <img
+                                src="/images/models/look-1-terracotta.png"
+                                alt="PUSPA Floral Outer Kimono MOZÉRA"
+                                class="h-[92%] w-auto object-contain select-none transition-transform duration-500 group-hover:scale-[1.03]"
+                            >
                         </div>
-
-                        <!-- Floor Contact Shadow -->
-                        <div class="absolute bottom-4 sm:bottom-5 w-36 sm:w-44 h-3.5 sm:h-4 bg-neutral-950/20 rounded-full filter blur-[3.5px]"></div>
-
-                        <!-- Model Cutout Image (Perfect Centered Perspective) -->
-                        <img
-                            src="/images/models/look-1-terracotta.png"
-                            alt="Model Modest Outer Kimono MOZÉRA"
-                            class="h-[280px] sm:h-[350px] lg:h-[420px] w-auto object-contain select-none filter drop-shadow-md relative z-10 transition-transform duration-500 group-hover:scale-[1.02]"
-                        >
-
-                        <!-- Floating Interactive Product Pill (Anchored at Base) -->
-                        <a 
-                            href="{{ route('shop.product', 'puspa-floral-outer-kimono') }}" 
-                            class="absolute bottom-2.5 sm:bottom-3 left-2.5 sm:left-3 right-2.5 sm:right-3 bg-white/95 backdrop-blur-md px-3 py-2 sm:px-3.5 sm:py-2.5 rounded-xl sm:rounded-2xl border border-neutral-200/90 shadow-md flex items-center justify-between text-xs z-20 hover:border-[#BA805E] transition-all group-hover:shadow-lg"
-                        >
-                            <div class="text-left">
-                                <p class="font-bold text-neutral-900 text-[10px] sm:text-[11px] leading-tight truncate">PUSPA Floral Outer Kimono</p>
-                                <p class="text-[9px] sm:text-[10px] text-neutral-500 truncate">Premium Rayon Twill &bull; Terracotta</p>
-                            </div>
-                            <span class="font-bold text-[#BA805E] font-mono text-[11px] sm:text-xs flex items-center gap-1 shrink-0 ml-1.5">
-                                Rp 389.000 &rarr;
-                            </span>
-                        </a>
-                    </div>
+                        <div class="pt-3 flex items-center justify-between text-xs border-b border-neutral-200 pb-2.5">
+                            <span class="font-medium text-neutral-900 group-hover:text-[#BA805E] transition-colors">PUSPA Floral Outer Kimono</span>
+                            <span class="text-neutral-600">Rp 389.000 &rarr;</span>
+                        </div>
+                    </a>
                 </div>
 
             </div>
         </div>
     </section>
 
-    <!-- TRUST BAR (Section D: Buyer-focused Language, 4 cols desktop, 2x2 mobile) -->
-    <section class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="bg-white rounded-2xl border border-neutral-200/80 p-5 sm:p-6 shadow-sm">
-            <div class="grid grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6">
-                <!-- Point 1 -->
-                <div class="flex items-start gap-3">
-                    <div class="w-9 h-9 rounded-xl bg-[#FAF8F5] border border-[#EADCCE] text-[#BA805E] flex items-center justify-center shrink-0 mt-0.5">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
-                    </div>
-                    <div>
-                        <h4 class="text-xs font-bold text-neutral-900">Checkout Cepat</h4>
-                        <p class="text-[11px] sm:text-xs text-neutral-500 leading-snug mt-0.5">Checkout cepat tanpa antre admin</p>
-                    </div>
-                </div>
-
-                <!-- Point 2 -->
-                <div class="flex items-start gap-3">
-                    <div class="w-9 h-9 rounded-xl bg-[#FAF8F5] border border-[#EADCCE] text-[#BA805E] flex items-center justify-center shrink-0 mt-0.5">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-                    </div>
-                    <div>
-                        <h4 class="text-xs font-bold text-neutral-900">Stok Selalu Akurat</h4>
-                        <p class="text-[11px] sm:text-xs text-neutral-500 leading-snug mt-0.5">Tidak ada pesanan batal karena stok habis</p>
-                    </div>
-                </div>
-
-                <!-- Point 3 -->
-                <div class="flex items-start gap-3">
-                    <div class="w-9 h-9 rounded-xl bg-[#FAF8F5] border border-[#EADCCE] text-[#BA805E] flex items-center justify-center shrink-0 mt-0.5">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
-                    </div>
-                    <div>
-                        <h4 class="text-xs font-bold text-neutral-900">Panduan Ukuran</h4>
-                        <p class="text-[11px] sm:text-xs text-neutral-500 leading-snug mt-0.5">Simulasi panjang pas sesuai tinggi badanmu</p>
-                    </div>
-                </div>
-
-                <!-- Point 4 -->
-                <div class="flex items-start gap-3">
-                    <div class="w-9 h-9 rounded-xl bg-[#FAF8F5] border border-[#EADCCE] text-[#BA805E] flex items-center justify-center shrink-0 mt-0.5">
-                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
-                    </div>
-                    <div>
-                        <a href="{{ route('shop.returns') }}" class="group block">
-                            <h4 class="text-xs font-bold text-neutral-900 group-hover:text-[#BA805E] transition-colors flex items-center gap-1">
-                                <span>Garansi Retur 7 Hari</span>
-                                <span class="text-[10px] text-[#BA805E]">&rarr;</span>
-                            </h4>
-                            <p class="text-[11px] sm:text-xs text-neutral-500 leading-snug mt-0.5">Tukar ukuran mandiri tanpa rasa khawatir</p>
-                        </a>
-                    </div>
-                </div>
+    <!-- QUIET EDITORIAL SERVICE STRIP -->
+    <section class="max-w-[1240px] mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-4 py-4 border-y border-neutral-200/80 text-xs text-neutral-600">
+            <div class="flex items-center justify-center md:justify-start gap-2">
+                <span class="font-medium text-neutral-900">Ready Stock Surabaya</span>
+            </div>
+            <div class="flex items-center justify-center md:justify-start gap-2">
+                <span class="font-medium text-neutral-900">Bahan Rayon &amp; Voal Sejuk</span>
+            </div>
+            <div class="flex items-center justify-center md:justify-start gap-2">
+                <a href="{{ route('shop.home') }}#fit-helper" class="hover:text-[#BA805E] transition-colors font-medium text-neutral-900">Panduan Panjang Outer &rarr;</a>
+            </div>
+            <div class="flex items-center justify-center md:justify-end gap-2">
+                <a href="{{ route('shop.returns') }}" class="hover:text-[#BA805E] transition-colors font-medium text-neutral-900">Garansi Tukar Ukuran 7 Hari &rarr;</a>
             </div>
         </div>
     </section>
@@ -224,81 +152,7 @@
         </div>
     </section>
 
-    <!-- SECTION G: FITUR BARU RINGKAS -->
-    
-    <!-- G3: Belanja per Momen (4 Moment Cards) -->
-    <section class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="text-center max-w-xl mx-auto mb-6">
-            <span class="text-[11px] uppercase tracking-[0.25em] text-[#BA805E] font-bold">Inspirasi Busana</span>
-            <h2 class="font-serif text-[clamp(1.4rem,3vw,2rem)] font-bold text-neutral-950 mt-1">
-                Belanja Berdasarkan Momen
-            </h2>
-        </div>
-
-        <div class="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4">
-            <!-- Momen 1 -->
-            <a href="{{ route('shop.catalog', ['category' => 'outerwear']) }}" class="group p-4 sm:p-5 rounded-2xl bg-white border border-neutral-200/90 hover:border-[#BA805E] transition-all text-center space-y-2 block shadow-2xs hover:shadow-md hover:-translate-y-0.5">
-                <div class="w-10 h-10 mx-auto rounded-full bg-[#F5EFEB] text-[#BA805E] flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <svg class="w-5 h-5 text-[#BA805E]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.286L13 21l-2.286-6.857L5 12l5.714-2.286L13 3z"/></svg>
-                </div>
-                <h4 class="font-serif font-bold text-neutral-900 text-sm group-hover:text-[#BA805E] transition-colors flex items-center justify-center gap-1">
-                    <span>Kondangan & Pesta</span>
-                    <span class="text-xs text-[#BA805E] opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all">&rarr;</span>
-                </h4>
-                <p class="text-[11px] text-neutral-500 leading-snug">Outer jatuh mewah dan voal berkilau</p>
-                <span class="inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-[#BA805E] pt-1">
-                    <span>Lihat Gaya</span> &rarr;
-                </span>
-            </a>
-
-            <!-- Momen 2 -->
-            <a href="{{ route('shop.catalog', ['category' => 'outerwear']) }}" class="group p-4 sm:p-5 rounded-2xl bg-white border border-neutral-200/90 hover:border-[#BA805E] transition-all text-center space-y-2 block shadow-2xs hover:shadow-md hover:-translate-y-0.5">
-                <div class="w-10 h-10 mx-auto rounded-full bg-[#F5EFEB] text-[#BA805E] flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <svg class="w-5 h-5 text-[#BA805E]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M12 14l9-5-9-5-9 5 9 5zm0 0l6.16-3.422a12.083 12.083 0 01.665 6.479A11.952 11.952 0 0012 20.055a11.952 11.952 0 00-5.824-2.998 12.078 12.078 0 01.665-6.479L12 14zm-4 6v-7.5"/></svg>
-                </div>
-                <h4 class="font-serif font-bold text-neutral-900 text-sm group-hover:text-[#BA805E] transition-colors flex items-center justify-center gap-1">
-                    <span>Wisuda & Sidang</span>
-                    <span class="text-xs text-[#BA805E] opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all">&rarr;</span>
-                </h4>
-                <p class="text-[11px] text-neutral-500 leading-snug">Siluet santun rapi berwibawa</p>
-                <span class="inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-[#BA805E] pt-1">
-                    <span>Lihat Gaya</span> &rarr;
-                </span>
-            </a>
-
-            <!-- Momen 3 -->
-            <a href="{{ route('shop.catalog', ['category' => 'outerwear']) }}" class="group p-4 sm:p-5 rounded-2xl bg-white border border-neutral-200/90 hover:border-[#BA805E] transition-all text-center space-y-2 block shadow-2xs hover:shadow-md hover:-translate-y-0.5">
-                <div class="w-10 h-10 mx-auto rounded-full bg-[#F5EFEB] text-[#BA805E] flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <svg class="w-5 h-5 text-[#BA805E]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg>
-                </div>
-                <h4 class="font-serif font-bold text-neutral-900 text-sm group-hover:text-[#BA805E] transition-colors flex items-center justify-center gap-1">
-                    <span>Kajian & Silaturahmi</span>
-                    <span class="text-xs text-[#BA805E] opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all">&rarr;</span>
-                </h4>
-                <p class="text-[11px] text-neutral-500 leading-snug">Potongan longgar sejuk tanpa terawang</p>
-                <span class="inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-[#BA805E] pt-1">
-                    <span>Lihat Gaya</span> &rarr;
-                </span>
-            </a>
-
-            <!-- Momen 4 -->
-            <a href="{{ route('shop.catalog', ['category' => 'outerwear']) }}" class="group p-4 sm:p-5 rounded-2xl bg-white border border-neutral-200/90 hover:border-[#BA805E] transition-all text-center space-y-2 block shadow-2xs hover:shadow-md hover:-translate-y-0.5">
-                <div class="w-10 h-10 mx-auto rounded-full bg-[#F5EFEB] text-[#BA805E] flex items-center justify-center group-hover:scale-110 transition-transform">
-                    <svg class="w-5 h-5 text-[#BA805E]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M18 8h1a4 4 0 010 8h-1M2 8h16v9a4 4 0 01-4 4H6a4 4 0 01-4-4V8zM6 1v3M10 1v3M14 1v3"/></svg>
-                </div>
-                <h4 class="font-serif font-bold text-neutral-900 text-sm group-hover:text-[#BA805E] transition-colors flex items-center justify-center gap-1">
-                    <span>Kuliah & Hangout</span>
-                    <span class="text-xs text-[#BA805E] opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all">&rarr;</span>
-                </h4>
-                <p class="text-[11px] text-neutral-500 leading-snug">Casual chic, santun dan mudah di-layering</p>
-                <span class="inline-flex items-center gap-1 text-[10px] font-bold uppercase tracking-wider text-[#BA805E] pt-1">
-                    <span>Lihat Gaya</span> &rarr;
-                </span>
-            </a>
-        </div>
-    </section>
-
-    <!-- G1: VIEWPORT-FITTED OPEN RUNWAY ("Try The Look" — Full Look Experience, Center Stage Tanpa Clutter Harga) -->
+    <!-- G1: VIEWPORT-FITTED OPEN RUNWAY ("Try The Look") -->
     <style>
         /* Smooth Haute-Couture Stage Transitions */
         .runway-model-item {
@@ -438,47 +292,20 @@
         </div>
 
         <!-- DEDICATED ACTIVE LOOK HIGHLIGHT & RICH INFORMATION -->
-        <div class="max-w-3xl mx-auto px-4 mt-3 pb-1 flex flex-col items-center justify-center text-center z-20">
-            <!-- Badges & Title -->
-            <div class="flex flex-wrap items-center justify-center gap-2">
-                <span id="runway-look-type" class="px-3 py-1 rounded-full text-[10px] font-mono uppercase tracking-wider font-bold bg-[#FAF8F5] text-[#A66747] border border-[#E4D7C5] shadow-2xs">
-                    {{ $curatedLooks[0]['type_label'] }}
-                </span>
-                <span id="runway-look-title" class="px-4 py-1.5 rounded-full bg-neutral-950/90 text-[#F5EFEB] border border-[#BA805E]/40 text-xs font-bold uppercase tracking-wider backdrop-blur-md shadow-md">
-                    {{ $curatedLooks[0]['title'] }}
-                </span>
-            </div>
-
-            <!-- Vibe Description Paragraph -->
-            <p id="runway-look-vibe" class="text-xs sm:text-sm text-neutral-600 max-w-xl mx-auto font-light leading-relaxed mt-2 mb-2.5">
+        <div class="max-w-2xl mx-auto px-4 mt-4 pb-2 flex flex-col items-center justify-center text-center z-20">
+            <span id="runway-look-type" class="text-[10px] uppercase tracking-[0.2em] font-semibold text-[#BA805E]">
+                {{ $curatedLooks[0]['type_label'] }}
+            </span>
+            <h3 id="runway-look-title" class="font-serif text-xl sm:text-2xl font-bold text-neutral-950 mt-1">
+                {{ $curatedLooks[0]['title'] }}
+            </h3>
+            <p id="runway-look-vibe" class="text-xs sm:text-sm text-neutral-600 max-w-lg mx-auto font-light leading-relaxed mt-1.5 mb-4">
                 {{ $curatedLooks[0]['vibe'] }}
             </p>
-
-            <!-- Actions Row: CTA button -->
-            <div class="flex items-center justify-center">
-                <a id="runway-look-btn" href="{{ $curatedLooks[0]['product_url'] }}" class="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-white bg-neutral-950 hover:bg-[#BA805E] px-6 py-2.5 rounded-full shadow-sm transition-all duration-300 hover:scale-105 active:scale-95 cursor-pointer">
-                    <span>Lihat Detail & Beli Busana Ini</span>
-                    <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                </a>
-            </div>
-        </div>
-
-        <!-- Mini Feature Highlights Strip (Mengisi ruang bawah agar tidak kopong) -->
-        <div class="max-w-2xl mx-auto px-4 mt-4 flex items-center justify-center gap-4 sm:gap-8 text-[11px] sm:text-xs text-neutral-500 font-medium border-t border-neutral-200/50 pt-3">
-            <span class="flex items-center gap-1.5">
-                <span class="w-1.5 h-1.5 rounded-full bg-[#BA805E]"></span>
-                <span>Klik Foto: 3 Sudut Fitting</span>
-            </span>
-            <span class="text-neutral-300">•</span>
-            <span class="flex items-center gap-1.5">
-                <span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>
-                <span>Bahan Sejuk & Ringan</span>
-            </span>
-            <span class="text-neutral-300">•</span>
-            <span class="flex items-center gap-1.5">
-                <span class="w-1.5 h-1.5 rounded-full bg-neutral-800"></span>
-                <span>Garansi Tukar Ukuran</span>
-            </span>
+            <a id="runway-look-btn" href="{{ $curatedLooks[0]['product_url'] }}" class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.15em] text-white bg-neutral-950 hover:bg-[#BA805E] px-7 py-3 transition-colors cursor-pointer">
+                <span>Lihat Detail Busana</span>
+                <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
+            </a>
         </div>
 
     </section>
@@ -700,117 +527,48 @@
         })();
     </script>
 
-    <!-- G2: INNOVATIVE ATELIER PROPORTION & FIT CONCIERGE -->
+    <!-- G2: PANDUAN PANJANG OUTER (Clean Editorial Size Guide, Tanpa Avatar SVG Kartun) -->
     <section id="fit-helper" class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8 scroll-mt-24">
-        <div class="bg-gradient-to-b from-white to-[#FAF8F5] rounded-2xl sm:rounded-3xl border border-[#E8DEC9] p-4 sm:p-7 lg:p-9 shadow-sm relative overflow-hidden">
-            
-            <!-- Atelier Top Badge & Title -->
-            <div class="max-w-2xl mx-auto text-center space-y-1.5 mb-4 sm:mb-6">
-                <span class="inline-flex items-center gap-1.5 px-3 py-0.5 sm:px-3.5 sm:py-1 rounded-full text-[9px] sm:text-[10px] uppercase font-bold tracking-[0.25em] bg-[#F5EFEB] text-[#BA805E] border border-[#EADCCE]">
-                    <svg class="w-3 h-3 sm:w-3.5 sm:h-3.5 text-[#BA805E]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
-                    Atelier Proportion & Fit Simulator
-                </span>
-                <h3 class="font-serif text-xl sm:text-2xl lg:text-3xl font-bold text-neutral-950">
-                    Simulasi Panjang Outer Sesuai Siluet Tinggimu
-                </h3>
-                <p class="text-[11px] sm:text-xs lg:text-sm text-neutral-600 max-w-xl mx-auto leading-relaxed">
-                    Geser penggaris tinggi badan Anda di bawah ini untuk melihat simulasi visual di mana ujung busana outer MOZÉRA akan jatuh di tubuh Anda.
-                </p>
-            </div>
-
-            <!-- Two-Column Interactive Fit Studio -->
-            <div class="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6 lg:gap-8 items-center max-w-5xl mx-auto">
-                
-                <!-- Left Column (Visual Silhouette & Interactive Hemline Drop Avatar) -->
-                <div class="lg:col-span-5 bg-white rounded-2xl sm:rounded-3xl border border-[#EADCCE] p-3.5 sm:p-5 shadow-xs flex flex-col items-center justify-between relative overflow-hidden">
-                    
-                    <!-- Top Status Tag -->
-                    <div class="w-full flex items-center justify-between text-[10px] sm:text-[11px] font-mono pb-2 sm:pb-3 border-b border-neutral-100">
-                        <span class="text-neutral-500 font-bold uppercase tracking-wider">Visual Avatar</span>
-                        <span id="fit-avatar-silhouette-badge" class="px-2 py-0.5 rounded-full bg-[#FAF8F5] text-[#A66747] font-bold border border-[#EADCCE] text-[9px] sm:text-[10px]">
-                            Proportional Chic
-                        </span>
-                    </div>
-
-                    <!-- Silhouette Graphic with Dynamic Sliding Hemline -->
-                    <div class="relative w-full h-[180px] sm:h-[220px] lg:h-[260px] flex items-center justify-center my-1 sm:my-2">
-                        
-                        <!-- Anatomy Height Markers (Background Scale Lines) -->
-                        <div class="absolute inset-y-0 right-1 sm:right-2 w-20 sm:w-24 flex flex-col justify-between text-[8px] sm:text-[9px] font-mono text-neutral-400 border-l border-dashed border-neutral-200 pl-1.5 sm:pl-2 pointer-events-none select-none">
-                            <span>Bahu (0 cm)</span>
-                            <span>Pinggang (40 cm)</span>
-                            <span>Lutut (90 cm)</span>
-                            <span>Betis (110 cm)</span>
-                            <span>Mata Kaki (130 cm)</span>
-                        </div>
-
-                        <!-- Stylized Modest Silhouette SVG Figure -->
-                        <svg class="h-full w-auto text-[#DCC3AD] transition-all duration-300" viewBox="0 0 100 240" fill="none" stroke="currentColor">
-                            <!-- Head & Hijab -->
-                            <path d="M50 15 C42 15 36 22 36 32 C36 44 42 50 50 50 C58 50 64 44 64 32 C64 22 58 15 50 15 Z" fill="#E8DEC9" stroke="#BA805E" stroke-width="1.5"/>
-                            <!-- Hijab Chest Drape -->
-                            <path d="M40 45 C40 60 50 70 50 70 C50 70 60 60 60 45" stroke="#BA805E" stroke-width="1.5" stroke-linecap="round"/>
-                            <!-- Outerwear Body Silhouette -->
-                            <path d="M35 52 L22 88 L32 90 L36 175 L64 175 L68 90 L78 88 L65 52 Z" fill="#F5EFEB" stroke="#8A4F35" stroke-width="1.8" stroke-linejoin="round"/>
-                            <!-- Inner / Lower Dress -->
-                            <path d="M38 175 L37 215 L46 215 L48 185 L52 185 L54 215 L63 215 L62 175" fill="#262626" stroke="#171717" stroke-width="1.5"/>
-                            <!-- Shoes / Heels -->
-                            <path d="M35 215 L47 215 L45 224 L37 224 Z" fill="#BA805E"/>
-                            <path d="M53 215 L65 215 L63 224 L55 224 Z" fill="#BA805E"/>
-                        </svg>
-
-                        <!-- Dynamic Animated Hemline Indicator (Moves up and down based on slider using %) -->
-                        <div 
-                            id="fit-hemline-bar" 
-                            class="absolute left-2 sm:left-4 right-16 sm:right-20 border-t-2 border-dashed border-[#A66747] transition-all duration-300 flex items-center justify-between"
-                            style="top: 67%;"
-                        >
-                            <span class="w-2 h-2 sm:w-2.5 sm:h-2.5 rounded-full bg-[#A66747] -ml-1 sm:-ml-1.5 shadow-xs ring-4 ring-[#A66747]/20"></span>
-                            <span class="text-[8px] sm:text-[9px] font-bold font-mono uppercase tracking-wider bg-[#0a0a0a] text-white px-1.5 py-0.5 rounded shadow-sm">
-                                Ujung Outer
-                            </span>
-                        </div>
-                    </div>
-
-                    <!-- Live Hemline Status Banner -->
-                    <div class="w-full bg-[#FAF8F5] rounded-xl p-2 sm:p-2.5 border border-[#EADCCE] text-center">
-                        <p class="text-[10px] sm:text-[11px] font-bold text-neutral-800" id="fit-hemline-label">
-                            Jatuh di Pertengahan Betis (Midi Santun & Leluasa)
+        <div class="border-y border-neutral-200 py-10 sm:py-12">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+                <!-- Left: Heading & Height Slider -->
+                <div class="lg:col-span-6 space-y-5">
+                    <div>
+                        <span class="text-[11px] uppercase tracking-[0.2em] text-[#BA805E] font-semibold">Panduan Ukuran</span>
+                        <h3 class="font-serif text-2xl sm:text-3xl font-bold text-neutral-950 mt-1">
+                            Cek Jatuh Panjang Outer
+                        </h3>
+                        <p class="text-xs sm:text-sm text-neutral-600 font-light mt-1.5 leading-relaxed">
+                            Sesuaikan tinggi badan Anda untuk mengetahui estimasi jatuh ujung outer dan rekomendasi panjang yang paling pas.
                         </p>
                     </div>
-                </div>
 
-                <!-- Right Column (Interactive Slider, Height Preset Chips, & Intelligent Modest Insights) -->
-                <div class="lg:col-span-7 space-y-3.5 sm:space-y-5">
-                    
-                    <!-- Height Meter Display & Slider Controls -->
-                    <div class="bg-white rounded-2xl sm:rounded-3xl border border-[#EADCCE] p-3.5 sm:p-5 shadow-xs space-y-3">
-                        <div class="flex items-end justify-between">
+                    <div class="bg-white border border-neutral-200 p-5 space-y-4">
+                        <div class="flex items-baseline justify-between">
                             <div>
-                                <span class="text-[9px] sm:text-[10px] uppercase font-bold tracking-wider text-neutral-400 block">Pilih Tinggi Badan Anda</span>
+                                <span class="text-[10px] uppercase tracking-wider text-neutral-400 block">Tinggi Badan</span>
                                 <div class="flex items-baseline gap-1 mt-0.5">
-                                    <span class="font-serif text-3xl sm:text-4xl lg:text-5xl font-bold text-neutral-950 font-mono" id="fit-height-number">158</span>
-                                    <span class="text-sm sm:text-base font-bold text-[#BA805E] font-serif">cm</span>
+                                    <span class="font-serif text-3xl sm:text-4xl font-bold text-neutral-950" id="fit-height-number">158</span>
+                                    <span class="text-sm text-[#BA805E] font-serif">cm</span>
                                 </div>
                             </div>
                             <div class="text-right">
-                                <span class="text-[9px] sm:text-[10px] text-neutral-400 block uppercase tracking-wider">Rekomendasi Panjang:</span>
-                                <span class="font-serif text-lg sm:text-2xl font-bold text-[#BA805E]" id="fit-result-length">110 cm</span>
+                                <span class="text-[10px] uppercase tracking-wider text-neutral-400 block">Rekomendasi Panjang</span>
+                                <span class="font-serif text-xl sm:text-2xl font-bold text-neutral-950" id="fit-result-length">110 cm</span>
                             </div>
                         </div>
 
-                        <!-- Draggable Smooth Range Slider -->
-                        <div class="space-y-1.5 pt-0.5">
-                            <input 
-                                type="range" 
-                                id="fit-range-slider" 
-                                min="148" 
-                                max="175" 
-                                value="158" 
-                                oninput="onFitSliderChange(this.value)" 
-                                class="w-full h-2 sm:h-2.5 bg-[#E8DEC9] rounded-lg appearance-none cursor-pointer accent-[#BA805E]"
+                        <div class="space-y-1.5">
+                            <input
+                                type="range"
+                                id="fit-range-slider"
+                                min="148"
+                                max="175"
+                                value="158"
+                                oninput="onFitSliderChange(this.value)"
+                                class="w-full h-1.5 bg-neutral-200 appearance-none cursor-pointer accent-[#BA805E]"
                             >
-                            <div class="flex justify-between text-[9px] sm:text-[10px] font-mono text-neutral-400 px-1">
+                            <div class="flex justify-between text-[10px] text-neutral-400">
                                 <span>148 cm</span>
                                 <span>155 cm</span>
                                 <span>162 cm</span>
@@ -819,98 +577,86 @@
                             </div>
                         </div>
 
-                        <!-- Quick Height Presets (Quick Chips for Convenience) -->
-                        <div class="flex items-center gap-1.5 sm:gap-2 overflow-x-auto pt-1 pb-0.5 text-[11px] sm:text-xs custom-scrollbar" id="fit-buttons">
-                            <button type="button" onclick="setFitSlider(152)" class="fit-btn px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg sm:rounded-xl border border-neutral-200 hover:border-neutral-900 font-bold transition-all text-neutral-700 whitespace-nowrap cursor-pointer">
+                        <div class="flex flex-wrap items-center gap-2 pt-1 text-xs" id="fit-buttons">
+                            <button type="button" onclick="setFitSlider(152)" class="fit-btn px-3 py-1.5 border border-neutral-200 hover:border-neutral-900 font-medium transition-colors text-neutral-700 cursor-pointer">
                                 150–155 cm
                             </button>
-                            <button type="button" onclick="setFitSlider(158)" class="fit-btn px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg sm:rounded-xl border border-neutral-900 bg-neutral-900 text-white font-bold transition-all whitespace-nowrap cursor-pointer">
+                            <button type="button" onclick="setFitSlider(158)" class="fit-btn px-3 py-1.5 border border-neutral-900 bg-neutral-900 text-white font-medium transition-colors cursor-pointer">
                                 156–160 cm
                             </button>
-                            <button type="button" onclick="setFitSlider(163)" class="fit-btn px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg sm:rounded-xl border border-neutral-200 hover:border-neutral-900 font-bold transition-all text-neutral-700 whitespace-nowrap cursor-pointer">
+                            <button type="button" onclick="setFitSlider(163)" class="fit-btn px-3 py-1.5 border border-neutral-200 hover:border-neutral-900 font-medium transition-colors text-neutral-700 cursor-pointer">
                                 161–165 cm
                             </button>
-                            <button type="button" onclick="setFitSlider(168)" class="fit-btn px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg sm:rounded-xl border border-neutral-200 hover:border-neutral-900 font-bold transition-all text-neutral-700 whitespace-nowrap cursor-pointer">
+                            <button type="button" onclick="setFitSlider(168)" class="fit-btn px-3 py-1.5 border border-neutral-200 hover:border-neutral-900 font-medium transition-colors text-neutral-700 cursor-pointer">
                                 166+ cm
                             </button>
                         </div>
                     </div>
-
-                    <!-- 3 Modest Proportion Intelligence Insights: 3 Kolom Kompak di Mobile & Desktop -->
-                    <div class="grid grid-cols-3 gap-2 sm:gap-3">
-                        <!-- Insight 1: Hemline Safety -->
-                        <div class="bg-white p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl border border-neutral-200/80 shadow-2xs space-y-0.5 sm:space-y-1">
-                            <div class="flex items-center gap-1 text-[#BA805E]">
-                                <svg class="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M19 3H5a2 2 0 00-2 2v14a2 2 0 002 2h14a2 2 0 002-2V5a2 2 0 00-2-2zM9 3v18m-4-14h4m-4 5h4m-4 5h4"/></svg>
-                                <span class="text-[8px] sm:text-[10px] font-bold uppercase tracking-wider truncate">Jatuh Baju</span>
-                            </div>
-                            <p class="text-[11px] sm:text-xs font-bold text-neutral-900 truncate" id="fit-insight-hemline">Midi Santun</p>
-                            <p class="text-[9px] sm:text-[10px] text-neutral-500 leading-snug line-clamp-2" id="fit-result-desc">
-                                Panjang midi di pertengahan betis.
-                            </p>
-                        </div>
-
-                        <!-- Insight 2: Scarf Proportion -->
-                        <div class="bg-white p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl border border-neutral-200/80 shadow-2xs space-y-0.5 sm:space-y-1">
-                            <div class="flex items-center gap-1 text-[#BA805E]">
-                                <svg class="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01"/></svg>
-                                <span class="text-[8px] sm:text-[10px] font-bold uppercase tracking-wider truncate">Padanan Hijab</span>
-                            </div>
-                            <p class="text-[11px] sm:text-xs font-bold text-neutral-900 truncate" id="fit-insight-hijab">Voal 120x120</p>
-                            <p class="text-[9px] sm:text-[10px] text-neutral-500 leading-snug line-clamp-2">Menutup dada proporsional & ramping.</p>
-                        </div>
-
-                        <!-- Insight 3: Footwear Guidance -->
-                        <div class="bg-white p-2.5 sm:p-3.5 rounded-xl sm:rounded-2xl border border-neutral-200/80 shadow-2xs space-y-0.5 sm:space-y-1">
-                            <div class="flex items-center gap-1 text-[#BA805E]">
-                                <svg class="w-3 h-3 sm:w-3.5 sm:h-3.5 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
-                                <span class="text-[8px] sm:text-[10px] font-bold uppercase tracking-wider truncate">Alas Kaki</span>
-                            </div>
-                            <p class="text-[11px] sm:text-xs font-bold text-neutral-900 truncate" id="fit-insight-shoes">Mules / Heels</p>
-                            <p class="text-[9px] sm:text-[10px] text-neutral-500 leading-snug line-clamp-2" id="fit-shoes-desc">Proporsi jatuh semakin semampai.</p>
-                        </div>
-                    </div>
-
-                    <!-- Action Direct to Catalog -->
-                    <div class="flex flex-col sm:flex-row items-center justify-between gap-2.5 pt-0.5">
-                        <div class="flex items-center gap-1.5 text-[11px] sm:text-xs text-neutral-600">
-                            <span class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-emerald-500 shrink-0"></span>
-                            <span>Outer MOZÉRA <strong>wudhu-friendly</strong> & tidak menyapu lantai.</span>
-                        </div>
-                        <a 
-                            id="fit-cta-btn" 
-                            href="{{ route('shop.catalog', ['category' => 'outerwear']) }}" 
-                            class="w-full sm:w-auto min-h-[40px] sm:min-h-[44px] px-5 sm:px-6 py-2 rounded-full bg-neutral-950 hover:bg-[#BA805E] text-white text-[11px] sm:text-xs font-bold uppercase tracking-wider transition-all duration-300 shadow-sm flex items-center justify-center gap-2 shrink-0 cursor-pointer"
-                        >
-                            <span id="fit-cta-text">Lihat Outer Pas Untuk Tinggimu (158 cm)</span>
-                            <svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3"/></svg>
-                        </a>
-                    </div>
-
                 </div>
 
-            </div>
+                <!-- Right: Clean Breakdown Table + CTA -->
+                <div class="lg:col-span-6 space-y-5 lg:pt-2">
+                    <div class="border border-neutral-200 bg-white divide-y divide-neutral-200">
+                        <div class="p-4 flex items-start justify-between gap-4">
+                            <span class="text-xs uppercase tracking-wider text-neutral-500 shrink-0">Jatuh Baju</span>
+                            <div class="text-right">
+                                <p class="text-sm font-semibold text-neutral-950" id="fit-insight-hemline">Midi Santun</p>
+                                <p class="text-xs text-neutral-500 mt-0.5" id="fit-result-desc">Panjang midi ideal di pertengahan betis.</p>
+                            </div>
+                        </div>
+                        <div class="p-4 flex items-start justify-between gap-4">
+                            <span class="text-xs uppercase tracking-wider text-neutral-500 shrink-0">Padanan Hijab</span>
+                            <div class="text-right">
+                                <p class="text-sm font-semibold text-neutral-950" id="fit-insight-hijab">Voal 120x120</p>
+                                <p class="text-xs text-neutral-500 mt-0.5">Menutup dada proporsional &amp; rapi.</p>
+                            </div>
+                        </div>
+                        <div class="p-4 flex items-start justify-between gap-4">
+                            <span class="text-xs uppercase tracking-wider text-neutral-500 shrink-0">Alas Kaki</span>
+                            <div class="text-right">
+                                <p class="text-sm font-semibold text-neutral-950" id="fit-insight-shoes">Mules / Kitten Heels</p>
+                                <p class="text-xs text-neutral-500 mt-0.5" id="fit-shoes-desc">Proporsi jatuh semakin seimbang.</p>
+                            </div>
+                        </div>
+                    </div>
 
+                    <!-- Hidden elements kept for JS compatibility -->
+                    <span id="fit-avatar-silhouette-badge" class="hidden"></span>
+                    <span id="fit-hemline-label" class="hidden"></span>
+                    <div id="fit-hemline-bar" class="hidden"></div>
+
+                    <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                        <p class="text-xs text-neutral-500" id="fit-hemline-summary">Semua outer MOZÉRA wudhu-friendly &amp; tidak menyapu lantai.</p>
+                        <a
+                            id="fit-cta-btn"
+                            href="{{ route('shop.catalog', ['category' => 'outerwear']) }}"
+                            class="min-h-[44px] px-6 py-2.5 bg-neutral-950 hover:bg-[#BA805E] text-white text-xs font-semibold uppercase tracking-[0.15em] transition-colors inline-flex items-center justify-center gap-2 shrink-0 cursor-pointer"
+                        >
+                            <span id="fit-cta-text">Lihat Outer (158 cm)</span>
+                            <span>&rarr;</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- SECTION F: KARTU PRODUK (Koleksi Terpopuler - Atelier Editorial Gallery) -->
+    <!-- SECTION F: KOLEKSI TERPOPULER (Editorial Minimalist Grid — Bersih Tanpa Clutter Pill/Rating Palsu) -->
     <section class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-end justify-between mb-6 pb-3 border-b border-neutral-200">
             <div>
-                <span class="text-[11px] uppercase tracking-[0.25em] text-[#BA805E] font-bold">Paling Diminati</span>
-                <h2 class="font-serif text-[clamp(1.5rem,3.5vw,2.25rem)] font-bold text-neutral-950 mt-1">
+                <span class="text-[11px] uppercase tracking-[0.22em] text-[#BA805E] font-semibold">Pilihan Favorit</span>
+                <h2 class="font-serif text-[clamp(1.5rem,3.5vw,2.25rem)] font-bold text-neutral-950 mt-0.5">
                     Koleksi Terpopuler
                 </h2>
             </div>
-            <a href="{{ route('shop.catalog') }}" class="text-xs font-bold text-neutral-900 hover:text-[#BA805E] transition-colors pb-0.5 border-b border-neutral-900 hover:border-[#BA805E] shrink-0">
-                Lihat Semua ({{ $featuredProducts->count() }}+) &rarr;
+            <a href="{{ route('shop.catalog') }}" class="text-xs font-semibold text-neutral-900 hover:text-[#BA805E] transition-colors pb-0.5 border-b border-neutral-900 hover:border-[#BA805E] shrink-0">
+                Lihat Semua &rarr;
             </a>
         </div>
 
-        <!-- Responsive Grid: 4 cols (≥1024px), 3 cols (768-1023px), 2 cols (<768px) -->
-        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 sm:gap-5 lg:gap-6">
-            @foreach($featuredProducts as $index => $product)
+        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 sm:gap-6">
+            @foreach($featuredProducts as $product)
                 @php
                     $colorMap = [
                         'Terracotta' => '#BA805E',
@@ -926,242 +672,64 @@
                     $uniqueColors = $product->skus->pluck('color')->filter()->unique()->values();
                     $isScarf = str_contains(strtolower($product->slug), 'scarf');
                 @endphp
-                <div class="group bg-white rounded-2xl sm:rounded-3xl overflow-hidden border border-[#E8DEC9] shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between hover:-translate-y-1">
-                    
-                    <div>
-                        <!-- Product Visual Frame: Signature Arch Motif Butik Mewah (Tanpa Garis Bayangan Gelap) -->
-                        <div class="relative h-[230px] sm:h-[260px] bg-gradient-to-b from-[#FAF8F5] to-[#F2EAE0] overflow-hidden flex items-center justify-center p-3 border-b border-[#F2ECE3]">
-                            
-                            <!-- Subtle Background Arch Motif -->
-                            <div class="absolute inset-x-6 top-3 bottom-0 rounded-t-full bg-white/50 border-t border-x border-white/80 pointer-events-none group-hover:scale-105 transition-transform duration-500"></div>
-
-                            <!-- Badges Top Left & Right -->
-                            <div class="absolute top-2.5 left-2.5 flex flex-col gap-1 items-start z-10 pointer-events-none">
-                                @if($product->is_preorder)
-                                    <span class="bg-[#BA805E] text-white text-[9px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full shadow-2xs">
-                                        Pre-Order
-                                    </span>
-                                @elseif($index === 0)
-                                    <span class="bg-neutral-900 text-white text-[9px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full shadow-2xs">
-                                        Terlaris
-                                    </span>
-                                @else
-                                    <span class="bg-neutral-800 text-white text-[9px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full shadow-2xs">
-                                        Boutique
-                                    </span>
-                                @endif
-                            </div>
-
-                            <span class="absolute top-2.5 right-2.5 bg-white/95 text-[#A66747] text-[9px] font-mono font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full shadow-2xs border border-[#E8DEC9] z-10 pointer-events-none">
-                                {{ $product->series?->name ?? ucfirst($product->category) }}
+                <a href="{{ route('shop.product', $product->slug) }}" class="group block">
+                    <!-- Clean Editorial Frame -->
+                    <div class="relative h-[240px] sm:h-[290px] bg-[#F4F1EC] overflow-hidden flex items-center justify-center p-4">
+                        @if($product->is_preorder)
+                            <span class="absolute top-3 left-3 text-[9px] uppercase tracking-[0.15em] font-semibold text-neutral-800 bg-white/90 px-2 py-0.5 z-10">
+                                Pre-Order
                             </span>
+                        @endif
 
-                            <!-- Product Visual Link & Image (Tanpa Filter Drop-shadow yang Bikin Garis Hitam) -->
-                            <a href="{{ route('shop.product', $product->slug) }}" class="block w-full h-full flex items-center justify-center relative z-0">
-                                <img 
-                                    src="{{ $product->primary_image }}" 
-                                    alt="{{ $product->name }} — Modest Fashion" 
-                                    loading="lazy" 
-                                    class="{{ $isScarf ? 'w-auto max-h-[85%] object-contain rounded-xl shadow-xs' : 'h-full w-auto max-w-full object-contain' }} group-hover:scale-[1.04] transition-transform duration-500 block relative z-10"
-                                >
-                            </a>
-
-                        </div>
-
-                        <!-- Card Content Section -->
-                        <div class="p-3.5 sm:p-4 space-y-2">
-                            <!-- Real Dynamic SKU Swatches & Rating -->
-                            <div class="flex items-center justify-between text-[11px]">
-                                <div class="flex items-center gap-1.5">
-                                    @forelse($uniqueColors->take(4) as $col)
-                                        @php
-                                            $hex = $colorMap[$col] ?? '#BA805E';
-                                        @endphp
-                                        <span class="w-3.5 h-3.5 rounded-full border border-white shadow-2xs block" style="background-color: {{ $hex }};" title="{{ $col }}"></span>
-                                    @empty
-                                        <span class="w-3.5 h-3.5 rounded-full bg-[#BA805E] border border-white shadow-2xs"></span>
-                                    @endforelse
-                                    @if($uniqueColors->count() > 4)
-                                        <span class="text-[10px] text-neutral-400 font-mono ml-0.5">+{{ $uniqueColors->count() - 4 }}</span>
-                                    @endif
-                                </div>
-                                <div class="flex items-center text-amber-500 font-bold text-[11px] gap-0.5">
-                                    <svg class="w-3.5 h-3.5 fill-current" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
-                                    <span class="text-neutral-700">4.9</span>
-                                </div>
-                            </div>
-
-                            <!-- Product Title (Max 2 lines) -->
-                            <h3 class="font-serif text-sm sm:text-base font-bold text-neutral-950 group-hover:text-[#BA805E] transition-colors leading-snug line-clamp-2">
-                                <a href="{{ route('shop.product', $product->slug) }}">{{ $product->name }}</a>
-                            </h3>
-
-                            <!-- Short Material Description (Clean & Informative) -->
-                            <p class="text-xs text-neutral-500 line-clamp-1 font-light flex items-center gap-1">
-                                <span class="w-1.5 h-1.5 rounded-full bg-[#BA805E]/60 shrink-0"></span>
-                                <span class="truncate">{{ $product->material ?: 'Material sejuk & nyaman sepanjang hari' }}</span>
-                            </p>
-                        </div>
+                        <img
+                            src="{{ $product->primary_image }}"
+                            alt="{{ $product->name }}"
+                            loading="lazy"
+                            class="{{ $isScarf ? 'w-auto max-h-[82%] object-contain' : 'h-full w-auto max-w-full object-contain' }} group-hover:scale-[1.03] transition-transform duration-500 block"
+                        >
                     </div>
 
-                    <!-- Price & Quick Add Button (Bottom row) -->
-                    <div class="px-3.5 pb-3.5 sm:px-4 sm:pb-4 pt-2.5 border-t border-neutral-100 flex items-center justify-between gap-2">
-                        <div>
-                            <span class="font-bold text-neutral-950 text-xs sm:text-sm block font-mono">
-                                {{ \App\Modules\Shared\Money\Money::format($product->min_price) }}
+                    <!-- Minimalist Caption -->
+                    <div class="pt-3 space-y-1">
+                        <div class="flex items-center justify-between gap-2">
+                            <span class="text-[10px] uppercase tracking-wider text-neutral-400">
+                                {{ $product->series?->name ?? ucfirst($product->category) }}
                             </span>
-                            @if($product->is_preorder)
-                                <span class="text-[10px] text-[#BA805E] font-medium block">Lead time 7-10 hari</span>
-                            @else
-                                <span class="text-[10px] text-emerald-700 font-medium block flex items-center gap-1">
-                                    <span class="w-1.5 h-1.5 rounded-full bg-emerald-500"></span>
-                                    <span>Stok Siap Kirim</span>
-                                </span>
+                            @if($uniqueColors->count() > 0)
+                                <div class="flex items-center gap-1">
+                                    @foreach($uniqueColors->take(4) as $col)
+                                        <span class="w-2.5 h-2.5 rounded-full border border-neutral-300/60 block" style="background-color: {{ $colorMap[$col] ?? '#BA805E' }};" title="{{ $col }}"></span>
+                                    @endforeach
+                                </div>
                             @endif
                         </div>
 
-                        <!-- Quick Add Cart Button (Min 44x44px touch target) -->
-                        <a 
-                            href="{{ route('shop.product', $product->slug) }}" 
-                            aria-label="Pilih varian {{ $product->name }}" 
-                            class="min-h-[44px] min-w-[44px] rounded-xl bg-neutral-100 hover:bg-[#BA805E] hover:text-white text-neutral-800 flex items-center justify-center transition-all cursor-pointer shadow-2xs hover:scale-105 active:scale-95"
-                        >
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg>
-                        </a>
-                    </div>
+                        <h3 class="font-serif text-sm sm:text-base font-medium text-neutral-950 group-hover:text-[#BA805E] transition-colors leading-snug line-clamp-1">
+                            {{ $product->name }}
+                        </h3>
 
-                </div>
+                        <p class="text-xs sm:text-sm text-neutral-700">
+                            {{ \App\Modules\Shared\Money\Money::format($product->min_price) }}
+                        </p>
+                    </div>
+                </a>
             @endforeach
         </div>
     </section>
 
-    <!-- SECTION H: KOMUNITAS #everydaymozera (Authentic Buyer Stories & Styling Spotlight) -->
+    <!-- SECTION H: EDITORIAL BRAND NOTE (#everydaymozera) -->
     <section class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="bg-gradient-to-b from-[#F5EFEB]/70 to-[#FAF8F5] rounded-3xl border border-neutral-200/80 p-6 sm:p-10 text-center space-y-6 shadow-xs">
-            <div class="space-y-2 max-w-xl mx-auto">
-                <span class="inline-block text-[11px] font-bold uppercase tracking-[0.25em] text-[#BA805E]">Cerita Nyata Pelanggan</span>
-                <h2 class="font-serif text-[clamp(1.5rem,3.5vw,2.25rem)] font-bold text-neutral-950">#everydaymozera</h2>
-                <p class="text-neutral-600 text-xs sm:text-sm leading-relaxed font-light">
-                    Cerita wanita Indonesia merayakan kenyamanan dan keanggunan busana modest sehari-hari.
+        <div class="border-t border-neutral-200 pt-10 pb-4 flex flex-col md:flex-row items-center justify-between gap-6 text-center md:text-left">
+            <div class="space-y-1.5 max-w-xl">
+                <span class="text-[11px] uppercase tracking-[0.22em] text-[#BA805E] font-semibold">#everydaymozera</span>
+                <h2 class="font-serif text-2xl sm:text-3xl font-bold text-neutral-950">Nyaman Dipakai, Santun Dipandang.</h2>
+                <p class="text-xs sm:text-sm text-neutral-600 font-light leading-relaxed">
+                    Bagikan gaya harianmu bersama MOZÉRA di Instagram dan TikTok dengan menandai <strong class="font-medium text-neutral-900">@mozera.id</strong>.
                 </p>
             </div>
-
-            <!-- 4 Authentic Customer Review & Styling Cards -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 pt-2 text-left">
-                <!-- Story 1 -->
-                <div class="bg-white rounded-2xl p-5 border border-neutral-200/80 shadow-xs flex flex-col justify-between space-y-4 hover:border-[#BA805E] transition-all">
-                    <div class="space-y-2.5">
-                        <div class="flex items-center justify-between">
-                            <div class="flex text-amber-500 text-xs gap-0.5">
-                                &#9733;&#9733;&#9733;&#9733;&#9733;
-                            </div>
-                            <span class="text-[9px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200/60">
-                                &check; Pembeli Terverifikasi
-                            </span>
-                        </div>
-                        <p class="text-xs text-neutral-700 leading-relaxed font-light italic">
-                            &ldquo;Bahan rayon twill-nya sejuk seharian di ruang kuliah. Potongan kimononya jatuh santun menutup pinggul dan wudhu friendly tanpa repot.&rdquo;
-                        </p>
-                    </div>
-                    <div class="pt-3 border-t border-neutral-100 flex items-center justify-between">
-                        <div>
-                            <p class="text-xs font-bold text-neutral-900">Nadia Saraswati</p>
-                            <p class="text-[10px] text-neutral-500">Dosen &bull; Surabaya</p>
-                        </div>
-                        <span class="text-[9px] font-medium text-[#BA805E] bg-[#BA805E]/10 px-2 py-0.5 rounded-md">
-                            PUSPA Terracotta
-                        </span>
-                    </div>
-                </div>
-
-                <!-- Story 2 -->
-                <div class="bg-white rounded-2xl p-5 border border-neutral-200/80 shadow-xs flex flex-col justify-between space-y-4 hover:border-[#BA805E] transition-all">
-                    <div class="space-y-2.5">
-                        <div class="flex items-center justify-between">
-                            <div class="flex text-amber-500 text-xs gap-0.5">
-                                &#9733;&#9733;&#9733;&#9733;&#9733;
-                            </div>
-                            <span class="text-[9px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200/60">
-                                &check; Pembeli Terverifikasi
-                            </span>
-                        </div>
-                        <p class="text-xs text-neutral-700 leading-relaxed font-light italic">
-                            &ldquo;Motif parang heritage-nya berwibawa tapi siluetnya modern santai. Pas banget untuk agenda formal klinik maupun silaturahmi keluarga.&rdquo;
-                        </p>
-                    </div>
-                    <div class="pt-3 border-t border-neutral-100 flex items-center justify-between">
-                        <div>
-                            <p class="text-xs font-bold text-neutral-900">dr. Farida Rahma</p>
-                            <p class="text-[10px] text-neutral-500">Praktisi &bull; Jakarta</p>
-                        </div>
-                        <span class="text-[9px] font-medium text-[#BA805E] bg-[#BA805E]/10 px-2 py-0.5 rounded-md">
-                            Sept Drops Trench
-                        </span>
-                    </div>
-                </div>
-
-                <!-- Story 3 -->
-                <div class="bg-white rounded-2xl p-5 border border-neutral-200/80 shadow-xs flex flex-col justify-between space-y-4 hover:border-[#BA805E] transition-all">
-                    <div class="space-y-2.5">
-                        <div class="flex items-center justify-between">
-                            <div class="flex text-amber-500 text-xs gap-0.5">
-                                &#9733;&#9733;&#9733;&#9733;&#9733;
-                            </div>
-                            <span class="text-[9px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200/60">
-                                &check; Pembeli Terverifikasi
-                            </span>
-                        </div>
-                        <p class="text-xs text-neutral-700 leading-relaxed font-light italic">
-                            &ldquo;Dipakai wisuda lalu lanjut makan siang keluarga tetap rapi dan gak gerah sama sekali. Warna sage green-nya kalem dan flattering di kulit.&rdquo;
-                        </p>
-                    </div>
-                    <div class="pt-3 border-t border-neutral-100 flex items-center justify-between">
-                        <div>
-                            <p class="text-xs font-bold text-neutral-900">Alya Ramadhani</p>
-                            <p class="text-[10px] text-neutral-500">Alumni ITB &bull; Bandung</p>
-                        </div>
-                        <span class="text-[9px] font-medium text-[#BA805E] bg-[#BA805E]/10 px-2 py-0.5 rounded-md">
-                            ISLA Kimono Sage
-                        </span>
-                    </div>
-                </div>
-
-                <!-- Story 4 -->
-                <div class="bg-white rounded-2xl p-5 border border-neutral-200/80 shadow-xs flex flex-col justify-between space-y-4 hover:border-[#BA805E] transition-all">
-                    <div class="space-y-2.5">
-                        <div class="flex items-center justify-between">
-                            <div class="flex text-amber-500 text-xs gap-0.5">
-                                &#9733;&#9733;&#9733;&#9733;&#9733;
-                            </div>
-                            <span class="text-[9px] font-bold text-emerald-700 bg-emerald-50 px-2 py-0.5 rounded-full border border-emerald-200/60">
-                                &check; Pembeli Terverifikasi
-                            </span>
-                        </div>
-                        <p class="text-xs text-neutral-700 leading-relaxed font-light italic">
-                            &ldquo;Warna indigo navy-nya sangat mewah. Scarf ultrafine voal-nya gampang dibentuk dan tegak di dahi tanpa perlu jarum pentul banyak.&rdquo;
-                        </p>
-                    </div>
-                    <div class="pt-3 border-t border-neutral-100 flex items-center justify-between">
-                        <div>
-                            <p class="text-xs font-bold text-neutral-900">Zahra Maharani</p>
-                            <p class="text-[10px] text-neutral-500">Creative Lead &bull; Jogja</p>
-                        </div>
-                        <span class="text-[9px] font-medium text-[#BA805E] bg-[#BA805E]/10 px-2 py-0.5 rounded-md">
-                            PUSPA Navy Scarf
-                        </span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Social Tagging Reassurance Note & Catalog Button -->
-            <div class="pt-4 flex flex-col sm:flex-row items-center justify-between gap-4 border-t border-neutral-200/60 text-xs text-neutral-500">
-                <p class="font-light">
-                    Bagikan OOTD santun Anda dengan tagar <strong>#everydaymozera</strong> dan tag <strong>@mozera.id</strong> di Instagram untuk tampil di lookbook kami.
-                </p>
-                <a href="{{ route('shop.catalog') }}" class="min-h-[44px] shrink-0 inline-flex items-center justify-center px-7 py-2.5 rounded-full bg-neutral-950 hover:bg-[#BA805E] text-white text-xs font-bold uppercase tracking-wider transition-colors shadow-sm">
-                    Mulai Belanja Koleksi Kami
-                </a>
-            </div>
+            <a href="{{ route('shop.catalog') }}" class="min-h-[44px] shrink-0 inline-flex items-center justify-center px-7 py-3 bg-neutral-950 hover:bg-[#BA805E] text-white text-xs font-semibold uppercase tracking-[0.15em] transition-colors">
+                Belanja Semua Koleksi
+            </a>
         </div>
     </section>
 </div>
