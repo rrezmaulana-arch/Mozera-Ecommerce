@@ -170,7 +170,7 @@
                             @endif
                         </div>
 
-                        <h3 class="font-serif text-sm sm:text-base font-medium text-neutral-950 group-hover:text-[#BA805E] transition-colors leading-snug line-clamp-1">
+                        <h3 class="font-serif text-sm sm:text-base font-medium text-neutral-950 group-hover:text-[#BA805E] transition-colors leading-snug line-clamp-2">
                             {{ $product->name }}
                         </h3>
 

@@ -100,8 +100,8 @@
                         </div>
 
                         <!-- Micro Hint on Active Center Model -->
-                        <div class="active-angle-hint opacity-0 transition-opacity duration-300 absolute -top-1 pointer-events-none">
-                            <span class="px-3 py-1 rounded-full bg-neutral-900/80 backdrop-blur-sm text-[9px] text-[#F2E6D8] tracking-wider flex items-center gap-1.5 shadow-sm">
+                        <div class="active-angle-hint opacity-0 transition-opacity duration-300 absolute -top-5 sm:-top-6 pointer-events-none">
+                            <span class="px-3 py-1 rounded-full bg-neutral-900/85 backdrop-blur-sm text-[9px] text-[#F2E6D8] tracking-wider flex items-center gap-1.5 shadow-sm whitespace-nowrap">
                                 <svg class="w-3 h-3 text-[#BA805E]" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/></svg>
                                 <span id="angle-hint-text-{{ $idx }}">
                                     Klik Foto: 3 Sudut Fitting
@@ -226,7 +226,7 @@
                                 {{ $s->name }}
                             </h3>
                             <p class="text-xs text-neutral-500 line-clamp-2 font-light leading-relaxed">
-                                {{ $s->description }}
+                                {{ str_replace('#everydayitsfriday', '#everydaymozera', $s->description) }}
                             </p>
                         </div>
 
@@ -522,7 +522,7 @@
                             @endif
                         </div>
 
-                        <h3 class="font-serif text-sm sm:text-base font-medium text-neutral-950 group-hover:text-[#BA805E] transition-colors leading-snug line-clamp-1">
+                        <h3 class="font-serif text-sm sm:text-base font-medium text-neutral-950 group-hover:text-[#BA805E] transition-colors leading-snug line-clamp-2">
                             {{ $product->name }}
                         </h3>
 
@@ -532,6 +532,65 @@
                     </div>
                 </a>
             @endforeach
+        </div>
+    </section>
+
+    <!-- EDITORIAL CRAFTSMANSHIP BAND (Dark Warm Contrast — Filosofi Bahan & Jahitan) -->
+    <section class="w-full bg-[#191614] text-[#F5EFE6] py-14 sm:py-18 border-y border-neutral-800">
+        <div class="max-w-[1200px] mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
+                <!-- Left Editorial Headline -->
+                <div class="lg:col-span-5 space-y-4">
+                    <span class="text-[11px] uppercase tracking-[0.25em] text-[#D4A383] font-semibold block">
+                        Filosofi Jahitan &amp; Material
+                    </span>
+                    <h2 class="font-serif text-[clamp(1.75rem,3.5vw,2.6rem)] font-bold leading-[1.15] text-white">
+                        Dirancang untuk <span class="italic font-normal text-[#D4A383]">Nyaman Sepanjang Hari.</span>
+                    </h2>
+                    <p class="text-xs sm:text-sm text-neutral-400 font-light leading-relaxed max-w-md">
+                        Setiap potongan MOZÉRA melewati pemilihan serat kain yang sejuk di iklim tropis, finishing jahitan butik yang rapi, serta proporsi modest yang leluasa bergerak.
+                    </p>
+                    <div class="pt-2">
+                        <a href="{{ route('shop.catalog') }}" class="inline-flex items-center gap-2 text-xs font-semibold uppercase tracking-[0.16em] text-[#191614] bg-[#F5EFE6] hover:bg-[#D4A383] hover:text-white px-6 py-3 rounded-full transition-all duration-300">
+                            <span>Lihat Semua Material</span>
+                            <span>&rarr;</span>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Right 3 Craftsmanship Pillars -->
+                <div class="lg:col-span-7 divide-y divide-white/10 border-y border-white/10">
+                    <div class="py-5 sm:py-6 flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-8">
+                        <span class="text-xs font-mono text-[#D4A383] tracking-widest shrink-0">01</span>
+                        <div class="space-y-1">
+                            <h3 class="font-serif text-base sm:text-lg font-semibold text-white">Rayon Twill &amp; Washed Linen Pilihan</h3>
+                            <p class="text-xs sm:text-sm text-neutral-400 font-light leading-relaxed">
+                                Serat kain yang jatuh lembut, adem saat dipakai beraktivitas, tidak menerawang, dan tidak mudah kusut.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="py-5 sm:py-6 flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-8">
+                        <span class="text-xs font-mono text-[#D4A383] tracking-widest shrink-0">02</span>
+                        <div class="space-y-1">
+                            <h3 class="font-serif text-base sm:text-lg font-semibold text-white">Voal Ultrafine 120&times;120 Lasercut</h3>
+                            <p class="text-xs sm:text-sm text-neutral-400 font-light leading-relaxed">
+                                Berkilau halus, mudah dibentuk tegak di dahi, ringan di telinga, dan menutup dada secara proporsional.
+                            </p>
+                        </div>
+                    </div>
+
+                    <div class="py-5 sm:py-6 flex flex-col sm:flex-row sm:items-baseline gap-2 sm:gap-8">
+                        <span class="text-xs font-mono text-[#D4A383] tracking-widest shrink-0">03</span>
+                        <div class="space-y-1">
+                            <h3 class="font-serif text-base sm:text-lg font-semibold text-white">Siluet Santun &amp; Wudhu-Friendly</h3>
+                            <p class="text-xs sm:text-sm text-neutral-400 font-light leading-relaxed">
+                                Potongan longgar yang rapi untuk agenda kuliah, kantor, hingga kondangan — dilengkapi garansi tukar ukuran 7 hari.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -767,15 +826,15 @@
 
         // Update CTA text
         const ctaText = document.getElementById('fit-cta-text');
-        if (ctaText) ctaText.textContent = `Lihat Outer Pas Untuk Tinggimu (${heightVal} cm)`;
+        if (ctaText) ctaText.textContent = `Lihat Outer (${heightVal} cm)`;
 
         // Highlight active preset chip
         const buttons = document.querySelectorAll('#fit-buttons .fit-btn');
         buttons.forEach((b, idx) => {
             if (idx === profile.presetIdx) {
-                b.className = 'fit-btn px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg sm:rounded-xl border border-neutral-900 bg-neutral-900 text-white font-bold transition-all whitespace-nowrap cursor-pointer';
+                b.className = 'fit-btn px-3.5 py-1.5 rounded-full border border-neutral-900 bg-neutral-900 text-white font-medium transition-all whitespace-nowrap cursor-pointer';
             } else {
-                b.className = 'fit-btn px-2.5 py-1 sm:px-3 sm:py-1.5 rounded-lg sm:rounded-xl border border-neutral-200 hover:border-neutral-900 font-bold transition-all text-neutral-700 whitespace-nowrap cursor-pointer';
+                b.className = 'fit-btn px-3.5 py-1.5 rounded-full border border-[#E5DCCF] bg-white hover:border-neutral-900 font-medium transition-all text-neutral-700 whitespace-nowrap cursor-pointer';
             }
         });
     };
